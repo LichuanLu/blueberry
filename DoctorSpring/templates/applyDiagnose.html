@@ -1,0 +1,422 @@
+{% extends "base.html" %}
+{% block breadcrumbsHolder %}
+
+<div id="breadcrumb" class="clearfix">
+    <!-- #breadcrumb-inside -->
+    <div id="breadcrumb-inside" class="main-content-padding clearfix">
+        <span class="sub-text">当前位置：</span>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">主页</a>
+            </li>
+            <li class="active">申请诊断</li>
+        </ol>
+    </div>
+    <!-- EOF: #breadcrumb-inside -->
+</div>
+{% endblock breadcrumbsHolder %}
+{% block contentHolder %}
+<div id="applydignose-content" class="main-content-padding">
+
+<h4 class="main-content-title">申请会诊</h4>
+
+<div class="submit-patient-info-wrapper">
+<div class="row">
+<div class="col-md-9" role="main">
+<div class="panel panel-default" data-form-id='1'>
+    <div class="panel-heading">就诊人基本信息<span>第一部分／总共四部分</span></div>
+    <div class="panel-body">
+        <div class="patient-radio-wrapper">
+            <label class="radio">
+											<span class="icons">
+												<span class="first-icon fui-radio-unchecked"></span>
+												<span class="second-icon fui-radio-checked"></span>
+											</span>
+                <input type="radio" name="" value="" data-toggle="radio">从常用就诊人中选取</label>
+
+
+            <label class="radio">
+											<span class="icons">
+												<span class="first-icon fui-radio-unchecked"></span>
+												<span class="second-icon fui-radio-checked"></span>
+											</span>
+                <input type="radio" name="" value="" data-toggle="radio" checked="true">新就诊人</label>
+        </div>
+        <form id="patient-already-exists" class="full-width-dropdown" style="display:none;">
+            <select name="patientid">
+                <option value="0">李响</option>
+                <option value="1">张名</option>
+            </select>
+        </form>
+
+        <form role="form" class="form-inline" id="new-patient-form">
+
+            <div class="form-group">
+                <label for="patientnameinput">
+                    就诊人姓名：
+                    <span class="required-text">（必填）</span>
+                </label>
+                <div class="input-wrapper">
+                    <input type="text" class="form-control" name="patientname" id="patientnameinput" placeholder="就诊人姓名">
+                    <div class="line-area">
+                        <div class="line"></div>
+                        <div class="ball"></div>
+                    </div>
+                    <p class="side-description">就诊人姓名须与诊断书和影像数据上姓名相符就诊人姓名须与诊断书和影像数据上姓名相符</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="patientsexinput">
+                    性别：
+                    <span class="required-text">（必填）</span>
+                </label>
+                <div class="">
+                    <label class="radio">
+										<span class="icons">
+											<span class="first-icon fui-radio-unchecked"></span>
+											<span class="second-icon fui-radio-checked"></span>
+										</span>
+                        <input type="radio" name="patientsex" value="1" data-toggle="radio">男</label>
+
+                    <label class="radio">
+										<span class="icons">
+											<span class="first-icon fui-radio-unchecked"></span>
+											<span class="second-icon fui-radio-checked"></span>
+										</span>
+                        <input type="radio" name="patientsex" value="2" data-toggle="radio">女</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="birthdateinput">
+                    出生日期：
+                    <span class="required-text">（必填）</span>
+                </label>
+                <div class="input-wrapper">
+
+                    <div class="input-group">
+										<span class="input-group-btn">
+											<button class="btn" type="button">
+                                                <span class="fui-calendar"></span>
+                                            </button>
+										</span>
+                        <input type="text" class="form-control" id="birthdateinput" name="birthdate">
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phonenumberinput">
+                    手机号码：
+                    <span class="required-text">（必填）</span>
+                </label>
+                <div class="input-wrapper">
+                    <input type="text" class="form-control" id="phonenumberinput" name="phonenumber" placeholder="手机号码">
+                    <div class="line-area">
+                        <div class="line"></div>
+                        <div class="ball"></div>
+                    </div>
+                    <p class="side-description">请填写真实手机号，以便医生联系</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="locationinput">
+                    所在地：
+                    <span class="required-text">（必填）</span>
+                </label>
+                <div class="input-wrapper location-wrapper">
+                    <input type="text" id="locationinput" class="form-control" name="location" data-provide="typeahead" />
+                    <div class="line-area">
+                        <div class="line"></div>
+                        <div class="ball"></div>
+                    </div>
+                    <p class="side-description">就诊人姓名须与诊断书和影像数据上姓名相符就诊人姓名须与诊断书和影像数据上姓名相符</p>
+                </div>
+            </div>
+
+    </div>
+
+    <div class="btn-wrapper">
+        <button type="submit" class="btn btn-info submit-btn">保存并继续</button>
+
+    </div>
+    </form>
+
+</div>
+<div class="panel panel-default" data-form-id='2'>
+    <div class="panel-heading">影像信息<span>第二部分／总共四部分</span></div>
+    <div class="panel-body">
+        <p class="side-description">请确保已经在正规医院医疗影像科做过诊断，有诊断单和dicom影像数据（什么是dicom影像数据？）</p>
+
+        <form role="form" class="form-inline">
+            <div class="form-group">
+                <label for="patientlocationinput">
+                    诊断部位：
+                    <span class="required-text">（必填）</span>
+                </label>
+                <div class="patientlocation-wrapper">
+
+                    <div class="checkbox-wrapper">
+                        <label class="checkbox" for="checkbox1">
+											<span class="icons">
+												<span class="first-icon fui-checkbox-unchecked"></span>
+												<span class="second-icon fui-checkbox-checked"></span>
+											</span>
+                            <input type="checkbox" value="1" id="checkbox1" name="sectionId" data-toggle="checkbox">头部</label>
+                        <label class="checkbox" for="checkbox2">
+											<span class="icons">
+												<span class="first-icon fui-checkbox-unchecked"></span>
+												<span class="second-icon fui-checkbox-checked"></span>
+											</span>
+                            <input type="checkbox" value="2" id="checkbox2" name="sectionId" data-toggle="checkbox">颈部</label>
+                        <label class="checkbox" for="checkbox2">
+											<span class="icons">
+												<span class="first-icon fui-checkbox-unchecked"></span>
+												<span class="second-icon fui-checkbox-checked"></span>
+											</span>
+                            <input type="checkbox" value="3" id="checkbox2" name="sectionId" data-toggle="checkbox">腰部</label>
+                        <label class="checkbox" for="checkbox2">
+											<span class="icons">
+												<span class="first-icon fui-checkbox-unchecked"></span>
+												<span class="second-icon fui-checkbox-checked"></span>
+											</span>
+                            <input type="checkbox" value="4" id="checkbox2" name="sectionId" data-toggle="checkbox">腿部</label>
+                        <label class="checkbox" for="checkbox2">
+											<span class="icons">
+												<span class="first-icon fui-checkbox-unchecked"></span>
+												<span class="second-icon fui-checkbox-checked"></span>
+											</span>
+                            <input type="checkbox" value="5" id="checkbox2" name="sectionId" data-toggle="checkbox">颈部</label>
+                        <label class="checkbox" for="checkbox2">
+											<span class="icons">
+												<span class="first-icon fui-checkbox-unchecked"></span>
+												<span class="second-icon fui-checkbox-checked"></span>
+											</span>
+                            <input type="checkbox" value="6" id="checkbox2" name="sectionId" data-toggle="checkbox">颈部</label>
+                        <label class="checkbox" for="checkbox2">
+											<span class="icons">
+												<span class="first-icon fui-checkbox-unchecked"></span>
+												<span class="second-icon fui-checkbox-checked"></span>
+											</span>
+                            <input type="checkbox" value="7" id="checkbox2" name="sectionId" data-toggle="checkbox">颈部</label>
+                        <label class="checkbox" for="checkbox2">
+											<span class="icons">
+												<span class="first-icon fui-checkbox-unchecked"></span>
+												<span class="second-icon fui-checkbox-checked"></span>
+											</span>
+                            <input type="checkbox" value="8" id="checkbox2" name="sectionId" data-toggle="checkbox">颈部</label>
+                    </div>
+                    <div class="line-area">
+                        <div class="line"></div>
+                        <div class="ball"></div>
+                    </div>
+                    <p class="side-description">就诊人姓名须与诊断书和影像数据上姓名相符就诊人姓名须与诊断书和影像数据上姓名相符</p>
+                </div>
+
+            </div>
+            <div class="form-group" id="dicomfileupload">
+                <label for="dicomfileinput">
+                    DICOM影像文件：
+                    <span class="required-text">（必填）</span>
+                </label>
+                <p class="">必须包含有效的影像文件</p>
+                <div class="row fileupload-buttonbar upload-file-wrapper">
+                    <div class="col-md-4">
+                        <!-- The fileinput-button span is used to style the file input field as button -->
+										<span class="btn btn-success fileinput-button"> <i class="glyphicon glyphicon-plus"></i>
+											<span>上传文件...</span>
+											<input id="dicomfileinput" type="file" name="files[]" multiple=""></span>
+                        <!-- The global file processing state -->
+                        <span class="fileupload-process"></span>
+                    </div>
+                    <!-- The global progress state -->
+                    <div class="col-md-8 fileupload-progress fade">
+                        <!-- The global progress bar -->
+                        <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+                        </div>
+                        <!-- The extended global progress state -->
+                        <div class="progress-extended">&nbsp;</div>
+                    </div>
+
+                </div>
+
+                <!-- The table listing the files available for upload/download -->
+                <div class="full-width">
+                    <table role="presentation" class="table table-striped">
+                        <tbody class="files"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="btn-wrapper">
+                <button type="submit" class="btn btn-info submit-btn">保存并继续</button>
+
+            </div>
+        </form>
+
+    </div>
+</div>
+<div class="panel panel-default" data-form-id='3'>
+    <div class="panel-heading">专家和套餐<span>第三部分／总共四部分</span></div>
+    <div class="panel-body">
+
+        <form role="form" class="form-inline">
+            <div class="form-group">
+                <label for="">
+                    诊断专家：
+                </label>
+                <div class="col-md-8" id="recommandedDoctor">
+                </div>
+                <div class="col-md-4 select-doctor">
+                    <p>根据您的情况，帮您推荐了一个专家</p>
+                    <a class="btn btn-primary" data-toggle="modal" data-target="#select-doctor-modal">选择其他专家</a>
+                </div>
+            </div>
+
+
+
+            <div class="btn-wrapper">
+                <button type="submit" class="btn btn-info submit-btn">保存并继续</button>
+
+            </div>
+        </form>
+
+    </div>
+</div>
+<div class="panel panel-default" data-form-id='4'>
+    <div class="panel-heading">额外参考信息<span>第四部分／总共四部分</span></div>
+    <div class="panel-body">
+
+        <form role="form" class="form-inline">
+            <div class="form-group">
+                <label for="hospitalinput">
+                    就诊医院：
+                    <span class="required-text">（必填）</span>
+                </label>
+                <div class="input-wrapper location-wrapper">
+                    <input type="text" id="hospitalinput" name="diagnoseHistory" class="form-control" data-provide="typeahead" />
+
+                    <div class="line-area">
+                        <div class="line"></div>
+                        <div class="ball"></div>
+                    </div>
+                    <p class="side-description">选择诊断所在医院</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="illhistory">
+                    病史信息：
+                    <span class="required-text"></span>
+                </label>
+                <div class="illhistory-wrapper">
+                    <textarea id="illhistory" name="illnessHistory" class="form-control" placeholder="病史"></textarea>
+                    <div class="line-area">
+                        <div class="line"></div>
+                        <div class="ball"></div>
+                    </div>
+                    <p class="side-description">就诊人姓名须与诊断书和影像数据上姓名相符就诊人姓名须与诊断书和影像数据上姓名相符</p>
+                </div>
+
+            </div>
+            <div class="form-group" id="patient-medical-report-fileupload">
+                <label for="patient-medical-report-file">
+                    诊断书：
+                    <span class="required-text"></span>
+                </label>
+                <p class="">需要清晰的扫描件或者照片</p>
+                <div class="row fileupload-buttonbar upload-file-wrapper">
+                    <div class="col-md-4">
+                        <!-- The fileinput-button span is used to style the file input field as button -->
+											<span class="btn btn-success fileinput-button"> <i class="glyphicon glyphicon-plus"></i>
+												<span>上传文件...</span>
+												<input id="patient-medical-report-file" type="file" name="files[]" multiple=""></span>
+                        <!-- The global file processing state -->
+                        <span class="fileupload-process"></span>
+                    </div>
+                    <!-- The global progress state -->
+                    <div class="col-md-8 fileupload-progress fade">
+                        <!-- The global progress bar -->
+                        <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+                        </div>
+                        <!-- The extended global progress state -->
+                        <div class="progress-extended">&nbsp;</div>
+                    </div>
+
+                </div>
+
+                <!-- The table listing the files available for upload/download -->
+                <div class="full-width">
+                    <table role="presentation" class="table table-striped">
+                        <tbody class="files"></tbody>
+                    </table>
+                </div>
+            </div>
+            <p class="apply-warning-text">请详细检查您申请的请求并确保您已经提供了需要的信息</p>
+            <div class="btn-wrapper">
+                <button type="submit" class="btn btn-info submit-btn">最终提交申请</button>
+
+            </div>
+        </form>
+
+    </div>
+</div>
+</div>
+
+<div class="col-md-3">
+    <div id="affix-wrapper" class="pi-title-sidebar affix-top" data-spy="affix" data-offset-top="150" data-offset-bottom="200" style="">
+        <h4>就诊人基本信息</h4>
+        <ul class="active nav">
+            <li class="">
+                <a href="#patientnameinput">姓名</a>
+            </li>
+            <li class="">
+                <a>性别</a>
+            </li>
+            <li class="">
+                <a>出生年月</a>
+            </li>
+            <li class="">
+                <a>手机</a>
+            </li>
+            <li class="">
+                <a>城市</a>
+            </li>
+        </ul>
+        <h4>影像信息</h4>
+        <ul class="nav">
+            <li class="">
+                <a>诊断部位</a>
+            </li>
+            <li class="">
+                <a>dicom影像文件</a>
+            </li>
+        </ul>
+        <h4>影像信息</h4>
+        <ul class="nav">
+            <li class="">
+                <a>诊断参考信息</a>
+            </li>
+            <li class="">
+                <a>病史信息</a>
+            </li>
+            <li class="">
+                <a>诊断书</a>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+{% endblock contentHolder %}
+{% block footerHolder %}
+{% endblock footerHolder %}
+{% block ModalHolder %}
+{% include 'selectDoctorModal.html' %}
+{% endblock ModalHolder %}
+

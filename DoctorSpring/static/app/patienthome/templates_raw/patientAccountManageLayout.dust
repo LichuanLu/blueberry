@@ -1,0 +1,158 @@
+
+			<div id="patient-action-content">
+				<ul class="nav nav-tabs" id="accountTab">
+				    <li class="active">
+				      <a href="#patient-user-account-wrapper">个人信息</a>
+				    </li>
+				    <li>
+				      <a href="#patient-user-password-wrapper">修改密码</a>
+				    </li>
+				    <li>
+				      <a href="#patient-user-avatar-wrapper">上传头像</a>
+				    </li>
+				   
+				 </ul>
+				<div id='content' class="tab-content">
+					<div class="tab-pane active" id="patient-user-account-wrapper">
+						<form class="form-horizontal col-md-offset-2" role="form" id="patient-user-account-form">
+						  <div class="form-group">
+						    <label for="" class="col-md-2 control-label">登录名：</label>
+						    <div class="col-md-8 form-body">
+						    	<span class="form-content-text">lulichuan628@gmail.com</span>
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="displayNameInput" class="col-md-2 control-label">昵称：</label>
+						    <div class="col-md-8 form-body">
+						      <a href="#" class="edit-btn form-content-text">点击编辑</a>
+						      <input type="text" class="form-control input-sm edit-block" id="displayNameInput" placeholder="">
+						      <a href="#" class="btn btn-sm btn-info btn-submit edit-block">确定</a>
+						      <span class="form-content-text warning-block"></span>
+						    </div>
+						  </div>
+						   <div class="form-group">
+						    <label for="phoneInput" class="col-md-2 control-label">手机号：</label>
+						    <div class="col-md-8 form-body">
+						      <span class="form-content-text">152****3425</span>
+						      <a href="#" class="form-content-text">手机绑定</a>
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="emailInput" class="col-md-2 control-label">邮箱：</label>
+						    <div class="col-md-8 form-body">
+						      <span class="form-content-text">lulichuan628@gmail.com</span>
+						      <a href="#" class="form-content-text">邮箱绑定</a>
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="realNameInput" class="col-md-2 control-label">真实姓名：</label>
+						    <div class="col-md-8 form-body">
+						      <a href="#" class="edit-btn form-content-text">点击编辑</a>
+						      <input type="text" class="form-control edit-block input-sm" id="realNameInput" placeholder="">
+						      <a href="#" class="btn btn-sm btn-info btn-submit edit-block">确定</a>
+						      <span class="form-content-text warning-block"></span>
+
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="identityCodeInput" class="col-md-2 control-label">身份证号：</label>
+						    <div class="col-md-8 form-body">
+						      <a href="#" class="edit-btn form-content-text">点击编辑</a>
+						      <input type="text" class="form-control edit-block input-sm" id="identityCodeInput" placeholder="">
+						      <a href="#" class="btn btn-sm btn-info btn-submit edit-block">确定</a>
+						      <span class="form-content-text warning-block"></span>
+
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="locationInput" class="col-md-2 control-label">详细地址：</label>
+						    <div class="col-md-8 form-body">
+						      <a href="#" class="edit-btn form-content-text">点击编辑</a>
+						      <input type="text" class="form-control edit-block input-sm" id="locationInput" placeholder="">
+						      <a href="#" class="btn btn-sm btn-info btn-submit edit-block">确定</a>
+						      <span class="form-content-text warning-block"></span>
+
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="medicalCartInput" class="col-md-2 control-label">医保卡：</label>
+						    <div class="col-md-8 form-body">
+						      <a href="#" class="edit-btn form-content-text">点击编辑</a>
+						      <input type="text" class="form-control edit-block input-sm" id="medicalCartInput" placeholder="">
+						      <a href="#" class="btn btn-sm btn-info btn-submit edit-block">确定</a>
+						      <span class="form-content-text warning-block"></span>
+
+						    </div>
+						  </div>
+						  
+						</form>
+					</div>
+					
+					<div class="tab-pane" id="patient-user-password-wrapper">
+
+						<form class="form-horizontal col-md-offset-2" role="form" id="patient-user-password-form">
+						  
+						  <div class="form-group">
+						    <label for="originPasswordInput" class="col-md-2 control-label">原始密码：</label>
+						    <div class="col-md-8 form-body">
+						      <input type="password" class="form-control input-sm edit-block" id="originPasswordInput" placeholder="">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="newPasswordInput" class="col-md-2 control-label">新密码：</label>
+						    <div class="col-md-8 form-body">
+						      <input type="password" class="form-control input-sm edit-block" id="newPasswordInput" placeholder="">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="confirmPasswordInput" class="col-md-2 control-label">确认密码：</label>
+						    <div class="col-md-8 form-body">
+						      <input type="password" class="form-control input-sm edit-block" id="confirmPasswordInput" placeholder="">
+						    </div>
+						  </div>
+						  <div class="form-group">
+				               <div class="col-md-offset-2 col-md-10">
+				                    <button type="submit" class="btn btn-primary btn-sm submit-button">提交</button>
+				                </div>
+				           </div>
+						   
+						</form>
+					</div>
+
+					<div class="tab-pane" id="patient-user-avatar-wrapper">
+
+						<form class="form-horizontal col-md-offset-2" role="form" id="patient-user-avatar-form">
+						  
+						  <div class="form-group">
+						    <label for="originPasswordInput" class="col-md-2 control-label">原始密码：</label>
+						    <div class="col-md-8 form-body">
+						      <input type="password" class="form-control input-sm edit-block" id="originPasswordInput" placeholder="">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="newPasswordInput" class="col-md-2 control-label">新密码：</label>
+						    <div class="col-md-8 form-body">
+						      <input type="password" class="form-control input-sm edit-block" id="newPasswordInput" placeholder="">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="confirmPasswordInput" class="col-md-2 control-label">确认密码：</label>
+						    <div class="col-md-8 form-body">
+						      <input type="password" class="form-control input-sm edit-block" id="confirmPasswordInput" placeholder="">
+						    </div>
+						  </div>
+						  <div class="form-group">
+				               <div class="col-md-offset-2 col-md-10">
+				                    <button type="submit" class="btn btn-primary btn-sm submit-button">提交</button>
+				                </div>
+				           </div>
+						   
+						</form>
+					</div>
+				</div>
+
+					
+			</div>
+
+
+			</div>

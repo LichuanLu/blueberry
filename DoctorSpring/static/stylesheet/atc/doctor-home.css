@@ -1,0 +1,200 @@
+#doctorhome-content {
+  margin-bottom: 50px;
+}
+#doctorhome-content #new-diagnose-wrapper .header > div,
+#doctorhome-content #new-audit-wrapper .header > div {
+  position: relative;
+  border-bottom: 1px solid #eaeaea;
+  margin: 10px 15px 20px;
+}
+#doctorhome-content #new-diagnose-wrapper .header > div span,
+#doctorhome-content #new-audit-wrapper .header > div span {
+  font-size: 13px;
+  margin-right: 10px;
+}
+#doctorhome-content #new-diagnose-wrapper .header > div span.title,
+#doctorhome-content #new-audit-wrapper .header > div span.title {
+  font-size: 20px;
+  margin-right: 100px;
+}
+#doctorhome-content #new-diagnose-wrapper .header > div a,
+#doctorhome-content #new-audit-wrapper .header > div a {
+  position: absolute;
+  right: 70px;
+  top: 6px;
+}
+#doctorhome-content #new-diagnose-wrapper .header > div a.close-link,
+#doctorhome-content #new-audit-wrapper .header > div a.close-link {
+  right: 20px;
+}
+#doctorhome-content #new-diagnose-wrapper .form-group label,
+#doctorhome-content #new-audit-wrapper .form-group label {
+  font-size: 14px;
+}
+#doctorhome-content #new-diagnose-wrapper .form-group .submit-btn,
+#doctorhome-content #new-audit-wrapper .form-group .submit-btn {
+  margin-right: 10px;
+}
+#doctorhome-content #new-audit-wrapper #exists-diagnose-wrapper {
+  margin-bottom: 50px;
+}
+#doctorhome-content #new-audit-wrapper #exists-diagnose-wrapper #auditText {
+  height: 150px;
+}
+#doctorhome-content #new-audit-wrapper #exists-diagnose-wrapper .form-group p {
+  font-size: 15px;
+  padding-top: 10px;
+}
+#doctorhome-content #new-diagnose-wrapper {
+  margin-bottom: 50px;
+}
+#doctorhome-content #new-diagnose-wrapper .content {
+  position: relative;
+}
+#doctorhome-content #new-diagnose-wrapper .content .tree-title {
+  font-size: 14px;
+  position: absolute;
+  left: 20px;
+  top: 0px;
+}
+#doctorhome-content #new-diagnose-wrapper .content .load-template-btn {
+  position: absolute;
+  left: 190px;
+}
+#doctorhome-content #new-diagnose-wrapper .content #tree {
+  margin-top: 30px;
+}
+#doctorhome-content #new-diagnose-wrapper .content #imageDes {
+  height: 200px;
+}
+#doctorhome-content #new-diagnose-wrapper .content #diagnoseResult {
+  height: 200px;
+}
+#doctorhome-content .content-wrapper {
+  border: 1px solid #eaeaea;
+  margin-left: 0;
+}
+#doctorhome-content .right-content-wrapper {
+  min-height: 700px;
+  border-left: 1px solid #eaeaea;
+}
+#doctorhome-content .content-head-wrapper {
+  height: 80px;
+  background-color: #ecfaf2;
+  margin: 0;
+  padding: 20px 0 0 20px;
+}
+#doctorhome-content .content-head-wrapper h6 {
+  margin: 0;
+}
+#doctorhome-content .left-menu {
+  display: inline-block;
+  width: 100%;
+  min-height: 700px;
+}
+#doctorhome-content .left-menu .user-wrapper {
+  overflow: hidden;
+  padding: 10px;
+}
+#doctorhome-content .left-menu .user-wrapper img {
+  float: left;
+  margin-right: 10px;
+}
+#doctorhome-content .left-menu .user-wrapper span {
+  display: block;
+}
+#doctorhome-content .left-menu .user-wrapper span.name {
+  font-size: 15px;
+  font-weight: 700;
+}
+#doctorhome-content .left-menu .left-menu-nav {
+  list-style: none;
+  padding-left: 0;
+}
+#doctorhome-content .left-menu .left-menu-nav li {
+  margin: 15px 0 ;
+}
+#doctorhome-content .left-menu .left-menu-nav li a {
+  height: 40px;
+  line-height: 40px;
+  display: block;
+  position: relative;
+  font-size: 24px;
+  color: #000000;
+  /* text-align: center; */
+  padding-left: 20px;
+}
+#doctorhome-content .left-menu .left-menu-nav li a .iconbar-unread {
+  left: 34px;
+  right: inherit;
+  top: 5px;
+}
+#doctorhome-content .left-menu .left-menu-nav li a.active {
+  background-color: #16a085;
+  color: #ffffff;
+}
+#doctorhome-content .left-menu .left-menu-nav li a .nav-text {
+  font-size: 15px;
+  position: absolute;
+  margin-left: 30px;
+}
+#doctorhome-content .left-menu .left-menu-nav li a:hover {
+  background-color: #16a085;
+  color: #ffffff;
+}
+#doctorhome-content #doctor-action-content {
+  margin-top: 20px;
+}
+#doctorhome-content #doctor-action-content .form-inline {
+  padding-left: 25px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+#doctorhome-content #doctor-action-content .form-inline .form-group label {
+  margin-right: 10px;
+}
+#doctorhome-content #doctor-action-content .form-inline .submit-btn {
+  margin-bottom: 9px;
+  margin-left: 20px;
+  width: 60px;
+}
+#doctorhome-content #doctor-action-content #diagnose-table {
+  font-size: 15px;
+}
+#doctorhome-content #doctor-action-content #diagnose-table .action-group > a {
+  margin-right: 5px;
+}
+#doctorhome-content #doctor-action-content .nav-tabs {
+  border-width: 1px;
+}
+#doctorhome-content #doctor-action-content .nav-tabs a {
+  border-width: 1px;
+}
+#doctorhome-content #doctor-action-content .nav-tabs li.active a {
+  color: #000000;
+}
+#doctorhome-content #doctor-action-content .tab-content {
+  border: none;
+}
+#doctorhome-content #doctor-action-content .edit-block {
+  margin-top: 4px;
+}
+#doctorhome-content #doctor-action-content input.edit-block {
+  display: inline-block;
+  width: 200px;
+}
+#doctorhome-content #doctor-action-content a.edit-block {
+  display: inline-block;
+  margin-left: 10px;
+}
+#doctorhome-content #doctor-action-content #doctor-user-account-form .form-content-text {
+  margin-right: 10px;
+  display: inline-block;
+  line-height: 2.4;
+  padding-top: 6px;
+}
+#doctorhome-content #doctor-action-content #doctor-user-account-form .form-content-text.warning-block {
+  color: #e74c3c;
+  margin-left: 10px;
+  font-size: 13px;
+}

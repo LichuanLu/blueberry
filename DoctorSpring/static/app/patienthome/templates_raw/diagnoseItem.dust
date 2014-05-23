@@ -1,0 +1,22 @@
+<tr>
+	<td>{date}</td>
+	<td>{doctorName}</td>
+	<td>{patientName}</td>
+	<td>{section}</td>
+	<td>{status}</td>
+	<td class="action-group">
+		{@if cond="'{statusId}' == '1' || '{statusId}' == '2'"}
+		<a href="#">修改</a>
+		<a href="#">取消</a>
+		{/if}
+		{@if cond="'{statusId}' == '3'"}
+		<a href="#">付费</a>
+		<a href="#">修改</a>
+		<a href="#">取消</a>
+		{/if}
+		{@if cond="'{statusId}' == '6'"}
+		<a href="#">查看报告</a>
+		<a href="#">下载</a>
+		{/if}
+	</td>
+</tr>

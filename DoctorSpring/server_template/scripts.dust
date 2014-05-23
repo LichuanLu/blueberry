@@ -1,0 +1,4 @@
+ <!-- The template to display files available for upload -->
+    <script data-main="/static/app/main" src="/static/app/lib/requirejs/require.js"></script>
+    <!--<script data-main="dist/debug/js/ctt-debug" src="app/lib/requirejs/require.js"></script>
+-->

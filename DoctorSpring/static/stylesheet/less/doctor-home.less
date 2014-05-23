@@ -1,0 +1,249 @@
+@import "variables";
+
+#doctorhome-content{
+	margin-bottom: 50px;
+
+	#new-diagnose-wrapper,#new-audit-wrapper{
+		.header{
+			>div{
+				position: relative;
+				border-bottom: 1px solid #eaeaea;
+				margin: 10px 15px 20px;
+				span{
+					font-size: 13px;
+					margin-right: 10px;
+					&.title{
+						font-size: 20px;
+						margin-right: 100px;
+
+					}
+				}
+				a{
+					&.close-link{
+						right: 20px;
+					}
+
+
+					position: absolute;
+					right: 70px;
+					top: 6px;
+
+				}
+			}
+		}
+		
+		.form-group{
+			label{
+						font-size: 14px;
+				}
+			.submit-btn{
+						margin-right: 10px;
+				}
+		}
+		
+		
+	}
+	#new-audit-wrapper{
+		#exists-diagnose-wrapper{
+			margin-bottom: 50px;
+			#auditText{
+				height: 150px;
+			}
+			.form-group{
+				p{
+					font-size: 15px;
+					padding-top: 10px;
+				}
+			}
+		}
+	}
+
+	#new-diagnose-wrapper{
+		margin-bottom: 50px;
+
+		.content{
+			position: relative;
+			//border-bottom: 1px solid #eaeaea;
+			.tree-title{
+				font-size: 14px;
+				position: absolute;
+				left: 20px;
+				top: 0px;
+			}
+			.load-template-btn{
+				position: absolute;
+				left: 190px;
+			}
+			#tree{
+				margin-top: 30px;
+			}
+			
+			#imageDes{
+				height: 200px;
+			}
+			#diagnoseResult{
+				height: 200px;
+			}
+		}
+	}
+
+	.content-wrapper{
+		border: 1px solid #eaeaea;
+		margin-left: 0;
+
+	}
+	.right-content-wrapper{
+		min-height: 700px;
+		border-left: 1px solid #eaeaea;
+		//border-left: 0;
+
+	}
+	.content-head-wrapper{
+		height: 80px;
+		background-color: @table-success;
+		margin: 0;
+		padding: 20px 0 0 20px;
+		h6{
+			margin: 0;
+		}
+	}
+	.left-menu{
+		display: inline-block;
+		width: 100%;
+		//border: 1px solid #eaeaea;
+		min-height: 700px;
+		.user-wrapper{
+			overflow: hidden;
+			padding: 10px;
+			//border-bottom: 1px solid #eaeaea;
+
+			img{
+				float: left;
+				margin-right: 10px;
+			}
+			span{
+				display: block;
+				&.name{
+					font-size: 15px;
+					font-weight: 700;
+				}
+			}
+		}
+		.left-menu-nav{
+			list-style: none;
+			padding-left: 0;
+			li{
+				margin: 15px 0 ;
+				a{
+					height: 40px;
+					line-height: 40px;
+					display: block;
+					position: relative;
+					font-size: 24px;
+					color: #000000;
+					/* text-align: center; */
+					padding-left: 20px;
+					.iconbar-unread{
+						left: 34px;
+						right: inherit;
+						top: 5px;
+					}
+					&.active{
+						background-color: @ctt-orange;
+						color: #ffffff;
+					}
+					.nav-text{
+						font-size: 15px;
+						position: absolute;
+						margin-left: 30px;
+					}
+				}
+				a:hover{
+					background-color: @ctt-orange;
+					color: #ffffff;
+				}
+				// a[class^=fui]{
+				// 	font-size: 15px;
+				// }
+				
+			}
+		}
+	}
+
+	#doctor-action-content{
+		margin-top: 20px;
+		.form-inline{
+			padding-left: 25px;
+			margin-bottom: 20px;
+			margin-top: 20px;
+			.form-group{
+				label{
+					margin-right: 10px;
+				}
+			}
+			.submit-btn{
+				margin-bottom: 9px;
+				margin-left: 20px;
+				width: 60px;
+			}
+		}	
+		#diagnose-table{
+			font-size: 15px;
+			.action-group{
+				> a{
+					margin-right: 5px;
+
+				}
+			}
+		}
+
+		.nav-tabs{
+				border-width: 1px;
+				a{
+					border-width: 1px;
+				}
+				li.active{
+					a{
+						color:#000000;
+					}
+				}
+		}
+
+		.tab-content{
+				border: none;
+				//padding-left: 100px;
+		}
+
+		.edit-block{
+				margin-top: 4px;
+		}
+
+		input.edit-block{
+				
+					display: inline-block;
+					width: 200px;
+		}
+		a.edit-block{
+					display: inline-block;
+					margin-left: 10px;
+				
+		}
+		#doctor-user-account-form{
+			.form-content-text{
+				margin-right: 10px;
+				display: inline-block;
+				line-height: 2.4;
+				padding-top: 6px;
+				&.warning-block{
+					color: @brand-danger;
+					margin-left: 10px;
+					font-size: 13px;
+				}
+			}
+
+
+			
+		}
+
+	}
+}

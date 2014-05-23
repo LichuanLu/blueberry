@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="ie lt-ie9 lt-ie8 lt-ie7">
+    <![endif]-->
+<!--[if IE 7]>
+    <html class="ie lt-ie9 lt-ie8">
+        <![endif]-->
+<!--[if IE 8]>
+        <html class="ie lt-ie9">
+            <![endif]-->
+<!--[if (gte IE 8)&(lt IE 10)]>
+            <html class="ie">
+<![endif]-->
+<html>
+    {>head/}
+    <body>
+            {+headerHolder}
+                {>header/}
+            {/headerHolder}
+        <div class="container">            
+            <div class="main-block full-height"> 
+                {>iconSearch/}
+                {+breadcrumbsHolder}
+                {/breadcrumbsHolder}
+                <div id="main-region">
+                    {+contentHolder}{/contentHolder}
+                </div>
+                {+footerHolder}
+                    {>footer/}
+                {/footerHolder}
+            </div> 
+        </div> 
+        {+ModalHolder}
+        {/ModalHolder}
+        {+scriptsHolder}
+        {>scripts/} 
+        {/scriptsHolder}    
+    </body>
+</html>

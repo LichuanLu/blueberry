@@ -1,0 +1,129 @@
+#patienthome-content {
+  margin-bottom: 50px;
+}
+#patienthome-content .right-content-wrapper {
+  min-height: 700px;
+  border: 1px solid #eaeaea;
+  border-left: 0;
+}
+#patienthome-content .content-head-wrapper {
+  height: 80px;
+  background-color: #ecfaf2;
+  margin: 0px;
+  padding: 20px 0 0 20px;
+}
+#patienthome-content .content-head-wrapper h6 {
+  margin: 0;
+}
+#patienthome-content .left-menu {
+  display: inline-block;
+  width: 100%;
+  border: 1px solid #eaeaea;
+  min-height: 700px;
+}
+#patienthome-content .left-menu .user-wrapper {
+  overflow: hidden;
+  padding: 10px;
+}
+#patienthome-content .left-menu .user-wrapper img {
+  float: left;
+  margin-right: 10px;
+}
+#patienthome-content .left-menu .user-wrapper span {
+  display: block;
+}
+#patienthome-content .left-menu .user-wrapper span.name {
+  font-size: 15px;
+  font-weight: 700;
+}
+#patienthome-content .left-menu .left-menu-nav {
+  list-style: none;
+  padding-left: 0;
+}
+#patienthome-content .left-menu .left-menu-nav li {
+  margin: 15px 0 ;
+}
+#patienthome-content .left-menu .left-menu-nav li a {
+  height: 40px;
+  line-height: 40px;
+  display: block;
+  position: relative;
+  font-size: 24px;
+  color: #000000;
+  /* text-align: center; */
+  padding-left: 20px;
+}
+#patienthome-content .left-menu .left-menu-nav li a .iconbar-unread {
+  left: 34px;
+  right: inherit;
+  top: 5px;
+}
+#patienthome-content .left-menu .left-menu-nav li a.active {
+  background-color: #16a085;
+  color: #ffffff;
+}
+#patienthome-content .left-menu .left-menu-nav li a .nav-text {
+  font-size: 15px;
+  position: absolute;
+  margin-left: 30px;
+}
+#patienthome-content .left-menu .left-menu-nav li a:hover {
+  background-color: #16a085;
+  color: #ffffff;
+}
+#patienthome-content #patient-action-content {
+  margin-top: 20px;
+}
+#patienthome-content #patient-action-content .form-inline {
+  padding-left: 25px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+#patienthome-content #patient-action-content .form-inline .form-group label {
+  margin-right: 10px;
+}
+#patienthome-content #patient-action-content .form-inline .submit-btn {
+  margin-bottom: 9px;
+  margin-left: 20px;
+  width: 60px;
+}
+#patienthome-content #patient-action-content #diagnose-table {
+  font-size: 15px;
+}
+#patienthome-content #patient-action-content #diagnose-table .action-group > a {
+  margin-right: 5px;
+}
+#patienthome-content #patient-action-content .nav-tabs {
+  border-width: 1px;
+}
+#patienthome-content #patient-action-content .nav-tabs a {
+  border-width: 1px;
+}
+#patienthome-content #patient-action-content .nav-tabs li.active a {
+  color: #000000;
+}
+#patienthome-content #patient-action-content .tab-content {
+  border: none;
+}
+#patienthome-content #patient-action-content .edit-block {
+  margin-top: 4px;
+}
+#patienthome-content #patient-action-content input.edit-block {
+  display: inline-block;
+  width: 200px;
+}
+#patienthome-content #patient-action-content a.edit-block {
+  display: inline-block;
+  margin-left: 10px;
+}
+#patienthome-content #patient-action-content #patient-user-account-form .form-content-text {
+  margin-right: 10px;
+  display: inline-block;
+  line-height: 2.4;
+  padding-top: 6px;
+}
+#patienthome-content #patient-action-content #patient-user-account-form .form-content-text.warning-block {
+  color: #e74c3c;
+  margin-left: 10px;
+  font-size: 13px;
+}

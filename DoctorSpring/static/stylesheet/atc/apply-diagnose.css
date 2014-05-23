@@ -1,0 +1,198 @@
+#select-doctor-modal .all-doctor-wrapper {
+  overflow: hidden;
+}
+#select-doctor-modal .all-doctor-wrapper .row-fluid {
+  overflow: hidden;
+  text-align: left;
+  padding: 20px 0;
+}
+#select-doctor-modal .all-doctor-wrapper .row-fluid .doctor-preview {
+  margin-bottom: 10px;
+}
+#select-doctor-modal .all-doctor-wrapper .row-fluid .doctor-preview-des h6 {
+  position: relative;
+}
+#select-doctor-modal .all-doctor-wrapper .row-fluid .doctor-preview-des h6 .choose-btn {
+  position: absolute;
+  left: 300px;
+  top: -5px;
+}
+#select-doctor-modal .modal-dialog {
+  width: 980px;
+}
+#select-doctor-modal .modal-dialog .all-doctor-wrapper {
+  text-align: center;
+}
+#select-doctor-modal .modal-dialog .form-inline {
+  text-align: center;
+}
+#select-doctor-modal .modal-dialog .form-inline .form-group {
+  margin-right: 10px;
+}
+#select-doctor-modal .modal-dialog .form-inline .form-group label {
+  margin-right: 10px;
+}
+#select-doctor-modal .modal-dialog .form-inline .form-group #inName {
+  margin-bottom: 8px;
+  width: 120px;
+}
+#select-doctor-modal .modal-dialog .form-inline .form-group .dropdown-menu {
+  width: 100%;
+}
+#select-doctor-modal .modal-dialog .form-inline .btn.search-btn {
+  margin-left: 10px;
+  margin-bottom: 8px;
+}
+#applydignose-content .submit-patient-info-wrapper .location-wrapper .line,
+#applydignose-content .submit-patient-info-wrapper .location-wrapper .ball,
+#applydignose-content .submit-patient-info-wrapper .location-wrapper .side-description {
+  margin-top: 10px !important;
+}
+#applydignose-content .submit-patient-info-wrapper .twitter-typeahead {
+  width: 400px;
+}
+#applydignose-content .submit-patient-info-wrapper .affix {
+  position: fixed;
+  top: 30px;
+  bottom: 40px;
+}
+#applydignose-content .submit-patient-info-wrapper .affix-bottom {
+  position: absolute;
+}
+#applydignose-content .submit-patient-info-wrapper #recommandedDoctor .doctor-preview {
+  width: 100%;
+}
+#applydignose-content .submit-patient-info-wrapper #recommandedDoctor .choose-btn {
+  display: none;
+}
+#applydignose-content .submit-patient-info-wrapper .apply-warning-text {
+  text-align: center;
+  color: red;
+}
+#applydignose-content .submit-patient-info-wrapper .panel {
+  position: relative;
+  transition: left 1s;
+  -webkit-transition: left 1s;
+  -moz-transition: left 1s;
+  -ms-transition: left 1s;
+  -o-transition: left 1s;
+  left: 150%;
+}
+#applydignose-content .submit-patient-info-wrapper .panel.visible {
+  left: 0;
+}
+#applydignose-content .submit-patient-info-wrapper .panel .panel-heading {
+  position: relative;
+}
+#applydignose-content .submit-patient-info-wrapper .panel .panel-heading span {
+  position: absolute;
+  right: 30px;
+  top: 14px;
+}
+#applydignose-content .submit-patient-info-wrapper .pi-title-sidebar {
+  width: 300px;
+  background-color: #fcfcfc;
+}
+#applydignose-content .submit-patient-info-wrapper .pi-title-sidebar h4 {
+  font-size: 20px;
+}
+#applydignose-content .submit-patient-info-wrapper .pi-title-sidebar h4:after {
+  content: '';
+  display: block;
+  background-color: #e6e6e6;
+  height: 1px;
+  margin-top: 10px;
+}
+#applydignose-content .submit-patient-info-wrapper .location-wrapper {
+  margin-top: -10px;
+}
+#applydignose-content .submit-patient-info-wrapper p,
+#applydignose-content .submit-patient-info-wrapper span {
+  font-size: 13px;
+}
+#applydignose-content .submit-patient-info-wrapper .upload-file-wrapper {
+  display: inline-block;
+  width: 100%;
+  vertical-align: middle;
+  padding-left: 0px;
+}
+#applydignose-content .submit-patient-info-wrapper .upload-file-wrapper .progress {
+  width: 40%;
+}
+#applydignose-content .submit-patient-info-wrapper .patientlocation-wrapper {
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+}
+#applydignose-content .submit-patient-info-wrapper .patientlocation-wrapper .checkbox-wrapper {
+  width: 400px;
+  display: inline-block;
+  vertical-align: middle;
+}
+#applydignose-content .submit-patient-info-wrapper .btn-wrapper {
+  margin: 20px 0;
+  text-align: center;
+}
+#applydignose-content .submit-patient-info-wrapper .input-group,
+#applydignose-content .submit-patient-info-wrapper textarea,
+#applydignose-content .submit-patient-info-wrapper input {
+  max-width: 400px;
+}
+#applydignose-content .submit-patient-info-wrapper .line-area {
+  display: inline-block;
+  margin: 0 10px;
+}
+#applydignose-content .submit-patient-info-wrapper .line-area .line {
+  height: 1px;
+  width: 118px;
+  vertical-align: middle;
+  display: inline-block;
+  background-color: #b6d7e5;
+}
+#applydignose-content .submit-patient-info-wrapper .line-area .ball {
+  width: 7px;
+  height: 7px;
+  border-radius: 10px;
+  vertical-align: middle;
+  display: inline-block;
+  background-color: #b6d7e5;
+}
+#applydignose-content .submit-patient-info-wrapper .form-inline .form-group {
+  width: 100%;
+  margin-bottom: 20px;
+}
+#applydignose-content .submit-patient-info-wrapper .form-inline .form-group .radio,
+#applydignose-content .submit-patient-info-wrapper .form-inline .form-group .checkbox {
+  display: inline-block;
+  position: relative;
+  padding-left: 32px;
+  margin: 0 20px 10px 0px;
+}
+#applydignose-content .submit-patient-info-wrapper .form-inline .form-group label {
+  display: block;
+  margin-bottom: 0;
+}
+#applydignose-content .submit-patient-info-wrapper .form-inline .form-group .required-text {
+  font-size: 12px;
+  font-style: italic;
+  color: red;
+}
+#applydignose-content .submit-patient-info-wrapper .form-inline .form-group p.side-description {
+  display: inline-block;
+  width: 230px;
+  margin: 0;
+  vertical-align: middle;
+}
+#applydignose-content .submit-patient-info-wrapper .select-doctor p {
+  margin-top: 10px;
+}
+#applydignose-content .submit-patient-info-wrapper .patient-radio-wrapper {
+  display: inline-block;
+}
+#applydignose-content .submit-patient-info-wrapper .patient-radio-wrapper .radio {
+  display: inline-block;
+  margin-right: 100px;
+}
+#applydignose-content .submit-patient-info-wrapper #patient-already-exists {
+  padding-top: 20px;
+}

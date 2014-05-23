@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+{% from "_macroHelper.html" import render_field %}
+
+<form method=post action="/message/add">
+    <dl>
+        {{ render_field(form.senderId) }}
+        {{ render_field(form.receiverId) }}
+        {{ render_field(form.content) }}
+        {{ render_field(form.title) }}
+        {{ render_field(form.type) }}
+    </dl>
+    <p><input type=submit value=Register>
+</form>
+
+</body>
+</html>

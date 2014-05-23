@@ -1,0 +1,68 @@
+{>basicLayout/}
+{<contentHolder}
+<div id="register-patient-content" class="main-content-padding">
+	<div class="row">
+		<div class="col-md-6">
+		<h4 class="main-content-title">新用户注册</h4>
+		<div class="form-wrapper">
+
+			<form class="form-horizontal" role="form" id="register-form">
+
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="inUserName">用户邮箱或者手机号：</label>
+					<div class="col-md-8">
+						<input id="inUserName" type="text" name="name" placeholder="邮箱或者手机号" class="form-control">
+	<!-- 					<p class="help-block">英文和数字</p>
+	 -->			</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="inPassword">密码：</label>
+					<div class="col-md-8">
+
+						<input id="inPassword" type="password" name="password" class="form-control" placeholder="请用英文字母、数字，6-16位均可">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="inPassword">再次输入密码：</label>
+					<div class="col-md-8">
+						<input id="confirmPassword" type="password" name="" class="form-control" placeholder="确保输入密码一致">
+					</div>
+				</div>
+				<div class="col-md-offset-4 code-wrapper">
+					<input id="codeCheck" type="checkbox" class="no_indent" value="" checked="">
+					<span>我有注册码</span>
+				</div>
+				<div class="form-group">
+					<div class="col-md-offset-4 col-md-8">
+						<input id="inCode" type="text" name="" class="form-control" placeholder="医院注册码">
+					</div>
+				</div>
+
+				<a class="col-md-offset-4 service-link">服务条款</a>
+				 <div class="form-group">
+	                <div class="col-md-offset-4 col-md-8">
+	                    <button type="submit" class="btn btn-primary submit-button">同意服务条款并注册</button>
+	                </div>
+	            </div>
+
+			</form>
+		</div>
+		</div>
+		<div class="col-md-6 other-register-wrapper">
+			<span class="divider-vertical"></span>
+			<h4 class="main-content-title">其他用户注册</h4>
+			<div>
+			<div class="doctor-register-wrapper">
+				<p>想加入我们？</p>
+				<a class="btn btn-primary">医生用户注册通道</a>
+			</div>
+			<div class="hospital-register-wrapper">
+				<p>想加入我们？</p>
+				<a class="btn btn-primary">医院用户注册通道</a>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{/contentHolder}

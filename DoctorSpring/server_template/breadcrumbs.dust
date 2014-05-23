@@ -1,0 +1,39 @@
+<table class="full-width navigation-header">
+    <tbody>
+        <tr class="action-bar">
+            <td class="col-lg-8 col-md-8 no-right-padding">
+                <div class="full-height">
+                    <ul class="nav navbar-nav gray-base">
+                        <li>
+                            <a href="#">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#">Translate</a>
+                        </li>
+                        <!-- <li>
+                            <a href="#">Forum</a>
+                        </li> -->
+                    </ul>
+                </div>
+
+            </td>
+            <td class="col-lg-4 col-md-4 full-height no-left-padding">
+                <!-- <div class="search-wrap absolute-wrap">
+                    <form class="navbar-form navbar-right search-form" action="#" role="search">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search" id="search-query-3">
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn">
+                                        <span class="fui-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div> -->
+            </td>
+
+        </tr>
+    </tbody>
+</table>

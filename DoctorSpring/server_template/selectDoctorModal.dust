@@ -1,0 +1,48 @@
+<div class="modal" id="select-doctor-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close fui-cross" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">选择专家</h4>
+                </div>
+                <div class="modal-body">
+                   <div class="row">
+                      <form class="form-inline" role="form">
+                        <div class="form-group">
+                          <label class="" for="">所属医院：</label>
+                          <select name="hospitalId" class=>
+                            <option value="0">不限</option>
+                            <option value="1">北京301医院</option>
+                            <option value="2">西安西京医院</option>
+
+                          </select>  
+                        </div>
+                        <div class="form-group">
+                          <label class="" for="">擅长科目：</label>
+                          <select name="sectionId">
+                            <option value="0">不限</option>
+                            <option value="1">骨科</option>
+                            <option value="2">肿瘤</option>
+                          </select>                        
+                        </div>
+                        <div class="form-group">
+                          <label class="" for="">姓名：</label>
+                          <input id="inName" name="doctorname" class="form-control input-sm" type="text">                      
+                        </div>
+                        
+                        <button type="submit" class="btn btn-sm btn-default search-btn">搜索</button>
+                      </form>
+
+                   </div>
+                   <div id="doctorListRegion" class="all-doctor-wrapper">
+                    
+                    
+                   </div>
+                </div>
+                <!-- <div class="modal-footer">
+                    <span>新用户还没有帐号？</span>
+                    <a href="#" class="">注册帐号</a>
+                </div> -->
+            </div>
+        </div>
+    </div>

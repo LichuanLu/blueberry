@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block contentHolder %}
+<div id="doctorhome-content" class="main-content-padding" data-userid="5">
+    <div class="content-wrapper row">
+        <div class="col-md-3 nopadding full-height" id="doctor-actions">
+
+            <nav class="left-menu full-height">
+                <div class="user-wrapper content-head-wrapper">
+                    <img src="{{data.doctor.user.imagePath}}">
+
+                    <span class="name">{{data.doctor.user.name}} {{data.doctor.title}}</span>
+                    <a class="description" href="#">我的公众主页</a>
+                </div>
+                <ul class="left-menu-nav full-height">
+                    <li>
+                        <a href="#" class="fui-document" name="diagnoseLink">
+                            <span class="iconbar-unread">{{data.diagnoseCount}}</span>
+                            <span class="nav-text">我的诊断</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="fui-bubble" name="consultLink">
+                            <span class="iconbar-unread">4</span>
+                            <span class="nav-text">我的咨询</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="fui-mail" name="messageLink">
+                            <span class="iconbar-unread">{{data.messageCount}}</span>
+                            <span class="nav-text">我的消息</span>
+
+                        </a>
+                    </li>
+                    <span class="h-divide"></span>
+                    <li>
+                        <a href="#" class="fui-tag" name="favoritesLink">
+                            <span class="nav-text">我的收藏</span>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="fui-user" name="patientsLink">
+                            <span class="nav-text">我的就诊人</span>
+
+                        </a>
+                    </li>
+
+                    <span class="h-divide"></span>
+
+                    <li>
+                        <a href="#" class="fui-gear" name="accountLink">
+                            <span class="nav-text">帐号管理</span>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="fui-list-small-thumbnails" name="statisticLink">
+                            <span class="nav-text">统计信息</span>
+
+                        </a>
+                    </li>
+                    <li class="full-height">
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-9 no-padding right-content-wrapper">
+            <div id="doctor-action-header" class="content-head-wrapper">
+            </div>
+            <div id="newDiagnoseRegion">
+            </div>
+            <div id="contentRegion">
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+{% endblock contentHolder %}
+{% block ModalHolder %}
+{% include 'loginModal.html' %}
+{% endblock ModalHolder %}
