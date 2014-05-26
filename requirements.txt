@@ -10,3 +10,6 @@ itsdangerous
 wsgiref
 Flask-Login
 mysql-python
+pyPdf2==1.19
+reportlab==2.5
+xhtml2pdf

@@ -10,7 +10,7 @@ from database import  db_session
 from sqlalchemy.exc import IntegrityError
 from DoctorSpring.models import User,Patent,Doctor,Diagnose ,DiagnoseTemplate
 from DoctorSpring.models import User,Comment,Message
-from DoctorSpring.util import result_status as rs,object2dict
+from DoctorSpring.util import result_status as rs,object2dict,pdf_utils,constant
 from DoctorSpring.util.constant import MessageUserType,Pagger
 
 import  data_change_service as dataChangeService
@@ -65,3 +65,20 @@ def getDiagnoseAndImageDescList():
     resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnoseAndImageDescs)
     resultDict=resultStatus.__dict__
     return json.dumps(resultDict,ensure_ascii=False)
+@uc.route('/pdf', methods=['GET','POST'])
+def generatorPdf():
+    if request.method == 'GET':
+
+        result = open(constant.DirConstant.DIAGNOSE_PDF_DIR+'test.pdf', 'wb') # Changed from file to filename
+        html =  render_template('diagnoseResultPdf.html')
+        pdf = pdf_utils.save_pdf(html,result)
+        result.close()
+        # return render_template("testpdf.html",getAvatar=getAvatar)
+        return html
+
+@uc.route('/redirectPdf', methods=['GET','POST'])
+def testRedirect():
+    #return redirect("/pdf")
+    print url_for('user_center.generatorPdf',diagnoseName='ccheng')
+    return redirect(url_for('user_center.generatorPdf'))
+

@@ -1,6 +1,7 @@
 # coding: utf-8
 __author__ = 'chengc017'
 from datetime import  datetime
+import config
 class ModelStatus(object):
       Normal=0
       Del=1
@@ -51,6 +52,11 @@ class Pagger(object):
             return self.pageSize
         else:
             return self.count-offset
+
+
+class DirConstant(object):
+      ROOT_DIR=config.ROOT_DIR
+      DIAGNOSE_PDF_DIR=ROOT_DIR+'/DoctorSpring/static/pdf/'
 
 
 
