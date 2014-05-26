@@ -4,6 +4,8 @@ __author__ = 'Jeremy'
 import sqlalchemy as sa
 
 from database import Base ,db_session as session
+from DoctorSpring.util.constant import ModelStatus, UserStatus
+
 
 
 class Patent(Base):
@@ -23,6 +25,9 @@ class Patent(Base):
 
     def __init__(self, userId=None):
         self.userID = userId
+        self.type = UserStatus.doctor
+        self.status = ModelStatus.Normal
+
     @classmethod
     def save(cls,patient):
         if patient:

@@ -1,74 +1,74 @@
 {% extends "base.html" %}
 {% block contentHolder %}
 <div id="register-doctor-content" class="main-content-padding">
-	<div class="row">
-		<div class="col-md-6">
-		<h4 class="main-content-title">医生注册</h4>
-		<div class="form-wrapper">
+    <div class="row">
+        <div class="col-md-6">
+            <h4 class="main-content-title">医生注册</h4>
+            <div class="form-wrapper">
 
-			<form class="form-horizontal" role="form" id="register-form">
-				
-				<div class="form-group">
-					<label class="col-md-4 control-label" for="inPassword">个人电子邮箱：</label>
-					<div class="col-md-8">
-						<input id="confirmPassword" type="email" name="" class="form-control" placeholder="用于登陆和联系，不会公开">
-					</div>
-				</div>
-				
-				<div class="form-group">
-					<label class="col-md-4 control-label" for="inUserName">用户名：</label>
-					<div class="col-md-8">
-						<input id="inUserName" type="text" name="userNameField" placeholder="英文字母开头的英文字母或数字" class="form-control">
-						<p class="help-block">用户名会用于系统中个人主页的显示，强烈建议用姓名的拼音作为用户名。</p>
-				</div>
-				</div>
-				<div class="form-group">
-					<label class="col-md-4 control-label" for="inPassword">密码：</label>
-					<div class="col-md-8">
+                <form class="form-horizontal" role="form" id="register-form">
 
-						<input id="inPassword" type="password" name="passwordField" class="form-control" placeholder="请用英文字母、数字，6-16位均可">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-md-4 control-label" for="inPassword">再次输入密码：</label>
-					<div class="col-md-8">
-						<input id="confirmPassword" type="password" name="" class="form-control" placeholder="确保输入密码一致">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-md-4 control-label" for="">真实姓名：</label>
-					<div class="col-md-8">
-						<input id="inName" type="text" name="" class="form-control" placeholder="">
-						<p class="help-block">用于确认，不会公开。</p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-md-4 control-label" for="">身份核实电话：</label>
-					<div class="col-md-8">
-						<input id="inPhoneNumber" type="" name="" class="form-control" placeholder="格式是区号－电话，例如010－12345678">
-						<p class="help-block">请详细填写所在医院的固定电话区号-电话号及分机，并确保能联系到您。我们将拨打此电话，核实是否本人注册。此电话不会被公开。</p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-md-4 control-label" for="">手机号：</label>
-					<div class="col-md-8">
-						<input id="inMobile" type="" name="" class="form-control" placeholder="11位有效手机号码">
-						<p class="help-block">用于登陆和系统管理员紧急联系方式，此电话不会被公开。</p>
-					</div>
-				</div>
-				<a class="col-md-offset-4 service-link">服务条款</a>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="inPassword">个人电子邮箱：</label>
+                        <div class="col-md-8">
+                            <input id="inEmail" type="email" name="email" class="form-control" placeholder="用于登陆和联系，不会公开">
+                        </div>
+                    </div>
 
-				<div class="form-group">
-	                <div class="col-md-offset-4 col-md-8">
-	                    <button type="submit" class="btn btn-primary submit-button">同意服务条款并注册</button>
-	                </div>
-	            </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="inUserName">用户名：</label>
+                        <div class="col-md-8">
+                            <input id="inUserName" type="text" name="username" placeholder="英文字母开头的英文字母或数字" class="form-control">
+                            <p class="help-block">用户名会用于系统中个人主页的显示，强烈建议用姓名的拼音作为用户名。</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="inPassword">密码：</label>
+                        <div class="col-md-8">
 
-			</form>
-		</div>
-		</div>
-		
-	</div>
+                            <input id="inPassword" type="password" name="password" class="form-control" placeholder="请用英文字母、数字，6-16位均可">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="inPassword">再次输入密码：</label>
+                        <div class="col-md-8">
+                            <input id="confirmPassword" type="password" name="" class="form-control" placeholder="确保输入密码一致">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="">真实姓名：</label>
+                        <div class="col-md-8">
+                            <input id="inName" type="text" name="realname" class="form-control" placeholder="">
+                            <p class="help-block">用于确认，不会公开。</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="">身份核实电话：</label>
+                        <div class="col-md-8">
+                            <input id="inPhoneNumber" type="" name="identityphone" class="form-control" placeholder="格式是区号－电话，例如010－12345678">
+                            <p class="help-block">请详细填写所在医院的固定电话区号-电话号及分机，并确保能联系到您。我们将拨打此电话，核实是否本人注册。此电话不会被公开。</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="">手机号：</label>
+                        <div class="col-md-8">
+                            <input id="inMobile" type="" name="cellphone" class="form-control" placeholder="11位有效手机号码">
+                            <p class="help-block">用于登陆和系统管理员紧急联系方式，此电话不会被公开。</p>
+                        </div>
+                    </div>
+                    <a class="col-md-offset-4 service-link">服务条款</a>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-8">
+                            <button type="submit" class="btn btn-primary submit-button">同意服务条款并注册</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 {% endblock contentHolder %}

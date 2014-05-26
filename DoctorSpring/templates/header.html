@@ -27,7 +27,7 @@
                 {% if session['logged_in'] %}
                 <div class="login-group">
                 <span>您好</span>
-                <span class="username">liclu628</span>
+                <span class="username">{{session['username'] }}</span>
                 <a id="usercenter-link" href="#">
                     <span class="fui-user"></span>
                     <span>个人中心</span>
@@ -40,9 +40,13 @@
                     </span>
                     消息
                 </a>
+                <a id="logout-link" href="/logout">
+                    <span>登出</span>
+                </a>
                 </div>
+
             {% else %}
-            <div class="unlogin-group">
+                <div class="unlogin-group">
                 <a id="login-link" href="#" data-toggle="modal" data-target=".login-modal">
                     <span>登陆</span>
                 </a>
@@ -50,9 +54,9 @@
                 <a id="register-link" href="#" data-toggle="modal" data-target=".register-modal">
                     <span>注册</span>
                 </a>
-            </div>
+                </div>
             {% endif %}
+            </div>
         </div>
     </div>
-</div>
 </div>

@@ -28,17 +28,17 @@ def homepage():
     res_dict['count'] = ''
     res_list = []
     count = 0
-    for t in doctors:
-        count += 1
-        user = db_session.query(User).filter(t.userId == User.id).first()
-        res_dict['id'] = user.id
-        res_dict['name'] = t.username
-        res_dict['title'] = t.title
-        department = db_session.query(Department).filter(t.departmentId == Department.id).first()
-        res_dict['department'] = department.description
-        res_dict['image'] = '/static/assets/image/9-small.jpg'
-        res_dict['count'] = 'image' + str(count)
-        res_list.append(res_dict)
+    # for t in doctors:
+    #     count += 1
+    #     user = db_session.query(User).filter(t.userId == User.id).first()
+    #     res_dict['id'] = user.id
+    #     res_dict['name'] = t.username
+    #     res_dict['title'] = t.title
+    #     department = db_session.query(Department).filter(t.departmentId == Department.id).first()
+    #     res_dict['department'] = department.description
+    #     res_dict['image'] = '/static/assets/image/9-small.jpg'
+    #     res_dict['count'] = 'image' + str(count)
+    #     res_list.append(res_dict)
 
 
     return render_template("home.html", result = res_list)

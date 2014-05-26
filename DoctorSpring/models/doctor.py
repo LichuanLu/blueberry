@@ -5,8 +5,9 @@ __author__ = 'Jeremy'
 import sqlalchemy as sa
 
 from database import Base,db_session as session
-from DoctorSpring.util.constant import ModelStatus
+from DoctorSpring.util.constant import ModelStatus, UserStatus
 from sqlalchemy.orm import relationship, backref
+import config
 
 
 class Doctor(Base):
@@ -16,9 +17,10 @@ class Doctor(Base):
         }
 
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
-    userId  = sa.Column(sa.Integer,sa.ForeignKey('User.id'))     #对应User表里的ID
+    userId = sa.Column(sa.Integer,sa.ForeignKey('User.id'))     #对应User表里的ID
     user = relationship("User", backref=backref('doctor', order_by=id))
     username = sa.Column(sa.String(64))
+    identityPhone = sa.Column(sa.INTEGER)
     title = sa.Column(sa.String(64))    #职称
     departmentId = sa.Column(sa.INTEGER)  #科室ID
     skill = sa.Column(sa.String(255))      #擅长
@@ -29,13 +31,24 @@ class Doctor(Base):
     type = sa.Column(sa.INTEGER)
     status = sa.Column(sa.INTEGER)
 
+    def __init__(self, userId=None):
+        self.userId = userId
+        self.title = config.DEFAULT_TITLE
+        self.type = UserStatus.doctor
+        self.status = ModelStatus.Normal
+
     @classmethod
     def getById(cls,doctorId):
         if doctorId is None or doctorId<1:
             return
         return session.query(Doctor).filter(Doctor.id==doctorId,Doctor.status==ModelStatus.Normal).first()
 
-
+    @classmethod
+    def save(cls, doctor):
+        if doctor:
+            session.add(doctor)
+            session.commit()
+            session.flush()
 
 
 '''

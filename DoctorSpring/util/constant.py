@@ -5,6 +5,12 @@ class ModelStatus(object):
       Normal=0
       Del=1
 
+
+class UserStatus(object):
+    patent = 0  # 普通用户
+    doctor = 1  # 医生账户
+
+
 #1. 草稿 2.待付费 3. 待分诊 4. 分诊中 5. 待诊断 6. 诊断完成 7.需要更新信息 8. 无法诊断
 class DiagnoseStatus(object):
     Draft=0 #草稿
@@ -16,6 +22,9 @@ class DiagnoseStatus(object):
     Diagnosed=6 #诊断完成
     NeedUpdate=7 #需要更新信息
     UnableDiagnose=8#无法诊断
+
+
+
 
 class MessageStatus(ModelStatus):
       Readed=2

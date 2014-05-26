@@ -3,9 +3,9 @@ __author__ = 'Jeremy'
 
 import os.path
 
-_DBUSER = "ctt"
-_DBPASS = "ctt"
-_DBHOST = "localhost"
+_DBUSER = "mduser"
+_DBPASS = "mduser"
+_DBHOST = "airui313.vicp.net:9906"
 _DBNAME = "medicaldb"
 
 #config
@@ -23,6 +23,10 @@ ADMIN_USERNAME = 'admin'
 DEFAULT_FILE_STORAGE = 'filesystem'
 UPLOADS_FOLDER = os.path.realpath('.') + '/static/'
 FILE_SYSTEM_STORAGE_FILE_VIEW = 'static'
+
+# User
+DEFAULT_IMAGE = '/static/assets/image/9-small.jpg'
+DEFAULT_TITLE = '待定'
 
 class rec:
     pass
