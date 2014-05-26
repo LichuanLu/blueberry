@@ -5,6 +5,8 @@ import sqlalchemy as sa
 from database import db_session as session
 
 from database import Base
+from DoctorSpring.util.constant import ModelStatus
+from datetime import datetime
 
 
 class User(Base):
@@ -51,6 +53,8 @@ class User(Base):
 
 
 
+
+
 class UserFavorites(Base):
     __tablename__ = 'user_favorites'
     __table_args__ = {
@@ -61,5 +65,47 @@ class UserFavorites(Base):
     doctorId = sa.Column(sa.Integer)
     docId = sa.Column(sa.Integer)
     hospitalId=sa.Column(sa.Integer)
+    createDate=sa.Column(sa.DateTime)
+    type = sa.Column(sa.INTEGER)
     status = sa.Column(sa.INTEGER)
+
+    def __init__(self,userId,type,doctorId=None,hospitalId=None,docId=None):
+        self.userId=userId
+        self.doctorId=doctorId
+        self.hospitalId=hospitalId
+        self.docId=docId
+        self.status=ModelStatus
+        self.type=type
+        self.createDate=datetime.now()
+
+    @classmethod
+    def save(cls,userFavorites):
+        if userFavorites:
+            session.add(userFavorites)
+            session.commit()
+            session.flush()
+    @classmethod
+    def cancleFavorites(cls,userFavoritesId):
+        if userFavoritesId:
+            user=session.query(UserFavorites).filter(UserFavorites.id==userFavoritesId).first()
+            if user:
+                user.status=ModelStatus.Del
+                session.commit()
+    @classmethod
+    def getUserFavorties(cls,userId,type,status=None):
+        if userId:
+            if type:
+                if status:
+                    return session.query(UserFavorites).filter(UserFavorites.userId==userId,UserFavorites.type==type,UserFavorites.status==status).all()
+                else:
+                    return session.query(UserFavorites).filter(UserFavorites.userId==userId,UserFavorites.type==type,UserFavorites.status==ModelStatus.Normal).all()
+
+            else:
+                if status:
+                    return session.query(UserFavorites).filter(UserFavorites.userId==userId,UserFavorites.status==status).all()
+                else:
+                    return session.query(UserFavorites).filter(UserFavorites.userId==userId,UserFavorites.status==ModelStatus.Normal).all()
+
+
+
 

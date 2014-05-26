@@ -67,5 +67,70 @@ class ConsultForm(object):
             return FAILURE
         return SUCCESS
 
+class ReportForm(object):
+    reportId =None
+    status=None
+    techDesc =None
+    imageDesc =None
+    diagnoseDesc=None
+    def __init__(self,args):
+        if args.has('reportId'):
+            self.reportId=args.get('reportId')
 
+        self.status=args.get('status')
+        self.techDesc=args.get('techDesc')
+        self.imageDesc=args.get('imageDesc')
+        self.diagnoseDesc=args.get('diagnoseDesc')
+    def validate(self):
+        try:
+            if self.reportId is None:
+                return FAILURE
+            if self.status is None:
+                return FAILURE
+
+        except Exception,e:
+            return FAILURE
+        return SUCCESS
+
+
+class UserFavortiesForm(object):
+    userId =None
+    doctorId=None
+    hospitalId =None
+    docId =None
+    type=None
+    def __init__(self,args):
+
+
+        self.userId=args.get('userId')
+        self.type=args.get('type')
+        if args.has('doctorId'):
+            self.doctorId=args.get('doctorId')
+
+        if args.has('hospitalId'):
+            self.hospitalId=args.get('hospitalId')
+        if args.has('docId'):
+            self.docId=args.get('docId')
+    def validate(self):
+        try:
+            if self.userId is None:
+                return FAILURE
+            if self.type is None:
+                return FAILURE
+            if self.docId is None and self.hospitalId is None and self.doctorId is None:
+                return FAILURE
+
+        except Exception,e:
+            return FAILURE
+        return SUCCESS
+class PatientUpdateForm(object):
+    userId=None
+    patientId=None
+    name=None
+    account=None
+    mobile=None
+    address=None
+    email=None
+    identityCode=None
+    yibaoCard=None
 
