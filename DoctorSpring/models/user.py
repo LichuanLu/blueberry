@@ -7,13 +7,15 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from database import Base
 from DoctorSpring.util.constant import ModelStatus, PatientStatus
 import config
+from DoctorSpring.util.constant import ModelStatus
+from datetime import datetime
 
 
 class User(Base):
     __tablename__ = 'User'
     __table_args__ = {
         'mysql_charset': 'utf8',
-        }
+    }
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     name = sa.Column(sa.String(255))
@@ -21,12 +23,11 @@ class User(Base):
     address = sa.Column(sa.String(255))
     email = sa.Column(sa.String(64))
     imagePath = sa.Column(sa.String(255))
-    sex = sa.Column(sa.INTEGER)  # 0:male,1:female
+    sex = sa.Column(sa.INTEGER)   # Location表ID
     phone = sa.Column(sa.INTEGER)
-
+    
     type=sa.Column(sa.Integer)  # 0:patent,1:doctor
     status = sa.Column(sa.INTEGER)  # 0:normal,1:delete,2:overdue
-
 
     def set_password(self, password):
         self.password = generate_password_hash(password)
@@ -93,15 +94,56 @@ class User(Base):
         else:
             return session.query(User).filter(User.phone == user_name, User.status == ModelStatus.Normal).first()
 
+
+
 class UserFavorites(Base):
     __tablename__ = 'user_favorites'
     __table_args__ = {
         'mysql_charset': 'utf8',
-    }
-    id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
+        }
+    id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
     userId = sa.Column(sa.Integer)
     doctorId = sa.Column(sa.Integer)
     docId = sa.Column(sa.Integer)
     hospitalId=sa.Column(sa.Integer)
+    createDate=sa.Column(sa.DateTime)
+    type = sa.Column(sa.INTEGER)
     status = sa.Column(sa.INTEGER)
+
+    def __init__(self,userId,type,doctorId=None,hospitalId=None,docId=None):
+        self.userId=userId
+        self.doctorId=doctorId
+        self.hospitalId=hospitalId
+        self.docId=docId
+        self.status=ModelStatus
+        self.type=type
+        self.createDate=datetime.now()
+
+    @classmethod
+    def save(cls,userFavorites):
+        if userFavorites:
+            session.add(userFavorites)
+            session.commit()
+            session.flush()
+    @classmethod
+    def cancleFavorites(cls,userFavoritesId):
+        if userFavoritesId:
+            user=session.query(UserFavorites).filter(UserFavorites.id==userFavoritesId).first()
+            if user:
+                user.status=ModelStatus.Del
+                session.commit()
+    @classmethod
+    def getUserFavorties(cls,userId,type,status=None):
+        if userId:
+            if type:
+                if status:
+                    return session.query(UserFavorites).filter(UserFavorites.userId==userId,UserFavorites.type==type,UserFavorites.status==status).all()
+                else:
+                    return session.query(UserFavorites).filter(UserFavorites.userId==userId,UserFavorites.type==type,UserFavorites.status==ModelStatus.Normal).all()
+
+            else:
+                if status:
+                    return session.query(UserFavorites).filter(UserFavorites.userId==userId,UserFavorites.status==status).all()
+                else:
+                    return session.query(UserFavorites).filter(UserFavorites.userId==userId,UserFavorites.status==ModelStatus.Normal).all()
 

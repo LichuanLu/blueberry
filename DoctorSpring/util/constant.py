@@ -26,10 +26,10 @@ class DiagnoseStatus(object):
     Diagnosed=6 #诊断完成
     NeedUpdate=7 #需要更新信息
     UnableDiagnose=8#无法诊断
-
-
-
-
+class ReportStatus(object):
+    Draft=0
+    Del=1
+    Commited=2
 class MessageStatus(ModelStatus):
       Readed=2
 class CommentType(object):

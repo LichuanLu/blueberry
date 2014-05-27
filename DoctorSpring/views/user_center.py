@@ -5,12 +5,13 @@ from flask import Flask, request, session, g, redirect, url_for, Blueprint, json
 from flask import abort, render_template, flash
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from forms import LoginForm ,CommentsForm ,MessageForm
+from forms import LoginForm, RegisterForm ,CommentsForm ,MessageForm ,UserFavortiesForm
 from DoctorSpring import lm
 from database import  db_session
 from sqlalchemy.exc import IntegrityError
 from DoctorSpring.models import User,Patient,Doctor,Diagnose ,DiagnoseTemplate
-from DoctorSpring.models import User,Comment,Message
-from DoctorSpring.util import result_status as rs,object2dict
+from DoctorSpring.models import User,Comment,Message ,UserFavorites
+from DoctorSpring.util import result_status as rs,object2dict,pdf_utils,constant
 from DoctorSpring.util.constant import MessageUserType,Pagger
 
 import  data_change_service as dataChangeService
@@ -65,3 +66,47 @@ def getDiagnoseAndImageDescList():
     resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnoseAndImageDescs)
     resultDict=resultStatus.__dict__
     return json.dumps(resultDict,ensure_ascii=False)
+
+
+
+@uc.route('/userFavorties/add',  methods = ['GET', 'POST'])
+def addUserFavorties():
+    form =  UserFavortiesForm(request.form)
+    formResult=form.validate()
+    if formResult.status==rs.SUCCESS.status:
+        #session['remember_me'] = form.remember_me.data
+        # login and validate the user...
+        userFavorites=UserFavorites(form.userId,form.type,form.doctorId,form.hospitalId,form.docId)
+        UserFavorites.save(userFavorites)
+        #flash('成功添加诊断评论')
+        return json.dumps(formResult.__dict__,ensure_ascii=False)
+    return json.dumps(formResult.__dict__,ensure_ascii=False)
+@uc.route('/userFavorties/<int:id>/cancel',  methods = ['GET', 'POST'])
+def cancleUserFavorties(id):
+    UserFavorites.cancleFavorites(id)
+    return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+@uc.route('/userFavorties/<int:id>/cancel',  methods = ['GET', 'POST'])
+def getUserFavorties(id):
+    type=request.args.get('type')
+    userFavorites=UserFavorites.getUserFavorties(id,type)
+    userFavoritesDict=object2dict.objects2dicts(userFavorites)
+    resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,userFavoritesDict)
+    return json.dumps(resultStatus.__dict__,ensure_ascii=False)
+
+@uc.route('/diagnose/<int:diagnoseId>/pdf', methods=['GET','POST'])
+def generatorPdf(diagnoseId):
+    if request.method == 'GET':
+
+        result = open(constant.DirConstant.DIAGNOSE_PDF_DIR+'test.pdf', 'wb') # Changed from file to filename
+        html =  render_template('diagnoseResultPdf.html')
+        pdf = pdf_utils.save_pdf(html,result)
+        result.close()
+        # return render_template("testpdf.html",getAvatar=getAvatar)
+        return html
+
+@uc.route('/redirectPdf', methods=['GET','POST'])
+def testRedirect():
+    #return redirect("/pdf")
+    print url_for('user_center.generatorPdf',diagnoseName='ccheng')
+    return redirect(url_for('user_center.generatorPdf'))
+

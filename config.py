@@ -3,9 +3,17 @@ __author__ = 'Jeremy'
 
 import os.path
 
+ROOT_DIR=os.path.dirname(__file__)
+
 _DBUSER = "mduser"
 _DBPASS = "mduser"
 _DBHOST = "airui313.vicp.net:9906"
+
+ROOT_DIR=os.path.dirname(__file__)
+
+_DBUSER = "ctt"
+_DBPASS = "ctt"
+_DBHOST = "localhost"
 _DBNAME = "medicaldb"
 
 #config
