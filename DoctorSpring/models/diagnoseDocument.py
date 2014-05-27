@@ -28,10 +28,12 @@ from sqlalchemy.orm import  relationship,backref
 __author__ = 'chengc017'
 
 import sqlalchemy as sa
-from DoctorSpring.util.constant import Pagger,SystemTimeLimiter,DiagnoseStatus,ReportStatus
+from DoctorSpring.util.constant import Pagger,SystemTimeLimiter,DiagnoseStatus,ReportStatus,ReportType,\
+    SeriesNumberPrefix,SeriesNumberBase
 from datetime import datetime
 from database import Base,db_session as session
 from sqlalchemy.orm import relationship,backref
+
 import uuid
 
 class Diagnose(Base):
@@ -52,11 +54,11 @@ class Diagnose(Base):
     uploadUserId  = sa.Column(sa.Integer,sa.ForeignKey('User.id'))
     uploadUser = relationship("User", backref=backref('diagnose', order_by=id))
 
-    pathologyId  = sa.Column(sa.Integer,sa.ForeignKey('pathology.id'))
-    pathology = relationship("Pathology", backref=backref('diagnose', order_by=id))
+    pathologyId=sa.Column(sa.Integer,sa.ForeignKey('pathology.id'))
+    pathology=relationship("Pathology", backref=backref('diagnose', order_by=id))
 
-    reportId = sa.Column(sa.Integer)
-    report=relationship("Report", backref=backref('report', order_by=id))
+    reportId = sa.Column(sa.Integer,sa.ForeignKey('report.id'))
+    report=relationship("Report", backref=backref('diagnose', order_by=id))
 
     score = sa.Column(sa.Integer)
 
@@ -107,6 +109,11 @@ class Diagnose(Base):
                 for diagnose in diagnoses:
                     patients.append(diagnose.patient)
                 return patients
+
+    @classmethod
+    def getDiagnoseById(cls,diagnoseId):
+        if diagnoseId:
+            return session.query(Diagnose).filter(Diagnose.id==diagnoseId,Diagnose.status==DiagnoseStatus.Diagnosed).first()
 
 
 class DiagnoseTemplate(Base):
@@ -166,18 +173,28 @@ class Report(Base):
     diagnoseDesc=sa.Column(sa.String(512))
     type=sa.Column(sa.Integer)
     status=sa.Column(sa.Integer)
+    createDate= sa.Column(sa.DateTime)
     #sa.Index('diagnoseTemplate_method_position_diagnoseDesc', 'diagnoseMethod', 'diagnosePosition','diagnoseDesc')
 
-    def __init__(self,techDesc=None,imageDesc=None,diagnoseDesc=None,fileUrl=None,status=None):
-        self.seriesNumber=uuid.uuid1()
+    def __init__(self,techDesc=None,imageDesc=None,diagnoseDesc=None,fileUrl=None,type=ReportType.Doctor,status=ReportStatus.Draft):
+        maxId=Report.getMaxId()
+        if maxId:
+            maxId=1
+        self.seriesNumber='%s%i'%(SeriesNumberPrefix,SeriesNumberBase+maxId)
         self.fileUrl=fileUrl
         self.techDesc=techDesc
         self.imageDesc=imageDesc
         self.diagnoseDesc=diagnoseDesc
+        self.type=type
+        self.createDate=datetime.now()
         if status:
             self.status=status
         else:
             self.status=ReportStatus.Draft
+    @classmethod
+    def getMaxId(cls):
+        from sqlalchemy.sql import func
+        return session.query(func.max(Report.id)).first()
     @classmethod
     def save(cls,report):
         if report:
@@ -189,11 +206,13 @@ class Report(Base):
         if reportId:
             return session.query(Report).filter(Report.id==reportId).first()
     @classmethod
-    def update(cls,reportId,status=None,fileUrl=None,techDesc=None,imageDesc=None,diagnoseDesc=None):
+    def update(cls,reportId,type=None,status=None,fileUrl=None,techDesc=None,imageDesc=None,diagnoseDesc=None):
         if reportId is None:
             return
         report=session.query(Report).filter(Report.id==reportId).first()
         if report:
+            if type:
+                report.type=type
             if status:
                 report.status=status
             if fileUrl:
