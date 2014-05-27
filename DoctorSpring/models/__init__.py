@@ -10,5 +10,5 @@ from .diagnoseDocument import *
 from .pathology import *
 from .hospital import *
 from .skill import *
-from .skillRdoctor import *
+from .doctor2skill import *
 from .location import *

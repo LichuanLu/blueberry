@@ -54,7 +54,6 @@ class User(Base):
             self.phone = name
         self.password = generate_password_hash(password)
         self.imagePath = config.DEFAULT_IMAGE
-        self.type = PatientStatus.patent
         self.status = ModelStatus.Normal
 
     def __repr__(self):

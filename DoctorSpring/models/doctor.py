@@ -14,7 +14,7 @@ class Doctor(Base):
     __tablename__ = 'doctor'
     __table_args__ = {
         'mysql_charset': 'utf8',
-        }
+    }
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     userId = sa.Column(sa.Integer, sa.ForeignKey('User.id'))     #对应User表里的ID
@@ -24,7 +24,7 @@ class Doctor(Base):
     title = sa.Column(sa.String(64))    #职称
     hospitalId = sa.Column(sa.INTEGER)  #医院ID
     departmentId = sa.Column(sa.INTEGER)  #科室ID
-    skillId = sa.Column(sa.INTEGER)       #擅长
+    # skillId = sa.Column(sa.INTEGER)       #由擅长关系表取代
     description = sa.Column(sa.TEXT)
     diagnoseCount = sa.Column(sa.INTEGER)   #统计，诊断量
     feedbackCount = sa.Column(sa.INTEGER)   #好评数

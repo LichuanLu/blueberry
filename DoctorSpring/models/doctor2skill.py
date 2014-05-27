@@ -8,8 +8,8 @@ from DoctorSpring.util.constant import ModelStatus, UserStatus
 
 
 
-class SkillRDoctor(Base):
-    __tablename__ = 'skillRdoctor'
+class Doctor2Skill(Base):
+    __tablename__ = 'doctor2skill'
     __table_args__ = {
         'mysql_charset': 'utf8',
     }
@@ -25,8 +25,8 @@ class SkillRDoctor(Base):
         self.status = ModelStatus.Normal
 
     @classmethod
-    def save(cls, skillRdoctor):
-        if skillRdoctor:
-            session.add(skillRdoctor)
+    def save(cls, doctor2skill):
+        if doctor2skill:
+            session.add(doctor2skill)
             session.commit()
             session.flush()

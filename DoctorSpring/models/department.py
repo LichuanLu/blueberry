@@ -4,7 +4,7 @@ __author__ = 'Jeremy'
 import sqlalchemy as sa
 
 from database import Base ,db_session as session
-from DoctorSpring.util.constant import ModelStatus, UserStatus
+from DoctorSpring.util.constant import ModelStatus
 
 
 

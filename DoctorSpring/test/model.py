@@ -99,22 +99,8 @@ class DiagnoseTestCase(unittest.TestCase):
         patients=Diagnose.getPatientListByDoctorId(1)
         print len(patients)
 
-class DoctorTestCase(unittest.TestCase):
 
-    def test_add_doctor(self):
 
-        new_user = User("任志强", "123456")
-        new_user.email = "renzhiqiang@qq.com"
-        new_user.phone = "1851113456767"
-        new_user.type = UserStatus.doctor
-        User.save(new_user)
-        new_doctor = Doctor(new_user.id)
-        new_doctor.identityPhone = "010-123455678"
-
-        new_hospital = Hospital("西22安西京医院", "地址——西22安西京医院", "描述-西22安西京医院", "22")
-        Hospital.save(new_hospital)
-
-        Doctor.save(new_doctor)
 
 
 
