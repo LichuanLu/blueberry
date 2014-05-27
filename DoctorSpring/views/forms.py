@@ -3,38 +3,46 @@ __author__ = 'Jeremy'
 from wtforms import Form, TextField, PasswordField, DateField, IntegerField, SelectField, BooleanField
 from wtforms.validators import Required, Email, EqualTo, Length
 from DoctorSpring.util.result_status import *
-from DoctorSpring.models import User, Patent, Doctor
-
-class RegisterForm(Form):
-    name = TextField('Username', validators=[Required(), Length(min=3, max=25)])
-    #email = TextField('Email', validators=[Required(), Length(min=6, max=40)])
-    password = PasswordField('Password',
-                             validators=[Required(), Length(min=6, max=40)])
-    # confirm = PasswordField(
-    #     'Repeat Password',
-    #     [Required(), EqualTo('password', message='Passwords must match')])
-
-class LoginForm(Form):
-    name = TextField('username', validators=[Required()])
-    password = PasswordField('password', validators=[Required()])
-    email = TextField('email')
-    remember_me = BooleanField('remember_me', default = False)
-
-class DiagnoseForm(Form):
-    patientname = TextField('patientname')
-    birthdate = TextField('birthdate')
-    phonenumber = TextField('phonenumber')
-    location = TextField('location')
-    patientname = TextField('patientname')
-    patientname = TextField('patientname')
-    patientname = TextField('patientname')
-    patientname = TextField('patientname')
+from DoctorSpring.models import User, Patient, Doctor
 
 
-
-
-
-
+class DiagnoseForm1(Form):
+    patientname = None
+    patientsex = None
+    birthdate = None
+    identitynumber = None
+    phonenumber = None
+    location = None
+    def __init__(self, args):
+        self.patientname = args.get('patientname')
+        self.patientsex = args.get('patientsex')
+        self.birthdate = args.get('birthdate')
+        self.identitynumber = args.get('identitynumber')
+        self.phonenumber = args.get('phonenumber')
+        self.location = args.get('location')
+    def validate(self):
+        try:
+            if self.patientname is None:
+                failure = ResultStatus(FAILURE.status, "请填写就诊人姓名")
+                return failure
+            if self.patientsex is None:
+                failure = ResultStatus(FAILURE.status, "请选择性别")
+                return failure
+            if self.birthdate is None:
+                failure = ResultStatus(FAILURE.status, "请选择出生日期")
+                return failure
+            if self.identitynumber is None:
+                failure = ResultStatus(FAILURE.status, "请填写身份证号")
+                return failure
+            if self.phonenumber is None:
+                failure = ResultStatus(FAILURE.status, "请填写手机号码")
+                return failure
+            if self.location is None:
+                failure = ResultStatus(FAILURE.status, "请选择所在地")
+                return failure
+        except Exception, e:
+            return FAILURE
+        return SUCCESS
 
 class CommentsForm(Form):
     userId = IntegerField('userId', validators=[Required()])
@@ -42,6 +50,7 @@ class CommentsForm(Form):
     content = TextField('content', validators=[Required()])
     title = TextField('title')
     diagnoseId=IntegerField('diagnoseId')
+
 class MessageForm(Form):
     senderId = IntegerField('senderId', validators=[Required()])
     receiverId=IntegerField('receiverId', validators=[Required()])
@@ -74,24 +83,22 @@ class ConsultForm(object):
             return FAILURE
         return SUCCESS
 
-class LoginForm1(object):
-    Username =None
-    Password=None
-    remember_me =None
-    def __init__(self,args):
-        self.Username=args.get('Username')
-        self.Password=args.get('Password')
-        self.remember_me=args.get('remember_me')
+class LoginForm(object):
+    username = None
+    password = None
+    remember_me = None
+    def __init__(self, args):
+        self.username=args.get('name')
+        self.password=args.get('pass')
+        #self.remember_me=args.get('remember_me')
     def validate(self):
         try:
-            if self.Username is None or len(self.Username)<10:
-                failure=ResultStatus(FAILURE.status,"用户名的长度必须大于等于10")
+            if self.username is None:
+                failure = ResultStatus(FAILURE.status, "用户名为空")
                 return failure
-            if self.Password is None or len(self.Password)<10:
-                failure=ResultStatus(FAILURE.status,"密码的长度必须大于等于10")
+            if self.password is None:
+                failure=ResultStatus(FAILURE.status, "密码为空")
                 return failure
-            if self.remember_me is None:
-                return FAILURE
         except Exception,e:
             return FAILURE
         return SUCCESS

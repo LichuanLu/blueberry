@@ -10,6 +10,10 @@ class UserStatus(object):
     patent = 0  # 普通用户
     doctor = 1  # 医生账户
 
+class PatientStatus(object):
+    patent = 0  # 普通注册用户
+    diagnose = 1  # 病例用户
+
 
 #1. 草稿 2.待付费 3. 待分诊 4. 分诊中 5. 待诊断 6. 诊断完成 7.需要更新信息 8. 无法诊断
 class DiagnoseStatus(object):

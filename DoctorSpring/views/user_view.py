@@ -4,14 +4,13 @@ __author__ = 'Jeremy'
 from flask import Flask, request, session, g, redirect, url_for, Blueprint, jsonify
 from flask import abort, render_template, flash
 from flask.ext.login import login_user, logout_user, current_user, login_required
-from forms import LoginForm1, RegisterForm, RegisterFormPatent, RegisterFormDoctor
+from forms import LoginForm, RegisterFormPatent, RegisterFormDoctor
 from DoctorSpring import lm
 from database import db_session
 from sqlalchemy.exc import IntegrityError
-from DoctorSpring.models import User, Patent, Doctor
+from DoctorSpring.models import User, Patient, Doctor
 from DoctorSpring.util import result_status as rs, object2dict,constant
 from DoctorSpring.util.constant import UserStatus
-from DoctorSpring.util.helper import get_name
 
 import json
 
@@ -32,23 +31,23 @@ def load_user(id):
 
 @user_view.route('/login.json', methods=['GET', 'POST'])
 def login():
-    form = LoginForm1(request.form)
+    form = LoginForm(request.form)
     formResult = form.validate()
     if formResult.status == rs.SUCCESS.status:
         #session['remember_me'] = form.remember_me.data
         # login and validate the user...
-        user = User.get_by_name(form.Username)
-        login_user(user)
-        flash("登陆成功")
-        session['logged_in'] = True
-        session['username'] = User.name
-        return json.dumps(formResult.__dict__, ensure_ascii=False)
-    return json.dumps(formResult.__dict__, ensure_ascii=False)
+        user = User.get_by_name(form.username)
+        if user is not None:
+            login_session(user)
+            #return jsonify(formResult.__dict__)
+    return jsonify(formResult.__dict__)
 
 @user_view.route('/logout')
 def logout():
+    session['logged_in'] = False
+    session['username'] = ''
     logout_user()
-    return redirect(url_for('index'))
+    return render_template("home.html")
 
 
 @user_view.route('/register/patient',  methods = ['GET', 'POST'])
@@ -69,15 +68,16 @@ def register_doctor():
         new_user = User(form.username, form.password)
         new_user.email = form.email
         new_user.phone = form.cellphone
+        new_user.type = UserStatus.doctor
         User.save(new_user)
         new_doctor = Doctor(new_user.id)
         new_doctor.identityPhone = form.identity_phone
         Doctor.save(new_doctor)
-        login_user(new_user)
-        session['logged_in'] = True
-        session['username'] = get_name(new_user)
-        flash('注册成功，跳转至首页')
+
+        login_session(new_user)
+
         #return jsonify(form_result.__dict__)
+
     return jsonify(form_result.__dict__)
 
 @user_view.route('/register/patient.json',  methods=['GET', 'POST'])
@@ -88,10 +88,18 @@ def register_patient():
         new_user = User(form.name, form.password)
         new_user.type = UserStatus.patent
         User.save(new_user)
-        new_patient = Patent(new_user.id)
-        Patent.save(new_patient)
+        new_patient = Patient(new_user.id)
+        Patient.save(new_patient)
+        login_session(new_user)
         return json.dumps(form_result.__dict__,ensure_ascii=False)
+
     return json.dumps(form_result.__dict__,ensure_ascii=False)
 
 
 
+def login_session(user):
+    login_user(user)
+    session['logged_in'] = True
+    session['username'] = User.get_name(user)
+    session['userId'] = User.get_id(user)
+    flash('注册成功，跳转至首页')

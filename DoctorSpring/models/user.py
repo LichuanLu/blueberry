@@ -5,7 +5,7 @@ import sqlalchemy as sa
 from database import db_session as session
 from werkzeug.security import generate_password_hash, check_password_hash
 from database import Base
-from DoctorSpring.util.constant import ModelStatus
+from DoctorSpring.util.constant import ModelStatus, PatientStatus
 import config
 
 
@@ -24,7 +24,7 @@ class User(Base):
     sex = sa.Column(sa.INTEGER)  # 0:male,1:female
     phone = sa.Column(sa.INTEGER)
 
-    type=sa.Column(sa.Integer)  # 0:patent,1:system message,2:administrator message,3：分诊信息
+    type=sa.Column(sa.Integer)  # 0:patent,1:doctor
     status = sa.Column(sa.INTEGER)  # 0:normal,1:delete,2:overdue
 
 
@@ -53,6 +53,7 @@ class User(Base):
             self.phone = name
         self.password = generate_password_hash(password)
         self.imagePath = config.DEFAULT_IMAGE
+        self.type = PatientStatus.patent
         self.status = ModelStatus.Normal
 
     def __repr__(self):
@@ -66,11 +67,22 @@ class User(Base):
             session.flush()
     @classmethod
     def getById(cls, userId):
-        if userId is None or userId<1:
+        if userId is None or userId < 1:
             return
         return session.query(User).filter(User.id==userId,User.status==ModelStatus.Normal).first()
 
+    @classmethod
+    def get_name(cls, user):
+        if user is None:
+            return ''
+        if user.name is not None:
+            return user.name
 
+        if user.email is not None:
+            return user.email
+
+        if user.phone is not None:
+            return user.phone
 
     @classmethod
     def get_by_name(cls, user_name):

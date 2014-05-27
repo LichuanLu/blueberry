@@ -6,12 +6,14 @@ import unittest
 from DoctorSpring.models.comment import Comment
 from DoctorSpring.models.doctor import Doctor
 from DoctorSpring.models.user import User
-from DoctorSpring.models.patent import Patent
+from DoctorSpring.models.patient import Patient
+from DoctorSpring.models.hospital import Hospital
+
 from DoctorSpring.models.pathology import *
 from DoctorSpring.models.diagnoseDocument import Diagnose
 from database import db_session as session
-from datetime import  datetime
-from DoctorSpring.util.constant import Pagger
+from datetime import datetime
+from DoctorSpring.util.constant import Pagger, UserStatus
 
 
 
@@ -37,12 +39,12 @@ class UserTestCase(unittest.TestCase):
         user.imagePath='http://localhost:5000/static/assets/image/young-m.png'
         User.save(user)
     def test_addPatient(self):
-        patient=Patent()
+        patient=Patient()
         patient.gender=0
         patient.Name='程成'
         patient.status=0
         patient.userID=1
-        Patent.save(patient)
+        Patient.save(patient)
 
 class DoctorTestCase(unittest.TestCase):
     def test_getDoctorById(self):
@@ -97,7 +99,22 @@ class DiagnoseTestCase(unittest.TestCase):
         patients=Diagnose.getPatientListByDoctorId(1)
         print len(patients)
 
+class DoctorTestCase(unittest.TestCase):
 
+    def test_add_doctor(self):
+
+        new_user = User("任志强", "123456")
+        new_user.email = "renzhiqiang@qq.com"
+        new_user.phone = "1851113456767"
+        new_user.type = UserStatus.doctor
+        User.save(new_user)
+        new_doctor = Doctor(new_user.id)
+        new_doctor.identityPhone = "010-123455678"
+
+        new_hospital = Hospital("西22安西京医院", "地址——西22安西京医院", "描述-西22安西京医院", "22")
+        Hospital.save(new_hospital)
+
+        Doctor.save(new_doctor)
 
 
 

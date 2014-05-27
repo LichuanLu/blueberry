@@ -4,11 +4,11 @@ __author__ = 'ccheng'
 from flask import Flask, request, session, g, redirect, url_for, Blueprint, jsonify
 from flask import abort, render_template, flash
 from flask.ext.login import login_user, logout_user, current_user, login_required
-from forms import LoginForm, RegisterForm ,CommentsForm ,MessageForm
+from forms import LoginForm ,CommentsForm ,MessageForm
 from DoctorSpring import lm
 from database import  db_session
 from sqlalchemy.exc import IntegrityError
-from DoctorSpring.models import User,Patent,Doctor,Diagnose ,DiagnoseTemplate
+from DoctorSpring.models import User,Patient,Doctor,Diagnose ,DiagnoseTemplate
 from DoctorSpring.models import User,Comment,Message
 from DoctorSpring.util import result_status as rs,object2dict
 from DoctorSpring.util.constant import MessageUserType,Pagger

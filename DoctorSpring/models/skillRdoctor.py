@@ -8,25 +8,25 @@ from DoctorSpring.util.constant import ModelStatus, UserStatus
 
 
 
-class Department(Base):
-    __tablename__ = 'department'
+class SkillRDoctor(Base):
+    __tablename__ = 'skillRdoctor'
     __table_args__ = {
         'mysql_charset': 'utf8',
     }
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
-    name = sa.Column(sa.String(64))
-    description = sa.Column(sa.String(255))
+    doctorId = sa.Column(sa.INTEGER)
+    skillId = sa.Column(sa.INTEGER)
     status = sa.Column(sa.INTEGER)
 
-    def __init__(self, name=name, description=description):
-        self.name = name
-        self.description = description
+    def __init__(self, doctorId=doctorId, skillId=skillId):
+        self.doctorId = doctorId
+        self.skillId = skillId
         self.status = ModelStatus.Normal
 
     @classmethod
-    def save(cls, department):
-        if department:
-            session.add(department)
+    def save(cls, skillRdoctor):
+        if skillRdoctor:
+            session.add(skillRdoctor)
             session.commit()
             session.flush()

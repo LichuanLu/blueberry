@@ -40,8 +40,8 @@ class Diagnose(Base):
         }
 
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
-    patientId  = sa.Column(sa.Integer,sa.ForeignKey('patent.id'))
-    patient = relationship("Patent", backref=backref('diagnose', order_by=id))
+    patientId  = sa.Column(sa.Integer,sa.ForeignKey('patient.id'))
+    patient = relationship("Patient", backref=backref('diagnose', order_by=id))
 
     doctorId  = sa.Column(sa.Integer,sa.ForeignKey('doctor.id'))
     doctor = relationship("Doctor", backref=backref('diagnose', order_by=id))

@@ -3,8 +3,11 @@ __author__ = 'jeremyxu'
 
 
 def get_name(user):
-    if user is None or len(user) < 1:
+    if user is None:
         return ''
+
+    if user.name is not None:
+        return user.name
 
     if user.email is not None:
         return user.email

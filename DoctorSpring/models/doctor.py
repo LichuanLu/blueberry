@@ -16,14 +16,15 @@ class Doctor(Base):
         'mysql_charset': 'utf8',
         }
 
-    id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
-    userId = sa.Column(sa.Integer,sa.ForeignKey('User.id'))     #对应User表里的ID
+    id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
+    userId = sa.Column(sa.Integer, sa.ForeignKey('User.id'))     #对应User表里的ID
     user = relationship("User", backref=backref('doctor', order_by=id))
     username = sa.Column(sa.String(64))
     identityPhone = sa.Column(sa.INTEGER)
     title = sa.Column(sa.String(64))    #职称
+    hospitalId = sa.Column(sa.INTEGER)  #医院ID
     departmentId = sa.Column(sa.INTEGER)  #科室ID
-    skill = sa.Column(sa.String(255))      #擅长
+    skillId = sa.Column(sa.INTEGER)       #擅长
     description = sa.Column(sa.TEXT)
     diagnoseCount = sa.Column(sa.INTEGER)   #统计，诊断量
     feedbackCount = sa.Column(sa.INTEGER)   #好评数
@@ -34,7 +35,6 @@ class Doctor(Base):
     def __init__(self, userId=None):
         self.userId = userId
         self.title = config.DEFAULT_TITLE
-        self.type = UserStatus.doctor
         self.status = ModelStatus.Normal
 
     @classmethod
