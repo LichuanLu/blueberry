@@ -1,5 +1,5 @@
 # coding: utf-8
-__author__ = 'Jeremy'
+__author__ = 'chengc017'
 
 import sqlalchemy as sa
 from sqlalchemy.orm import relationship,backref

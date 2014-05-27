@@ -1,5 +1,5 @@
 # coding: utf-8
-__author__ = 'Jeremy'
+__author__ = 'ccheng'
 
 import sqlalchemy as sa
 from database import db_session as session
