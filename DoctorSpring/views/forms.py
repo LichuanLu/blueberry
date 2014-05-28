@@ -111,6 +111,7 @@ class LoginForm(object):
         except Exception,e:
             return FAILURE
         return SUCCESS
+
 class ReportForm(object):
     reportId =None
     status=None
@@ -120,8 +121,28 @@ class ReportForm(object):
     diagnoseId=None
     fileUrl=None
     def __init__(self,args):
-        if args.has('reportId'):
-            self.reportId=args.get('reportId')
+        #if args.has('reportId'):
+        self.reportId=args.get('reportId')
+
+        self.status=args.get('status')
+        self.techDesc=args.get('techDesc')
+        self.imageDesc=args.get('imageDesc')
+        self.diagnoseDesc=args.get('diagnoseDesc')
+        self.diagnoseId=args.get('diagnoseId')
+        self.fileUrl=args.get('fileUrl')
+    def validate(self):
+        try:
+            if self.diagnoseDesc is None:
+                return FAILURE
+            if self.imageDesc is None:
+                return FAILURE
+            if self.diagnoseId is None:
+                return FAILURE
+
+        except Exception,e:
+            return FAILURE
+        return SUCCESS
+
 
 class RegisterFormPatent(object):
     name = None
@@ -130,12 +151,7 @@ class RegisterFormPatent(object):
         self.name = args.get('name')
         self.password = args.get('password')
 
-        self.status=args.get('status')
-        self.techDesc=args.get('techDesc')
-        self.imageDesc=args.get('imageDesc')
-        self.diagnoseDesc=args.get('diagnoseDesc')
-        self.diagnoseId=args.get('diagnoseId')
-        self.fileUrl=args.get('fileUrl')
+
     def validate(self):
         try:
             if self.password is None:

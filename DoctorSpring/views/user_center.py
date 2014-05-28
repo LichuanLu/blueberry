@@ -142,3 +142,6 @@ def testRedirect():
     print url_for('user_center.generatorPdf',diagnoseName='ccheng')
     return redirect(url_for('user_center.generatorPdf'))
 
+
+
+
