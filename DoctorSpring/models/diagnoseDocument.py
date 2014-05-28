@@ -56,7 +56,8 @@ class Diagnose(Base):
     doctorId  = sa.Column(sa.Integer,sa.ForeignKey('doctor.id'))
     doctor = relationship("Doctor", backref=backref('diagnose', order_by=id))
 
-    adminId = sa.Column(sa.INTEGER)
+    adminId = sa.Column(sa.INTEGER,sa.ForeignKey('User.id'))
+    administrator = relationship("User", backref=backref('diagnose', order_by=id))
 
     uploadUserId  = sa.Column(sa.Integer,sa.ForeignKey('User.id'))
     uploadUser = relationship("User", backref=backref('diagnose', order_by=id))

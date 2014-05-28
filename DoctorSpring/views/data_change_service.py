@@ -8,7 +8,7 @@ def userCenterDiagnoses(diagnoses):
     for diagnose in diagnoses:
         diagDict={}
         if hasattr(diagnose,"patient") and diagnose.patient:
-            diagDict['patientName']=diagnose.patient.name
+            diagDict['patientName']=diagnose.patient.realname
         if hasattr(diagnose,"doctor") and diagnose.doctor:
             diagDict['doctorName']=diagnose.doctor.username
         if diagnose.createDate:
@@ -32,7 +32,7 @@ def getDiagnoseDetailInfo(diagnose):
         return
     diagDict={}
     if hasattr(diagnose,"patient") and diagnose.patient:
-        diagDict['patientName']=diagnose.patient.name
+        diagDict['patientName']=diagnose.patient.realname
         diagDict['patientGender']=diagnose.patient.gender
         diagnose['patientBirthDate']=diagnose.patient.birthDate
 
@@ -82,7 +82,7 @@ def getDoctorNeedDiagnoseMessageContent(diagnose,doctor):
 
     if hasattr(diagnose,"patient") and diagnose.patient:
         if diagnose.patient.name:
-            diagnoseContent+=' | 患者:'+diagnose.patient.name
+            diagnoseContent+=' | 患者:'+diagnose.patient.realname
 
     if hasattr(diagnose,"pathology") and diagnose.pathology:
         pathology=diagnose.pathology
