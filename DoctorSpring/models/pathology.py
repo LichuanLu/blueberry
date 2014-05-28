@@ -1,5 +1,5 @@
 # coding: utf-8
-__author__ = 'Jeremy'
+__author__ = 'chengc017'
 
 import sqlalchemy as sa
 from sqlalchemy.orm import relationship,backref
@@ -19,6 +19,7 @@ class Pathology(Base):
     #diagnoseDocId = sa.Column(sa.INTEGER)  #诊断表ID
     #diagnosePartId = sa.Column(sa.INTEGER)  #检查部位ID
     caseHistory = sa.Column(sa.TEXT)       #病史
+    diagnoseMethod=sa.Column(sa.String(32))
     #  docmFileId=sa.Column(sa.INTEGER)
     status = sa.Column(sa.INTEGER)      #标记状态 未提交，待审查，待诊断，待审核，结束
 

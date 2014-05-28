@@ -10,10 +10,10 @@ from DoctorSpring.models.patient import Patient
 from DoctorSpring.models.hospital import Hospital
 
 from DoctorSpring.models.pathology import *
-from DoctorSpring.models.diagnoseDocument import Diagnose
+from DoctorSpring.models.diagnoseDocument import Diagnose ,Report,DiagnoseTemplate
 from database import db_session as session
-from datetime import datetime
-from DoctorSpring.util.constant import Pagger, UserStatus
+from datetime import  datetime
+from DoctorSpring.util.constant import Pagger
 
 
 
@@ -39,12 +39,12 @@ class UserTestCase(unittest.TestCase):
         user.imagePath='http://localhost:5000/static/assets/image/young-m.png'
         User.save(user)
     def test_addPatient(self):
-        patient=Patient()
+        patient=Patent()
         patient.gender=0
         patient.Name='程成'
         patient.status=0
         patient.userID=1
-        Patient.save(patient)
+        Patent.save(patient)
 
 class DoctorTestCase(unittest.TestCase):
     def test_getDoctorById(self):
@@ -67,6 +67,7 @@ class DiagnoseTestCase(unittest.TestCase):
         pathology.hospticalId=1
         pathology.caseHistory="没有病史"
         pathology.status=0
+        pathology.diagnoseMethod='ct'
         Pathology.save(pathology)
     def test_addPathologyPostion(self):
         pathologyPostion=PathologyPostion()
@@ -98,6 +99,52 @@ class DiagnoseTestCase(unittest.TestCase):
     def test_getPatientListByDoctorId(self):
         patients=Diagnose.getPatientListByDoctorId(1)
         print len(patients)
+
+class DiagnoseTestCase(unittest.TestCase):
+    def test_getDiagnose(self):
+        diagnose=session.query(Diagnose).filter(Diagnose.id==1).first()
+        diagnose.reportId=3
+        session.commit()
+class ReportTestCase(unittest.TestCase):
+    def test_addReport(self):
+        dt=session.query(DiagnoseTemplate).filter(DiagnoseTemplate.id==5).first()
+        #DiagnoseTemplate.diagnoseDesc
+        report=Report(dt.techDesc,dt.imageDesc,dt.diagnoseDesc,None)
+        Report.save(report)
+    def test_getMaxId(self):
+        id=Report.getMaxId()
+        print id
+    def test_updatre(self):
+        #Report.update(3,1,2)
+        report=session.query(Report).filter(Report.id==3).first()
+        report.createDate=datetime.now()
+        session.commit()
+
+
+class DataUpateTestCase(unittest.TestCase):
+    def test_update(self):
+        #Report.update(3,1,2)
+        patient=session.query(Patent).filter(Patent.id==1).first()
+        Patent.identityCode
+        birthDate=datetime.now()
+        # birthDate=birthDate-datetime.timedelta(days =10)
+        birthDate=datetime(birthDate.year-10,birthDate.month,birthDate.day)
+        patient.birthDate=birthDate
+        patient.identityCode='513721198610106312'
+        session.commit()
+
+    def test_addPathology(self):
+        pathology=Pathology()
+
+        #pathology.diagnoseDocId=1
+
+        #pathology.docmFileId=1
+        pathology.hospticalId=1
+        pathology.caseHistory="没有病史"
+        pathology.status=0
+        pathology.diagnoseMethod='ct'
+        Pathology.save(pathology)
+
 
 
 

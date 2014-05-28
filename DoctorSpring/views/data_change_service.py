@@ -23,9 +23,23 @@ def userCenterDiagnoses(diagnoses):
                         position=pathologyPositon.position
                         positions+=(u' '+position.name)
                     diagDict['positons']=positions
-        print diagDict['doctorName'],diagDict['positons']
+        #print diagDict['doctorName'],diagDict['positons']
         result.append(diagDict)
 
     return result
+def getDiagnosePositonFromDiagnose(diagnose):
+    if diagnose is None:
+        return
+    if hasattr(diagnose,"pathology") and diagnose.pathology:
+        pathology=diagnose.pathology
+        if hasattr(pathology,"pathologyPostions") and pathology.pathologyPostions:
+            pathologyPositons=pathology.pathologyPostions
+            if pathologyPositons and len(pathologyPositons)>0:
+                positions=u''
+                for pathologyPositon in pathologyPositons:
+                    position=pathologyPositon.position
+                    positions+=(u' '+position.name)
+                return positions
+
 
 

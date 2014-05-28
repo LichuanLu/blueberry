@@ -4,7 +4,6 @@ __author__ = 'ccheng'
 from flask import Flask, request, session, g, redirect, url_for, Blueprint, jsonify
 from flask import abort, render_template, flash
 from flask.ext.login import login_user, logout_user, current_user, login_required
-from forms import LoginForm ,CommentsForm ,MessageForm
 from forms import LoginForm, RegisterForm ,CommentsForm ,MessageForm ,UserFavortiesForm
 from DoctorSpring import lm
 from database import  db_session
@@ -95,14 +94,45 @@ def getUserFavorties(id):
 
 @uc.route('/diagnose/<int:diagnoseId>/pdf', methods=['GET','POST'])
 def generatorPdf(diagnoseId):
-    if request.method == 'GET':
+    diagnose=Diagnose.getDiagnoseById(diagnoseId)
+    report=None
+    if hasattr(diagnose,'report'):
+        report=diagnose.report
+        if diagnose and report and report.status==ReportStatus.Commited and report.type==ReportType.Doctor:
+            data={}
+            data['techDesc']=report.techDesc
+            data['imageDesc']=report.imageDesc
+            data['diagnoseDesc']=report.diagnoseDesc
+            data['seriesNumber']=report.seriesNumber
+            data['fileUrl']=report.fileUrl
+            createDate=report.createDate
+            if createDate:
+                createDate=createDate.strftime('%Y-%m-%d')
+                data['createDate']=createDate
 
-        result = open(constant.DirConstant.DIAGNOSE_PDF_DIR+'test.pdf', 'wb') # Changed from file to filename
-        html =  render_template('diagnoseResultPdf.html')
-        pdf = pdf_utils.save_pdf(html,result)
-        result.close()
-        # return render_template("testpdf.html",getAvatar=getAvatar)
-        return html
+            postions=dataChangeService.getDiagnosePositonFromDiagnose(diagnose)
+            if postions:
+                data['postions']=postions
+            if hasattr(diagnose,'patient'):
+                data['gender']=diagnose.patient.gender
+                birthDate=diagnose.patient.birthDate
+                if birthDate:
+                    birthDate=birthDate.strftime('%Y-%m-%d')
+                    data['birthDate']=birthDate
+                data['name']=diagnose.patient.name
+            if hasattr(diagnose,'doctor'):
+                data['doctorName']=diagnose.doctor.username
+
+            html =  render_template('diagnoseResultPdf.html',data=data)
+            result = open(constant.DirConstant.DIAGNOSE_PDF_DIR+'test.pdf', 'wb') # Changed from file to filename
+            pdf = pdf_utils.save_pdf(html,result)
+            result.close()
+            # return render_template("testpdf.html",getAvatar=getAvatar)
+            return html
+    return None
+
+
+
 
 @uc.route('/redirectPdf', methods=['GET','POST'])
 def testRedirect():

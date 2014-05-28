@@ -1,5 +1,5 @@
 # coding: utf-8
-__author__ = 'Jeremy'
+__author__ = 'ccheng'
 
 import sqlalchemy as sa
 from database import db_session as session
@@ -19,9 +19,12 @@ class User(Base):
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     name = sa.Column(sa.String(255))
+    account= sa.Column(sa.String(255))
+    accountType=sa.Column(sa.String(255))
     password = sa.Column(sa.String(255))
     address = sa.Column(sa.String(255))
     email = sa.Column(sa.String(64))
+    mobile = sa.Column(sa.String(32))
     imagePath = sa.Column(sa.String(255))
     sex = sa.Column(sa.INTEGER)   # Location表ID
     phone = sa.Column(sa.INTEGER)
