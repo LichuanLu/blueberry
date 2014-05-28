@@ -21,7 +21,6 @@ class Hospital(Base):
     type = sa.Column(sa.INTEGER)
     level = sa.Column(sa.INTEGER)
 
-
     status = sa.Column(sa.INTEGER)
 
 

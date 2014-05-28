@@ -55,11 +55,12 @@ def register_patient_page():
     return render_template("patientRegister.html")
 
 @user_view.route('/register/doctor',  methods = ['GET', 'POST'])
-def registerDoctorPage():
+def registerdoctorPage():
     return render_template("doctorRegister.html")
 
 
 @user_view.route('/register/doctor.json',  methods = ['GET', 'POST'])
+<<<<<<< HEAD
 def registerDoctor():
     error = None
     temp=request.form
@@ -114,3 +115,48 @@ def flash_errors(form):
         for error in errors:
             flash(u"Error in the %s field - %s" % (
                 getattr(form, field).label.text,error), 'error')
+=======
+def register_doctor():
+    form = RegisterFormDoctor(request.form)
+    form_result = form.validate()
+
+    if form_result.status == rs.SUCCESS.status:
+        new_user = User(form.username, form.password)
+        new_user.email = form.email
+        new_user.phone = form.cellphone
+        new_user.type = UserStatus.doctor
+        User.save(new_user)
+        new_doctor = Doctor(new_user.id)
+        new_doctor.identityPhone = form.identity_phone
+        Doctor.save(new_doctor)
+
+        login_session(new_user)
+
+        #return jsonify(form_result.__dict__)
+
+    return jsonify(form_result.__dict__)
+
+@user_view.route('/register/patient.json',  methods=['GET', 'POST'])
+def register_patient():
+    form = RegisterFormPatent(request.form)
+    form_result = form.validate()
+    if form_result.status == rs.SUCCESS.status:
+        new_user = User(form.name, form.password)
+        new_user.type = UserStatus.patent
+        User.save(new_user)
+        new_patient = Patient(new_user.id)
+        Patient.save(new_patient)
+        login_session(new_user)
+        return json.dumps(form_result.__dict__,ensure_ascii=False)
+
+    return json.dumps(form_result.__dict__,ensure_ascii=False)
+
+
+
+def login_session(user):
+    login_user(user)
+    session['logged_in'] = True
+    session['username'] = User.get_name(user)
+    session['userId'] = User.get_id(user)
+    flash('注册成功，跳转至首页')
+>>>>>>> d63de41b2967f75b3e878bd2be836d1e4065cfb7

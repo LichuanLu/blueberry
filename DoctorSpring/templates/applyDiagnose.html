@@ -44,7 +44,7 @@
 												<span class="first-icon fui-radio-unchecked"></span>
 												<span class="second-icon fui-radio-checked"></span>
 											</span>
-                <input type="radio" name="" value="" data-toggle="radio" checked="true">新就诊人</label>
+                <input type="radio" name="" value="2" data-toggle="radio" checked="true">新就诊人</label>
         </div>
         <form id="patient-already-exists" class="full-width-dropdown" style="display:none;">
             <select name="patientid">
@@ -53,7 +53,9 @@
             </select>
         </form>
 
+
         <form role="form" class="form-inline" id="new-patient-form">
+
 
             <div class="form-group">
                 <label for="patientnameinput">
@@ -82,6 +84,7 @@
 										</span>
                         <input type="radio" name="patientsex" value="1" data-toggle="radio">男</label>
 
+
                     <label class="radio">
 										<span class="icons">
 											<span class="first-icon fui-radio-unchecked"></span>
@@ -91,12 +94,14 @@
                 </div>
             </div>
 
+
             <div class="form-group">
                 <label for="birthdateinput">
                     出生日期：
                     <span class="required-text">（必填）</span>
                 </label>
                 <div class="input-wrapper">
+
 
                     <div class="input-group">
 										<span class="input-group-btn">
@@ -107,8 +112,27 @@
                         <input type="text" class="form-control" id="birthdateinput" name="birthdate">
                     </div>
 
+
                 </div>
             </div>
+
+
+            <div class="form-group">
+                <label for="identityNumberInput">
+                    身份证：
+                    <span class="required-text">（必填）</span>
+                </label>
+                <div class="input-wrapper">
+                    <input type="text" class="form-control" id="identityNumberInput" name="identitynumber" placeholder="身份证号码">
+                    <div class="line-area">
+                        <div class="line"></div>
+                        <div class="ball"></div>
+                    </div>
+                    <p class="side-description">请填写真实身份证号码</p>
+                </div>
+            </div>
+
+
             <div class="form-group">
                 <label for="phonenumberinput">
                     手机号码：
@@ -138,13 +162,17 @@
                 </div>
             </div>
 
+
     </div>
+
 
     <div class="btn-wrapper">
         <button type="submit" class="btn btn-info submit-btn">保存并继续</button>
 
+
     </div>
     </form>
+
 
 </div>
 <div class="panel panel-default" data-form-id='2'>
@@ -152,62 +180,64 @@
     <div class="panel-body">
         <p class="side-description">请确保已经在正规医院医疗影像科做过诊断，有诊断单和dicom影像数据（什么是dicom影像数据？）</p>
 
+
         <form role="form" class="form-inline">
             <div class="form-group">
-                <label for="patientlocationinput">
+                <label for="patientlocation">
                     诊断部位：
                     <span class="required-text">（必填）</span>
                 </label>
-                <div class="patientlocation-wrapper">
+                <!-- <div class="patientlocation-wrapper">
+
 
                     <div class="checkbox-wrapper">
                         <label class="checkbox" for="checkbox1">
-											<span class="icons">
-												<span class="first-icon fui-checkbox-unchecked"></span>
-												<span class="second-icon fui-checkbox-checked"></span>
-											</span>
+                            <span class="icons">
+                                <span class="first-icon fui-checkbox-unchecked"></span>
+                                <span class="second-icon fui-checkbox-checked"></span>
+                            </span>
                             <input type="checkbox" value="1" id="checkbox1" name="sectionId" data-toggle="checkbox">头部</label>
                         <label class="checkbox" for="checkbox2">
-											<span class="icons">
-												<span class="first-icon fui-checkbox-unchecked"></span>
-												<span class="second-icon fui-checkbox-checked"></span>
-											</span>
+                            <span class="icons">
+                                <span class="first-icon fui-checkbox-unchecked"></span>
+                                <span class="second-icon fui-checkbox-checked"></span>
+                            </span>
                             <input type="checkbox" value="2" id="checkbox2" name="sectionId" data-toggle="checkbox">颈部</label>
                         <label class="checkbox" for="checkbox2">
-											<span class="icons">
-												<span class="first-icon fui-checkbox-unchecked"></span>
-												<span class="second-icon fui-checkbox-checked"></span>
-											</span>
+                            <span class="icons">
+                                <span class="first-icon fui-checkbox-unchecked"></span>
+                                <span class="second-icon fui-checkbox-checked"></span>
+                            </span>
                             <input type="checkbox" value="3" id="checkbox2" name="sectionId" data-toggle="checkbox">腰部</label>
                         <label class="checkbox" for="checkbox2">
-											<span class="icons">
-												<span class="first-icon fui-checkbox-unchecked"></span>
-												<span class="second-icon fui-checkbox-checked"></span>
-											</span>
+                            <span class="icons">
+                                <span class="first-icon fui-checkbox-unchecked"></span>
+                                <span class="second-icon fui-checkbox-checked"></span>
+                            </span>
                             <input type="checkbox" value="4" id="checkbox2" name="sectionId" data-toggle="checkbox">腿部</label>
                         <label class="checkbox" for="checkbox2">
-											<span class="icons">
-												<span class="first-icon fui-checkbox-unchecked"></span>
-												<span class="second-icon fui-checkbox-checked"></span>
-											</span>
+                            <span class="icons">
+                                <span class="first-icon fui-checkbox-unchecked"></span>
+                                <span class="second-icon fui-checkbox-checked"></span>
+                            </span>
                             <input type="checkbox" value="5" id="checkbox2" name="sectionId" data-toggle="checkbox">颈部</label>
                         <label class="checkbox" for="checkbox2">
-											<span class="icons">
-												<span class="first-icon fui-checkbox-unchecked"></span>
-												<span class="second-icon fui-checkbox-checked"></span>
-											</span>
+                            <span class="icons">
+                                <span class="first-icon fui-checkbox-unchecked"></span>
+                                <span class="second-icon fui-checkbox-checked"></span>
+                            </span>
                             <input type="checkbox" value="6" id="checkbox2" name="sectionId" data-toggle="checkbox">颈部</label>
                         <label class="checkbox" for="checkbox2">
-											<span class="icons">
-												<span class="first-icon fui-checkbox-unchecked"></span>
-												<span class="second-icon fui-checkbox-checked"></span>
-											</span>
+                            <span class="icons">
+                                <span class="first-icon fui-checkbox-unchecked"></span>
+                                <span class="second-icon fui-checkbox-checked"></span>
+                            </span>
                             <input type="checkbox" value="7" id="checkbox2" name="sectionId" data-toggle="checkbox">颈部</label>
                         <label class="checkbox" for="checkbox2">
-											<span class="icons">
-												<span class="first-icon fui-checkbox-unchecked"></span>
-												<span class="second-icon fui-checkbox-checked"></span>
-											</span>
+                            <span class="icons">
+                                <span class="first-icon fui-checkbox-unchecked"></span>
+                                <span class="second-icon fui-checkbox-checked"></span>
+                            </span>
                             <input type="checkbox" value="8" id="checkbox2" name="sectionId" data-toggle="checkbox">颈部</label>
                     </div>
                     <div class="line-area">
@@ -215,8 +245,40 @@
                         <div class="ball"></div>
                     </div>
                     <p class="side-description">就诊人姓名须与诊断书和影像数据上姓名相符就诊人姓名须与诊断书和影像数据上姓名相符</p>
+                </div> -->
+                <div class="patientlocation-wrapper">
+                    <select id="patientLocationSelect" name="patientlocation" class="multiselect" multiple="multiple">
+                        <option value="1">头部</option>
+                        <option value="2">颈部</option>
+                    </select>
+                    <!-- <div class="line-area">
+                        <div class="line"></div>
+                        <div class="ball"></div>
+                    </div>
+                    <p class="side-description">就诊人姓名须与诊断书和影像数据上姓名相符就诊人姓名须与诊断书和影像数据上姓名相符</p> -->
                 </div>
+            </div>
+            <div class="form-group">
+                <label for="dicomtype">
+                    影像类型：
+                    <span class="required-text">（必填）</span>
+                </label>
+                <div class="">
+                    <label class="radio">
+										<span class="icons">
+											<span class="first-icon fui-radio-unchecked"></span>
+											<span class="second-icon fui-radio-checked"></span>
+										</span>
+                        <input type="radio" name="dicomtype" value="1" data-toggle="radio">CT</label>
 
+
+                    <label class="radio">
+										<span class="icons">
+											<span class="first-icon fui-radio-unchecked"></span>
+											<span class="second-icon fui-radio-checked"></span>
+										</span>
+                        <input type="radio" name="dicomtype" value="2" data-toggle="radio">核磁共振(MR)</label>
+                </div>
             </div>
             <div class="form-group" id="dicomfileupload">
                 <label for="dicomfileinput">
@@ -243,7 +305,9 @@
                         <div class="progress-extended">&nbsp;</div>
                     </div>
 
+
                 </div>
+
 
                 <!-- The table listing the files available for upload/download -->
                 <div class="full-width">
@@ -253,17 +317,21 @@
                 </div>
             </div>
 
+
             <div class="btn-wrapper">
                 <button type="submit" class="btn btn-info submit-btn">保存并继续</button>
 
+
             </div>
         </form>
+
 
     </div>
 </div>
 <div class="panel panel-default" data-form-id='3'>
     <div class="panel-heading">专家和套餐<span>第三部分／总共四部分</span></div>
     <div class="panel-body">
+
 
         <form role="form" class="form-inline">
             <div class="form-group">
@@ -280,17 +348,23 @@
 
 
 
+
+
+
             <div class="btn-wrapper">
                 <button type="submit" class="btn btn-info submit-btn">保存并继续</button>
 
+
             </div>
         </form>
+
 
     </div>
 </div>
 <div class="panel panel-default" data-form-id='4'>
     <div class="panel-heading">额外参考信息<span>第四部分／总共四部分</span></div>
     <div class="panel-body">
+
 
         <form role="form" class="form-inline">
             <div class="form-group">
@@ -301,6 +375,7 @@
                 <div class="input-wrapper location-wrapper">
                     <input type="text" id="hospitalinput" name="diagnoseHistory" class="form-control" data-provide="typeahead" />
 
+
                     <div class="line-area">
                         <div class="line"></div>
                         <div class="ball"></div>
@@ -308,6 +383,7 @@
                     <p class="side-description">选择诊断所在医院</p>
                 </div>
             </div>
+
 
             <div class="form-group">
                 <label for="illhistory">
@@ -322,6 +398,7 @@
                     </div>
                     <p class="side-description">就诊人姓名须与诊断书和影像数据上姓名相符就诊人姓名须与诊断书和影像数据上姓名相符</p>
                 </div>
+
 
             </div>
             <div class="form-group" id="patient-medical-report-fileupload">
@@ -349,7 +426,9 @@
                         <div class="progress-extended">&nbsp;</div>
                     </div>
 
+
                 </div>
+
 
                 <!-- The table listing the files available for upload/download -->
                 <div class="full-width">
@@ -362,12 +441,15 @@
             <div class="btn-wrapper">
                 <button type="submit" class="btn btn-info submit-btn">最终提交申请</button>
 
+
             </div>
         </form>
+
 
     </div>
 </div>
 </div>
+
 
 <div class="col-md-3">
     <div id="affix-wrapper" class="pi-title-sidebar affix-top" data-spy="affix" data-offset-top="150" data-offset-bottom="200" style="">
@@ -415,8 +497,10 @@
 </div>
 </div>
 
+
 </div>
 </div>
+
 {% endblock contentHolder %}
 {% block footerHolder %}
 {% endblock footerHolder %}

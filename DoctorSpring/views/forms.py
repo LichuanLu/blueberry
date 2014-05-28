@@ -51,6 +51,7 @@ class DiagnoseForm1(Form):
         except Exception, e:
             return FAILURE
         return SUCCESS
+<<<<<<< HEAD
 
 class DiagnoseForm(Form):
     patientname = TextField('patientname')
@@ -61,6 +62,8 @@ class DiagnoseForm(Form):
     patientname = TextField('patientname')
     patientname = TextField('patientname')
     patientname = TextField('patientname')
+=======
+>>>>>>> d63de41b2967f75b3e878bd2be836d1e4065cfb7
 
 class CommentsForm(Form):
     userId = IntegerField('userId', validators=[Required()])
@@ -215,3 +218,50 @@ class PatientUpdateForm(object):
     identityCode=None
     yibaoCard=None
 
+class RegisterFormDoctor(object):
+    email = None
+    username = None
+    password = None
+    real_name = None
+    identity_phone = None
+    cellphone = None
+    def __init__(self, args):
+        self.email = args.get('email')
+        self.username = args.get('username')
+        self.password = args.get('password')
+        self.real_name = args.get('realname')
+        self.identity_phone = args.get('identityphone')
+        self.cellphone = args.get('cellphone')
+    def validate(self):
+        try:
+            if self.email is None or "@" not in self.email:
+                failure = ResultStatus(FAILURE.status, "邮箱地址格式不正确")
+                return failure
+            else:
+                user = User.get_by_name(self.email)
+                if user is not None:
+                    failure = ResultStatus(FAILURE.status, "邮箱地址已注册")
+                    return failure
+            if self.username is None:
+                failure = ResultStatus(FAILURE.status, "用户名为空")
+                return failure
+            if self.password is None:
+                failure = ResultStatus(FAILURE.status, "密码为空")
+                return failure
+            if self.real_name is None:
+                failure = ResultStatus(FAILURE.status, "真实姓名为空")
+                return failure
+            if self.identity_phone is None:
+                failure = ResultStatus(FAILURE.status, "注册号码为空")
+                return failure
+            if self.cellphone is None:
+                failure = ResultStatus(FAILURE.status, "手机号码格式不对")
+                return failure
+            else:
+                user = User.get_by_name(self.cellphone)
+                if user is not None:
+                    failure = ResultStatus(FAILURE.status, "手机号码已注册")
+                    return failure
+        except Exception, e:
+            return FAILURE
+        return SUCCESS

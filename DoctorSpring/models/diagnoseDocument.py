@@ -49,8 +49,11 @@ class Diagnose(Base):
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
     patientId  = sa.Column(sa.Integer,sa.ForeignKey('patient.id'))
     patient = relationship("Patient", backref=backref('diagnose', order_by=id))
+<<<<<<< HEAD
 
     diagnoseSeriesNumber=sa.Column(sa.String(256))
+=======
+>>>>>>> d63de41b2967f75b3e878bd2be836d1e4065cfb7
 
     doctorId  = sa.Column(sa.Integer,sa.ForeignKey('doctor.id'))
     doctor = relationship("Doctor", backref=backref('diagnose', order_by=id))
@@ -64,7 +67,7 @@ class Diagnose(Base):
     pathology=relationship("Pathology", backref=backref('diagnose', order_by=id))
 
     reportId = sa.Column(sa.Integer,sa.ForeignKey('report.id'))
-    report=relationship("Report", backref=backref('diagnose', order_by=id))
+    report=relationship("Report", backref=backref('report', order_by=id))
 
     score = sa.Column(sa.Integer)
 
