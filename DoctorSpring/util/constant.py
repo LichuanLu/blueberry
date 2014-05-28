@@ -6,6 +6,16 @@ class ModelStatus(object):
       Normal=0
       Del=1
 
+
+class UserStatus(object):
+    patent = 0  # 普通用户
+    doctor = 1  # 医生账户
+
+class PatientStatus(object):
+    patent = 0  # 普通注册用户
+    diagnose = 1  # 病例用户
+
+
 #1. 草稿 2.待付费 3. 待分诊 4. 分诊中 5. 待诊断 6. 诊断完成 7.需要更新信息 8. 无法诊断
 class DiagnoseStatus(object):
     Draft=0 #草稿
@@ -24,8 +34,15 @@ class ReportStatus(object):
 class ReportType(object):
     Admin=0
     Doctor=1
+
+class FileType(object):
+    Dicom=0
+    FileAboutDiagnose=1
 SeriesNumberPrefix='YZD'
 SeriesNumberBase=500000
+DiagnoseSeriesNumberPrefix='DS'
+DiagnoseSeriesNumberBase=50000
+
 class MessageStatus(ModelStatus):
       Readed=2
 class CommentType(object):
@@ -64,6 +81,14 @@ class Pagger(object):
 class DirConstant(object):
     ROOT_DIR=config.ROOT_DIR
     DIAGNOSE_PDF_DIR=ROOT_DIR+'/DoctorSpring/static/pdf/'
+
+class UserFavoritesType(object):
+    Doctor=0
+    Hospital=1
+    Diagnose=2
+
+DefaultSystemAdminUserId=1
+
 
 
 

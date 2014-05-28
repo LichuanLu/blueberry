@@ -6,10 +6,12 @@ import os.path
 
 ROOT_DIR=os.path.dirname(__file__)
 
-_DBUSER = "ctt"
-_DBPASS = "ctt"
-_DBHOST = "localhost"
+_DBUSER = "mduser"
+_DBPASS = "mduser"
 _DBNAME = "medicaldb"
+_DBHOST = "airui313.vicp.net:9906"
+
+ROOT_DIR=os.path.dirname(__file__)
 
 #config
 SECRET_KEY = 'flasksimplelaw'
@@ -26,6 +28,10 @@ ADMIN_USERNAME = 'admin'
 DEFAULT_FILE_STORAGE = 'filesystem'
 UPLOADS_FOLDER = os.path.realpath('.') + '/static/'
 FILE_SYSTEM_STORAGE_FILE_VIEW = 'static'
+
+# User
+DEFAULT_IMAGE = '/static/assets/image/9-small.jpg'
+DEFAULT_TITLE = '待定'
 
 class rec:
     pass

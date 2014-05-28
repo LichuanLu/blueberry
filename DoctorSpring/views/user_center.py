@@ -8,10 +8,10 @@ from forms import LoginForm, RegisterForm ,CommentsForm ,MessageForm ,UserFavort
 from DoctorSpring import lm
 from database import  db_session
 from sqlalchemy.exc import IntegrityError
-from DoctorSpring.models import User,Patent,Doctor,Diagnose ,DiagnoseTemplate,Report
+from DoctorSpring.models import User,Patient,Doctor,Diagnose ,DiagnoseTemplate
 from DoctorSpring.models import User,Comment,Message ,UserFavorites
 from DoctorSpring.util import result_status as rs,object2dict,pdf_utils,constant
-from DoctorSpring.util.constant import MessageUserType,Pagger,ReportStatus,ReportType
+from DoctorSpring.util.constant import MessageUserType,Pagger
 
 import  data_change_service as dataChangeService
 import json
@@ -42,6 +42,8 @@ def endterDoctorHome(doctorId):
     diagnoseDict=dataChangeService.userCenterDiagnoses(diagnoses)
     resultDate['diagnoses']=diagnoseDict
     return render_template("doctorHome.html",data=resultDate)
+
+
 
 @uc.route('/doctor/<int:doctorId>/patientList',  methods = ['GET', 'POST'])
 def getPatients(doctorId):
@@ -137,6 +139,6 @@ def generatorPdf(diagnoseId):
 @uc.route('/redirectPdf', methods=['GET','POST'])
 def testRedirect():
     #return redirect("/pdf")
-    #print url_for('user_center.generatorPdf',diagnoseName='ccheng')
-    return redirect(url_for('user_center.diagnose/1/pdf'))
+    print url_for('user_center.generatorPdf',diagnoseName='ccheng')
+    return redirect(url_for('user_center.generatorPdf'))
 

@@ -2,14 +2,20 @@
 __author__ = 'Jeremy'
 
 import os.path
-from flask import request, redirect, url_for, Blueprint, jsonify, g, send_from_directory
+from flask import request, redirect, url_for, Blueprint, jsonify, g, send_from_directory, session
 from flask import abort, render_template, flash
-from DoctorSpring.models import Doctor, User, Department
-from  database import db_session
+from flask_login import login_required
+from DoctorSpring.models import Doctor, User, Department, Patient
+from database import db_session
 from werkzeug.utils import secure_filename
 #from flask.ext.storage import get_default_storage_class
 #from flask.ext.uploads import delete, init, save, Upload
 import config
+from forms import DiagnoseForm1
+from DoctorSpring.util import result_status as rs, object2dict, constant
+from datetime import datetime
+from DoctorSpring.util.constant import PatientStatus
+
 
 
 config = config.rec()
@@ -28,33 +34,50 @@ def homepage():
     res_dict['count'] = ''
     res_list = []
     count = 0
-    for t in doctors:
-        count += 1
-        user = db_session.query(User).filter(t.userId == User.id).first()
-        res_dict['id'] = user.id
-        res_dict['name'] = t.username
-        res_dict['title'] = t.title
-        department = db_session.query(Department).filter(t.departmentId == Department.id).first()
-        res_dict['department'] = department.description
-        res_dict['image'] = '/static/assets/image/9-small.jpg'
-        res_dict['count'] = 'image' + str(count)
-        res_list.append(res_dict)
+    # for t in doctors:
+    #     count += 1
+    #     user = db_session.query(User).filter(t.userId == User.id).first()
+    #     res_dict['id'] = user.id
+    #     res_dict['name'] = t.username
+    #     res_dict['title'] = t.title
+    #     department = db_session.query(Department).filter(t.departmentId == Department.id).first()
+    #     res_dict['department'] = department.description
+    #     res_dict['image'] = '/static/assets/image/9-small.jpg'
+    #     res_dict['count'] = 'image' + str(count)
+    #     res_list.append(res_dict)
 
 
     return render_template("home.html", result = res_list)
 
 @front.route('/applyDiagnose', methods=['GET', 'POST'])
+@login_required
 def applyDiagnose():
     return render_template("applyDiagnose.html")
 
 
 @front.route('/save/diagnose/<formid>', methods=['GET', 'POST'])
+@login_required
 def applyDiagnoseForm(formid):
-    if (formid == 1) :
+    if (int(formid) == 1) :
+        form = DiagnoseForm1(request.form)
+        form_result = form.validate()
+        if form_result.status == rs.SUCCESS.status:
+            new_patient = Patient()
+            new_patient.type = PatientStatus.diagnose
+            new_patient.userID = session['userId']
+            new_patient.realname = form.patientname
+            new_patient.gender = form.patientsex
+            new_patient.birthDate = datetime.strptime(form.birthdate, "%Y-%m-%d")
+            new_patient.identityCode = form.identitynumber
+            new_patient.identityPhone = form.phonenumber
+            # new_patient.locationId = form.location
+            Patient.save(new_patient)
+            form_result.data = {'formId': 2}
+        # return jsonify(form_result.__dict__)
         return jsonify({'code': 0,  'message' : "success", 'data': {'formId': 2}})
-    elif (formid == 2) :
+    elif (int(formid) == 2) :
         return jsonify({'code': 0,  'message' : "success", 'data': {'formId': 3}})
-    elif (formid == 3) :
+    elif (int(formid) == 3) :
         return jsonify({'code': 0,  'message' : "success", 'data': {'formId': 4}})
     else :
         return jsonify({'code': 0,  'message' : "success", 'data': ''})

@@ -6,11 +6,13 @@ import unittest
 from DoctorSpring.models.comment import Comment
 from DoctorSpring.models.doctor import Doctor
 from DoctorSpring.models.user import User
-from DoctorSpring.models.patent import Patent
+from DoctorSpring.models.patient import Patient
+from DoctorSpring.models.hospital import Hospital
+
 from DoctorSpring.models.pathology import *
 from DoctorSpring.models.diagnoseDocument import Diagnose ,Report,DiagnoseTemplate
 from database import db_session as session
-from datetime import datetime
+from datetime import  datetime
 from DoctorSpring.util.constant import Pagger
 
 

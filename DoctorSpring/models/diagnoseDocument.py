@@ -33,8 +33,12 @@ from DoctorSpring.util.constant import Pagger,SystemTimeLimiter,DiagnoseStatus,R
 from datetime import datetime
 from database import Base,db_session as session
 from sqlalchemy.orm import relationship,backref
+import threading
 
 import uuid
+#mutex=threading.Lock()
+mutex=threading.RLock()
+
 
 class Diagnose(Base):
     __tablename__ = 'diagnose'
@@ -43,8 +47,10 @@ class Diagnose(Base):
         }
 
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
-    patientId  = sa.Column(sa.Integer,sa.ForeignKey('patent.id'))
-    patient = relationship("Patent", backref=backref('diagnose', order_by=id))
+    patientId  = sa.Column(sa.Integer,sa.ForeignKey('patient.id'))
+    patient = relationship("Patient", backref=backref('diagnose', order_by=id))
+
+    diagnoseSeriesNumber=sa.Column(sa.String(256))
 
     doctorId  = sa.Column(sa.Integer,sa.ForeignKey('doctor.id'))
     doctor = relationship("Doctor", backref=backref('diagnose', order_by=id))
@@ -65,7 +71,9 @@ class Diagnose(Base):
     createDate=sa.Column(sa.DateTime)
     reviewDate = sa.Column(sa.DATETIME)
 
-    hospitalId = sa.Column(sa.INTEGER)  #医院ID，用于医院批量提交诊断信息
+    hospitalId = sa.Column(sa.Integer,sa.ForeignKey('hospital.id'))  #医院ID，用于医院批量提交诊断信息
+    hospital=relationship("Hospital", backref=backref('diagnose', order_by=id))
+
     status = sa.Column(sa.INTEGER)
 
     @classmethod
@@ -73,7 +81,42 @@ class Diagnose(Base):
         if diagnose:
             session.add(diagnose)
             session.commit()
+            if diagnose.id:
+                diagnoseSeriesNumber='%s%i'%(constant.DiagnoseSeriesNumberPrefix,constant.DiagnoseSeriesNumberBase+diagnose.id)
+                diagnose.diagnoseSeriesNumber=diagnoseSeriesNumber
+                session.commit()
             session.flush()
+    @classmethod
+    def getDiagnoseById(cls,diagnoseId):
+        if diagnoseId:
+            return session.query(Diagnose).filter(Diagnose.id==diagnoseId,Diagnose.status!=DiagnoseStatus.Del).first()
+    @classmethod
+    def addAdminIdAndChangeStatus(cls,diagnoseId,adminId):
+        if adminId:
+            return
+        if mutex.acquire(1):
+            try:
+                diagnose=Diagnose.getDiagnoseById(diagnoseId)
+                if diagnose.adminId is None:
+                    diagnose.adminId=adminId
+                    diagnose.status=DiagnoseStatus.NeedTriage
+                    session.commit()
+            except Exception,e:
+                print e.message
+                return
+            finally:
+                mutex.release()
+    @classmethod
+    def changeDiagnoseStatus(cls,diagnoseId,status):
+        if diagnoseId and status:
+            diagnose=Diagnose.getDiagnoseById(diagnoseId)
+            if diagnose:
+                diagnose.status=status
+                session.commit()
+                session.flush()
+
+
+
     @classmethod
     def getDiagnosesByDoctorId(cls,doctorId,pagger,status=None,startTime=SystemTimeLimiter.startTime,endTime=SystemTimeLimiter.endTime):
         count=Diagnose.getDiagnoseCountByDoctorId(doctorId,status,startTime,endTime)
@@ -113,7 +156,7 @@ class Diagnose(Base):
     @classmethod
     def getDiagnoseById(cls,diagnoseId):
         if diagnoseId:
-            return session.query(Diagnose).filter(Diagnose.id==diagnoseId,Diagnose.status==DiagnoseStatus.Diagnosed).first()
+            return session.query(Diagnose).filter(Diagnose.id==diagnoseId,Diagnose.status!=DiagnoseStatus.Del).first()
 
 
 class DiagnoseTemplate(Base):
@@ -226,6 +269,42 @@ class Report(Base):
         session.commit()
         session.flush()
         return report
+
+class File(Base):
+    __tablename__ = 'file'
+    __table_args__ = {
+        'mysql_charset': 'utf8',
+        }
+
+    id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
+    type = sa.Column(sa.Integer)
+    status=sa.Column(sa.Integer)
+    url=sa.Column(sa.String(128))
+    pathologyId=sa.Column(sa.Integer)
+
+
+    def __init__(self,type,statues,url,pathologyId):
+        self.type=type
+        self.status=statues
+        self.url=url
+        self.pathologyId=pathologyId
+
+    @classmethod
+    def save(cls,dsFile):
+        if dsFile is None:
+            return
+        session.add(File)
+        session.commit()
+    @classmethod
+    def getFiles(cls,pathologyId,type=None):
+        if pathologyId:
+            if type:
+                return session.query(File).filter(File.pathologyId==pathologyId,File.type==type,File.status==ModelStatus.Normal).all()
+            else:
+                return session.query(File).filter(File.pathologyId==pathologyId,File.status==ModelStatus.Normal).all()
+
+
+
 
 '''
     def __init__(self, title=title, content=content, origin_content=None,

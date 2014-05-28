@@ -3,6 +3,7 @@ __author__ = 'Jeremy'
 from wtforms import Form, TextField, PasswordField, DateField, IntegerField, SelectField, BooleanField
 from wtforms.validators import Required, Email, EqualTo, Length
 from DoctorSpring.util.result_status import *
+from DoctorSpring.models import User, Patient, Doctor
 
 class RegisterForm(Form):
     name = TextField('Username', validators=[Required(), Length(min=3, max=25)])
@@ -13,11 +14,43 @@ class RegisterForm(Form):
     #     'Repeat Password',
     #     [Required(), EqualTo('password', message='Passwords must match')])
 
-class LoginForm(Form):
-    name = TextField('username', validators=[Required()])
-    password = PasswordField('password', validators=[Required()])
-    email = TextField('email')
-    remember_me = BooleanField('remember_me', default = False)
+class DiagnoseForm1(Form):
+    patientname = None
+    patientsex = None
+    birthdate = None
+    identitynumber = None
+    phonenumber = None
+    location = None
+    def __init__(self, args):
+        self.patientname = args.get('patientname')
+        self.patientsex = args.get('patientsex')
+        self.birthdate = args.get('birthdate')
+        self.identitynumber = args.get('identitynumber')
+        self.phonenumber = args.get('phonenumber')
+        self.location = args.get('location')
+    def validate(self):
+        try:
+            if self.patientname is None:
+                failure = ResultStatus(FAILURE.status, "请填写就诊人姓名")
+                return failure
+            if self.patientsex is None:
+                failure = ResultStatus(FAILURE.status, "请选择性别")
+                return failure
+            if self.birthdate is None:
+                failure = ResultStatus(FAILURE.status, "请选择出生日期")
+                return failure
+            if self.identitynumber is None:
+                failure = ResultStatus(FAILURE.status, "请填写身份证号")
+                return failure
+            if self.phonenumber is None:
+                failure = ResultStatus(FAILURE.status, "请填写手机号码")
+                return failure
+            if self.location is None:
+                failure = ResultStatus(FAILURE.status, "请选择所在地")
+                return failure
+        except Exception, e:
+            return FAILURE
+        return SUCCESS
 
 class DiagnoseForm(Form):
     patientname = TextField('patientname')
@@ -35,6 +68,7 @@ class CommentsForm(Form):
     content = TextField('content', validators=[Required()])
     title = TextField('title')
     diagnoseId=IntegerField('diagnoseId')
+
 class MessageForm(Form):
     senderId = IntegerField('senderId', validators=[Required()])
     receiverId=IntegerField('receiverId', validators=[Required()])
@@ -67,25 +101,72 @@ class ConsultForm(object):
             return FAILURE
         return SUCCESS
 
+class LoginForm(object):
+    username = None
+    password = None
+    remember_me = None
+    def __init__(self, args):
+        self.username=args.get('name')
+        self.password=args.get('pass')
+        #self.remember_me=args.get('remember_me')
+    def validate(self):
+        try:
+            if self.username is None:
+                failure = ResultStatus(FAILURE.status, "用户名为空")
+                return failure
+            if self.password is None:
+                failure=ResultStatus(FAILURE.status, "密码为空")
+                return failure
+        except Exception,e:
+            return FAILURE
+        return SUCCESS
 class ReportForm(object):
     reportId =None
     status=None
     techDesc =None
     imageDesc =None
     diagnoseDesc=None
+    diagnoseId=None
+    fileUrl=None
     def __init__(self,args):
         if args.has('reportId'):
             self.reportId=args.get('reportId')
 
+class RegisterFormPatent(object):
+    name = None
+    password = None
+    def __init__(self, args):
+        self.name = args.get('name')
+        self.password = args.get('password')
+    def validate(self):
+        try:
+            if self.password is None:
+                failure = ResultStatus(FAILURE.status, "密码为空")
+                return failure
+            if self.name is None:
+                failure = ResultStatus(FAILURE.status, "用户名为空")
+                return failure
+            else:
+                user = User.get_by_name(self.name)
+                if user is not None:
+                    failure = ResultStatus(FAILURE.status, "该用户已存在")
+                    return failure
+        except Exception, e:
+            return FAILURE
+        return SUCCESS
         self.status=args.get('status')
         self.techDesc=args.get('techDesc')
         self.imageDesc=args.get('imageDesc')
         self.diagnoseDesc=args.get('diagnoseDesc')
+        self.diagnoseId=args.get('diagnoseId')
+        self.fileUrl=args.get('fileUrl')
     def validate(self):
         try:
             if self.reportId is None:
                 return FAILURE
             if self.status is None:
+                return FAILURE
+            if self.diagnoseId is None:
                 return FAILURE
 
         except Exception,e:
@@ -104,13 +185,13 @@ class UserFavortiesForm(object):
 
         self.userId=args.get('userId')
         self.type=args.get('type')
-        if args.has('doctorId'):
-            self.doctorId=args.get('doctorId')
+        #if args.has('doctorId'):
+        self.doctorId=args.get('doctorId')
 
-        if args.has('hospitalId'):
-            self.hospitalId=args.get('hospitalId')
-        if args.has('docId'):
-            self.docId=args.get('docId')
+        #if args.has('hospitalId'):
+        self.hospitalId=args.get('hospitalId')
+        #if args.has('docId'):
+        self.docId=args.get('docId')
     def validate(self):
         try:
             if self.userId is None:

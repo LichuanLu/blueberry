@@ -11,14 +11,14 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="inPassword">个人电子邮箱：</label>
 					<div class="col-md-8">
-						<input id="confirmPassword" type="email" name="" class="form-control" placeholder="用于登陆和联系，不会公开">
+						<input id="inEmail" type="email" name="email" class="form-control" placeholder="用于登陆和联系，不会公开">
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="inUserName">用户名：</label>
 					<div class="col-md-8">
-						<input id="inUserName" type="text" name="userNameField" placeholder="英文字母开头的英文字母或数字" class="form-control">
+						<input id="inUserName" type="text" name="username" placeholder="英文字母开头的英文字母或数字" class="form-control">
 						<p class="help-block">用户名会用于系统中个人主页的显示，强烈建议用姓名的拼音作为用户名。</p>
 				</div>
 				</div>
@@ -26,7 +26,7 @@
 					<label class="col-md-4 control-label" for="inPassword">密码：</label>
 					<div class="col-md-8">
 
-						<input id="inPassword" type="password" name="passwordField" class="form-control" placeholder="请用英文字母、数字，6-16位均可">
+						<input id="inPassword" type="password" name="password" class="form-control" placeholder="请用英文字母、数字，6-16位均可">
 					</div>
 				</div>
 				<div class="form-group">

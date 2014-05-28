@@ -10,8 +10,9 @@ from database import  db_session
 from sqlalchemy.exc import IntegrityError
 from DoctorSpring.models import User,Patent,Doctor,Diagnose ,DiagnoseTemplate,Report
 from DoctorSpring.models import User,Comment,Message
-from DoctorSpring.util import result_status as rs,object2dict
+from DoctorSpring.util import result_status as rs,object2dict ,constant
 from DoctorSpring.util.constant import MessageUserType,Pagger
+
 
 import  data_change_service as dataChangeService
 import json
@@ -32,6 +33,13 @@ def addReport():
         report=Report(form.techDesc,form.imageDesc,form.diagnoseDesc,form.fileUrl,form.status)
         Report.save(report)
         #flash('成功添加诊断评论')
+        diagnose=Diagnose.getDiagnoseById(form.diagnoseId)
+        if diagnose and hasattr(diagnose,'doctor'):
+            doctor=diagnose.doctor
+            if doctor and doctor.userId:
+                content=dataChangeService.getDoctorNeedDiagnoseMessageContent(diagnose,doctor)
+                message=Message(constant.DefaultSystemAdminUserId,doctor.userId,'诊断通知',content,constant.MessageType.Diagnose)
+                Message.save(message)
         return json.dumps(formResult.__dict__,ensure_ascii=False)
     return json.dumps(formResult.__dict__,ensure_ascii=False)
 @diagnoseView.route('/doctor/report/update',  methods = ['GET', 'POST'])
@@ -55,4 +63,14 @@ def getReport(reportId):
          resultDict=resultStatus.__dict__
          return json.dumps(resultDict,ensure_ascii=False)
      return json.dumps(rs.NO_DATA,ensure_ascii=False)
+
+@diagnoseView.route('/diagnose/<int:diagnoseId>/detailInfo',  methods = ['GET', 'POST'])
+def getDiagnoseDetailInfo(diagnoseId):
+    diagnose=Diagnose.getDiagnoseById(diagnoseId)
+    if diagnose:
+        diagnoseResult=dataChangeService.getDiagnoseDetailInfo(diagnose)
+        resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnoseResult)
+        resultDict=resultStatus.__dict__
+        return json.dumps(resultDict,ensure_ascii=False)
+    return json.dumps(rs.NO_DATA,ensure_ascii=False)
 
