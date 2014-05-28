@@ -51,19 +51,7 @@ class DiagnoseForm1(Form):
         except Exception, e:
             return FAILURE
         return SUCCESS
-<<<<<<< HEAD
 
-class DiagnoseForm(Form):
-    patientname = TextField('patientname')
-    birthdate = TextField('birthdate')
-    phonenumber = TextField('phonenumber')
-    location = TextField('location')
-    patientname = TextField('patientname')
-    patientname = TextField('patientname')
-    patientname = TextField('patientname')
-    patientname = TextField('patientname')
-=======
->>>>>>> d63de41b2967f75b3e878bd2be836d1e4065cfb7
 
 class CommentsForm(Form):
     userId = IntegerField('userId', validators=[Required()])
@@ -141,6 +129,13 @@ class RegisterFormPatent(object):
     def __init__(self, args):
         self.name = args.get('name')
         self.password = args.get('password')
+
+        self.status=args.get('status')
+        self.techDesc=args.get('techDesc')
+        self.imageDesc=args.get('imageDesc')
+        self.diagnoseDesc=args.get('diagnoseDesc')
+        self.diagnoseId=args.get('diagnoseId')
+        self.fileUrl=args.get('fileUrl')
     def validate(self):
         try:
             if self.password is None:
@@ -155,24 +150,6 @@ class RegisterFormPatent(object):
                     failure = ResultStatus(FAILURE.status, "该用户已存在")
                     return failure
         except Exception, e:
-            return FAILURE
-        return SUCCESS
-        self.status=args.get('status')
-        self.techDesc=args.get('techDesc')
-        self.imageDesc=args.get('imageDesc')
-        self.diagnoseDesc=args.get('diagnoseDesc')
-        self.diagnoseId=args.get('diagnoseId')
-        self.fileUrl=args.get('fileUrl')
-    def validate(self):
-        try:
-            if self.reportId is None:
-                return FAILURE
-            if self.status is None:
-                return FAILURE
-            if self.diagnoseId is None:
-                return FAILURE
-
-        except Exception,e:
             return FAILURE
         return SUCCESS
 

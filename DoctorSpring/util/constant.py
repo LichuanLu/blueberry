@@ -50,7 +50,10 @@ class CommentType(object):
     Normal=1
 
 class MessageType(object):
-    pass
+    Normal=0
+    ThankNote=1
+    System=2
+    Diagnose=3
 class MessageUserType(object):
     user=0
     hospitalUser=1

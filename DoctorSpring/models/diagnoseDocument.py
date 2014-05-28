@@ -29,7 +29,8 @@ __author__ = 'chengc017'
 
 import sqlalchemy as sa
 from DoctorSpring.util.constant import Pagger,SystemTimeLimiter,DiagnoseStatus,ReportStatus,ReportType,\
-    SeriesNumberPrefix,SeriesNumberBase
+    SeriesNumberPrefix,SeriesNumberBase,ModelStatus
+from DoctorSpring.util import constant
 from datetime import datetime
 from database import Base,db_session as session
 from sqlalchemy.orm import relationship,backref
@@ -49,11 +50,8 @@ class Diagnose(Base):
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
     patientId  = sa.Column(sa.Integer,sa.ForeignKey('patient.id'))
     patient = relationship("Patient", backref=backref('diagnose', order_by=id))
-<<<<<<< HEAD
-
     diagnoseSeriesNumber=sa.Column(sa.String(256))
-=======
->>>>>>> d63de41b2967f75b3e878bd2be836d1e4065cfb7
+
 
     doctorId  = sa.Column(sa.Integer,sa.ForeignKey('doctor.id'))
     doctor = relationship("Doctor", backref=backref('diagnose', order_by=id))
@@ -308,23 +306,3 @@ class File(Base):
 
 
 
-
-'''
-    def __init__(self, title=title, content=content, origin_content=None,
-                 created_date=None, update_date=None):
-        self.title = title
-        self.content = content
-        self.update_date = update_date
-        if created_date == None:
-            self.created_date = time.time()
-        else:
-            self.created_date = created_date
-        if origin_content == None:
-            self.origin_content = content
-        else:
-            self.origin_content = origin_content
-
-
-    def __repr__(self):
-        return '<Post %s>' % (self.title)
-'''

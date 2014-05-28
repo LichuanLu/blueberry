@@ -11,7 +11,7 @@ from sqlalchemy.exc import IntegrityError
 from DoctorSpring.models import User,Patient,Doctor,Diagnose ,DiagnoseTemplate
 from DoctorSpring.models import User,Comment,Message ,UserFavorites
 from DoctorSpring.util import result_status as rs,object2dict,pdf_utils,constant
-from DoctorSpring.util.constant import MessageUserType,Pagger
+from DoctorSpring.util.constant import MessageUserType,Pagger,ReportType,ReportStatus
 
 import  data_change_service as dataChangeService
 import json

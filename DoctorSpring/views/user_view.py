@@ -60,62 +60,6 @@ def registerdoctorPage():
 
 
 @user_view.route('/register/doctor.json',  methods = ['GET', 'POST'])
-<<<<<<< HEAD
-def registerDoctor():
-    error = None
-    temp=request.form
-    form = RegisterForm(request.form, csrf_enabled=False)
-    print form.name.data
-    if request.method == "POST" and form.validate():
-        print form.username.data
-
-        new_user = User(form.username.data, form.password.data)
-        try:
-            db_session.add(new_user)
-            db_session.commit()
-            flash('Thanks for registering. Please login.')
-            db_session.flush()
-            new_patient = Patent(new_user.id)
-            db_session.add(new_patient)
-            db_session.commit()
-            return jsonify({'code': 0,  'message' : "success", 'data' : ""})
-        except IntegrityError:
-            error = 'Oh no! That username and/or email already exist. Please try again.'
-    else:
-        flash_errors(form)
-    return render_template('patientRegister.html', form=form, error=error)
-
-
-@user_view.route('/register/patient.json',  methods = ['GET', 'POST'])
-def register():
-    error = None
-    form = RegisterForm(request.form, csrf_enabled=False)
-    if request.method == "POST" and form.validate():
-        print form.name.data
-
-        new_user = User(form.name.data, form.password.data)
-        try:
-            db_session.add(new_user)
-            db_session.commit()
-            flash('Thanks for registering. Please login.')
-            db_session.flush()
-            new_patient = Patent(new_user.id)
-            db_session.add(new_patient)
-            db_session.commit()
-            return jsonify({'code': 0,  'message' : "success", 'data' : ""})
-        except IntegrityError:
-            error = 'Oh no! That username and/or email already exist. Please try again.'
-    else:
-        flash_errors(form)
-    return render_template('patientRegister.html', form=form, error=error)
-
-
-def flash_errors(form):
-    for field, errors in form.errors.items():
-        for error in errors:
-            flash(u"Error in the %s field - %s" % (
-                getattr(form, field).label.text,error), 'error')
-=======
 def register_doctor():
     form = RegisterFormDoctor(request.form)
     form_result = form.validate()
@@ -159,4 +103,3 @@ def login_session(user):
     session['username'] = User.get_name(user)
     session['userId'] = User.get_id(user)
     flash('注册成功，跳转至首页')
->>>>>>> d63de41b2967f75b3e878bd2be836d1e4065cfb7

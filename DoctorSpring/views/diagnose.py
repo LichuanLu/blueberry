@@ -8,7 +8,7 @@ from forms import LoginForm, RegisterForm ,CommentsForm ,MessageForm,ReportForm
 from DoctorSpring import lm
 from database import  db_session
 from sqlalchemy.exc import IntegrityError
-from DoctorSpring.models import User,Patent,Doctor,Diagnose ,DiagnoseTemplate,Report
+from DoctorSpring.models import User,Patient,Doctor,Diagnose ,DiagnoseTemplate,Report
 from DoctorSpring.models import User,Comment,Message
 from DoctorSpring.util import result_status as rs,object2dict ,constant
 from DoctorSpring.util.constant import MessageUserType,Pagger

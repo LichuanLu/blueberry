@@ -28,15 +28,12 @@ class User(Base):
     imagePath = sa.Column(sa.String(255))
     sex = sa.Column(sa.INTEGER)   # Location表ID
     phone = sa.Column(sa.INTEGER)
-<<<<<<< HEAD
-
     type=sa.Column(sa.Integer)  # 0:patent,1:doctor
     status = sa.Column(sa.INTEGER)  # 0:normal,1:delete,2:overdue
 
     def set_password(self, password):
         self.password = generate_password_hash(password)
 
-=======
     
     type=sa.Column(sa.Integer)  # 0:patent,1:doctor
     status = sa.Column(sa.INTEGER)  # 0:normal,1:delete,2:overdue
@@ -44,7 +41,7 @@ class User(Base):
     def set_password(self, password):
         self.password = generate_password_hash(password)
 
->>>>>>> d63de41b2967f75b3e878bd2be836d1e4065cfb7
+
     def check_password(self, password):
         return check_password_hash(self.password , password)
 
@@ -83,7 +80,7 @@ class User(Base):
         if userId is None or userId < 1:
             return
         return session.query(User).filter(User.id==userId,User.status==ModelStatus.Normal).first()
-<<<<<<< HEAD
+
 
     @classmethod
     def get_name(cls, user):
@@ -95,19 +92,6 @@ class User(Base):
         if user.email is not None:
             return user.email
 
-=======
-
-    @classmethod
-    def get_name(cls, user):
-        if user is None:
-            return ''
-        if user.name is not None:
-            return user.name
-
-        if user.email is not None:
-            return user.email
-
->>>>>>> d63de41b2967f75b3e878bd2be836d1e4065cfb7
         if user.phone is not None:
             return user.phone
 
