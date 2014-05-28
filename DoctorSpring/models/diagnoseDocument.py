@@ -55,7 +55,7 @@ class Diagnose(Base):
     pathologyId  = sa.Column(sa.Integer,sa.ForeignKey('pathology.id'))
     pathology = relationship("Pathology", backref=backref('diagnose', order_by=id))
 
-    reportId = sa.Column(sa.Integer)
+    reportId = sa.Column(sa.Integer,sa.ForeignKey('report.id'))
     report=relationship("Report", backref=backref('report', order_by=id))
 
     score = sa.Column(sa.Integer)
