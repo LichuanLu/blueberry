@@ -12,3 +12,4 @@ from .hospital import *
 from .skill import *
 from .doctor2skill import *
 from .location import *
+from .thanksNote import *

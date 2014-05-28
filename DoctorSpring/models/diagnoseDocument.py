@@ -159,7 +159,33 @@ class Diagnose(Base):
     def getDiagnoseById(cls,diagnoseId):
         if diagnoseId:
             return session.query(Diagnose).filter(Diagnose.id==diagnoseId,Diagnose.status!=DiagnoseStatus.Del).first()
+class DiagnoseLog(Base):
+    __tablename__ = 'diagnoseLog'
+    __table_args__ = {
+        'mysql_charset': 'utf8',
+    }
 
+    id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
+    userId = sa.Column(sa.Integer)
+    diagnoseId=sa.Column(sa.Integer)
+    action=sa.Column(sa.String(128))
+    createTime=sa.Column(sa.DateTime)
+    def __init__(self,userId,diagnoseId,action):
+        self.userId=userId
+        self.diagnoseId=diagnoseId
+        self.action=action
+        self.createTime=datetime.now()
+
+    @classmethod
+    def save(cls,session,diagnoseLog):
+        if diagnoseLog:
+            session.add(diagnoseLog)
+            session.commit()
+            session.flush()
+    @classmethod
+    def getDiagnoseLogByDiagnoseId(cls,session,diagnoseId):
+        if diagnoseId:
+            return session.query(DiagnoseLog).filter(DiagnoseLog.diagnoseId==diagnoseId).order_by(DiagnoseLog.createTime).all()
 
 class DiagnoseTemplate(Base):
     __tablename__ = 'diagnoseTemplate'
