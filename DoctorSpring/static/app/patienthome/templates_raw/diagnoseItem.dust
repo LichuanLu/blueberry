@@ -1,22 +1,32 @@
 <tr>
+	<td>{diagnosenumber}</td>
 	<td>{date}</td>
 	<td>{doctorName}</td>
 	<td>{patientName}</td>
-	<td>{section}</td>
-	<td>{status}</td>
+<!-- 	<td>{section}</td>
+ -->	{@if cond="'{statusId}' == '7'"}
+		<td>{status}  <a href="#{id}" class="warning"><span class="fui-question"></span></a></td>
+	{:else}
+		<td>{status}</td>
+	{/if}
 	<td class="action-group">
-		{@if cond="'{statusId}' == '1' || '{statusId}' == '2'"}
-		<a href="#">修改</a>
-		<a href="#">取消</a>
+		{@if cond="'{statusId}' == '1'"}
+			<a href="#">修改</a>
+			<a href="#">撤销</a>
 		{/if}
-		{@if cond="'{statusId}' == '3'"}
-		<a href="#">付费</a>
-		<a href="#">修改</a>
-		<a href="#">取消</a>
+		{@if cond="'{statusId}' == '7'"}
+			<a href="#">查看原因</a>
+			<a href="#">撤销</a>
+		{/if}
+		{@if cond="'{statusId}' == '2'"}
+			<a href="#">付费</a>
+			<a href="#">修改</a>
+			<a href="#">撤销</a>
 		{/if}
 		{@if cond="'{statusId}' == '6'"}
-		<a href="#">查看报告</a>
-		<a href="#">下载</a>
+			<a href="#">查看报告</a>
+			<a href="#">下载</a>
+			<a href="#">评价</a>
 		{/if}
 	</td>
 </tr>

@@ -1,74 +1,157 @@
-#doctorhome-content {
-  margin-bottom: 50px;
+.dropdown-arrow-inverse {
+  border-bottom-color: #34495e !important;
+  border-top-color: #34495e !important;
 }
-#doctorhome-content #new-diagnose-wrapper .header > div,
-#doctorhome-content #new-audit-wrapper .header > div {
+ul.message-list {
+  padding: 0;
+}
+ul.message-list li {
+  border-bottom: 1px solid #e4e4e4;
+  padding: 20px 0;
+  position: relative;
+}
+ul.message-list li .icon {
+  position: absolute;
+  left: 0;
+}
+ul.message-list li .icon img {
+  width: 50px;
+}
+ul.message-list li .top-wrapper {
+  margin-left: 65px;
+  position: relative;
+}
+ul.message-list li .top-wrapper .title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #000000;
+}
+ul.message-list li .top-wrapper .right-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+ul.message-list li .top-wrapper .right-content .date {
+  color: #666666;
+}
+ul.message-list li .message-content-wrapper {
+  margin-left: 65px;
+}
+ul.message-list li .message-content-wrapper p {
+  font-size: 15px;
+  color: #666666;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+#new-diagnose-wrapper .header > div,
+#new-audit-wrapper .header > div {
   position: relative;
   border-bottom: 1px solid #eaeaea;
   margin: 10px 15px 20px;
 }
-#doctorhome-content #new-diagnose-wrapper .header > div span,
-#doctorhome-content #new-audit-wrapper .header > div span {
+#new-diagnose-wrapper .header > div span,
+#new-audit-wrapper .header > div span {
   font-size: 13px;
   margin-right: 10px;
 }
-#doctorhome-content #new-diagnose-wrapper .header > div span.title,
-#doctorhome-content #new-audit-wrapper .header > div span.title {
+#new-diagnose-wrapper .header > div span.title,
+#new-audit-wrapper .header > div span.title {
   font-size: 20px;
   margin-right: 100px;
 }
-#doctorhome-content #new-diagnose-wrapper .header > div a,
-#doctorhome-content #new-audit-wrapper .header > div a {
+#new-diagnose-wrapper .header > div a,
+#new-audit-wrapper .header > div a {
   position: absolute;
   right: 70px;
   top: 6px;
 }
-#doctorhome-content #new-diagnose-wrapper .header > div a.close-link,
-#doctorhome-content #new-audit-wrapper .header > div a.close-link {
+#new-diagnose-wrapper .header > div a.close-link,
+#new-audit-wrapper .header > div a.close-link {
   right: 20px;
 }
-#doctorhome-content #new-diagnose-wrapper .form-group label,
-#doctorhome-content #new-audit-wrapper .form-group label {
+#new-diagnose-wrapper .form-group label,
+#new-audit-wrapper .form-group label {
   font-size: 14px;
 }
-#doctorhome-content #new-diagnose-wrapper .form-group .submit-btn,
-#doctorhome-content #new-audit-wrapper .form-group .submit-btn {
+#new-diagnose-wrapper .form-group .submit-btn,
+#new-audit-wrapper .form-group .submit-btn {
   margin-right: 10px;
 }
-#doctorhome-content #new-audit-wrapper #exists-diagnose-wrapper {
+#new-audit-wrapper #exists-diagnose-wrapper {
   margin-bottom: 50px;
 }
-#doctorhome-content #new-audit-wrapper #exists-diagnose-wrapper #auditText {
+#new-audit-wrapper #exists-diagnose-wrapper #auditText {
   height: 150px;
 }
-#doctorhome-content #new-audit-wrapper #exists-diagnose-wrapper .form-group p {
+#new-audit-wrapper #exists-diagnose-wrapper .form-group p {
   font-size: 15px;
   padding-top: 10px;
 }
-#doctorhome-content #new-diagnose-wrapper {
+#new-diagnose-wrapper {
   margin-bottom: 50px;
 }
-#doctorhome-content #new-diagnose-wrapper .content {
+#new-diagnose-wrapper .content {
   position: relative;
 }
-#doctorhome-content #new-diagnose-wrapper .content .tree-title {
+#new-diagnose-wrapper .content .patient-info {
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 20px;
+}
+#new-diagnose-wrapper .content .patient-info > div {
+  line-height: 2.4;
+}
+#new-diagnose-wrapper .content .patient-info > div span {
+  color: #808080;
+}
+#new-diagnose-wrapper .content .patient-info > div span.head {
+  color: #000000;
+  font-weight: 700;
+  margin-right: 5px;
+}
+#new-diagnose-wrapper .content .patient-info > div p {
+  color: #808080;
+  margin: 0;
+  font-size: 13px;
+  display: inline-block;
+}
+#new-diagnose-wrapper .content .tree-top {
+  position: relative;
+  margin-top: 20px;
+  height: 30px;
+}
+#new-diagnose-wrapper .content .tree-title {
   font-size: 14px;
   position: absolute;
-  left: 20px;
+  left: 0px;
   top: 0px;
 }
-#doctorhome-content #new-diagnose-wrapper .content .load-template-btn {
+#new-diagnose-wrapper .content .load-template-btn {
   position: absolute;
-  left: 190px;
+  right: 0;
+  top: -2px;
 }
-#doctorhome-content #new-diagnose-wrapper .content #tree {
-  margin-top: 30px;
+#new-diagnose-wrapper .content #tree {
+  margin-top: 0px;
 }
-#doctorhome-content #new-diagnose-wrapper .content #imageDes {
+#new-diagnose-wrapper .content #imageDes {
   height: 200px;
 }
-#doctorhome-content #new-diagnose-wrapper .content #diagnoseResult {
+#new-diagnose-wrapper .content #diagnoseResult {
   height: 200px;
+}
+#doctorhome-content {
+  margin-bottom: 50px;
+}
+#doctorhome-content .side-title {
+  font-weight: 500;
+  font-size: 17px;
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  margin-bottom: 10px;
 }
 #doctorhome-content .content-wrapper {
   border: 1px solid #eaeaea;
@@ -86,6 +169,9 @@
 }
 #doctorhome-content .content-head-wrapper h6 {
   margin: 0;
+}
+#doctorhome-content .content-head-wrapper h6 i {
+  margin-right: 10px;
 }
 #doctorhome-content .left-menu {
   display: inline-block;
@@ -150,8 +236,21 @@
   margin-bottom: 20px;
   margin-top: 20px;
 }
+#doctorhome-content #doctor-action-content .form-inline .form-group {
+  margin-right: 10px;
+}
+#doctorhome-content #doctor-action-content .form-inline .form-group .select .btn {
+  width: 120px;
+}
 #doctorhome-content #doctor-action-content .form-inline .form-group label {
   margin-right: 10px;
+}
+#doctorhome-content #doctor-action-content .form-inline .form-group .input-wrapper {
+  display: inline-block;
+  width: 150px;
+}
+#doctorhome-content #doctor-action-content .form-inline .form-group .input-wrapper .input-group .btn {
+  padding-top: 7px;
 }
 #doctorhome-content #doctor-action-content .form-inline .submit-btn {
   margin-bottom: 9px;

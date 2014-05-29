@@ -13,7 +13,13 @@ dust.helpers['pager'] = function(chunk, context, bodies, params) {
   var html = '';
   for(var i = first; i <= last; i++) {
     //I used a replace and placeholder - prob other methods you can use
-    html += ('<a href="#">' + i +'</a>');
+    if( i == first){
+          html += ('<li class="active"><a href="#">' + i +'</a></li>');
+
+    }else{
+          html += ('<li><a href="#">' + i +'</a></li>');
+
+    }
 
     // if(url){
     //   html += '<a href="' + url.replace('%page%', i) + '">' + i '</a>';

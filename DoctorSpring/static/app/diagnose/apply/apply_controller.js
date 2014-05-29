@@ -1,24 +1,10 @@
-define(['lodash', 'config/base/constant', 'config/controllers/_base_controller', 'diagnose/apply/apply_view', 'utils/reqcmd', 'entities/doctorEntity'], function(Lodash, CONSTANT, BaseController, View, ReqCmd, DoctorEntity) {
+define(['lodash', 'config/base/constant', 'config/controllers/_base_controller', 'diagnose/apply/apply_view', 'utils/reqcmd', 'entities/doctorEntity', 'entities/patientEntity', 'entities/pathologyEntity'], function(Lodash, CONSTANT, BaseController, View, ReqCmd, DoctorEntity, PatientEntity, PathologyEntity) {
 	// body...
 	"use strict";
 	var ShowController = BaseController.extend({
 		initialize: function() {
 
-			this.layoutView = this.getApplyDiagnosePageLayoutView();
-			this.modalView = this.getSelectDoctorModalView();
 
-
-			this.show(this.layoutView, {
-				name: "applyDiagnosePageLayoutView",
-				//as bindAll this,so don't need that
-				instance: this
-			});
-
-			this.show(this.modalView, {
-				name: "selectDoctorModalView",
-				//as bindAll this,so don't need that
-				instance: this
-			});
 
 			ReqCmd.commands.setHandler("selectDoctorModalView:attached", Lodash.bind(function(instance) {
 				console.log("attached end");
@@ -99,14 +85,73 @@ define(['lodash', 'config/base/constant', 'config/controllers/_base_controller',
 
 
 			//recommanded doctor
-			ReqCmd.commands.setHandler("selectDoctorItemView:chooseDoctor",Lodash.bind(function(model) {
+			ReqCmd.commands.setHandler("selectDoctorItemView:chooseDoctor", Lodash.bind(function(model) {
 				console.log("SelectDoctorItemView:chooseDoctor");
 				this.recommandedDoctorView.model = model;
 				this.recommandedDoctorView.render();
 			}, this));
 
 
+			//get already exit patient profile
+			ReqCmd.commands.setHandler("initPatientProfile:ApplyDiagnosePageLayoutView", Lodash.bind(function(params) {
+				this.patientProfileModel = PatientEntity.API.getPatientProfile(params);
+				this.patientProfileView = this.getPatientProfileView(this.patientProfileModel);
+				this.show(this.patientProfileView, {
+					region: this.layoutView.patientProfileRegion,
+					client: true
+				});
 
+
+			}, this));
+
+
+			//get already exit dicom info from pathology
+			ReqCmd.commands.setHandler("initDicomInfo:ApplyDiagnosePageLayoutView", Lodash.bind(function(params) {
+				this.dicomInfoModel = PathologyEntity.API.getDicomInfo(params);
+				this.dicomInfoView = this.getDicomInfoView(this.dicomInfoModel);
+				this.show(this.dicomInfoView, {
+					region: this.layoutView.dicomInfoRegion,
+					client: true
+				});
+
+
+			}, this));
+
+			//get pathology list for select
+			ReqCmd.commands.setHandler("initPathologySelect:ApplyDiagnosePageLayoutView", Lodash.bind(function(params) {
+				this.pathologyCollection = PathologyEntity.API.getPathologyList(params);
+				this.pathologyCollectionViewForDicom = this.getPathologyCollectionView(this.pathologyCollection,'#dicom-already-exists-select');
+				this.show(this.pathologyCollectionViewForDicom, {
+					region: this.layoutView.dicomAlreadyExistsSelect,
+					client: true
+				});
+
+				this.pathologyCollectionViewForHistory = this.getPathologyCollectionView(this.pathologyCollection,'#history-already-exists-select');
+				this.show(this.pathologyCollectionViewForHistory, {
+					region: this.layoutView.historyAlreadyExistsSelect,
+					client: true
+				});
+
+
+			}, this));
+
+
+
+			this.layoutView = this.getApplyDiagnosePageLayoutView();
+			this.modalView = this.getSelectDoctorModalView();
+
+
+			this.show(this.layoutView, {
+				name: "applyDiagnosePageLayoutView",
+				//as bindAll this,so don't need that
+				instance: this
+			});
+
+			this.show(this.modalView, {
+				name: "selectDoctorModalView",
+				//as bindAll this,so don't need that
+				instance: this
+			});
 			console.log('follow controller init end');
 
 		},
@@ -129,8 +174,26 @@ define(['lodash', 'config/base/constant', 'config/controllers/_base_controller',
 		getRecommandedDoctorView: function(model) {
 			console.dir(model);
 			return new View.SelectDoctorItemView({
-				model:model
+				model: model
 			});
+		},
+		getPatientProfileView: function(model) {
+			return new View.PatientProfileView({
+				model: model
+			});
+		},
+		getDicomInfoView: function(model) {
+			return new View.DicomInfoView({
+				model: model
+			});
+		},
+		getPathologyCollectionView: function(collection,el) {
+			var view = new View.PathologyCollectionView({
+				collection: collection,
+				itemView: View.PathologyItemView,
+				el:el
+			});
+			return view;
 		}
 
 	});

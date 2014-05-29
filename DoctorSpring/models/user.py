@@ -24,7 +24,6 @@ class User(Base):
     password = sa.Column(sa.String(255))
     address = sa.Column(sa.String(255))
     email = sa.Column(sa.String(64))
-    mobile = sa.Column(sa.String(32))
     imagePath = sa.Column(sa.String(255))
     sex = sa.Column(sa.INTEGER)   # Location表ID
     phone = sa.Column(sa.INTEGER)

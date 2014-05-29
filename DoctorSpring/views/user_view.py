@@ -40,6 +40,7 @@ def login():
         if user is not None:
             login_session(user)
             #return jsonify(formResult.__dict__)
+    formResult.msg = request.host_url + "homepage"
     return jsonify(formResult.__dict__)
 
 @user_view.route('/logout')
@@ -47,8 +48,7 @@ def logout():
     session['logged_in'] = False
     session['username'] = ''
     logout_user()
-    return render_template("home.html")
-
+    return redirect('/homepage')
 
 @user_view.route('/register/patient',  methods = ['GET', 'POST'])
 def register_patient_page():
@@ -63,7 +63,6 @@ def registerdoctorPage():
 def register_doctor():
     form = RegisterFormDoctor(request.form)
     form_result = form.validate()
-
     if form_result.status == rs.SUCCESS.status:
         new_user = User(form.username, form.password)
         new_user.email = form.email
@@ -73,7 +72,6 @@ def register_doctor():
         new_doctor = Doctor(new_user.id)
         new_doctor.identityPhone = form.identity_phone
         Doctor.save(new_doctor)
-
         login_session(new_user)
 
         #return jsonify(form_result.__dict__)

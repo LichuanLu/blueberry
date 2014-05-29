@@ -46,11 +46,14 @@ define(["backbone", "marionette", "config/base/constant", "utils/reqcmd"], funct
 			}
 			var diagnoseCollection = new DiagnoseCollection();
 			diagnoseCollection.url = "/diagnose/list";
+			if (typeof params === 'object') {
+				params = $.param(params);
+			}
 			diagnoseCollection.fetch({
 				success: function() {
 					console.log("fetch success");
 				},
-				data: $.param(params)
+				data: params
 			});
 
 			return diagnoseCollection
@@ -69,7 +72,68 @@ define(["backbone", "marionette", "config/base/constant", "utils/reqcmd"], funct
 			});
 
 			return diagnoseModel
+		},
+		getAdminAllDiagnose: function(params,collection) {
+			if (!params) {
+				params = {};
+			}
+			if (typeof params === 'object') {
+				params = $.param(params);
+			}
+			if (collection) {
+				collection.reset();
+				collection.fetch({
+					success: function() {
+						console.log("fetch success");
+					},
+					data: params
+				});
+				return
+			} else {
+				var diagnoseCollection = new DiagnoseCollection();
+				diagnoseCollection.url = "/admin/diagnose/list/all";
+				diagnoseCollection.fetch({
+					success: function() {
+						console.log("fetch success");
+					},
+					data: params
+				});
+			}
+
+			return diagnoseCollection
+		},
+		getAdminMyDiagnose: function(params, collection) {
+			if (!params) {
+				params = {};
+			}
+			if (typeof params === 'object') {
+				params = $.param(params);
+			}
+			if (collection) {
+				collection.reset();
+				collection.fetch({
+					success: function() {
+						console.log("fetch success");
+					},
+					data: params
+				});
+				return
+			} else {
+				var diagnoseCollection = new DiagnoseCollection();
+				diagnoseCollection.url = "/admin/diagnose/list/my";
+				diagnoseCollection.fetch({
+					success: function() {
+						console.log("fetch success");
+					},
+					data: params
+				});
+
+			}
+
+
+			return diagnoseCollection
 		}
+
 	};
 
 	return {

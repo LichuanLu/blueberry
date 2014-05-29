@@ -15411,7 +15411,7 @@ define('project_setup/show/show_view',['lodash','marionette', 'templates','dust'
 			data.productName = this.ui.inProductName.val();
 			//console.log(StringUtil.(data.productName));
 
-			data.codeName = this.ui.inCodeName.val();
+			data.statusName = this.ui.inCodeName.val();
 			data.versionNum = this.ui.inProductVersion.val();
 			data.restrict = this.ui.inRestrict.is(':checked');
 			data.displayName = this.ui.inDisName.val();

@@ -20,7 +20,6 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 		},
 
 		submitForm: function(e) {
-			// body...
 			e.preventDefault();
 			// if ($('#register-form').valid()) {
 			var data = this.validate();
@@ -34,11 +33,13 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 					dataType: 'json',
 					type: 'POST',
 					success: function(data) {
-						if (data.code != 0) {
+						if (data.status != 0) {
 							this.onError(data);
 
 						} else {
 							// this.resetForm();
+							console.log("msg:"+data.msg);
+							this.reLocation(data.msg);
 							Messenger().post({
 								message: 'SUCCESS. Product import started. Check back periodically.',
 								type: 'success',
@@ -52,14 +53,14 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 					onError: function(res) {
 						this.resetForm(true);
 						//var error = jQuery.parseJSON(data);
-						if (typeof res.message !== 'undefined') {
+						if (typeof res.msg !== 'undefined') {
 							Messenger().post({
-								message: "%ERROR_MESSAGE:" + res.message,
+								message: "%ERROR_MESSAGE:" + res.msg,
 								type: 'error',
 								showCloseButton: true
 							});
 						}
-						//alert("%ERROR_CODE_" + data.code + ",%ERROR_MESSAGE_" + data.message);
+						//alert("%ERROR_CODE_" + data.status + ",%ERROR_MESSAGE_" + data.message);
 
 						//allowSubmit = true;
 					},
@@ -85,6 +86,14 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 						// 	//$("#inRestrict")
 
 						// }
+					},
+					reLocation: function(locationData) {
+
+						if (locationData != null) {
+							window.location.replace(locationData);
+						} else {
+							window.location.reload();
+						}
 					}
 				});
 

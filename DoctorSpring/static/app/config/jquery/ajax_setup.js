@@ -15,10 +15,10 @@ require(['messenger', 'messenger-theme-future'], function() {
             //     xhr.setRequestHeader("Accept", "application/vnd.ctt-com.adobe.globalization+json;version=1");
             //     xhr.setRequestHeader("Content-Type", "application/vnd.ctt-com.adobe.globalization+json;version=1");
             // }
-            if (settings.url.indexOf("/rest/loginService") != -1 || settings.url.indexOf("/api/") != -1 || settings.url.indexOf("/manage/setup/product") != -1) {
-                xhr.setRequestHeader("Accept", "application/json");
-                xhr.setRequestHeader("Content-Type", "application/json");
-            }
+            // if (settings.url.indexOf("/rest/loginService") != -1 || settings.url.indexOf("/api/") != -1 || settings.url.indexOf("/manage/setup/product") != -1) {
+            //     xhr.setRequestHeader("Accept", "application/json");
+            //     xhr.setRequestHeader("Content-Type", "application/json");
+            // }
         },
         error: function(data) {
             var error;

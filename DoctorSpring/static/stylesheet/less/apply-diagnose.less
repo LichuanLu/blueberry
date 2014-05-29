@@ -150,11 +150,16 @@
 			display: inline-block;
 			vertical-align: middle;
 			width: 100%;
+			.btn-group{
+				width: 100%;
+				max-width: 400px;
+			}
 			.checkbox-wrapper {
 				width: 400px;
 				display: inline-block;
 				vertical-align: middle;
 			}
+			
 		}
 
 
@@ -232,9 +237,32 @@
 		}
 		#patient-already-exists{
 			padding-top: 20px;
+			#patient-already-profile-region{
+			}
 		}
 
-	
+		.patient-info{
+					border-bottom: 1px solid #eaeaea;
+					padding-bottom: 20px;
+					padding-left: 10px;
+					>div{
+						line-height: 2.4;
+						span{
+							color: #808080;
+							&.head{
+								color: #000000;
+								font-weight: 700;
+								margin-right: 5px;
+							}
+						}
+						p{
+							color: #808080;
+							margin: 0;
+							font-size: 13px;
+							display: inline-block;
+						}
+					}
+		}
 
 
 	}

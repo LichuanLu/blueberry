@@ -1,4 +1,4 @@
-define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarionette', "bootstrap", 'bootstrap.select', 'bootstrap-treeview'], function(ReqCmd, Lodash, Marionette, Templates) {
+define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarionette', "bootstrap", 'bootstrap.select', 'bootstrap-treeview', 'flat_ui_custom'], function(ReqCmd, Lodash, Marionette, Templates) {
 	// body...
 	"use strict";
 	var DoctorHomePageLayoutView = Marionette.Layout.extend({
@@ -13,7 +13,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 		el: "#doctorhome-content",
 		ui: {
 			"doctorActionLinks": "#doctor-actions ul a",
-			"headerTitle":"#doctor-action-header h6"
+			"headerTitle": "#doctor-action-header h6"
 
 		},
 		events: {
@@ -41,7 +41,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 			var titleText = $target.find('.nav-text').html();
 			//console.log(iconClass+','+text);
 			//console.dir(this.ui);
-			this.ui.headerTitle.html("<i class='"+iconClass+"'></i><span>"+titleText+"</span>");
+			this.ui.headerTitle.html("<i class='" + iconClass + "'></i><span>" + titleText + "</span>");
 
 		}
 
@@ -56,6 +56,30 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 				style: 'btn-sm btn-primary'
 			});
 
+			var $datepickerSelector = $("#startDateinput,#endDateinput");
+			$datepickerSelector.each(function() {
+				$(this).datepicker({
+					showOtherMonths: true,
+					selectOtherMonths: true,
+				}).prev('.btn').on('click', function(e) {
+					e && e.preventDefault();
+					$(this).focus();
+				});
+				$.extend($.datepicker, {
+					_checkOffset: function(inst, offset, isFixed) {
+						return offset
+					}
+				});
+
+				// Now let's align datepicker with the prepend button
+				$(this).datepicker('widget').css({
+					'margin-left': -$(this).prev('.input-group-btn').find('.btn').outerWidth()
+				});
+
+			});
+
+
+
 		},
 		ui: {
 			"submitBtn": "#doctor-action-content .submit-btn",
@@ -68,7 +92,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 		itemViewContainer: "#diagnose-tbody",
 		searchDiagnose: function(e) {
 			e.preventDefault();
-			ReqCmd.commands.execute("DiagnoseListView:searchDiagnose", this.ui.typeSelect.val());
+			ReqCmd.commands.execute("DiagnoseListView:searchDiagnose", $('#doctor-action-content').find('.form-inline').serialize());
 		}
 
 	});
@@ -91,9 +115,9 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 		},
 		actionHandler: function(e) {
 			var statusId = this.model.get('statusId');
-			if(statusId != 6){
+			if (statusId != 6) {
 				e.preventDefault();
-				ReqCmd.commands.execute("DiagnoseTableItemView:actionHandler",this.model);
+				ReqCmd.commands.execute("DiagnoseTableItemView:actionHandler", this.model);
 			}
 
 		}
@@ -101,7 +125,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 
 	});
 
-
+	//manage account view
 	var AccountManageLayoutView = Marionette.ItemView.extend({
 		initialize: function() {
 			console.log("AccountManageLayoutView init");
@@ -137,6 +161,31 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 		}
 	});
 
+
+	//consult  view
+	var ConsultLayoutView = Marionette.ItemView.extend({
+		initialize: function() {
+			console.log("ConsultLayoutView init");
+
+		},
+		template: "doctorConsultLayout",
+		ui: {
+
+		},
+		events: {
+		},
+		onRender: function() {
+		},
+		onShow: function() {
+			var $this = $(this);
+			console.dir($('#accountTab a'));
+			$('#consultTab a').click(function(e) {
+				e.preventDefault();
+				$(this).tab('show');
+			});
+		}
+	});
+
 	var NewDiagnoseLayoutView = Marionette.ItemView.extend({
 		initialize: function() {
 			console.log("init NewDiagnoseLayoutView");
@@ -150,7 +199,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 			"diagnoseResultTextArea": "#diagnoseResult",
 			"closeLink": ".close-link",
 			"submitDiagnoseBtn": '.submit-btn',
-			"techDesTextArea":"#techDes"
+			"techDesTextArea": "#techDes"
 		},
 		events: {
 			"click @ui.loadTemplateBtn": "loadTemplate",
@@ -166,22 +215,22 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 			var targetId = $target.attr("id");
 			//console.log(targetId);
 			var type;
-			if(targetId === 'saveDiagnoseBtn'){
+			if (targetId === 'saveDiagnoseBtn') {
 				type = 0;
-			}else if(targetId === 'previewDiagnoseBtn'){
+			} else if (targetId === 'previewDiagnoseBtn') {
 				type = 1;
-			}else if(targetId === 'submitDiagnoseBtn'){
+			} else if (targetId === 'submitDiagnoseBtn') {
 				type = 2;
 			}
-			if(type !== 'undefined'){
-				var data = $('#new-diagnose-form').serialize()+"&type="+type+"&diagnoseId="+this.model.get('id');
+			if (type !== 'undefined') {
+				var data = $('#new-diagnose-form').serialize() + "&type=" + type + "&diagnoseId=" + this.model.get('id');
 				$.ajax({
 					url: '/doctor/diagnose/create',
 					data: data,
 					dataType: 'json',
 					type: 'POST',
 					success: function(data) {
-						if (data.code != 0) {
+						if (data.status != 0) {
 							this.onError(data);
 
 						} else {
@@ -195,9 +244,9 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 					onError: function(res) {
 						this.resetForm();
 						//var error = jQuery.parseJSON(data);
-						if (typeof res.message !== 'undefined') {
+						if (typeof res.msg !== 'undefined') {
 							Messenger().post({
-								message: "%ERROR_MESSAGE:" + res.message,
+								message: "%ERROR_MESSAGE:" + res.msg,
 								type: 'error',
 								showCloseButton: true
 							});
@@ -207,7 +256,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 				});
 
 			}
-			
+
 
 		},
 		onRender: function() {
@@ -234,7 +283,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 					dataType: 'json',
 					type: 'GET',
 					success: function(data) {
-						if (data.code != 0) {
+						if (data.status != 0) {
 							this.onError(data);
 
 						} else {
@@ -250,9 +299,9 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 					onError: function(res) {
 						this.resetForm();
 						//var error = jQuery.parseJSON(data);
-						if (typeof res.message !== 'undefined') {
+						if (typeof res.msg !== 'undefined') {
 							Messenger().post({
-								message: "%ERROR_MESSAGE:" + res.message,
+								message: "%ERROR_MESSAGE:" + res.msg,
 								type: 'error',
 								showCloseButton: true
 							});
@@ -364,30 +413,29 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 			"click @ui.closeLink": "closeRegion",
 			"click @ui.submitAuditBtn": "submitAudit"
 		},
-		editFormHandler: function(e) {
-		},
+		editFormHandler: function(e) {},
 		submitAudit: function(e) {
 			e.preventDefault();
 			var $target = $(e.target);
 			var targetId = $target.attr("id");
 			//console.log(targetId);
 			var type;
-			if(targetId === 'saveAuditBtn'){
+			if (targetId === 'saveAuditBtn') {
 				type = 0;
-			}else if(targetId === 'previewAuditBtn'){
+			} else if (targetId === 'previewAuditBtn') {
 				type = 1;
-			}else if(targetId === 'submitAuditBtn'){
+			} else if (targetId === 'submitAuditBtn') {
 				type = 2;
 			}
-			if(type !== 'undefined'){
-				var data = $('#new-audit-form').serialize()+"&type="+type+"&diagnoseId="+this.model.get('id');
+			if (type !== 'undefined') {
+				var data = $('#new-audit-form').serialize() + "&type=" + type + "&diagnoseId=" + this.model.get('id');
 				$.ajax({
 					url: '/doctor/audit/create',
 					data: data,
 					dataType: 'json',
 					type: 'POST',
 					success: function(data) {
-						if (data.code != 0) {
+						if (data.status != 0) {
 							this.onError(data);
 
 						} else {
@@ -401,9 +449,9 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 					onError: function(res) {
 						this.resetForm();
 						//var error = jQuery.parseJSON(data);
-						if (typeof res.message !== 'undefined') {
+						if (typeof res.msg !== 'undefined') {
 							Messenger().post({
-								message: "%ERROR_MESSAGE:" + res.message,
+								message: "%ERROR_MESSAGE:" + res.msg,
 								type: 'error',
 								showCloseButton: true
 							});
@@ -413,7 +461,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 				});
 
 			}
-			
+
 
 		},
 		closeRegion: function(e) {
@@ -422,6 +470,29 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 		}
 	});
 
+	var MessageLayoutView = Marionette.Layout.extend({
+		initialize: function() {
+			console.log("MessageLayoutView init");
+
+		},
+		template: "doctorMessageLayout",
+		ui: {},
+		regions: {
+			"unReadMessageRegion": "#unread-message-region",
+			"readMessageRegion": "#read-message-region"
+		},
+		events: {},
+		onRender: function() {},
+		onShow: function() {
+			var $this = $(this);
+			console.dir($('#messageTab a'));
+			$('#messageTab a').click(function(e) {
+				e.preventDefault();
+				$(this).tab('show');
+			});
+			ReqCmd.reqres.request('showMessageList:MessageLayoutView');
+		}
+	});
 
 	return {
 		DoctorHomePageLayoutView: DoctorHomePageLayoutView,
@@ -429,6 +500,8 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 		DiagnoseTableItemView: DiagnoseTableItemView,
 		AccountManageLayoutView: AccountManageLayoutView,
 		NewDiagnoseLayoutView: NewDiagnoseLayoutView,
-		NewAuditLayoutView:NewAuditLayoutView
+		NewAuditLayoutView: NewAuditLayoutView,
+		MessageLayoutView: MessageLayoutView,
+		ConsultLayoutView:ConsultLayoutView
 	}
 });

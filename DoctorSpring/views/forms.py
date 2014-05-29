@@ -52,6 +52,30 @@ class DiagnoseForm1(Form):
             return FAILURE
         return SUCCESS
 
+class DiagnoseForm2(Form):
+    # patientlocation=1&patientlocation=2&dicomtype=1&fileurl=http%3A%2F%2F127.0.0.1%3A5000%2Fstatic%2Ftmp%2Flogin.html
+    patientlocation = None
+    dicomtype = None
+    fileurl = None
+    def __init__(self, args):
+        self.patientlocation = args.get('patientlocation')
+        self.dicomtype = args.get('dicomtype')
+        self.fileurl = args.get('fileurl')
+    def validate(self):
+        try:
+            if self.patientlocation is None:
+                failure = ResultStatus(FAILURE.status, "请选择就诊部位")
+                return failure
+            if self.dicomtype is None:
+                failure = ResultStatus(FAILURE.status, "请选择影像类型")
+                return failure
+            if self.fileurl is None:
+                failure = ResultStatus(FAILURE.status, "请上传有效的影音文件")
+                return failure
+        except Exception, e:
+            return FAILURE
+        return SUCCESS
+
 class CommentsForm(Form):
     userId = IntegerField('userId', validators=[Required()])
     receiverId=IntegerField('receiverId', validators=[Required()])
@@ -171,7 +195,6 @@ class UserFavortiesForm(object):
         self.type=args.get('type')
         if args.has('doctorId'):
             self.doctorId=args.get('doctorId')
-
         if args.has('hospitalId'):
             self.hospitalId=args.get('hospitalId')
         if args.has('docId'):
@@ -188,6 +211,7 @@ class UserFavortiesForm(object):
         except Exception,e:
             return FAILURE
         return SUCCESS
+
 class PatientUpdateForm(object):
     userId=None
     patientId=None
@@ -245,4 +269,30 @@ class RegisterFormDoctor(object):
                     return failure
         except Exception, e:
             return FAILURE
+        return SUCCESS
+
+class DoctorList(Form):
+    # /doctors/list.json?hospitalId=1&sectionId=0&doctorname=ddd&pageNumber=1&pageSize=6
+    hospitalId = None
+    sectionId = None
+    doctorname = None
+    pageNumber = None
+    pageSize = None
+    def __init__(self, args):
+        self.hospitalId = args.get('hospitalId')
+        self.sectionId = args.get('sectionId')
+        self.doctorname = args.get('doctorname')
+        self.pageNumber = args.get('pageNumber')
+        self.pageSize = args.get('pageSize')
+    def validate(self):
+        if self.hospitalId is None:
+            self.hospitalId = 0
+        if self.sectionId is None:
+            self.sectionId = 0
+        if self.doctorname is None:
+            self.doctorname = ''
+        if self.pageNumber is None:
+            self.pageNumber = 1
+        if self.pageSize is None:
+            self.pageSize = 6
         return SUCCESS

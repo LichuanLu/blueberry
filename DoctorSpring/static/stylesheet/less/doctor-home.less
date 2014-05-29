@@ -1,91 +1,19 @@
 @import "variables";
+@import "message";
+@import "diagnose-wrapper";
 
 #doctorhome-content{
 	margin-bottom: 50px;
-
-	#new-diagnose-wrapper,#new-audit-wrapper{
-		.header{
-			>div{
-				position: relative;
-				border-bottom: 1px solid #eaeaea;
-				margin: 10px 15px 20px;
-				span{
-					font-size: 13px;
-					margin-right: 10px;
-					&.title{
-						font-size: 20px;
-						margin-right: 100px;
-
-					}
-				}
-				a{
-					&.close-link{
-						right: 20px;
-					}
-
-
-					position: absolute;
-					right: 70px;
-					top: 6px;
-
-				}
-			}
-		}
-		
-		.form-group{
-			label{
-						font-size: 14px;
-				}
-			.submit-btn{
-						margin-right: 10px;
-				}
-		}
-		
-		
-	}
-	#new-audit-wrapper{
-		#exists-diagnose-wrapper{
-			margin-bottom: 50px;
-			#auditText{
-				height: 150px;
-			}
-			.form-group{
-				p{
-					font-size: 15px;
-					padding-top: 10px;
-				}
-			}
-		}
+	.side-title{
+		font-weight: 500;
+		font-size: 17px;
+		width: 100%;
+		text-align: center;
+		display: inline-block;
+		margin-bottom: 10px;
 	}
 
-	#new-diagnose-wrapper{
-		margin-bottom: 50px;
 
-		.content{
-			position: relative;
-			//border-bottom: 1px solid #eaeaea;
-			.tree-title{
-				font-size: 14px;
-				position: absolute;
-				left: 20px;
-				top: 0px;
-			}
-			.load-template-btn{
-				position: absolute;
-				left: 190px;
-			}
-			#tree{
-				margin-top: 30px;
-			}
-			
-			#imageDes{
-				height: 200px;
-			}
-			#diagnoseResult{
-				height: 200px;
-			}
-		}
-	}
 
 	.content-wrapper{
 		border: 1px solid #eaeaea;
@@ -105,6 +33,9 @@
 		padding: 20px 0 0 20px;
 		h6{
 			margin: 0;
+			i{
+				margin-right: 10px;
+			}
 		}
 	}
 	.left-menu{
@@ -177,8 +108,23 @@
 			margin-bottom: 20px;
 			margin-top: 20px;
 			.form-group{
+				margin-right: 10px;
+				.select{
+					.btn{
+						width: 120px;
+					}
+				}
 				label{
 					margin-right: 10px;
+				}
+				.input-wrapper{
+					display: inline-block;
+					width: 150px;
+					.input-group{
+						.btn{
+							padding-top: 7px;
+						}
+					}
 				}
 			}
 			.submit-btn{

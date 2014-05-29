@@ -3,9 +3,7 @@
   <li class="previous">
     <a href="#">向前</a>
   </li>
-  <li class="page-number">
   	{@pager first="1" last="{pageNumber}"/}
-  </li>
   <li class="next">
     <a href="#">向后</a>
   </li>

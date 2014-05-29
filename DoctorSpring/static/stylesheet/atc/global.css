@@ -10,8 +10,29 @@ html {
   height: 100%;
   padding: 0;
 }
+body.doctor-site {
+  background-color: #3a92c8;
+  background: radial-gradient(circle, #94d2f8, #3a92c8);
+}
+body.doctor-site #header-region {
+  min-height: 0;
+  margin-top: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+body.doctor-site #header-region .logo {
+  background: url(http://az382497.vo.msecnd.net/images/doctor_logo.png) no-repeat;
+  display: block;
+  height: 35px;
+}
+body.doctor-site #header-region .unlogin-group,
+body.doctor-site #header-region .login-group {
+  padding-bottom: 8px;
+}
+body.doctor-site > .container {
+  margin-top: 30px;
+}
 body {
-  font-family: "Avenir", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "宋体", Arial, Verdana, sans-serif;
   font-size: 14px;
   background-color: #fcfcfc;
 }
@@ -19,6 +40,14 @@ body {
   body {
     padding-top: 0px;
   }
+}
+a.warning {
+  color: #f1c40f;
+  text-decoration: underline;
+}
+ul.stylenone,
+ol.stylenone {
+  list-style: none;
 }
 button:focus {
   outline: none;
@@ -394,6 +423,7 @@ body .container.full-width-page .main-block {
 }
 #header-region #user-message-link {
   position: relative;
+  margin-right: 20px;
 }
 #header-region #user-message-link .message-icon-wrap {
   display: inline-block !important;
