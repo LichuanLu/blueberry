@@ -144,6 +144,12 @@ class DataUpateTestCase(unittest.TestCase):
         pathology.status=0
         pathology.diagnoseMethod='ct'
         Pathology.save(pathology)
+    def test_filter(self):
+        result=session.query(Doctor).filter(Doctor.hospitalId==1).all()
+        query=session.query(Doctor).filter(Doctor.hospitalId==1)
+        result=query.filter(Doctor.departmentId==2)
+        result=query.filter(Doctor.status==9).all()
+        print len(result)
 
 
 

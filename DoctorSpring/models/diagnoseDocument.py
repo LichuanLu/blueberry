@@ -56,8 +56,9 @@ class Diagnose(Base):
     doctorId  = sa.Column(sa.Integer,sa.ForeignKey('doctor.id'))
     doctor = relationship("Doctor", backref=backref('diagnose', order_by=id))
 
-    adminId = sa.Column(sa.INTEGER,sa.ForeignKey('User.id'))
-    administrator = relationship("User", backref=backref('diagnose', order_by=id))
+    #adminId = sa.Column(sa.INTEGER,sa.ForeignKey('User.id'))
+    #administrator = relationship("User", backref=backref('diagnose', order_by=id))
+    adminId = sa.Column(sa.INTEGER)
 
     uploadUserId  = sa.Column(sa.Integer,sa.ForeignKey('User.id'))
     uploadUser = relationship("User", backref=backref('diagnose', order_by=id))
@@ -159,6 +160,28 @@ class Diagnose(Base):
     def getDiagnoseById(cls,diagnoseId):
         if diagnoseId:
             return session.query(Diagnose).filter(Diagnose.id==diagnoseId,Diagnose.status!=DiagnoseStatus.Del).first()
+
+    @classmethod
+    def getDiagnosesCountByAdmin(cls,session ,status=None,adminId=None,startTime=SystemTimeLimiter.startTime,endTime=SystemTimeLimiter.endTime):
+        query=session.query(Diagnose)
+        if status:
+            query.filter(Diagnose.status==status)
+        if adminId:
+            query.filter(Diagnose.adminId==adminId)
+        query.filter(Diagnose.createDate>startTime,Diagnose.createDate<endTime)
+        return query.count()
+    @classmethod
+    def getDiagnosesByAdmin(cls,session,pagger ,status=None,adminId=None,startTime=SystemTimeLimiter.startTime,endTime=SystemTimeLimiter.endTime):
+            query=session.query(Diagnose)
+            count=Diagnose.getDiagnosesCountByAdmin(session,status,startTime,endTime)
+            pagger.count=count
+            if status:
+                query.filter(Diagnose.status==status)
+            if adminId:
+                query.filter(Diagnose.adminId==adminId)
+            query.filter(Diagnose.createDate>startTime,Diagnose.createDate<endTime)
+            return query.offset(pagger.getOffset()).limit(pagger.getLimitCount()).all()
+
 class DiagnoseLog(Base):
     __tablename__ = 'diagnoseLog'
     __table_args__ = {
@@ -186,6 +209,7 @@ class DiagnoseLog(Base):
     def getDiagnoseLogByDiagnoseId(cls,session,diagnoseId):
         if diagnoseId:
             return session.query(DiagnoseLog).filter(DiagnoseLog.diagnoseId==diagnoseId).order_by(DiagnoseLog.createTime).all()
+
 
 class DiagnoseTemplate(Base):
     __tablename__ = 'diagnoseTemplate'
