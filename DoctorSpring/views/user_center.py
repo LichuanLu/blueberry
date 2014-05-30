@@ -86,10 +86,10 @@ def addUserFavorties():
 def cancleUserFavorties(id):
     UserFavorites.cancleFavorites(id)
     return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
-@uc.route('/userFavorties/<int:id>/cancel',  methods = ['GET', 'POST'])
-def getUserFavorties(id):
+@uc.route('/userFavorties/<int:userId>/list',  methods = ['GET', 'POST'])
+def getUserFavorties(userId):
     type=request.args.get('type')
-    userFavorites=UserFavorites.getUserFavorties(id,type)
+    userFavorites=UserFavorites.getUserFavorties(userId,type)
     userFavoritesDict=object2dict.objects2dicts(userFavorites)
     resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,userFavoritesDict)
     return json.dumps(resultStatus.__dict__,ensure_ascii=False)
