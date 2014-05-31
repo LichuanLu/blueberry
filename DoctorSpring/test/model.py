@@ -39,12 +39,12 @@ class UserTestCase(unittest.TestCase):
         user.imagePath='http://localhost:5000/static/assets/image/young-m.png'
         User.save(user)
     def test_addPatient(self):
-        patient=Patent()
+        patient=Patient()
         patient.gender=0
         patient.Name='程成'
         patient.status=0
         patient.userID=1
-        Patent.save(patient)
+        Patient.save(patient)
 
 class DoctorTestCase(unittest.TestCase):
     def test_getDoctorById(self):
@@ -105,6 +105,12 @@ class DiagnoseTestCase(unittest.TestCase):
         diagnose=session.query(Diagnose).filter(Diagnose.id==1).first()
         diagnose.reportId=3
         session.commit()
+    def test_getDiagnoseByAdmin(self):
+        haspitalList=[]
+        haspitalList.append(1)
+        haspitalList.append(3)
+        diagnoses=Diagnose.getDiagnoseByAdmin(session,haspitalList,'任志强')
+        print len(diagnoses)
 class ReportTestCase(unittest.TestCase):
     def test_addReport(self):
         dt=session.query(DiagnoseTemplate).filter(DiagnoseTemplate.id==5).first()
@@ -124,8 +130,8 @@ class ReportTestCase(unittest.TestCase):
 class DataUpateTestCase(unittest.TestCase):
     def test_update(self):
         #Report.update(3,1,2)
-        patient=session.query(Patent).filter(Patent.id==1).first()
-        Patent.identityCode
+        patient=session.query(Patient).filter(Patient.id==1).first()
+        patient.identityCode
         birthDate=datetime.now()
         # birthDate=birthDate-datetime.timedelta(days =10)
         birthDate=datetime(birthDate.year-10,birthDate.month,birthDate.day)

@@ -28,6 +28,12 @@ class FlaskrTestCase(unittest.TestCase):
         rs = self.app.get('/observer/1/diagnoseCommentList.json',follow_redirects=True)
         print rs
 
+    def test_getDiagnosesByAdmin(self):
+        #self.login('admin', 'default')
+
+        rs = self.app.get('/admin/diagnose/list/all?hostpitalId=1,3&doctorName=任志强',follow_redirects=True)
+        print rs
+
     def test_addConsult(self):
         rv = self.app.post('/consult/add', data=dict(
             userId=1,

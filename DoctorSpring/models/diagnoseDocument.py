@@ -5,7 +5,7 @@ import sqlalchemy as sa
 from  sqlalchemy import distinct
 
 from database import Base
-from sqlalchemy.orm import  relationship,backref
+from sqlalchemy.orm import  relationship,backref,join
 
 
 # class Post(Base):
@@ -35,6 +35,8 @@ from datetime import datetime
 from database import Base,db_session as session
 from sqlalchemy.orm import relationship,backref
 import threading
+from hospital import Hospital
+from doctor import Doctor
 
 import uuid
 #mutex=threading.Lock()
@@ -181,6 +183,21 @@ class Diagnose(Base):
                 query.filter(Diagnose.adminId==adminId)
             query.filter(Diagnose.createDate>startTime,Diagnose.createDate<endTime)
             return query.offset(pagger.getOffset()).limit(pagger.getLimitCount()).all()
+
+    @classmethod
+    def getDiagnoseByAdmin2(cls,session,hostpitalList=None,doctorName=None,pagger=Pagger(1,20) ):
+        if doctorName is None and hostpitalList is None:
+            return session.query(Diagnose).filter(Diagnose.status==DiagnoseStatus.NeedTriage).offset(pagger.getOffset()).limit(pagger.getLimitCount()).all()
+        if doctorName is None:
+            return session.query(Diagnose).filter(Diagnose.hospitalId.in_(hostpitalList),Diagnose.status==DiagnoseStatus.NeedTriage).offset(pagger.getOffset()).limit(pagger.getLimitCount()).all()
+
+        if hostpitalList:
+            query=session.query(Diagnose).select_from(join(Doctor,Diagnose,Doctor.id==Diagnose.doctorId))\
+            .filter(Doctor.username==doctorName,Diagnose.status==DiagnoseStatus.NeedTriage,Diagnose.hospitalId.in_(hostpitalList)).offset(pagger.getOffset()).limit(pagger.getLimitCount())
+        else:
+            query=session.query(Diagnose).select_from(join(Doctor,Diagnose,Doctor.id==Diagnose.doctorId)) \
+                .filter(Doctor.username==doctorName,Diagnose.status==DiagnoseStatus.NeedTriage).offset(pagger.getOffset()).limit(pagger.getLimitCount())
+        return query.all()
 
 class DiagnoseLog(Base):
     __tablename__ = 'diagnoseLog'

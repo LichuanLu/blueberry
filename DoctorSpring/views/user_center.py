@@ -12,6 +12,8 @@ from DoctorSpring.models import User,Patient,Doctor,Diagnose ,DiagnoseTemplate
 from DoctorSpring.models import User,Comment,Message ,UserFavorites
 from DoctorSpring.util import result_status as rs,object2dict,pdf_utils,constant
 from DoctorSpring.util.constant import MessageUserType,Pagger,ReportType,ReportStatus
+from param_service import UserCenter
+from database import db_session
 
 import  data_change_service as dataChangeService
 import json
@@ -43,8 +45,21 @@ def endterDoctorHome(doctorId):
     resultDate['diagnoses']=diagnoseDict
     return render_template("doctorHome.html",data=resultDate)
 
+@uc.route('/admin/diagnose/list/all',  methods = ['GET', 'POST'])
+def getDiagnoseListByAdmin():
+    hostpitalIds=request.args.get('hostpitalId')
+    hostpitalList=UserCenter.getDiagnoseListByAdmin(hostpitalIds)
+    doctorName=request.args.get('doctorName')
+    pageNo=request.args.get('pageNo')
+    pageSize=request.args.get('pageSize')
+    pager=Pagger(pageNo,pageSize)
+    diagnoses=Diagnose.getDiagnoseByAdmin2(db_session,hostpitalList,doctorName,pager)
+    diagnosesDict=dataChangeService.userCenterDiagnoses(diagnoses)
 
 
+    resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnosesDict)
+    resultDict=resultStatus.__dict__
+    return json.dumps(resultDict,ensure_ascii=False)
 @uc.route('/doctor/<int:doctorId>/patientList',  methods = ['GET', 'POST'])
 def getPatients(doctorId):
      patients=Diagnose.getPatientListByDoctorId(doctorId)

@@ -16,6 +16,9 @@ class PatientStatus(object):
     diagnose = 1  # 病例用户
 
 
+
+# class DiagnoseMetaStatus(object):
+#     def __init__(self,status,statusName):
 #1. 草稿 2.待付费 3. 待分诊 4. 分诊中 5. 待诊断 6. 诊断完成 7.需要更新信息 8. 无法诊断
 class DiagnoseStatus(object):
     Draft=0 #草稿
@@ -27,6 +30,26 @@ class DiagnoseStatus(object):
     Diagnosed=6 #诊断完成
     NeedUpdate=7 #需要更新信息
     UnableDiagnose=8#无法诊断
+    @staticmethod
+    def getStatusName(status):
+        if status==DiagnoseStatus.Draft:
+            return '草稿'
+        if status==DiagnoseStatus.NeedPay:
+            return '待交费'
+        if status==DiagnoseStatus.NeedTriage:
+            return '待分诊'
+        if status==DiagnoseStatus.Triaging:
+            return '分诊中'
+        if status==DiagnoseStatus.NeedDiagnose:
+            return '待诊断'
+        if status==DiagnoseStatus.Diagnosed:
+            return '诊断完成'
+        if status==DiagnoseStatus.NeedUpdate:
+            return '需要更新信息'
+        if status==DiagnoseStatus.UnableDiagnose:
+            return '无法诊断'
+
+
 class ReportStatus(object):
     Draft=0
     Del=1
@@ -68,14 +91,19 @@ class Pagger(object):
     pageSize=20
     count=0
     def __init__(self,pageNo,pageSize):
-        self.pageNo=pageNo
-        self.pageSize=pageSize
+        if pageNo:
+            self.pageNo=pageNo
+        if pageSize:
+            self.pageSize=pageSize
         #self.count=count
     def getOffset(self):
         offset=(self.pageNo-1)*self.pageSize
         if offset<=self.count:
             return offset
     def getLimitCount(self):
+        if self.count==0:
+            return self.pageSize
+
         offset=(self.pageNo-1)*self.pageSize
         if offset+self.pageSize<=self.count:
             return self.pageSize

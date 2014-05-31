@@ -1,5 +1,6 @@
 # coding: utf-8
 __author__ = 'chengc017'
+from DoctorSpring.util import constant
 
 def userCenterDiagnoses(diagnoses):
     if diagnoses is None or len(diagnoses)<1:
@@ -7,12 +8,24 @@ def userCenterDiagnoses(diagnoses):
     result=[]
     for diagnose in diagnoses:
         diagDict={}
+
         if hasattr(diagnose,"patient") and diagnose.patient:
             diagDict['patientName']=diagnose.patient.realname
         if hasattr(diagnose,"doctor") and diagnose.doctor:
             diagDict['doctorName']=diagnose.doctor.username
+        if hasattr(diagnose,"hospital") and diagnose.hospital:
+            diagDict['hispital']=diagnose.hospital.name
+
         if diagnose.createDate:
-            diagDict["createDate"]=diagnose.createDate.strftime('%Y-%m-%d')
+            diagDict["date"]=diagnose.createDate.strftime('%Y-%m-%d')
+        if diagnose.id:
+            diagDict['id']=diagnose.id
+        if diagnose.diagnoseSeriesNumber:
+            diagDict['diagnosenumber']=diagnose.diagnoseSeriesNumber
+        if diagnose.status or diagnose.status==0:
+            diagDict['statusId']=diagnose.status
+            diagDict['status']=constant.DiagnoseStatus.getStatusName(diagnose.status)
+
         if hasattr(diagnose,"pathology") and diagnose.pathology:
             pathology=diagnose.pathology
             if hasattr(pathology,"pathologyPostions") and pathology.pathologyPostions:
@@ -22,7 +35,7 @@ def userCenterDiagnoses(diagnoses):
                     for pathologyPositon in pathologyPositons:
                         position=pathologyPositon.position
                         positions+=(u' '+position.name)
-                    diagDict['positons']=positions
+                    diagDict['positionName']=positions
         #print diagDict['doctorName'],diagDict['positons']
         result.append(diagDict)
 
