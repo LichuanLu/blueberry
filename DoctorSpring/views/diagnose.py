@@ -10,7 +10,8 @@ from database import  db_session
 from sqlalchemy.exc import IntegrityError
 from DoctorSpring.models import User,Patient,Doctor,Diagnose ,DiagnoseTemplate,Report,UserRole
 from DoctorSpring.models import User,Comment,Message,DiagnoseLog
-from DoctorSpring.util import result_status as rs,object2dict ,constant,authenticated
+from DoctorSpring.util import result_status as rs,object2dict ,constant
+from DoctorSpring.util.authenticated import authenticated
 from DoctorSpring.util.constant import MessageUserType,Pagger
 
 

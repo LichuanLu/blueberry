@@ -10,8 +10,9 @@ from database import  db_session
 from sqlalchemy.exc import IntegrityError
 from DoctorSpring.models import User,Patient,Doctor,Diagnose ,DiagnoseTemplate
 from DoctorSpring.models import User,Comment,Message ,UserFavorites,UserRole ,TanksNote
-from DoctorSpring.util import result_status as rs,object2dict,pdf_utils,constant,authenticated
+from DoctorSpring.util import result_status as rs,object2dict,pdf_utils,constant
 from DoctorSpring.util.constant import MessageUserType,Pagger,ReportType,ReportStatus
+from DoctorSpring.util.authenticated import authenticated
 from param_service import UserCenter
 from database import db_session
 from datetime import datetime
@@ -177,6 +178,7 @@ def getUserFavorties(userId):
 
 @uc.route('/diagnose/<int:diagnoseId>/pdf', methods=['GET','POST'])
 def generatorPdf(diagnoseId):
+    userId=1
     diagnose=Diagnose.getDiagnoseById(diagnoseId)
     report=None
     if hasattr(diagnose,'report'):
@@ -196,7 +198,7 @@ def generatorPdf(diagnoseId):
             postions=dataChangeService.getDiagnosePositonFromDiagnose(diagnose)
             if postions:
                 data['postions']=postions
-            if hasattr(diagnose,'patient'):
+            if hasattr(diagnose,'patient') and diagnose.patient:
                 data['gender']=diagnose.patient.gender
                 birthDate=diagnose.patient.birthDate
                 if birthDate:
@@ -207,8 +209,10 @@ def generatorPdf(diagnoseId):
                 data['doctorName']=diagnose.doctor.username
 
             html =  render_template('diagnoseResultPdf.html',data=data)
-            result = open(constant.DirConstant.DIAGNOSE_PDF_DIR+'test.pdf', 'wb') # Changed from file to filename
-            pdf = pdf_utils.save_pdf(html,result)
+            fileName=constant.DirConstant.DIAGNOSE_PDF_DIR+'test.pdf'
+            result = open(fileName, 'wb') # Changed from file to filename
+
+            pdf = pdf_utils.save_pdf(html,result,diagnoseId,fileName)
             result.close()
             # return render_template("testpdf.html",getAvatar=getAvatar)
             return html
