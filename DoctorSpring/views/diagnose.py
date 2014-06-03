@@ -8,10 +8,11 @@ from forms import LoginForm, RegisterForm ,CommentsForm ,MessageForm,ReportForm
 from DoctorSpring import lm
 from database import  db_session
 from sqlalchemy.exc import IntegrityError
-from DoctorSpring.models import User,Patient,Doctor,Diagnose ,DiagnoseTemplate,Report
-from DoctorSpring.models import User,Comment,Message
-from DoctorSpring.util import result_status as rs,object2dict ,constant
+from DoctorSpring.models import User,Patient,Doctor,Diagnose ,DiagnoseTemplate,Report,UserRole
+from DoctorSpring.models import User,Comment,Message,DiagnoseLog
+from DoctorSpring.util import result_status as rs,object2dict ,constant,authenticated
 from DoctorSpring.util.constant import MessageUserType,Pagger
+
 
 
 import  data_change_service as dataChangeService
@@ -23,8 +24,55 @@ config = config.rec()
 diagnoseView = Blueprint('diagnose', __name__)
 
 
+
+#领取诊断
+@diagnoseView.route('/admin/diagnose/update',  methods = ['GET', 'POST'])
+@authenticated('admin',constant.RoleId.Admin)
+def fetchDiagnoseByAdmin():
+
+    diagnoseId=request.args.get('diagnoseId')
+    userId=session['userId']
+
+
+    # if diagnoseId is None :
+    #     return  json.dumps(rs.PARAM_ERROR.__dict__,ensure_ascii=False)
+    #
+    # user=User.getById(userId)
+    # if user is None:
+    #     return  json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
+    #
+    # from database import db_session
+    # if UserRole.checkRole(db_session,userId,constant.RoleId.Admin):
+    #     result=Diagnose.addAdminIdAndChangeStatus(diagnoseId,userId)
+    #     #诊断日志
+    #     diagoseLog=DiagnoseLog(userId,diagnoseId,constant.DiagnoseLogAction.FetchDiagnoseAction)
+    #     DiagnoseLog.save(db_session,diagoseLog)
+    #
+    #     return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+    # else:
+    #     return json.dumps(rs.PERMISSION_DENY.__dict__,ensure_ascii=False)
+
+
+
+    result=Diagnose.addAdminIdAndChangeStatus(diagnoseId,userId)
+    #诊断日志
+    diagoseLog=DiagnoseLog(userId,diagnoseId,constant.DiagnoseLogAction.FetchDiagnoseAction)
+    DiagnoseLog.save(db_session,diagoseLog)
+
+    return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+
+#初诊断
 @diagnoseView.route('/admin/report/addOrUpate',  methods = ['GET', 'POST'])
 def addOrUpdateReport():
+
+    userId=session['userId']
+    user=User.getById(userId)
+    if user is None:
+        return  json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
+    #权限查看
+    if UserRole.checkRole(db_session,userId,constant.RoleId.Admin):
+        return  json.dumps(rs.PERMISSION_DENY.__dict__,ensure_ascii=False)
+
     form =  ReportForm(request.form)
     formResult=form.validate()
     if formResult.status==rs.SUCCESS.status:
@@ -44,12 +92,29 @@ def addOrUpdateReport():
                 doctor=diagnose.doctor
                 if doctor and doctor.userId:
                     content=dataChangeService.getDoctorNeedDiagnoseMessageContent(diagnose,doctor)
+
+                    #诊断通知
                     message=Message(constant.DefaultSystemAdminUserId,doctor.userId,'诊断通知',content,constant.MessageType.Diagnose)
                     Message.save(message)
+
+                    #诊断日志
+                    diagoseLog=DiagnoseLog(userId,form.diagnoseId,constant.DiagnoseLogAction.FetchDiagnoseAction)
+                    DiagnoseLog.save(db_session,diagoseLog)
+
             return json.dumps(formResult.__dict__,ensure_ascii=False)
     return json.dumps(formResult.__dict__,ensure_ascii=False)
+#诊断
 @diagnoseView.route('/doctor/report/update',  methods = ['GET', 'POST'])
 def updateReport():
+
+    userId=session['userId']
+    user=User.getById(userId)
+    if user is None:
+        return  json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
+
+    if UserRole.checkRole(db_session,userId,constant.RoleId.Doctor):
+        return  json.dumps(rs.PERMISSION_DENY.__dict__,ensure_ascii=False)
+
     form =  ReportForm(request.form)
 
     if form.reportId:
@@ -60,12 +125,35 @@ def updateReport():
             report=Report.update(form.reportId,constant.ReportType.Doctor,form.status,fileUrl,form.techDesc,form.imageDesc,form.diagnoseDesc)
             Diagnose.changeDiagnoseStatus(form.diagnoseId,constant.DiagnoseStatus.Diagnosed)
             #需要給用戶發信和記錄操作日誌
+            diagnose=Diagnose.getDiagnoseById(form.diagnoseId)
+            sendMessageAndRecordLog(diagnose)
+
         else:
             fileUrl=None#這是草稿，不需要生存文檔
+
+            diagnose=Diagnose.getDiagnoseById(form.diagnoseId)
+            if diagnose is None:
+                return  json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
             report=Report.update(form.reportId,constant.ReportType.Doctor,form.status,fileUrl,form.techDesc,form.imageDesc,form.diagnoseDesc)
+            recordDiagnoseLog(diagnose,userId)
 
         return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
     return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
+def sendMessageAndRecordLog(diagnose,userId):
+    if diagnose and hasattr(diagnose,'patient') and diagnose.patient.userID:
+        userId=diagnose.patient.userID
+        content=dataChangeService.getPatienDiagnoseMessageContent(diagnose)
+        message=Message(constant.DefaultSystemAdminUserId,diagnose.patient.userID,'诊断通知',content,constant.MessageType.Diagnose)
+        Message.save(message)
+
+    diagnoseLog=DiagnoseLog(userId,diagnose.id,constant.DiagnoseLogAction.DiagnoseFinished)
+    DiagnoseLog.save(diagnoseLog)
+
+def recordDiagnoseLog(diagnose,userId):
+    diagnoseLog=DiagnoseLog(userId,diagnose.id,constant.DiagnoseLogAction.UpateDiagnoseAction)
+    DiagnoseLog.save(diagnoseLog)
+
+
 
 @diagnoseView.route('/report/<int:reportId>',  methods = ['GET', 'POST'])
 def getReport(reportId):
@@ -99,5 +187,7 @@ def getDiagnose():
         print e
         resultDict=rs.SUCCESS.__dict__
         json.dumps(resultDict,ensure_ascii=False)
+
+
 
 

@@ -104,6 +104,29 @@ class User(Base):
         else:
             return session.query(User).filter(User.phone == user_name, User.status == ModelStatus.Normal).first()
 
+class UserRole(Base):
+    __tablename__ = 'user_role'
+    __table_args__ = {
+        'mysql_charset': 'utf8',
+        }
+    id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
+    userId = sa.Column(sa.Integer)
+    roleId= sa.Column(sa.String(30))
+
+    @staticmethod
+    def checkRole(session,userId,roleId):
+        if userId and roleId:
+           return session.query(UserRole).filter(UserRole.userId==userId,UserRole.roleId==roleId).count()>0
+        else:
+            return False
+class Role(Base):
+    __tablename__ = 'role'
+    __table_args__ = {
+        'mysql_charset': 'utf8',
+        }
+    id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
+    roleName= sa.Column(sa.String(30))
+
 
 
 class UserFavorites(Base):

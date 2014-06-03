@@ -104,8 +104,8 @@ class Diagnose(Base):
                 diagnose=Diagnose.getDiagnoseById(diagnoseId)
                 if diagnose.adminId is None:
                     diagnose.adminId=adminId
-                    diagnose.status=DiagnoseStatus.NeedTriage
-                    session.commit()
+                    diagnose.status=DiagnoseStatus.Triaging
+                    return session.commit()
             except Exception,e:
                 print e.message
                 return
@@ -365,12 +365,24 @@ class File(Base):
         session.add(File)
         session.commit()
     @classmethod
-    def getFiles(cls,pathologyId,type=None):
+    def getFiles(cls,pathologyId,type=constant.FileType.Dicom):
         if pathologyId:
             if type:
                 return session.query(File).filter(File.pathologyId==pathologyId,File.type==type,File.status==ModelStatus.Normal).all()
             else:
                 return session.query(File).filter(File.pathologyId==pathologyId,File.status==ModelStatus.Normal).all()
+    @classmethod
+    def getDicomFileUrl(cls,pathologyId):
+        if pathologyId:
+            return session.query(File.url).filter(File.pathologyId==pathologyId,File.type==constant.FileType.Dicom,File.status==ModelStatus.Normal).first()
+
+    @classmethod
+    def getFilesUrl(cls,pathologyId):
+        if pathologyId:
+            return session.query(File.url).filter(File.pathologyId==pathologyId,File.type==constant.FileType.FileAboutDiagnose,File.status==ModelStatus.Normal).all()
+
+
+
 
 
 

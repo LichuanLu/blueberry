@@ -2,7 +2,7 @@ __author__ = 'chengc017'
 # coding: utf-8
 __author__ = 'chengc017'
 import sqlalchemy as sa
-from DoctorSpring.util.constant import MessageStatus,ModelStatus
+from DoctorSpring.util.constant import MessageStatus,ModelStatus,Pagger
 from datetime import datetime
 from database import db_session as session
 
@@ -35,12 +35,12 @@ class TanksNote(Base):
             session.commit()
             session.flush()
     @classmethod
-    def getThanksNoteByReceiver(cls,session,receiverId,status=ModelStatus.Normal):
+    def getThanksNoteByReceiver(cls,session,receiverId,pager=Pagger(1,20),status=ModelStatus.Normal):
         if receiverId is None or receiverId<1:
             return
 
         return session.query(TanksNote).filter(TanksNote.receiver==receiverId,TanksNote.status==status) \
-            .order_by(TanksNote.createTime.desc()).all()
+            .offset(pager.getOffset()).limit(pager.getLimitCount()).order_by(TanksNote.createTime.desc()).all()
 
     @classmethod
     def getTanksNoteCountByReceiver(cls,session,receiverId,status=MessageStatus.Normal):

@@ -39,9 +39,15 @@ class Doctor(Base):
 
     @classmethod
     def getById(cls,doctorId):
-        if doctorId is None or doctorId<1:
+        if doctorId is None or doctorId<0:
             return
         return session.query(Doctor).filter(Doctor.id==doctorId,Doctor.status==ModelStatus.Normal).first()
+    @classmethod
+    def getByUserId(cls,userId):
+        if userId is None or userId<0:
+            return
+        return session.query(Doctor).filter(Doctor.userId==userId,Doctor.status==ModelStatus.Normal).first()
+
 
     @classmethod
     def save(cls, doctor):

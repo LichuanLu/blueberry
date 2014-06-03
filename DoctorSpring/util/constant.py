@@ -121,6 +121,26 @@ class UserFavoritesType(object):
 
 DefaultSystemAdminUserId=1
 
+class RoleId(object):
+    Admin=1
+    Doctor=2
+    Patient=3
+    HospitalUser=4
+class DiagnoseLogAction(object):
+    FetchDiagnoseAction='领取诊断:'
+    TriageDiagnoseAction='分发诊断:'
+    UpateDiagnoseAction='诊断更新:'
+    DiagnoseNeedUpateAction='诊断需更新:'
+    DiagnoseFinished='诊断完成'
+
+DiagnoseScore={
+    0:'不满意',
+    1:'满意',
+    2:'很满意',
+}
+
+
+
 
 
 

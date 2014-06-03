@@ -45,6 +45,31 @@ class UserTestCase(unittest.TestCase):
         patient.status=0
         patient.userID=1
         Patient.save(patient)
+class RoleTestCase(unittest.TestCase):
+    def test_addAllRole(self):
+        from DoctorSpring.models.user import Role,UserRole
+        role=Role()
+        role.id=1
+        role.roleName='admin'
+        session.add(role)
+
+        role=Role()
+        role.id=2
+        role.roleName='doctor'
+        session.add(role)
+
+        role=Role()
+        role.id=3
+        role.roleName='patient'
+        session.add(role)
+
+        role=Role()
+        role.id=4
+        role.roleName='hospitalUser'
+        session.add(role)
+
+        session.commit()
+        session.flush()
 
 class DoctorTestCase(unittest.TestCase):
     def test_getDoctorById(self):
@@ -156,6 +181,7 @@ class DataUpateTestCase(unittest.TestCase):
         result=query.filter(Doctor.departmentId==2)
         result=query.filter(Doctor.status==9).all()
         print len(result)
+
 
 
 

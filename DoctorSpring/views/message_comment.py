@@ -12,6 +12,7 @@ from DoctorSpring.models import User,Patient
 from DoctorSpring.models import User,Comment,Message ,Consult
 from DoctorSpring.util import result_status as rs,object2dict,constant
 import json
+import  data_change_service as dataChangeService
 
 import config
 config = config.rec()
@@ -24,8 +25,9 @@ mc = Blueprint('message_comment', __name__)
 #     g.user = current_user
 @mc.route('/addDiagnoseComment.json', methods = ['GET', 'POST'])
 def addDiagnoseComment():
-    form = CommentsForm(request.form, csrf_enabled=False)
-    if form.validate_on_submit():
+    form = CommentsForm(request.args)
+    resultForm=form.validate()
+    if resultForm.status==rs.SUCCESS.status:
         #session['remember_me'] = form.remember_me.data
         # login and validate the user...
         diagnoseComment=Comment(form.userId.data,form.receiverId.data,form.diagnoseId.data,form.content.data)
@@ -48,10 +50,16 @@ def diagnoseCommentsByObserver(userId):
 @mc.route('/receiver/<int:receiverId>/diagnoseCommentList.json', methods = ['GET', 'POST'])
 def diagnoseCommentsByReceiver(receiverId):
 
-    diagnoseComments=Comment.getCommentByReceiver(receiverId)
+    pageNo=request.args.get('pageNo')
+    pageSize=request.args.get('pageSize')
+    pager=constant.Pagger(pageNo,pageSize)
+
+    diagnoseComments=Comment.getCommentByReceiver(receiverId,constant.ModelStatus.Normal,constant.CommentType.DiagnoseComment,pager)
     if diagnoseComments is None or len(diagnoseComments)<1:
         return jsonify(rs.SUCCESS.__dict__)
+
     diagnoseCommentsDict=object2dict.objects2dicts(diagnoseComments)
+    dataChangeService.setDiagnoseCommentsDetailInfo(diagnoseCommentsDict)
     resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnoseCommentsDict)
     resultDict=resultStatus.__dict__
     return jsonify(resultDict)
@@ -79,16 +87,16 @@ def addMessage():
         return redirect(url_for('homepage'))
     return render_template('message.html', form=form)
 
-@mc.route('/receiver/<int:receiverId>/messageList.json', methods = ['GET', 'POST'])
-def messagesByReceiver(receiverId):
-
+@mc.route('/message/list', methods = ['GET', 'POST'])
+def messagesByReceiver():
+    userId=session['userId']
     status=request.args.get('status')
 
     messages=None
     if status:
-        messages=Message.getMessageByReceiver(receiverId,status)
+        messages=Message.getMessageByReceiver(userId,status)
     else:
-        messages=Message.getMessageByReceiver(receiverId)
+        messages=Message.getMessageByReceiver(userId)
     if messages is None or len(messages)<1:
         return jsonify(rs.SUCCESS.__dict__)
     messagesDict=object2dict.objects2dicts(messages)
