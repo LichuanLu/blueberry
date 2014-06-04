@@ -157,12 +157,19 @@ def addUserFavorties():
         return json.dumps(rs.NO_LOGIN.__dict__,ensure_ascii=False)
 
     if formResult.status==rs.SUCCESS.status:
-        #session['remember_me'] = form.remember_me.data
-        # login and validate the user...
-        userFavorites=UserFavorites(userId,form.type,form.doctorId,form.hospitalId,form.docId)
-        UserFavorites.save(userFavorites)
-        #flash('成功添加诊断评论')
-        return json.dumps(formResult.__dict__,ensure_ascii=False)
+        if UserFavorites.checkUerFavorties(db_session,userId,constant.UserFavoritesType.Doctor,form.doctorId):
+            return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
+
+        userFavorites=UserFavorites.getUerFavortiesByDelStatus(db_session,userId,constant.UserFavoritesType.Doctor,form.doctorId)
+        if userFavorites:
+            userFavorites.status=constant.ModelStatus.Normal
+            db_session.commit()
+            return json.dumps(formResult.__dict__,ensure_ascii=False)
+        else:
+            userFavorites=UserFavorites(userId,form.type,form.doctorId,form.hospitalId,form.docId)
+            UserFavorites.save(userFavorites)
+            #flash('成功添加诊断评论')
+            return json.dumps(formResult.__dict__,ensure_ascii=False)
     return json.dumps(formResult.__dict__,ensure_ascii=False)
 @uc.route('/userFavorties/<int:id>/cancel',  methods = ['GET', 'POST'])
 def cancleUserFavorties(id):

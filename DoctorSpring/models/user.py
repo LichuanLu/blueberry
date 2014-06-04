@@ -5,7 +5,7 @@ import sqlalchemy as sa
 from database import db_session as session
 from werkzeug.security import generate_password_hash, check_password_hash
 from database import Base
-from DoctorSpring.util.constant import ModelStatus, PatientStatus
+from DoctorSpring.util.constant import ModelStatus, PatientStatus,UserFavoritesType
 import config
 from DoctorSpring.util.constant import ModelStatus
 from datetime import datetime
@@ -148,7 +148,7 @@ class UserFavorites(Base):
         self.doctorId=doctorId
         self.hospitalId=hospitalId
         self.docId=docId
-        self.status=ModelStatus
+        self.status=ModelStatus.Normal
         self.type=type
         self.createDate=datetime.now()
 
@@ -165,6 +165,33 @@ class UserFavorites(Base):
             if user:
                 user.status=ModelStatus.Del
                 session.commit()
+    @staticmethod
+    def checkUerFavorties(session,userId,type,favoritesObjectId):
+        if type is None:
+            return False
+        query=session.query(UserFavorites.id).filter(UserFavorites.userId==userId,UserFavorites.status==ModelStatus.Normal)
+        if type==UserFavoritesType.Doctor:
+            query.filter(UserFavorites.type==type,UserFavorites.doctorId==favoritesObjectId)
+        if type==UserFavoritesType.Hospital:
+            query.filter(UserFavorites.type==type,UserFavorites.hospitalId==favoritesObjectId)
+        results=query.all()
+        if results and len(results)==1:
+            return True
+        return False
+    @staticmethod
+    def getUerFavortiesByDelStatus(session,userId,type,favoritesObjectId):
+        if type is None:
+            return False
+        query=session.query(UserFavorites).filter(UserFavorites.userId==userId,UserFavorites.status==ModelStatus.Del)
+        if type==UserFavoritesType.Doctor:
+            query.filter(UserFavorites.type==type,UserFavorites.doctorId==favoritesObjectId)
+        if type==UserFavoritesType.Hospital:
+            query.filter(UserFavorites.type==type,UserFavorites.hospitalId==favoritesObjectId)
+        result=query.first()
+        return result
+
+
+
     @classmethod
     def getUserFavorties(cls,userId,type,status=None):
         if userId:
