@@ -53,12 +53,6 @@ def endterDoctorHome(doctorId):
 def getDiagnoseListByAdmin2():
 
     userId=session['userId']
-    # user=User.getById(userId)
-    # if user is None:
-    #     return  json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
-    #     #权限查看
-    # if UserRole.checkRole(db_session,userId,constant.RoleId.Admin):
-    #     return  json.dumps(rs.PERMISSION_DENY.__dict__,ensure_ascii=False)
 
     hostpitalIds=request.args.get('hostpitalId')
     hostpitalList=UserCenter.getDiagnoseListByAdmin(hostpitalIds)
@@ -86,18 +80,35 @@ def getDiagnoseListByAdmin():
     #     return  json.dumps(rs.PERMISSION_DENY.__dict__,ensure_ascii=False)
 
     status=request.args.get('status')
-    startDate=datetime.strptime(request.args.get('startDate'),"%Y-%m-%d")
-    endDate=datetime.strptime(request.args.get('startDate'),"%Y-%m-%d")
+    if status:
+        import string
+        status=string.atoi(status)
+
+    startDateStr=request.args.get('startDate')
+    startDate=None
+    if startDateStr:
+        startDate=datetime.strptime(startDateStr,"%Y-%m-%d")
+    else:
+        startDate=constant.SystemTimeLimiter.startTime
+
+    endDateStr=request.args.get('endDate')
+    endDate=None
+    if endDateStr:
+        endDate=datetime.strptime(endDateStr,"%Y-%m-%d")
+    else:
+        endDate=constant.SystemTimeLimiter.endTime
+
     pageNo=request.args.get('pageNo')
     pageSize=request.args.get('pageSize')
     pager=Pagger(pageNo,pageSize)
-    diagnoses=Diagnose.getDiagnosesByAdmin(db_session,pager,status,startDate,endDate)
+
+    diagnoses=Diagnose.getDiagnosesByAdmin(db_session,pager,status,userId,startDate,endDate)
     diagnosesDict=dataChangeService.userCenterDiagnoses(diagnoses)
     resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnosesDict)
     resultDict=resultStatus.__dict__
     return json.dumps(resultDict,ensure_ascii=False)
 
-@uc.route('/admin/diagnose/list/my',  methods = ['GET', 'POST'])
+@uc.route('/doctor/diagnose/list/my',  methods = ['GET', 'POST'])
 @authenticated('admin',constant.RoleId.Doctor)
 def getDiagnoseListByDoctor():
     userId=session['userId']
@@ -111,12 +122,30 @@ def getDiagnoseListByDoctor():
     if doctor:
 
         status=request.args.get('status')
-        startDate=datetime.strptime(request.args.get('startDate'),"%Y-%m-%d")
-        endDate=datetime.strptime(request.args.get('startDate'),"%Y-%m-%d")
+        if status:
+            import string
+            status=string.atoi(status)
+
+        startDateStr=request.args.get('startDate')
+        startDate=None
+        if startDateStr:
+            startDate=datetime.strptime(startDateStr,"%Y-%m-%d")
+        else:
+            startDate=constant.SystemTimeLimiter.startTime
+
+        endDateStr=request.args.get('endDate')
+        endDate=None
+        if endDateStr:
+            endDate=datetime.strptime(endDateStr,"%Y-%m-%d")
+        else:
+            endDate=constant.SystemTimeLimiter.endTime
+
+
+
         pageNo=request.args.get('pageNo')
         pageSize=request.args.get('pageSize')
         pager=Pagger(pageNo,pageSize)
-        diagnoses=Diagnose.getDiagnosesByDoctorId(db_session,pager,status,startDate,endDate)
+        diagnoses=Diagnose.getDiagnosesByDoctorId(db_session,doctor.id,pager,status,startDate,endDate)
         diagnosesDict=dataChangeService.userCenterDiagnoses(diagnoses)
         resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnosesDict)
         resultDict=resultStatus.__dict__
@@ -140,6 +169,8 @@ def getPostionList():
 def getDiagnoseAndImageDescList():
     diagnoseMethod=request.args.get('diagnoseMethod')
     diagnosePostion=request.args.get('diagnosePostion')
+    if diagnosePostion:
+        diagnosePostion+='\n'
     diagnoseAndImageDescs=DiagnoseTemplate.getDiagnoseAndImageDescs(diagnoseMethod,diagnosePostion)
     resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnoseAndImageDescs)
     resultDict=resultStatus.__dict__

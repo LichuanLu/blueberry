@@ -34,6 +34,12 @@ class FlaskrTestCase(unittest.TestCase):
         rs = self.app.get('/admin/diagnose/list/all?hostpitalId=1,3&doctorName=任志强',follow_redirects=True)
         print rs
 
+    def test_getDiagnosePostionList(self):
+        #self.login('admin', 'default')
+
+        rs = self.app.get('/diagnoseTemplate/diagnoseAndImageDesc?diagnoseMethod=ct&diagnosePostion=内 分 泌',follow_redirects=True)
+
+
     def test_addConsult(self):
         rv = self.app.post('/consult/add', data=dict(
             userId=1,

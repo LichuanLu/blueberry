@@ -6,8 +6,8 @@ from DoctorSpring.models import UserRole
 __author__ = 'chengc017'
 
 
-NO_LOGIN_URL=''
-PERMISSION_DENY_URL=''
+NO_LOGIN_URL='user_view.login'
+PERMISSION_DENY_URL='user_view.registerdoctorPage'
 class authenticated(object):
 
     def __init__(self, auth_model,role=None):
@@ -17,12 +17,12 @@ class authenticated(object):
     def __call__(self, method):
 
         @functools.wraps(method)
-        def admin_wrapper(_self, *args, **kwargs):
-            userId = _self.session['userId']
+        def admin_wrapper(*args, **kwargs):
+            userId = session['userId']
             if userId is None:
                 redirect(url_for(NO_LOGIN_URL))
             elif self.role and UserRole.checkRole(db_session,userId,self.role):
-                return method(_self, *args, **kwargs)
+                return method(*args, **kwargs)
             #there have some bug needs to be fixed
             # elif self.role !=None and  userinfo and int(userinfo['cross_share_grade']) == self.role:
             #     return method(_self, *args, **kwargs)

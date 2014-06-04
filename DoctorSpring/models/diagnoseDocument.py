@@ -123,7 +123,7 @@ class Diagnose(Base):
 
 
     @classmethod
-    def getDiagnosesByDoctorId(cls,doctorId,pagger,status=None,startTime=SystemTimeLimiter.startTime,endTime=SystemTimeLimiter.endTime):
+    def getDiagnosesByDoctorId(cls,session,doctorId,pagger,status=None,startTime=SystemTimeLimiter.startTime,endTime=SystemTimeLimiter.endTime):
         count=Diagnose.getDiagnoseCountByDoctorId(doctorId,status,startTime,endTime)
         pagger.count=count
         if doctorId:
@@ -174,14 +174,16 @@ class Diagnose(Base):
         return query.count()
     @classmethod
     def getDiagnosesByAdmin(cls,session,pagger ,status=None,adminId=None,startTime=SystemTimeLimiter.startTime,endTime=SystemTimeLimiter.endTime):
-            query=session.query(Diagnose)
-            count=Diagnose.getDiagnosesCountByAdmin(session,status,startTime,endTime)
-            pagger.count=count
+
+            if adminId is None:
+                return
+            query=session.query(Diagnose).filter(Diagnose.adminId==adminId)
+            # count=Diagnose.getDiagnosesCountByAdmin(session,status,startTime,endTime)
+            # pagger.count=count
             if status:
-                query.filter(Diagnose.status==status)
-            if adminId:
-                query.filter(Diagnose.adminId==adminId)
-            query.filter(Diagnose.createDate>startTime,Diagnose.createDate<endTime)
+                query=query.filter(Diagnose.status==status)
+
+            query=query.filter(Diagnose.createDate>startTime,Diagnose.createDate<endTime)
             return query.offset(pagger.getOffset()).limit(pagger.getLimitCount()).all()
 
     @classmethod

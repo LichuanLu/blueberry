@@ -10,11 +10,11 @@ def userCenterDiagnoses(diagnoses):
     for diagnose in diagnoses:
         diagDict={}
 
-        if hasattr(diagnose,"patient") and diagnose.patient:
+        if hasattr(diagnose,"patient") and diagnose.patient and diagnose.patient.realname:
             diagDict['patientName']=diagnose.patient.realname
-        if hasattr(diagnose,"doctor") and diagnose.doctor:
+        if hasattr(diagnose,"doctor") and diagnose.doctor and diagnose.doctor.username:
             diagDict['doctorName']=diagnose.doctor.username
-        if hasattr(diagnose,"hospital") and diagnose.hospital:
+        if hasattr(diagnose,"hospital") and diagnose.hospital and diagnose.hospital.name:
             diagDict['hispital']=diagnose.hospital.name
 
         if diagnose.createDate:
@@ -27,8 +27,9 @@ def userCenterDiagnoses(diagnoses):
             diagDict['statusId']=diagnose.status
             diagDict['status']=constant.DiagnoseStatus.getStatusName(diagnose.status)
         if diagnose.pathologyId:
-            diagDict['dicomUrl']=File.getDicomFileUrl(diagnose.pathologyId)
-
+            dicomUrl=File.getDicomFileUrl(diagnose.pathologyId)
+            if dicomUrl:
+                diagDict['dicomUrl']
 
         if hasattr(diagnose,"pathology") and diagnose.pathology:
             pathology=diagnose.pathology
