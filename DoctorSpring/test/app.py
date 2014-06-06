@@ -47,6 +47,11 @@ class FlaskrTestCase(unittest.TestCase):
             title='咨询一下关于颈部问题的',
             content='咨询一下关于颈部问题的解决方案'
         ), follow_redirects=True)
+    def test_addThanksNote(self):
+        rv = self.app.post('/gratitude/create', data=dict(
+            receiver=4,
+            content='这是我得一封感谢信，非常感谢医生对我的医治'
+        ), follow_redirects=True)
 
     def test_addFavorties(self):
         rv = self.app.post('/userFavorties/add', data=dict(

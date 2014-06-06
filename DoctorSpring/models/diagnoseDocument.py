@@ -97,15 +97,16 @@ class Diagnose(Base):
             return session.query(Diagnose).filter(Diagnose.id==diagnoseId,Diagnose.status!=DiagnoseStatus.Del).first()
     @classmethod
     def addAdminIdAndChangeStatus(cls,diagnoseId,adminId):
-        if adminId:
+        if adminId is None:
             return
         if mutex.acquire(1):
             try:
                 diagnose=Diagnose.getDiagnoseById(diagnoseId)
-                if diagnose.adminId is None:
+                if diagnose.adminId is None or diagnose.adminId==0:
                     diagnose.adminId=adminId
                     diagnose.status=DiagnoseStatus.Triaging
-                    return session.commit()
+                    session.commit()
+                    return True
             except Exception,e:
                 print e.message
                 return

@@ -9,7 +9,7 @@ from DoctorSpring import lm
 from database import  db_session
 from sqlalchemy.exc import IntegrityError
 from DoctorSpring.models import User,Patient,Doctor,Diagnose ,DiagnoseTemplate
-from DoctorSpring.models import User,Comment,Message ,UserFavorites,UserRole ,TanksNote
+from DoctorSpring.models import User,Comment,Message ,UserFavorites,UserRole ,ThanksNote
 from DoctorSpring.util import result_status as rs,object2dict,pdf_utils,constant
 from DoctorSpring.util.constant import MessageUserType,Pagger,ReportType,ReportStatus
 from DoctorSpring.util.authenticated import authenticated
@@ -266,8 +266,8 @@ def addThankNote():
     if userId is None:
         json.dumps(rs.NO_LOGIN.__dict__,ensure_ascii=False)
     if formResult.status==rs.SUCCESS.status:
-        thanksNote=TanksNote(userId,form.receiver,form.title,form.content)
-        TanksNote.save(db_session,thanksNote)
+        thanksNote=ThanksNote(userId,form.receiver,form.title,form.content)
+        ThanksNote.save(db_session,thanksNote)
         return json.dumps(formResult.__dict__,ensure_ascii=False)
     return json.dumps(formResult.__dict__,ensure_ascii=False)
 
@@ -275,20 +275,20 @@ def addThankNote():
 
 @uc.route('/gratitude/<int:userid>/list', methods = ['GET', 'POST'])
 def getThanksNotes(userid):
-    status=request.args.get('status')
+    #status=request.args.get('status')
 
     pageNo=request.args.get('pageNo')
     pageSize=request.args.get('pageSize')
     pager=Pagger(pageNo,pageSize)
 
-    thanksNotes=TanksNote.getThanksNoteByReceiver(db_session,userid)
+    thanksNotes=ThanksNote.getThanksNoteByReceiver(db_session,userid)
     if thanksNotes is None or len(thanksNotes)<1:
-        return jsonify(rs.SUCCESS.__dict__)
+        return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
     thanksNotesDict=object2dict.objects2dicts(thanksNotes)
     dataChangeService.setThanksNoteDetail(thanksNotesDict)
     resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,thanksNotesDict)
     resultDict=resultStatus.__dict__
-    return jsonify(resultDict)
+    return json.dumps(resultDict,ensure_ascii=False)
 @uc.route('/redirectPdf', methods=['GET','POST'])
 def testRedirect():
     #return redirect("/pdf")

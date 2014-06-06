@@ -32,7 +32,7 @@ diagnoseView = Blueprint('diagnose', __name__)
 def fetchDiagnoseByAdmin():
 
     diagnoseId=request.args.get('diagnoseId')
-    userId=session['userId']
+    userId=4#session['userId']
 
 
     # if diagnoseId is None :
@@ -57,10 +57,12 @@ def fetchDiagnoseByAdmin():
 
     result=Diagnose.addAdminIdAndChangeStatus(diagnoseId,userId)
     #诊断日志
-    diagoseLog=DiagnoseLog(userId,diagnoseId,constant.DiagnoseLogAction.FetchDiagnoseAction)
-    DiagnoseLog.save(db_session,diagoseLog)
+    if result:
+        diagoseLog=DiagnoseLog(userId,diagnoseId,constant.DiagnoseLogAction.FetchDiagnoseAction)
+        DiagnoseLog.save(db_session,diagoseLog)
 
-    return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+        return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+    return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
 
 #初诊断
 @diagnoseView.route('/admin/report/addOrUpate',  methods = ['GET', 'POST'])
