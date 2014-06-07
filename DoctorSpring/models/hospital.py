@@ -2,7 +2,7 @@
 __author__ = 'chengc017'
 
 import sqlalchemy as sa
-
+from sqlalchemy.orm import relationship, backref
 from database import Base
 from database import db_session as session
 
@@ -11,6 +11,7 @@ class Hospital(Base):
     __tablename__ = 'hospital'
     __table_args__ = {
         'mysql_charset': 'utf8',
+        'mysql_engine' : 'MyISAM',
     }
 
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
@@ -18,6 +19,8 @@ class Hospital(Base):
     address = sa.Column(sa.String(255))
     description = sa.Column(sa.TEXT)
     locationId = sa.Column(sa.INTEGER)   # Location表ID
+    location = relationship("Location", backref=backref('hospital', order_by=id))
+
     type = sa.Column(sa.INTEGER)
     level = sa.Column(sa.INTEGER)
 

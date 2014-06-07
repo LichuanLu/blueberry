@@ -7,6 +7,7 @@ import sqlalchemy as sa
 from database import Base,db_session as session
 from DoctorSpring.util.constant import ModelStatus, UserStatus
 from sqlalchemy.orm import relationship, backref
+from DoctorSpring.models import User
 import config
 
 
@@ -24,7 +25,9 @@ class Doctor(Base):
     title = sa.Column(sa.String(64))    #职称
     hospitalId = sa.Column(sa.INTEGER)  #医院ID
     departmentId = sa.Column(sa.INTEGER)  #科室ID
-    # skillId = sa.Column(sa.INTEGER)       #由擅长关系表取代
+    department = relationship("Department", backref=backref('Doctor', order_by=id))
+
+    doctorSkills = relationship("Doctor2Skill", order_by="Doctor2Skill.id", backref="Doctor")
     description = sa.Column(sa.TEXT)
     diagnoseCount = sa.Column(sa.INTEGER)   #统计，诊断量
     feedbackCount = sa.Column(sa.INTEGER)   #好评数
@@ -57,22 +60,104 @@ class Doctor(Base):
             session.flush()
 
 
-'''
-    def __init__(self, title=title, content=content, origin_content=None,
-                 created_date=None, update_date=None):
-        self.title = title
-        self.content = content
-        self.update_date = update_date
-        if created_date == None:
-            self.created_date = time.time()
-        else:
-            self.created_date = created_date
-        if origin_content == None:
-            self.origin_content = content
-        else:
-            self.origin_content = origin_content
+    @classmethod
+    def get_doctor_list(cls, hospitalId, sectionId, doctorname, pagger, recommended=False):
+        # return session.query(Doctor).all()
+         query = session.query(Doctor).join(User, Doctor.userId == User.id). \
+            join(Doctor2Skill, Doctor.id == Doctor2Skill.doctorId). \
+            join(Skill, Skill.id == Doctor2Skill.skillId). \
+            filter(User.type == UserStatus.doctor, User.status == ModelStatus.Normal,
+                   Doctor.status == ModelStatus.Normal)
+
+         if hospitalId != 0:
+            query = query.filter(Doctor.hospitalId == hospitalId)
+
+         if sectionId != 0:
+            query = query.filter(Doctor.sectionId == sectionId)
+
+         if doctorname is not '':
+            query = query.filter(Doctor.username == doctorname or Doctor.name == doctorname)
+
+         if pagger is not None:
+            query = query.offset(pagger.count).limit(pagger.pageSize).all()
+
+         if(recommended):
+             return query.first()
+
+         return query
 
 
-    def __repr__(self):
-        return '<Post %s>' % (self.title)
-'''
+
+class Doctor2Skill(Base):
+    __tablename__ = 'doctor2skill'
+    __table_args__ = {
+        'mysql_charset': 'utf8',
+        'mysql_engine': 'MyISAM',
+    }
+
+    id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
+
+
+    doctorId = sa.Column(sa.INTEGER, sa.ForeignKey('doctor.id'))
+    doctor = relationship("Doctor", backref=backref('Doctor2skill', order_by=id))
+    skillId = sa.Column(sa.INTEGER, sa.ForeignKey('skill.id'))
+    skill = relationship("Skill", backref=backref('Doctor2skill', order_by=id))
+
+    status = sa.Column(sa.INTEGER)
+
+    def __init__(self, doctorId=doctorId, skillId=skillId):
+        self.doctorId = doctorId
+        self.skillId = skillId
+        self.status = ModelStatus.Normal
+
+    @classmethod
+    def save(cls, doctor2skill):
+        if doctor2skill:
+            session.add(doctor2skill)
+            session.commit()
+            session.flush()
+
+
+class Skill(Base):
+    __tablename__ = 'skill'
+    __table_args__ = {
+        'mysql_charset': 'utf8',
+        }
+
+    id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
+    name = sa.Column(sa.String(64))
+    status = sa.Column(sa.INTEGER)
+
+    def __init__(self, name=name):
+        self.name = name
+        self.status = ModelStatus.Normal
+
+    @classmethod
+    def save(cls, skill):
+        if skill:
+            session.add(skill)
+            session.commit()
+            session.flush()
+
+class Department(Base):
+    __tablename__ = 'department'
+    __table_args__ = {
+        'mysql_charset': 'utf8',
+        }
+
+    id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
+    name = sa.Column(sa.String(64))
+    description = sa.Column(sa.String(255))
+    status = sa.Column(sa.INTEGER)
+
+    def __init__(self, name=name, description=description):
+        self.name = name
+        self.description = description
+        self.status = ModelStatus.Normal
+
+    @classmethod
+    def save(cls, department):
+        if department:
+            session.add(department)
+            session.commit()
+            session.flush()

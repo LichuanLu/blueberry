@@ -11,7 +11,9 @@ class Message(Base):
     __tablename__ = 'message'
     __table_args__ = {
         'mysql_charset': 'utf8',
-        }
+        'mysql_engine': 'MyISAM',
+    }
+
     id= sa.Column(sa.BigInteger, primary_key = True, autoincrement = True)
     sender=sa.Column(sa.Integer)
     receiver=sa.Column(sa.Integer)

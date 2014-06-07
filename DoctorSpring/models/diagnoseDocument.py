@@ -7,24 +7,6 @@ from  sqlalchemy import distinct
 from database import Base
 from sqlalchemy.orm import  relationship,backref,join
 
-
-# class Post(Base):
-#     __tablename__ = 'diagnose'
-#     __table_args__ = {
-#         'mysql_charset': 'utf8',
-#         }
-#
-#     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
-#     userId  = sa.Column(sa.Integer)
-#     pathologyId = sa.Column(sa.INTEGER)  #病理信息表ID
-#     patientId = sa.Column(sa.INTEGER)    #病人表ID
-#     createDate = sa.Column(sa.DATETIME)
-#     reviewDate = sa.Column(sa.DATETIME)
-#     adminId = sa.Column(sa.INTEGER)     #审查adminID
-#     reportId = sa.Column(sa.INTEGER)    #生成reportID
-#     hospitalId = sa.Column(sa.INTEGER)  #医院ID，用于医院批量提交诊断信息
-#     status = sa.Column(sa.INTEGER)      #标记状态 未提交，待审查，待诊断，待审核，结束
-# coding: utf-8
 __author__ = 'chengc017'
 
 import sqlalchemy as sa

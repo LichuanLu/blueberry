@@ -12,6 +12,7 @@ class Location(Base):
     __tablename__ = 'location'
     __table_args__ = {
         'mysql_charset': 'utf8',
+        'mysql_engine': 'MyISAM',
     }
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)

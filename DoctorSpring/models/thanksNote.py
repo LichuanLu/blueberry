@@ -12,6 +12,7 @@ class ThanksNote(Base):
     __tablename__ = 'thanksNote'
     __table_args__ = {
         'mysql_charset': 'utf8',
+        'mysql_engine': 'MyISAM',
     }
     id= sa.Column(sa.BigInteger, primary_key = True, autoincrement = True)
     sender=sa.Column(sa.Integer)

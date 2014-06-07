@@ -30,7 +30,6 @@ class Pathology(Base):
         self.status = ModelStatus.Normal
 
 
-
     @classmethod
     def save(cls, pathology):
         if pathology:

@@ -15,6 +15,7 @@ class User(Base):
     __tablename__ = 'user'
     __table_args__ = {
         'mysql_charset': 'utf8',
+        'mysql_engine': 'MyISAM',
     }
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
@@ -107,7 +108,9 @@ class UserRole(Base):
     __tablename__ = 'user_role'
     __table_args__ = {
         'mysql_charset': 'utf8',
-        }
+        'mysql_engine': 'MyISAM',
+
+    }
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
     userId = sa.Column(sa.Integer)
     roleId= sa.Column(sa.String(30))
@@ -122,7 +125,9 @@ class Role(Base):
     __tablename__ = 'role'
     __table_args__ = {
         'mysql_charset': 'utf8',
-        }
+        'mysql_engine': 'MyISAM',
+
+    }
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
     roleName= sa.Column(sa.String(30))
 
@@ -132,7 +137,9 @@ class UserFavorites(Base):
     __tablename__ = 'user_favorites'
     __table_args__ = {
         'mysql_charset': 'utf8',
-        }
+        'mysql_engine': 'MyISAM',
+
+    }
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
     userId = sa.Column(sa.Integer)
     doctorId = sa.Column(sa.Integer)

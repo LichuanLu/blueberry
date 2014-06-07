@@ -11,6 +11,8 @@ class Consult(Base):
     __tablename__ = 'consult'
     __table_args__ = {
         'mysql_charset': 'utf8',
+        'mysql_engine': 'MyISAM',
+
     }
     id= sa.Column(sa.BigInteger, primary_key = True, autoincrement = True)
     userId=sa.Column(sa.Integer)
