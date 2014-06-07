@@ -28,6 +28,5 @@ class authenticated(object):
             #     return method(_self, *args, **kwargs)
             else:
                 redirect(url_for(PERMISSION_DENY_URL))
-
         wrapper = dict(admin=admin_wrapper)
         return wrapper[self.auth_model]

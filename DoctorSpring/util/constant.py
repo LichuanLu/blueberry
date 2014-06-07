@@ -127,6 +127,7 @@ class RoleId(object):
     Patient=3
     HospitalUser=4
 class DiagnoseLogAction(object):
+    NewDiagnoseAction='新建诊断'
     FetchDiagnoseAction='领取诊断:'
     TriageDiagnoseAction='分发诊断:'
     UpateDiagnoseAction='诊断更新:'

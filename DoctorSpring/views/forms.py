@@ -53,6 +53,19 @@ class DiagnoseForm1(Form):
             return FAILURE
         return SUCCESS
 
+class DiagnoseForm3(Form):
+    doctorId = None
+    def __init__(self, args):
+        self.doctorId = args.get('doctorId')
+    def validate(self):
+        try:
+            if self.doctorId is None:
+                failure = ResultStatus(FAILURE.status, "请选择医生")
+                return failure
+        except Exception, e:
+            return FAILURE
+        return SUCCESS
+
 class DiagnoseForm2(Form):
     # patientlocation=1&patientlocation=2&dicomtype=1&fileurl=http%3A%2F%2F127.0.0.1%3A5000%2Fstatic%2Ftmp%2Flogin.html
     patientlocation = None
@@ -73,6 +86,30 @@ class DiagnoseForm2(Form):
             if self.fileurl is None:
                 failure = ResultStatus(FAILURE.status, "请上传有效的影音文件")
                 return failure
+        except Exception, e:
+            return FAILURE
+        return SUCCESS
+
+class DiagnoseForm4(Form):
+    # diagnoseHistory=zzzzzzz&illnessHistory=%E5%8F%91%E7%9F%AD%E5%8F%91%E7%9F%AD%E5%8F%91%E6%88%91%E8%84%9A%E6%89%8B%E6%9E%B6%E6%88%91%E5%8F%AB%E6%88%91%E9%87%91%E9%A2%9D%E5%93%A6%E6%94%BE%E5%81%87%E6%88%91%E5%B0%B1
+    diagnoseHistory = None
+    illnessHistory = None
+    fileurl = None
+    def __init__(self, args):
+        self.diagnoseHistory = args.get('diagnoseHistory')
+        self.illnessHistory = args.get('illnessHistory')
+        self.fileurl = args.get('fileurl')
+    def validate(self):
+        try:
+            if self.patientlocation is None:
+                failure = ResultStatus(FAILURE.status, "请选择就诊部位")
+                return failure
+            if self.dicomtype is None:
+                failure = ResultStatus(FAILURE.status, "请选择影像类型")
+                return failure
+                # if self.fileurl is None:
+                #     failure = ResultStatus(FAILURE.status, "请上传有效的影音文件")
+                #     return failure
         except Exception, e:
             return FAILURE
         return SUCCESS
