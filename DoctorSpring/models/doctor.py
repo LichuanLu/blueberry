@@ -17,7 +17,7 @@ class Doctor(Base):
     }
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
-    userId = sa.Column(sa.Integer, sa.ForeignKey('User.id'))     #对应User表里的ID
+    userId = sa.Column(sa.Integer, sa.ForeignKey('user.id'))     #对应User表里的ID
     user = relationship("User", backref=backref('doctor', order_by=id))
     username = sa.Column(sa.String(64))
     identityPhone = sa.Column(sa.INTEGER)

@@ -16,7 +16,7 @@ class Patient(Base):
     }
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
-    userID = sa.Column(sa.Integer,sa.ForeignKey('User.id'))
+    userID = sa.Column(sa.Integer,sa.ForeignKey('user.id'))
     user = relationship("User", backref=backref('patient', order_by=id))
 
     locationId = sa.Column(sa.INTEGER)     #所在地ID

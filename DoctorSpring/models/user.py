@@ -12,7 +12,7 @@ from datetime import datetime
 
 
 class User(Base):
-    __tablename__ = 'User'
+    __tablename__ = 'user'
     __table_args__ = {
         'mysql_charset': 'utf8',
     }
