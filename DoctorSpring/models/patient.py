@@ -5,7 +5,7 @@ import sqlalchemy as sa
 from sqlalchemy.orm import  relationship,backref,join
 
 from database import Base ,db_session as session
-from DoctorSpring.util.constant import ModelStatus, UserStatus
+from DoctorSpring.util.constant import ModelStatus, UserStatus, PatientStatus
 
 
 
@@ -18,7 +18,7 @@ class Patient(Base):
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
 
-    userID = sa.Column(sa.INTEGER, sa.ForeignKey('User.id'))
+    userID = sa.Column(sa.INTEGER, sa.ForeignKey('user.id'))
     user = relationship("User", backref=backref('patient', order_by=id))
 
     locationId = sa.Column(sa.INTEGER)     #所在地ID
