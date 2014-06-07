@@ -54,7 +54,7 @@ def getDiagnoseDetailInfo(diagnose):
         diagDict['patientName']=diagnose.patient.realname
         diagDict['gender']=diagnose.patient.gender
         if diagnose.patient.birthDate:
-            diagnose['birthDate']=diagnose.patient.birthDate.strftime('%Y-%m-%d')
+            diagDict['birthDate']=diagnose.patient.birthDate.strftime('%Y-%m-%d')
 
     #diagDict['type']=diagnose.type
     if hasattr(diagnose,"doctor") and diagnose.doctor:
@@ -84,6 +84,7 @@ def getDiagnoseDetailInfo(diagnose):
                     position=pathologyPositon.position
                     positions+=(u' '+position.name)
                 diagDict['positionName']=positions
+    return diagDict
 
 def getDiagnosePositonFromDiagnose(diagnose):
     if diagnose is None:
@@ -108,7 +109,7 @@ def getDoctorNeedDiagnoseMessageContent(diagnose,doctor):
         diagnoseContent=" 诊断号:"+diagnose.diagnoseSeriesNumber
 
     if hasattr(diagnose,"patient") and diagnose.patient:
-        if diagnose.patient.name:
+        if diagnose.patient.realname:
             diagnoseContent+=' | 患者:'+diagnose.patient.realname
 
     if hasattr(diagnose,"pathology") and diagnose.pathology:

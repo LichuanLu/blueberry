@@ -22,7 +22,7 @@ class Patient(Base):
     locationId = sa.Column(sa.INTEGER)     #所在地ID
     identityCode = sa.Column(sa.String(64))
     gender = sa.Column(sa.INTEGER)
-    birthDate = sa.Column(sa.DATE)
+    birthDate = sa.Column(sa.DateTime)
     realname = sa.Column(sa.String(64))
     yibaoCode = sa.Column(sa.INTEGER)
     identityPhone = sa.Column(sa.INTEGER)

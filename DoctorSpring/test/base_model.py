@@ -2,7 +2,7 @@
 __author__ = 'jeremyxu'
 
 import unittest
-from DoctorSpring.models import Skill, Location, User, Doctor, Hospital, Department, Patient, Doctor2Skill
+from DoctorSpring.models import Skill, Location, User, Doctor, Hospital, Department, Patient, Doctor2Skill ,Diagnose
 from DoctorSpring.util.constant import UserStatus
 
 class ModelTestCase(unittest.TestCase):
@@ -48,7 +48,9 @@ class UserTestCase(unittest.TestCase):
         new_patient = Patient(new_user.id)
         Patient.save(new_patient)
 
-
+    def test_getById(self):
+        diagnose=Diagnose.getDiagnoseById(1)
+        print diagnose.id
 
     def test_add_doctor(self):
 

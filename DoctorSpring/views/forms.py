@@ -4,6 +4,7 @@ from wtforms import Form, TextField, PasswordField, DateField, IntegerField, Sel
 from wtforms.validators import Required, Email, EqualTo, Length
 from DoctorSpring.util.result_status import *
 from DoctorSpring.models import User, Patient, Doctor ,Diagnose
+import string
 
 class RegisterForm(Form):
     name = TextField('Username', validators=[Required(), Length(min=3, max=25)])
@@ -150,10 +151,14 @@ class ReportForm(object):
         self.reportId=args.get('reportId')
 
         self.status=args.get('status')
+        if self.status:
+            self.status=string.atoi(self.status)
         self.techDesc=args.get('techDesc')
         self.imageDesc=args.get('imageDesc')
         self.diagnoseDesc=args.get('diagnoseDesc')
         self.diagnoseId=args.get('diagnoseId')
+        if self.diagnoseId:
+            self.diagnoseId=string.atoi(self.diagnoseId)
         self.fileUrl=args.get('fileUrl')
     def validate(self):
         try:

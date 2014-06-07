@@ -124,6 +124,9 @@ class DiagnoseTestCase(unittest.TestCase):
     def test_getPatientListByDoctorId(self):
         patients=Diagnose.getPatientListByDoctorId(1)
         print len(patients)
+    def test_getById(self):
+        diagnose=Diagnose.getDiagnoseById(1)
+        print diagnose.id
 
 class DiagnoseTestCase(unittest.TestCase):
     def test_getDiagnose(self):

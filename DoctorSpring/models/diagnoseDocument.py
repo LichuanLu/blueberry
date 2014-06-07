@@ -326,9 +326,9 @@ class Report(Base):
             return
         report=session.query(Report).filter(Report.id==reportId).first()
         if report:
-            if type:
+            if type or type==0:
                 report.type=type
-            if status:
+            if status or status==0:
                 report.status=status
             if fileUrl:
                 report.fileUrl=fileUrl

@@ -68,12 +68,12 @@ def fetchDiagnoseByAdmin():
 @diagnoseView.route('/admin/report/addOrUpate',  methods = ['GET', 'POST'])
 def addOrUpdateReport():
 
-    userId=session['userId']
+    userId=5#session['userId']
     user=User.getById(userId)
     if user is None:
         return  json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
     #权限查看
-    if UserRole.checkRole(db_session,userId,constant.RoleId.Admin):
+    if  UserRole.checkRole(db_session,userId,constant.RoleId.Admin) == False:
         return  json.dumps(rs.PERMISSION_DENY.__dict__,ensure_ascii=False)
 
     form =  ReportForm(request.form)
@@ -87,10 +87,11 @@ def addOrUpdateReport():
             report=Report(form.techDesc,form.imageDesc,form.diagnoseDesc,form.fileUrl,form.status)
             Report.save(report)
         #flash('成功添加诊断评论')
-        if form.status and constant.ReportStatus.Commited:
+        if form.status and form.status == constant.ReportStatus.Commited:
             diagnose=Diagnose.getDiagnoseById(form.diagnoseId)
             if diagnose:
                 Diagnose.changeDiagnoseStatus(diagnose.id,constant.DiagnoseStatus.NeedDiagnose)
+            Report.update(form.reportId,constant.ReportType.Doctor,status=constant.ReportStatus.Draft)
             if diagnose and hasattr(diagnose,'doctor'):
                 doctor=diagnose.doctor
                 if doctor and doctor.userId:
@@ -110,7 +111,7 @@ def addOrUpdateReport():
 @diagnoseView.route('/doctor/report/update',  methods = ['GET', 'POST'])
 def updateReport():
 
-    userId=session['userId']
+    userId=4#session['userId']
     user=User.getById(userId)
     if user is None:
         return  json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
