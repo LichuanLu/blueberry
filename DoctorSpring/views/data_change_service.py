@@ -205,6 +205,45 @@ def setThanksNoteDetail(thanksNoteDicts):
                 thanksNoteDict['observer']=observer
                 thanksNoteDict['observerName']=user.name
 
+def get_doctors_dict(doctors, pageno=1):
+    if doctors is None:
+        return
+    result_Dict = {}
+    result_Dict['pageNumber'] = pageno
+    result = []
+    for doctor in doctors:
+        doctorDict = get_doctor(doctor)
+        result.append(doctorDict)
+    result_Dict['doctor'] = result
+    return result_Dict
+
+
+def get_doctor(doctor):
+    if doctor is None:
+        return
+    doctorDict = {}
+    if doctor.user.id:
+        doctorDict['id'] = doctor.user.id
+    if hasattr(doctor, "username") and doctor.username:
+        doctorDict['doctorname'] = doctor.username
+    if hasattr(doctor, "title") and doctor.title:
+        doctorDict["doctortitle"] = doctor.title
+    if hasattr(doctor, "doctorSkills") and len(doctor.doctorSkills) >= 1:
+        skill_des = ''
+        for skill in doctor.doctorSkills:
+            if skill.skill:
+                skill_des = skill_des + skill.skill.name + ', '
+        doctorDict["skill"] = skill_des
+    if hasattr(doctor, "hospital") and hasattr(doctor.hospital, "name") and doctor.hospital.name:
+        doctorDict["hospitalname"] = doctor.hospital.name
+    if hasattr(doctor, "diagnoseCount") and doctor.diagnoseCount:
+        doctorDict["diagnoseNumber"] = doctor.diagnoseCount
+    if hasattr(doctor, "feedbackCount") and doctor.feedbackCount:
+        doctorDict["goodFeedbackNumber"] = doctor.feedbackCount
+    if hasattr(doctor, "user") and hasattr(doctor.user, "imagePath") and doctor.user.imagePath:
+        doctorDict["avatarUrl"] = doctor.user.imagePath
+
+    return doctorDict
 
 
 
