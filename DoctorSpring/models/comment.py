@@ -75,8 +75,9 @@ class Comment(Base):
     def getCommentByUser(cls,observerId,status=ModelStatus.Normal,type=CommentType.Normal):
         return session.query(Comment).filter(Comment.observer == observerId,Comment.status==status,Comment.type==type).all()
     @classmethod
-    def getCommentByReceiver(cls,receiverId,status=ModelStatus.Normal,type=CommentType.Normal):
-        return session.query(Comment).filter(Comment.receiver==receiverId,Comment.status==status,Comment.type==type).all()
+    def getCommentByReceiver(cls,receiverId,status=ModelStatus.Normal,type=CommentType.Normal,pagger=constant.Pagger(1,20)):
+        return session.query(Comment).filter(Comment.receiver==receiverId,Comment.status==status,Comment.type==type).offset(pagger.getOffset())\
+            .limit(pagger.getLimitCount()).all()
     @classmethod
     def getCommentBydiagnose(cls,diagnoseId,status=ModelStatus.Normal,type=CommentType.Normal):
         return session.query(Comment).filter(Comment.diagnoseId==diagnoseId,Comment.status==status,Comment.type==type).all()

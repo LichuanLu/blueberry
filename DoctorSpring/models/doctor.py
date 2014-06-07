@@ -17,7 +17,7 @@ class Doctor(Base):
     }
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
-    userId = sa.Column(sa.Integer, sa.ForeignKey('User.id'))     #对应User表里的ID
+    userId = sa.Column(sa.Integer, sa.ForeignKey('user.id'))     #对应User表里的ID
     user = relationship("User", backref=backref('doctor', order_by=id))
     username = sa.Column(sa.String(64))
     identityPhone = sa.Column(sa.INTEGER)
@@ -39,9 +39,15 @@ class Doctor(Base):
 
     @classmethod
     def getById(cls,doctorId):
-        if doctorId is None or doctorId<1:
+        if doctorId is None or doctorId<0:
             return
         return session.query(Doctor).filter(Doctor.id==doctorId,Doctor.status==ModelStatus.Normal).first()
+    @classmethod
+    def getByUserId(cls,userId):
+        if userId is None or userId<0:
+            return
+        return session.query(Doctor).filter(Doctor.userId==userId,Doctor.status==ModelStatus.Normal).first()
+
 
     @classmethod
     def save(cls, doctor):

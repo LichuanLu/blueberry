@@ -39,12 +39,37 @@ class UserTestCase(unittest.TestCase):
         user.imagePath='http://localhost:5000/static/assets/image/young-m.png'
         User.save(user)
     def test_addPatient(self):
-        patient=Patent()
+        patient=Patient()
         patient.gender=0
         patient.Name='程成'
         patient.status=0
         patient.userID=1
-        Patent.save(patient)
+        Patient.save(patient)
+class RoleTestCase(unittest.TestCase):
+    def test_addAllRole(self):
+        from DoctorSpring.models.user import Role,UserRole
+        role=Role()
+        role.id=1
+        role.roleName='admin'
+        session.add(role)
+
+        role=Role()
+        role.id=2
+        role.roleName='doctor'
+        session.add(role)
+
+        role=Role()
+        role.id=3
+        role.roleName='patient'
+        session.add(role)
+
+        role=Role()
+        role.id=4
+        role.roleName='hospitalUser'
+        session.add(role)
+
+        session.commit()
+        session.flush()
 
 class DoctorTestCase(unittest.TestCase):
     def test_getDoctorById(self):
@@ -99,12 +124,21 @@ class DiagnoseTestCase(unittest.TestCase):
     def test_getPatientListByDoctorId(self):
         patients=Diagnose.getPatientListByDoctorId(1)
         print len(patients)
+    def test_getById(self):
+        diagnose=Diagnose.getDiagnoseById(1)
+        print diagnose.id
 
 class DiagnoseTestCase(unittest.TestCase):
     def test_getDiagnose(self):
         diagnose=session.query(Diagnose).filter(Diagnose.id==1).first()
         diagnose.reportId=3
         session.commit()
+    def test_getDiagnoseByAdmin(self):
+        haspitalList=[]
+        haspitalList.append(1)
+        haspitalList.append(3)
+        diagnoses=Diagnose.getDiagnoseByAdmin(session,haspitalList,'任志强')
+        print len(diagnoses)
 class ReportTestCase(unittest.TestCase):
     def test_addReport(self):
         dt=session.query(DiagnoseTemplate).filter(DiagnoseTemplate.id==5).first()
@@ -124,8 +158,8 @@ class ReportTestCase(unittest.TestCase):
 class DataUpateTestCase(unittest.TestCase):
     def test_update(self):
         #Report.update(3,1,2)
-        patient=session.query(Patent).filter(Patent.id==1).first()
-        Patent.identityCode
+        patient=session.query(Patient).filter(Patient.id==1).first()
+        patient.identityCode
         birthDate=datetime.now()
         # birthDate=birthDate-datetime.timedelta(days =10)
         birthDate=datetime(birthDate.year-10,birthDate.month,birthDate.day)
@@ -144,6 +178,13 @@ class DataUpateTestCase(unittest.TestCase):
         pathology.status=0
         pathology.diagnoseMethod='ct'
         Pathology.save(pathology)
+    def test_filter(self):
+        result=session.query(Doctor).filter(Doctor.hospitalId==1).all()
+        query=session.query(Doctor).filter(Doctor.hospitalId==1)
+        result=query.filter(Doctor.departmentId==2)
+        result=query.filter(Doctor.status==9).all()
+        print len(result)
+
 
 
 

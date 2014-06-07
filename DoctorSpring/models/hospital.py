@@ -18,6 +18,8 @@ class Hospital(Base):
     address = sa.Column(sa.String(255))
     description = sa.Column(sa.TEXT)
     locationId = sa.Column(sa.INTEGER)   # Location表ID
+    type = sa.Column(sa.INTEGER)
+    level = sa.Column(sa.INTEGER)
 
     status = sa.Column(sa.INTEGER)
 

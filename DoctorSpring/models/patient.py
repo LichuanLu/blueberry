@@ -2,6 +2,7 @@
 __author__ = 'chengc017'
 
 import sqlalchemy as sa
+from sqlalchemy.orm import  relationship,backref,join
 
 from database import Base ,db_session as session
 from DoctorSpring.util.constant import ModelStatus, UserStatus
@@ -15,11 +16,13 @@ class Patient(Base):
     }
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
-    userID = sa.Column(sa.INTEGER)
+    userID = sa.Column(sa.Integer,sa.ForeignKey('user.id'))
+    user = relationship("User", backref=backref('patient', order_by=id))
+
     locationId = sa.Column(sa.INTEGER)     #所在地ID
     identityCode = sa.Column(sa.String(64))
     gender = sa.Column(sa.INTEGER)
-    birthDate = sa.Column(sa.DATE)
+    birthDate = sa.Column(sa.DateTime)
     realname = sa.Column(sa.String(64))
     yibaoCode = sa.Column(sa.INTEGER)
     identityPhone = sa.Column(sa.INTEGER)

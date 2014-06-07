@@ -21,11 +21,12 @@ def register_blueprints(app):
     # Prevents circular imports
     from views import user_view
     from views import front
-    from views import mc,uc
+    from views import mc,uc,diagnoseView
     #from views import admin
     app.register_blueprint(user_view)
     app.register_blueprint(front)
     app.register_blueprint(mc)
     app.register_blueprint(uc)
+    app.register_blueprint(diagnoseView)
 
 register_blueprints(app)

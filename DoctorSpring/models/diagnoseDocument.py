@@ -5,7 +5,7 @@ import sqlalchemy as sa
 from  sqlalchemy import distinct
 
 from database import Base
-from sqlalchemy.orm import  relationship,backref
+from sqlalchemy.orm import  relationship,backref,join
 
 
 # class Post(Base):
@@ -29,12 +29,19 @@ __author__ = 'chengc017'
 
 import sqlalchemy as sa
 from DoctorSpring.util.constant import Pagger,SystemTimeLimiter,DiagnoseStatus,ReportStatus,ReportType,\
-    SeriesNumberPrefix,SeriesNumberBase
+    SeriesNumberPrefix,SeriesNumberBase,ModelStatus
+from DoctorSpring.util import constant
 from datetime import datetime
 from database import Base,db_session as session
 from sqlalchemy.orm import relationship,backref
+import threading
+from hospital import Hospital
+from doctor import Doctor
 
 import uuid
+#mutex=threading.Lock()
+mutex=threading.RLock()
+
 
 class Diagnose(Base):
     __tablename__ = 'diagnose'
@@ -45,13 +52,17 @@ class Diagnose(Base):
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
     patientId  = sa.Column(sa.Integer,sa.ForeignKey('patient.id'))
     patient = relationship("Patient", backref=backref('diagnose', order_by=id))
+    diagnoseSeriesNumber=sa.Column(sa.String(256))
+
 
     doctorId  = sa.Column(sa.Integer,sa.ForeignKey('doctor.id'))
     doctor = relationship("Doctor", backref=backref('diagnose', order_by=id))
 
+    #adminId = sa.Column(sa.INTEGER,sa.ForeignKey('User.id'))
+    #administrator = relationship("User", backref=backref('diagnose', order_by=id))
     adminId = sa.Column(sa.INTEGER)
 
-    uploadUserId  = sa.Column(sa.Integer,sa.ForeignKey('User.id'))
+    uploadUserId  = sa.Column(sa.Integer,sa.ForeignKey('user.id'))
     uploadUser = relationship("User", backref=backref('diagnose', order_by=id))
 
     pathologyId=sa.Column(sa.Integer,sa.ForeignKey('pathology.id'))
@@ -65,7 +76,9 @@ class Diagnose(Base):
     createDate=sa.Column(sa.DateTime)
     reviewDate = sa.Column(sa.DATETIME)
 
-    hospitalId = sa.Column(sa.INTEGER)  #医院ID，用于医院批量提交诊断信息
+    hospitalId = sa.Column(sa.Integer,sa.ForeignKey('hospital.id'))  #医院ID，用于医院批量提交诊断信息
+    hospital=relationship("Hospital", backref=backref('diagnose', order_by=id))
+
     status = sa.Column(sa.INTEGER)
 
     @classmethod
@@ -73,9 +86,45 @@ class Diagnose(Base):
         if diagnose:
             session.add(diagnose)
             session.commit()
+            if diagnose.id:
+                diagnoseSeriesNumber='%s%i'%(constant.DiagnoseSeriesNumberPrefix,constant.DiagnoseSeriesNumberBase+diagnose.id)
+                diagnose.diagnoseSeriesNumber=diagnoseSeriesNumber
+                session.commit()
             session.flush()
     @classmethod
-    def getDiagnosesByDoctorId(cls,doctorId,pagger,status=None,startTime=SystemTimeLimiter.startTime,endTime=SystemTimeLimiter.endTime):
+    def getDiagnoseById(cls,diagnoseId):
+        if diagnoseId:
+            return session.query(Diagnose).filter(Diagnose.id==diagnoseId,Diagnose.status!=DiagnoseStatus.Del).first()
+    @classmethod
+    def addAdminIdAndChangeStatus(cls,diagnoseId,adminId):
+        if adminId is None:
+            return
+        if mutex.acquire(1):
+            try:
+                diagnose=Diagnose.getDiagnoseById(diagnoseId)
+                if diagnose.adminId is None or diagnose.adminId==0:
+                    diagnose.adminId=adminId
+                    diagnose.status=DiagnoseStatus.Triaging
+                    session.commit()
+                    return True
+            except Exception,e:
+                print e.message
+                return
+            finally:
+                mutex.release()
+    @classmethod
+    def changeDiagnoseStatus(cls,diagnoseId,status):
+        if diagnoseId and status:
+            diagnose=Diagnose.getDiagnoseById(diagnoseId)
+            if diagnose:
+                diagnose.status=status
+                session.commit()
+                session.flush()
+
+
+
+    @classmethod
+    def getDiagnosesByDoctorId(cls,session,doctorId,pagger,status=None,startTime=SystemTimeLimiter.startTime,endTime=SystemTimeLimiter.endTime):
         count=Diagnose.getDiagnoseCountByDoctorId(doctorId,status,startTime,endTime)
         pagger.count=count
         if doctorId:
@@ -113,7 +162,73 @@ class Diagnose(Base):
     @classmethod
     def getDiagnoseById(cls,diagnoseId):
         if diagnoseId:
-            return session.query(Diagnose).filter(Diagnose.id==diagnoseId,Diagnose.status==DiagnoseStatus.Diagnosed).first()
+            return session.query(Diagnose).filter(Diagnose.id==diagnoseId,Diagnose.status!=DiagnoseStatus.Del).first()
+
+    @classmethod
+    def getDiagnosesCountByAdmin(cls,session ,status=None,adminId=None,startTime=SystemTimeLimiter.startTime,endTime=SystemTimeLimiter.endTime):
+        query=session.query(Diagnose)
+        if status:
+            query.filter(Diagnose.status==status)
+        if adminId:
+            query.filter(Diagnose.adminId==adminId)
+        query.filter(Diagnose.createDate>startTime,Diagnose.createDate<endTime)
+        return query.count()
+    @classmethod
+    def getDiagnosesByAdmin(cls,session,pagger ,status=None,adminId=None,startTime=SystemTimeLimiter.startTime,endTime=SystemTimeLimiter.endTime):
+
+            if adminId is None:
+                return
+            query=session.query(Diagnose).filter(Diagnose.adminId==adminId)
+            # count=Diagnose.getDiagnosesCountByAdmin(session,status,startTime,endTime)
+            # pagger.count=count
+            if status:
+                query=query.filter(Diagnose.status==status)
+
+            query=query.filter(Diagnose.createDate>startTime,Diagnose.createDate<endTime)
+            return query.offset(pagger.getOffset()).limit(pagger.getLimitCount()).all()
+
+    @classmethod
+    def getDiagnoseByAdmin2(cls,session,hostpitalList=None,doctorName=None,pagger=Pagger(1,20) ):
+        if doctorName is None and hostpitalList is None:
+            return session.query(Diagnose).filter(Diagnose.status==DiagnoseStatus.NeedTriage).offset(pagger.getOffset()).limit(pagger.getLimitCount()).all()
+        if doctorName is None:
+            return session.query(Diagnose).filter(Diagnose.hospitalId.in_(hostpitalList),Diagnose.status==DiagnoseStatus.NeedTriage).offset(pagger.getOffset()).limit(pagger.getLimitCount()).all()
+
+        if hostpitalList:
+            query=session.query(Diagnose).select_from(join(Doctor,Diagnose,Doctor.id==Diagnose.doctorId))\
+            .filter(Doctor.username==doctorName,Diagnose.status==DiagnoseStatus.NeedTriage,Diagnose.hospitalId.in_(hostpitalList)).offset(pagger.getOffset()).limit(pagger.getLimitCount())
+        else:
+            query=session.query(Diagnose).select_from(join(Doctor,Diagnose,Doctor.id==Diagnose.doctorId)) \
+                .filter(Doctor.username==doctorName,Diagnose.status==DiagnoseStatus.NeedTriage).offset(pagger.getOffset()).limit(pagger.getLimitCount())
+        return query.all()
+
+class DiagnoseLog(Base):
+    __tablename__ = 'diagnoseLog'
+    __table_args__ = {
+        'mysql_charset': 'utf8',
+    }
+
+    id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
+    userId = sa.Column(sa.Integer)
+    diagnoseId=sa.Column(sa.Integer)
+    action=sa.Column(sa.String(128))
+    createTime=sa.Column(sa.DateTime)
+    def __init__(self,userId,diagnoseId,action):
+        self.userId=userId
+        self.diagnoseId=diagnoseId
+        self.action=action
+        self.createTime=datetime.now()
+
+    @classmethod
+    def save(cls,session,diagnoseLog):
+        if diagnoseLog:
+            session.add(diagnoseLog)
+            session.commit()
+            session.flush()
+    @classmethod
+    def getDiagnoseLogByDiagnoseId(cls,session,diagnoseId):
+        if diagnoseId:
+            return session.query(DiagnoseLog).filter(DiagnoseLog.diagnoseId==diagnoseId).order_by(DiagnoseLog.createTime).all()
 
 
 class DiagnoseTemplate(Base):
@@ -211,9 +326,9 @@ class Report(Base):
             return
         report=session.query(Report).filter(Report.id==reportId).first()
         if report:
-            if type:
+            if type or type==0:
                 report.type=type
-            if status:
+            if status or status==0:
                 report.status=status
             if fileUrl:
                 report.fileUrl=fileUrl
@@ -227,22 +342,50 @@ class Report(Base):
         session.flush()
         return report
 
-'''
-    def __init__(self, title=title, content=content, origin_content=None,
-                 created_date=None, update_date=None):
-        self.title = title
-        self.content = content
-        self.update_date = update_date
-        if created_date == None:
-            self.created_date = time.time()
-        else:
-            self.created_date = created_date
-        if origin_content == None:
-            self.origin_content = content
-        else:
-            self.origin_content = origin_content
+class File(Base):
+    __tablename__ = 'file'
+    __table_args__ = {
+        'mysql_charset': 'utf8',
+        }
+
+    id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
+    type = sa.Column(sa.Integer)
+    status=sa.Column(sa.Integer)
+    url=sa.Column(sa.String(128))
+    pathologyId=sa.Column(sa.Integer)
 
 
-    def __repr__(self):
-        return '<Post %s>' % (self.title)
-'''
+    def __init__(self,type,statues,url,pathologyId):
+        self.type=type
+        self.status=statues
+        self.url=url
+        self.pathologyId=pathologyId
+
+    @classmethod
+    def save(cls,dsFile):
+        if dsFile is None:
+            return
+        session.add(File)
+        session.commit()
+    @classmethod
+    def getFiles(cls,pathologyId,type=constant.FileType.Dicom):
+        if pathologyId:
+            if type:
+                return session.query(File).filter(File.pathologyId==pathologyId,File.type==type,File.status==ModelStatus.Normal).all()
+            else:
+                return session.query(File).filter(File.pathologyId==pathologyId,File.status==ModelStatus.Normal).all()
+    @classmethod
+    def getDicomFileUrl(cls,pathologyId):
+        if pathologyId:
+            return session.query(File.url).filter(File.pathologyId==pathologyId,File.type==constant.FileType.Dicom,File.status==ModelStatus.Normal).first()
+
+    @classmethod
+    def getFilesUrl(cls,pathologyId):
+        if pathologyId:
+            return session.query(File.url).filter(File.pathologyId==pathologyId,File.type==constant.FileType.FileAboutDiagnose,File.status==ModelStatus.Normal).all()
+
+
+
+
+
+

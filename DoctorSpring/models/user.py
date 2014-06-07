@@ -5,14 +5,14 @@ import sqlalchemy as sa
 from database import db_session as session
 from werkzeug.security import generate_password_hash, check_password_hash
 from database import Base
-from DoctorSpring.util.constant import ModelStatus, PatientStatus
+from DoctorSpring.util.constant import ModelStatus, PatientStatus,UserFavoritesType
 import config
 from DoctorSpring.util.constant import ModelStatus
 from datetime import datetime
 
 
 class User(Base):
-    __tablename__ = 'User'
+    __tablename__ = 'user'
     __table_args__ = {
         'mysql_charset': 'utf8',
     }
@@ -27,12 +27,19 @@ class User(Base):
     imagePath = sa.Column(sa.String(255))
     sex = sa.Column(sa.INTEGER)   # Location表ID
     phone = sa.Column(sa.INTEGER)
+    type=sa.Column(sa.Integer)  # 0:patent,1:doctor
+    status = sa.Column(sa.INTEGER)  # 0:normal,1:delete,2:overdue
+
+    def set_password(self, password):
+        self.password = generate_password_hash(password)
+
     
     type=sa.Column(sa.Integer)  # 0:patent,1:doctor
     status = sa.Column(sa.INTEGER)  # 0:normal,1:delete,2:overdue
 
     def set_password(self, password):
         self.password = generate_password_hash(password)
+
 
     def check_password(self, password):
         return check_password_hash(self.password , password)
@@ -73,6 +80,7 @@ class User(Base):
             return
         return session.query(User).filter(User.id==userId,User.status==ModelStatus.Normal).first()
 
+
     @classmethod
     def get_name(cls, user):
         if user is None:
@@ -95,6 +103,29 @@ class User(Base):
         else:
             return session.query(User).filter(User.phone == user_name, User.status == ModelStatus.Normal).first()
 
+class UserRole(Base):
+    __tablename__ = 'user_role'
+    __table_args__ = {
+        'mysql_charset': 'utf8',
+        }
+    id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
+    userId = sa.Column(sa.Integer)
+    roleId= sa.Column(sa.String(30))
+
+    @staticmethod
+    def checkRole(session,userId,roleId):
+        if userId and roleId:
+           return session.query(UserRole).filter(UserRole.userId==userId,UserRole.roleId==roleId).count()>0
+        else:
+            return False
+class Role(Base):
+    __tablename__ = 'role'
+    __table_args__ = {
+        'mysql_charset': 'utf8',
+        }
+    id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
+    roleName= sa.Column(sa.String(30))
+
 
 
 class UserFavorites(Base):
@@ -116,7 +147,7 @@ class UserFavorites(Base):
         self.doctorId=doctorId
         self.hospitalId=hospitalId
         self.docId=docId
-        self.status=ModelStatus
+        self.status=ModelStatus.Normal
         self.type=type
         self.createDate=datetime.now()
 
@@ -133,6 +164,33 @@ class UserFavorites(Base):
             if user:
                 user.status=ModelStatus.Del
                 session.commit()
+    @staticmethod
+    def checkUerFavorties(session,userId,type,favoritesObjectId):
+        if type is None:
+            return False
+        query=session.query(UserFavorites.id).filter(UserFavorites.userId==userId,UserFavorites.status==ModelStatus.Normal)
+        if type==UserFavoritesType.Doctor:
+            query.filter(UserFavorites.type==type,UserFavorites.doctorId==favoritesObjectId)
+        if type==UserFavoritesType.Hospital:
+            query.filter(UserFavorites.type==type,UserFavorites.hospitalId==favoritesObjectId)
+        results=query.all()
+        if results and len(results)==1:
+            return True
+        return False
+    @staticmethod
+    def getUerFavortiesByDelStatus(session,userId,type,favoritesObjectId):
+        if type is None:
+            return False
+        query=session.query(UserFavorites).filter(UserFavorites.userId==userId,UserFavorites.status==ModelStatus.Del)
+        if type==UserFavoritesType.Doctor:
+            query.filter(UserFavorites.type==type,UserFavorites.doctorId==favoritesObjectId)
+        if type==UserFavoritesType.Hospital:
+            query.filter(UserFavorites.type==type,UserFavorites.hospitalId==favoritesObjectId)
+        result=query.first()
+        return result
+
+
+
     @classmethod
     def getUserFavorties(cls,userId,type,status=None):
         if userId:

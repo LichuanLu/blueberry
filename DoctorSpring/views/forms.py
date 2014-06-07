@@ -3,7 +3,8 @@ __author__ = 'Jeremy'
 from wtforms import Form, TextField, PasswordField, DateField, IntegerField, SelectField, BooleanField
 from wtforms.validators import Required, Email, EqualTo, Length
 from DoctorSpring.util.result_status import *
-from DoctorSpring.models import User, Patient, Doctor
+from DoctorSpring.models import User, Patient, Doctor ,Diagnose
+import string
 
 class RegisterForm(Form):
     name = TextField('Username', validators=[Required(), Length(min=3, max=25)])
@@ -76,12 +77,38 @@ class DiagnoseForm2(Form):
             return FAILURE
         return SUCCESS
 
-class CommentsForm(Form):
-    userId = IntegerField('userId', validators=[Required()])
-    receiverId=IntegerField('receiverId', validators=[Required()])
-    content = TextField('content', validators=[Required()])
-    title = TextField('title')
-    diagnoseId=IntegerField('diagnoseId')
+
+class CommentsForm(object):
+    userId =None
+    receiverId=None
+    content = None
+    title = None
+    diagnoseId=None
+    def __init__(self,args):
+        self.content=args.get('content')
+        self.diagnoseId=args.get('diagnoseId')
+
+    def validate(self):
+        try:
+            if self.diagnoseId is None:
+                return FAILURE
+            diagnose=Diagnose.getDiagnoseById(self.diagnoseId)
+            if diagnose.doctorId and hasattr(diagnose,'doctor') and diagnose.doctor and diagnose.doctor.userId:
+                self.receiverId=diagnose.doctor.userId
+            else:
+                return FAILURE
+            if diagnose.patientId and hasattr(diagnose,'patient') and diagnose.patient and diagnose.patient.userId:
+                self.userId=diagnose.patient.userId
+            else:
+                return FAILURE
+            if self.title is None:
+                return FAILURE
+            if self.content is None or len(self.content)<10:
+                failure=ResultStatus(FAILURE.status,"输入的内容长度必须大于等于10")
+                return  failure
+        except Exception,e:
+            return FAILURE
+        return SUCCESS
 
 class MessageForm(Form):
     senderId = IntegerField('senderId', validators=[Required()])
@@ -134,15 +161,42 @@ class LoginForm(object):
         except Exception,e:
             return FAILURE
         return SUCCESS
+
 class ReportForm(object):
     reportId =None
     status=None
     techDesc =None
     imageDesc =None
     diagnoseDesc=None
+    diagnoseId=None
+    fileUrl=None
     def __init__(self,args):
-        if args.has('reportId'):
-            self.reportId=args.get('reportId')
+        #if args.has('reportId'):
+        self.reportId=args.get('reportId')
+
+        self.status=args.get('status')
+        if self.status:
+            self.status=string.atoi(self.status)
+        self.techDesc=args.get('techDesc')
+        self.imageDesc=args.get('imageDesc')
+        self.diagnoseDesc=args.get('diagnoseDesc')
+        self.diagnoseId=args.get('diagnoseId')
+        if self.diagnoseId:
+            self.diagnoseId=string.atoi(self.diagnoseId)
+        self.fileUrl=args.get('fileUrl')
+    def validate(self):
+        try:
+            if self.diagnoseDesc is None:
+                return FAILURE
+            if self.imageDesc is None:
+                return FAILURE
+            if self.diagnoseId is None:
+                return FAILURE
+
+        except Exception,e:
+            return FAILURE
+        return SUCCESS
+
 
 class RegisterFormPatent(object):
     name = None
@@ -150,6 +204,8 @@ class RegisterFormPatent(object):
     def __init__(self, args):
         self.name = args.get('name')
         self.password = args.get('password')
+
+
     def validate(self):
         try:
             if self.password is None:
@@ -199,10 +255,16 @@ class UserFavortiesForm(object):
             self.hospitalId=args.get('hospitalId')
         if args.has('docId'):
             self.docId=args.get('docId')
+        #if args.has('doctorId'):
+        self.doctorId=args.get('doctorId')
+
+        #if args.has('hospitalId'):
+        self.hospitalId=args.get('hospitalId')
+        #if args.has('docId'):
+        self.docId=args.get('docId')
     def validate(self):
         try:
-            if self.userId is None:
-                return FAILURE
+
             if self.type is None:
                 return FAILURE
             if self.docId is None and self.hospitalId is None and self.doctorId is None:
@@ -269,6 +331,31 @@ class RegisterFormDoctor(object):
                     return failure
         except Exception, e:
             return FAILURE
+        return SUCCESS
+    
+class ThanksNoteForm(object):
+    userId =None
+    receiver=None
+    content =None
+    title =None
+    def __init__(self,args):
+        self.receiver=args.get('receiver')
+
+        self.title=args.get('title')
+        self.content=args.get('content')
+    def validate(self):
+        try:
+
+            if self.receiver is None:
+                return FAILURE
+            # if self.title is None:
+            #     return FAILURE
+            if self.content is None or len(self.content)<10:
+                failure=ResultStatus(FAILURE.status,"输入的内容长度必须大于等于10")
+                return  failure
+        except Exception,e:
+            return FAILURE
+        return SUCCESS
         return SUCCESS
 
 class DoctorList(Form):
