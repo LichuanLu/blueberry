@@ -47,10 +47,13 @@ define(['lodash', 'config/base/constant', 'config/controllers/_base_controller',
 				console.log("DiagnoseTableItemView actionHandler");
 				var statusId = model.get('statusId');
 				if (statusId == 5) {
+					this.detailModel = DiagnoseEntity.API.getDiagnoseDetail({
+						diagnoseId:model.get('id')
+					});
 					if (typeof this.diagnoseActionView !== 'undefined') {
 						this.diagnoseActionView.close();
 					}
-					this.diagnoseActionView = this.getNewDiagnoseLayoutView(model);
+					this.diagnoseActionView = this.getNewDiagnoseLayoutView(this.detailModel);
 
 				} else if (statusId == '审核') {
 					if (typeof this.diagnoseActionView !== 'undefined') {
@@ -81,14 +84,18 @@ define(['lodash', 'config/base/constant', 'config/controllers/_base_controller',
 			//show message list after layout show
 			ReqCmd.reqres.setHandler("showMessageList:MessageLayoutView", Lodash.bind(function() {
 
-				this.unreadMessageCollection = MessageEntity.API.getMessageList();
+				this.unreadMessageCollection = MessageEntity.API.getMessageList({
+					status:0
+				});
 				this.unreadMessageCollectionView = this.getMessageListView(this.unreadMessageCollection);
 				this.show(this.unreadMessageCollectionView, {
 					region: this.contentView.unReadMessageRegion,
 					client: true
 				});
 
-				this.readMessageCollection = MessageEntity.API.getMessageList();
+				this.readMessageCollection = MessageEntity.API.getMessageList({
+					status:1
+				});
 				this.readMessageCollectionView = this.getMessageListView(this.readMessageCollection);
 				this.show(this.readMessageCollectionView, {
 					region: this.contentView.readMessageRegion,
@@ -138,7 +145,8 @@ define(['lodash', 'config/base/constant', 'config/controllers/_base_controller',
 		},
 		getNewDiagnoseLayoutView: function(model) {
 			return new View.NewDiagnoseLayoutView({
-				model: model
+				model: model,
+				typeID:1
 			});
 		},
 		getNewAuditLayoutView: function(model) {

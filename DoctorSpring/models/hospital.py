@@ -5,6 +5,7 @@ import sqlalchemy as sa
 from sqlalchemy.orm import relationship, backref
 from database import Base
 from database import db_session as session
+from DoctorSpring.util import constant
 
 
 class Hospital(Base):
@@ -44,3 +45,7 @@ class Hospital(Base):
             session.add(hospital)
             session.commit()
             session.flush()
+    @staticmethod
+    def getAllHospitals(session):
+        return session.query(Hospital).filter(Hospital.status==constant.ModelStatus.Normal).all()
+

@@ -28,39 +28,41 @@
 			<span class="side-title">就诊人档案</span>
 			<div>
 				<span class="head">姓名：</span>
-				<span>李响</span>
+				<span>{patientName}</span>
 			</div>
 			<div>
 				<span class="head">性别：</span>
-				<span>男</span>
+				<span>{gender}</span>
 			</div>
 			<div>
 				<span class="head">出生日期：</span>
-				<span>1976-05-09</span>
+				<span>{birthDate}</span>
 			</div>
 			<div>
 				<span class="head">诊断部位：</span>
-				<p>头部，颈部</p>
+				<p>{positionName}</p>
 			</div>
 			<div>
 				<span class="head">诊断类型：</span>
-				<span>MR</span>
+				<span>{diagnoseType}</span>
 			</div>
 			<div>
 				<span class="head">DICOM文件：</span>
-				<a href="#">点击下载</a>
+				<a href="{dicomUrl}">点击下载</a>
 			</div>
 			<div>
 				<span class="head">曾就诊医院：</span>
-				<span>西安西京医院</span>
+				<a href="/hospital/{hospitalId}">{hospitalHistory}</a>
 			</div>
 			<div>
 				<span class="head">病史：</span>
-				<p>肿瘤肿瘤肿瘤肿瘤</p>
+				<p>{caseHistory}</p>
 			</div>
 			<div>
 				<span class="head">诊断相关文件：</span>
-				<a href="#">点击下载</a>
+				{#docUrl}
+				<a href="{.}">文件下载</a>{~n}
+				{/docUrl}
 			</div>
 		</div>
 		<div class="tree-top">
@@ -72,23 +74,29 @@
 	</div>
 	<div class="col-md-8 form-wrapper">
 		<span class="side-title">诊断结果：</span>
-		<form class="form-horizontal" role="form" id="new-diagnose-form">
+		<form class="form-horizontal" role="form" id="new-diagnose-form" data-report-id="{reportId}">
 			<div class="form-group">
 				<label for="techDes" class="col-md-3 control-label">检查技术描述：</label>
 				<div class="col-md-9 form-body">
-					<textarea id="techDes" name="techDes" class="form-control"></textarea>
+					<textarea id="techDes" name="techDesc" class="form-control">
+						{techDes}
+					</textarea>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="imageDes" class="col-md-3 control-label">影像描述：</label>
 				<div class="col-md-9 form-body">
-					<textarea id="imageDes" name="imageDes" class="form-control"></textarea>
+					<textarea id="imageDes" name="imageDesc" class="form-control">
+						{imageDes}
+					</textarea>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="diagnoseResult" class="col-md-3 control-label">诊断意见：</label>
 				<div class="col-md-9 form-body">
-					<textarea id="diagnoseResult" name="diagnoseResult" class="form-control"></textarea>
+					<textarea id="diagnoseResult" name="diagnoseDesc" class="form-control">
+						{diagnoseResult}
+					</textarea>
 				</div>
 			</div>
 			<div class="form-group">

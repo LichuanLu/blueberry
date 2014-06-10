@@ -1,0 +1,32 @@
+.dropdown-arrow-inverse {
+  border-bottom-color: #34495e !important;
+  border-top-color: #34495e !important;
+}
+ul.message-list {
+  padding: 0;
+}
+ul.message-list li {
+  border-bottom: 1px solid #e4e4e4;
+  padding: 10px 0;
+}
+ul.message-list li .top-wrapper {
+  position: relative;
+}
+ul.message-list li .top-wrapper .title {
+  font-size: 15px;
+  font-weight: 700;
+}
+ul.message-list li .top-wrapper .right-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+ul.message-list li .message-content-wrapper p {
+  font-size: 15px;
+  color: #666666;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}

@@ -54,7 +54,7 @@ def getDiagnoseListByAdmin2():
 
     userId=session['userId']
 
-    hostpitalIds=request.args.get('hostpitalId')
+    hostpitalIds=request.args.get('hospitalId')
     hostpitalList=UserCenter.getDiagnoseListByAdmin(hostpitalIds)
     doctorName=request.args.get('doctorName')
     pageNo=request.args.get('pageNo')

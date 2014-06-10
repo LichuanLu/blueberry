@@ -1,3 +1,51 @@
+.dropdown-arrow-inverse {
+  border-bottom-color: #34495e !important;
+  border-top-color: #34495e !important;
+}
+ul.message-list {
+  padding: 0;
+}
+ul.message-list li {
+  border-bottom: 1px solid #e4e4e4;
+  padding: 20px 0;
+  position: relative;
+}
+ul.message-list li .icon {
+  position: absolute;
+  left: 0;
+}
+ul.message-list li .icon img {
+  width: 50px;
+}
+ul.message-list li .top-wrapper {
+  margin-left: 65px;
+  position: relative;
+}
+ul.message-list li .top-wrapper .title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #000000;
+}
+ul.message-list li .top-wrapper .right-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+ul.message-list li .top-wrapper .right-content .date {
+  color: #666666;
+}
+ul.message-list li .message-content-wrapper {
+  margin-left: 65px;
+}
+ul.message-list li .message-content-wrapper p {
+  font-size: 15px;
+  color: #666666;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
 #patienthome-content {
   margin-bottom: 50px;
 }
@@ -14,6 +62,9 @@
 }
 #patienthome-content .content-head-wrapper h6 {
   margin: 0;
+}
+#patienthome-content .content-head-wrapper h6 i {
+  margin-right: 10px;
 }
 #patienthome-content .left-menu {
   display: inline-block;
@@ -126,4 +177,32 @@
   color: #e74c3c;
   margin-left: 10px;
   font-size: 13px;
+}
+#patienthome-content #patient-action-content #content .favorite-list {
+  list-style: none;
+  padding: 0;
+}
+#patienthome-content #patient-action-content #content .favorite-list li {
+  font-size: 14px;
+  line-height: 52px;
+  height: 52px;
+  border-bottom: 1px dashed #16a085;
+}
+#patienthome-content #patient-action-content #content .favorite-list li span {
+  width: 150px;
+  height: 52px;
+  display: inline-block;
+  text-indent: 30px;
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+#patienthome-content #patient-action-content #content .favorite-list li span.long {
+  width: 430px;
+}
+#patienthome-content #patient-action-content #content .favorite-list li .del {
+  float: right;
+  margin-right: 30px;
 }

@@ -1,4 +1,6 @@
 @import "variables";
+@import "message";
+
 
 #patienthome-content{
 	margin-bottom: 50px;
@@ -18,6 +20,9 @@
 		padding: 20px 0 0 20px;
 		h6{
 			margin: 0;
+			i{
+				margin-right: 10px;
+			}
 		}
 	}
 	.left-menu{
@@ -157,6 +162,36 @@
 
 
 			
+		}
+		#content{
+			.favorite-list{
+				list-style: none;
+				padding: 0;
+				li{
+					font-size: 14px;
+					line-height: 52px;
+					height: 52px;
+					border-bottom: 1px dashed @ctt-orange;
+					span{
+						width: 150px;
+						height: 52px;
+						display: inline-block;
+						text-indent: 30px;
+						overflow: hidden;
+						white-space: nowrap;
+						-o-text-overflow: ellipsis;
+						-ms-text-overflow: ellipsis;
+						text-overflow: ellipsis;
+						&.long{
+							width: 430px;
+						}
+					}
+					.del{
+						float: right;
+						margin-right: 30px;
+					}
+				}
+			}
 		}
 
 	}

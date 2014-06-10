@@ -1,0 +1,27 @@
+<div class="patient-info">
+	<span class="side-title">就诊人档案</span>
+	<div>
+		<span class="head">姓名：</span>
+		<span>{name}</span>
+	</div>
+	<div>
+		<span class="head">性别：</span>
+		<span>{gender}</span>
+	</div>
+	<div>
+		<span class="head">出生日期：</span>
+		<span>{birthdate}</span>
+	</div>
+	<div>
+		<span class="head">身份证：</span>
+		<span>{identitynumber}</span>
+	</div>
+	<div>
+		<span class="head">手机号码：</span>
+		<span>{phonenumber}</span>
+	</div>
+	<div>
+		<span class="head">所在地：</span>
+		<span>{location}</span>
+	</div>
+</div>

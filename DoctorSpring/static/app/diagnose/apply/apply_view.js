@@ -1,6 +1,7 @@
 define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.main', 'entities/doctorEntity', 'dust', 'dustMarionette', "bootstrap", 'typeahead', 'flatui.checkbox', 'flatui.radio', 'jquery-ui', 'bootstrap.select', 'flat_ui_custom', 'dust_cus_helpers', 'config/validator/config', 'bootstrap.multiselect'], function(ReqCmd, Lodash, Marionette, Templates, FileUploaderMain, DoctorEntity) {
 	// body...
 	"use strict";
+	//var $;
 	var ApplyDiagnosePageLayoutView = Marionette.Layout.extend({
 		initialize: function() {
 			console.log("init ApplyDiagnosePageLayoutView");
@@ -36,22 +37,23 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 			});
 
 			//init typehead
-			if ($('#locationinput').length) {
-				$('#locationinput').typeahead({
-					name: 'cities',
-					highlight: true,
-					local: ["陕西 西安", "四川 成都"]
-				});
-			}
+			// if ($('#locationinput').length) {
+			// 	$('#locationinput').typeahead({
+			// 		name: 'cities',
+			// 		highlight: true,
+			// 		local: ["陕西 西安", "四川 成都"]
+			// 	});
+			// }
 
-			if ($('#hospitalinput').length) {
-				$('#hospitalinput').typeahead({
-					name: 'hospitals',
-					highlight: true,
-					local: ["西安 西京医院", "四川 华西医科大学附属医院"]
-				});
-			}
+			// if ($('#hospitalinput').length) {
+			// 	$('#hospitalinput').typeahead({
+			// 		name: 'hospitals',
+			// 		highlight: true,
+			// 		local: ["西安 西京医院", "四川 华西医科大学附属医院"]
+			// 	});
+			// }
 
+			
 			// jQuery UI Datepicker JS init
 			var datepickerSelector = '#birthdateinput';
 			$(datepickerSelector).datepicker({
@@ -90,7 +92,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 				disableImageResize: false,
 				maxFileSize: 2000000,
 				// acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
-				maxNumberOfFiles: 1,
+				maxNumberOfFiles: 5,
 
 				// Uncomment the following to send cross-domain cookies:
 				//xhrFields: {withCredentials: true},
@@ -107,7 +109,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 				}
 			});
 			//init select
-			$("select").not('#patientLocationSelect').selectpicker({
+			$("select").not('.multiselect').selectpicker({
 				style: 'btn-sm btn-primary',
 				title:"没有纪录"
 			});
@@ -124,6 +126,21 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 				nonSelectedText: "没有选中"
 				// buttonWidth: '300px'
 			});
+
+			$("#hospitalinput").multiselect({
+				enableFiltering: true,
+				filterPlaceholder: "搜索",
+				nonSelectedText: "没有选中"
+				// buttonWidth: '300px'
+			});
+
+			$("#locationinput").multiselect({
+				enableFiltering: true,
+				filterPlaceholder: "搜索",
+				nonSelectedText: "没有选中"
+				// buttonWidth: '300px'
+			});
+
 
 			$('#patient-profile-radio :radio').on('toggle', function() {
 				var $this = $(this);

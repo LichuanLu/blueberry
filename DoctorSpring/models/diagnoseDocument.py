@@ -171,9 +171,9 @@ class Diagnose(Base):
 
     @classmethod
     def getDiagnoseByAdmin2(cls,session,hostpitalList=None,doctorName=None,pagger=Pagger(1,20) ):
-        if doctorName is None and hostpitalList is None:
+        if (doctorName is None or doctorName == u'')and hostpitalList is None:
             return session.query(Diagnose).filter(Diagnose.status==DiagnoseStatus.NeedTriage).offset(pagger.getOffset()).limit(pagger.getLimitCount()).all()
-        if doctorName is None:
+        if doctorName is None or doctorName == u'':
             return session.query(Diagnose).filter(Diagnose.hospitalId.in_(hostpitalList),Diagnose.status==DiagnoseStatus.NeedTriage).offset(pagger.getOffset()).limit(pagger.getLimitCount()).all()
 
         if hostpitalList:

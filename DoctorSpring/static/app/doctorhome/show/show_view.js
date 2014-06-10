@@ -1,6 +1,7 @@
 define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarionette', "bootstrap", 'bootstrap.select', 'bootstrap-treeview', 'flat_ui_custom'], function(ReqCmd, Lodash, Marionette, Templates) {
 	// body...
 	"use strict";
+	//var $;
 	var DoctorHomePageLayoutView = Marionette.Layout.extend({
 		initialize: function() {
 			console.log("init DoctorHomePageLayoutView");
@@ -172,10 +173,8 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 		ui: {
 
 		},
-		events: {
-		},
-		onRender: function() {
-		},
+		events: {},
+		onRender: function() {},
 		onShow: function() {
 			var $this = $(this);
 			console.dir($('#accountTab a'));
@@ -187,9 +186,14 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 	});
 
 	var NewDiagnoseLayoutView = Marionette.ItemView.extend({
-		initialize: function() {
+		initialize: function(options) {
 			console.log("init NewDiagnoseLayoutView");
-			this.bindUIElements();
+			this.typeId = options.typeId;
+			this.listenTo(this.model, 'sync', this.render, this);
+			//tree data
+			this.treedata = {};
+			this.selectedTemplateNode = "";
+			// this.bindUIElements();
 		},
 		template: "newDiagnoseLayout",
 		ui: {
@@ -213,17 +217,27 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 			e.preventDefault();
 			var $target = $(e.target);
 			var targetId = $target.attr("id");
+			var $newDiagnoseForm = $('#new-diagnose-form');
 			//console.log(targetId);
-			var type;
+			var status;
 			if (targetId === 'saveDiagnoseBtn') {
-				type = 0;
+				status = 0;
 			} else if (targetId === 'previewDiagnoseBtn') {
-				type = 1;
+				status = 0;
 			} else if (targetId === 'submitDiagnoseBtn') {
-				type = 2;
+				status = 2;
 			}
-			if (type !== 'undefined') {
-				var data = $('#new-diagnose-form').serialize() + "&type=" + type + "&diagnoseId=" + this.model.get('id');
+			if (status !== 'undefined') {
+				var data = $newDiagnoseForm.serialize() + "&status=" + status + "&diagnoseId=" + this.model.get('id');
+				var reportId = $newDiagnoseForm.data('report-id');
+				var type = this.typeId;
+				if (reportId) {
+					data += "&reportId=" + reportId;
+				}
+				if (type) {
+					data += "&type=" + type;
+				}
+				var that = this;
 				$.ajax({
 					url: '/doctor/diagnose/create',
 					data: data,
@@ -234,8 +248,11 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 							this.onError(data);
 
 						} else {
+							if(targetId === 'previewDiagnoseBtn'){
+								window.open ('/diagnose/'+that.model.get('id')+'/pdf','_blank');
+							}
 							Messenger().post({
-								message: 'SUCCESS. Product import started. Check back periodically.',
+								message: 'SUCCESS.Create diagnose',
 								type: 'success',
 								showCloseButton: true
 							});
@@ -268,129 +285,265 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 		},
 		loadTemplate: function(e) {
 			e.preventDefault();
-			var $templateLink = $('#tree ul').find('.node-selected').children('a');
-			var href = $templateLink.attr('href');
+			if (this.selectedTemplateNode) {
+				if (this.selectedTemplateNode.imageDesc && this.selectedTemplateNode.diagnoseDesc) {
+					this.ui.imageDesTextArea.val(this.selectedTemplateNode.imageDesc);
+					this.ui.diagnoseResultTextArea.val(this.selectedTemplateNode.diagnoseDesc);
+				}
 
-			console.log(href);
-			var that = this;
-			if (href !== '#') {
-				this.ui.loadTemplateBtn.hide();
-				this.ui.loadingBtn.show();
-				var data = 'templateId=' + href;
-				$.ajax({
-					url: '/diagnose/template',
-					data: data,
-					dataType: 'json',
-					type: 'GET',
-					success: function(data) {
-						if (data.status != 0) {
-							this.onError(data);
-
-						} else {
-							Messenger().post({
-								message: 'SUCCESS. Product import started. Check back periodically.',
-								type: 'success',
-								showCloseButton: true
-							});
-							this.setTemplate(data.data);
-
-						}
-					},
-					onError: function(res) {
-						this.resetForm();
-						//var error = jQuery.parseJSON(data);
-						if (typeof res.msg !== 'undefined') {
-							Messenger().post({
-								message: "%ERROR_MESSAGE:" + res.msg,
-								type: 'error',
-								showCloseButton: true
-							});
-						}
-
-					},
-					setTemplate: function(data) {
-						if (data) {
-							that.ui.imageDesTextArea.val(data.imageDes);
-							that.ui.diagnoseResultTextArea.val(data.diagnoseResult);
-							that.ui.techDesTextArea.val(data.techDes);
-							this.resetForm();
-						}
-
-					},
-					resetForm: function() {
-						that.ui.loadTemplateBtn.show();
-						that.ui.loadingBtn.hide();
-					}
-				});
+				// that.ui.techDesTextArea.val(data.techDes);
 
 			}
 
+			// var $templateLi = $('#tree ul').find('.node-selected');
+			// var text = $templateLi.text();
+
+			//var that = this;
+			// if (href !== '#') {
+			// 	this.ui.loadTemplateBtn.hide();
+			// 	this.ui.loadingBtn.show();
+			// 	var data = 'templateId=' + href;
+			// 	$.ajax({
+			// 		url: '/diagnose/template',
+			// 		data: data,
+			// 		dataType: 'json',
+			// 		type: 'GET',
+			// 		success: function(data) {
+			// 			if (data.status != 0) {
+			// 				this.onError(data);
+
+			// 			} else {
+			// 				Messenger().post({
+			// 					message: 'SUCCESS. Product import started. Check back periodically.',
+			// 					type: 'success',
+			// 					showCloseButton: true
+			// 				});
+			// 				this.setTemplate(data.data);
+
+			// 			}
+			// 		},
+			// 		onError: function(res) {
+			// 			this.resetForm();
+			// 			//var error = jQuery.parseJSON(data);
+			// 			if (typeof res.msg !== 'undefined') {
+			// 				Messenger().post({
+			// 					message: "%ERROR_MESSAGE:" + res.msg,
+			// 					type: 'error',
+			// 					showCloseButton: true
+			// 				});
+			// 			}
+
+			// 		},
+			// 		setTemplate: function(data) {
+			// 			if (data) {
+			// 				that.ui.imageDesTextArea.val(data.imageDes);
+			// 				that.ui.diagnoseResultTextArea.val(data.diagnoseResult);
+			// 				that.ui.techDesTextArea.val(data.techDes);
+			// 				this.resetForm();
+			// 			}
+
+			// 		},
+			// 		resetForm: function() {
+			// 			that.ui.loadTemplateBtn.show();
+			// 			that.ui.loadingBtn.hide();
+			// 		}
+			// 	});
+
+			// }
+
 		},
 		onShow: function() {
-			console.log(this.ui.templateLinks);
-			var data = [{
-				text: "X线",
-				nodes: [{
-					text: "呼吸系统",
-					nodes: [{
-						text: "心肺未见异常",
-						href: "#1"
-					}, {
-						text: "右肺上叶干酪性肺炎并右肺下叶播放",
-						href: "#2"
+			// console.log(this.ui.templateLinks);
+			// 	var data = [{
+			// 		text: "CT",
+			// 		nodes: [{
+			// 			text: "呼吸系统",
+			// 			nodes: [{
+			// 				text: "心肺未见异常"
+			// 			}, {
+			// 				text: "右肺上叶干酪性肺炎并右肺下叶播放"
 
-					}]
-				}, {
-					text: "骨关节病变",
-					nodes: [{
-						text: "心肺未见异常",
-						href: "#3"
-					}, {
-						text: "右肺上叶干酪性肺炎并右肺下叶播放",
-						href: "#4"
-					}]
-				}]
+			// 			}]
+			// 		}, {
+			// 			text: "骨关节病变",
+			// 			nodes: [{
+			// 				text: "心肺未见异常"
+			// 			}, {
+			// 				text: "右肺上叶干酪性肺炎并右肺下叶播放"
+			// 			}]
+			// 		}]
+			// 	}, {
+			// 		text: "MR",
+			// 		nodes: [{
+			// 			text: "呼吸系统",
+			// 			nodes: [{
+			// 				text: "心肺未见异常"
+			// 			}, {
+			// 				text: "右肺上叶干酪性肺炎并右肺下叶播放"
+
+			// 			}]
+			// 		}, {
+			// 			text: "骨关节病变",
+			// 			nodes: [{
+			// 				text: "心肺未见异常"
+			// 			}, {
+			// 				text: "右肺上叶干酪性肺炎并右肺下叶播放"
+			// 			}]
+			// 		}]
+			// 	}];
+
+			// 	$('#tree').treeview({
+			// 		data: data,
+			// 		enableLinks: true
+			// 		// showBorder:false
+			// 	});
+		},
+		onDomRefresh: function() {
+			this.treedata = [{
+				text: "ct"
 			}, {
-				text: "CT",
-				nodes: [{
-					text: "呼吸系统",
-					nodes: [{
-						text: "心肺未见异常"
-					}, {
-						text: "右肺上叶干酪性肺炎并右肺下叶播放"
-
-					}]
-				}, {
-					text: "骨关节病变",
-					nodes: [{
-						text: "心肺未见异常"
-					}, {
-						text: "右肺上叶干酪性肺炎并右肺下叶播放"
-					}]
-				}]
-			}, {
-				text: "MR",
-				nodes: [{
-					text: "呼吸系统",
-					nodes: [{
-						text: "心肺未见异常"
-					}, {
-						text: "右肺上叶干酪性肺炎并右肺下叶播放"
-
-					}]
-				}, {
-					text: "骨关节病变",
-					nodes: [{
-						text: "心肺未见异常"
-					}, {
-						text: "右肺上叶干酪性肺炎并右肺下叶播放"
-					}]
-				}]
+				text: "mri"
 			}];
+			this.refreshTree(this.treedata);
+			var that = this;
 
+			$('#tree').on('nodeSelected', function(event, node) {
+				//console.dir(node);
+				var nodeText = node.text;
+				var nodeParent = node.parent;
+				that.selectedTemplateNode = node;
+
+				if (nodeText === 'ct' || nodeText === 'mri') {
+					var targetObj = Lodash.find(that.treedata, {
+						'text': nodeText
+					});
+					if (!Lodash.has(targetObj, 'nodes')) {
+
+						$.ajax({
+							url: '/diagnoseTemplate/postionList',
+							data: "diagnoseMethod=" + nodeText,
+							dataType: 'json',
+							type: 'GET',
+							success: function(data) {
+								if (data.status != 0) {
+									this.onError(data);
+
+								} else {
+									// var targetObj = Lodash.find(that.treedata, {'text': nodeText});
+									targetObj.nodes = this.parseResult(data.data, nodeText);
+									console.dir(targetObj);
+									that.refreshTree();
+									Messenger().post({
+										message: 'SUCCESS.Get diagnose template.',
+										type: 'success',
+										showCloseButton: true
+									});
+								}
+							},
+							onError: function(res) {
+								//var error = jQuery.parseJSON(data);
+								if (typeof res.msg !== 'undefined') {
+									Messenger().post({
+										message: "%ERROR_MESSAGE:" + res.msg,
+										type: 'error',
+										showCloseButton: true
+									});
+								}
+
+							},
+							parseResult: function(data, parent) {
+								var resArr = [];
+								Lodash(data).forEach(function(res) {
+									var obj = {
+										text: res,
+										parent: parent
+									};
+									resArr.push(obj);
+								});
+								return resArr;
+
+							}
+						});
+					}
+
+
+				} else if (!node.last) {
+					// var targetObj = Lodash.find(that.treedata, {
+					// 	'text': nodeText
+					// });
+					var targetObj;
+					if (nodeParent == 'ct') {
+						targetObj = Lodash.find(that.treedata[0].nodes, {
+							'text': nodeText
+						});
+					} else if (nodeParent == 'mri') {
+						targetObj = Lodash.find(that.treedata[1].nodes, {
+							'text': nodeText
+						});
+					}
+
+					if (!Lodash.has(targetObj, 'nodes')) {
+
+						$.ajax({
+							url: '/diagnoseTemplate/diagnoseAndImageDesc',
+							data: "diagnoseMethod=" + node.parent + "&diagnosePostion=" + nodeText,
+							dataType: 'json',
+							type: 'GET',
+							success: function(data) {
+								if (data.status != 0) {
+									this.onError(data);
+
+								} else {
+									targetObj.nodes = this.parseResult(data.data);
+									console.dir(targetObj);
+									that.refreshTree();
+									Messenger().post({
+										message: 'SUCCESS.Get diagnose template.',
+										type: 'success',
+										showCloseButton: true
+									});
+								}
+							},
+							onError: function(res) {
+								//var error = jQuery.parseJSON(data);
+								if (typeof res.msg !== 'undefined') {
+									Messenger().post({
+										message: "%ERROR_MESSAGE:" + res.msg,
+										type: 'error',
+										showCloseButton: true
+									});
+								}
+
+							},
+							parseResult: function(data) {
+								Lodash(data).forEach(function(res) {
+									res.text = res.diagnoseDesc;
+									res.last = true;
+								});
+								return data;
+							}
+						});
+					}
+
+				}
+				// else if(node.last){
+				// 	that.selectedTemplateNode = node;
+				// }
+
+
+
+			});
+		},
+		refreshTree: function(data) {
+			var treedata;
+			if (data) {
+				treedata = data;
+			} else {
+				treedata = this.treedata;
+			}
 			$('#tree').treeview({
-				data: data,
-				enableLinks: true
+				data: treedata,
+				enableLinks: false
 				// showBorder:false
 			});
 		}
@@ -502,6 +655,6 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 		NewDiagnoseLayoutView: NewDiagnoseLayoutView,
 		NewAuditLayoutView: NewAuditLayoutView,
 		MessageLayoutView: MessageLayoutView,
-		ConsultLayoutView:ConsultLayoutView
+		ConsultLayoutView: ConsultLayoutView
 	}
 });

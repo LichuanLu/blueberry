@@ -39,6 +39,8 @@ define(["backbone", "marionette", "config/base/constant", "utils/reqcmd"], funct
 		}
 	});
 
+
+
 	var API = {
 		getDiagnoseList: function(params) {
 			if (!params) {
@@ -73,7 +75,7 @@ define(["backbone", "marionette", "config/base/constant", "utils/reqcmd"], funct
 
 			return diagnoseModel
 		},
-		getAdminAllDiagnose: function(params,collection) {
+		getAdminAllDiagnose: function(params, collection) {
 			if (!params) {
 				params = {};
 			}
@@ -132,6 +134,21 @@ define(["backbone", "marionette", "config/base/constant", "utils/reqcmd"], funct
 
 
 			return diagnoseCollection
+		},
+		getDiagnoseDetail: function(params) {
+			if (!params) {
+				params = {};
+			}
+			var diagnoseModel = new DiagnoseDetailModel();
+			diagnoseModel.url = "/diagnose/reportdetail";
+			diagnoseModel.fetch({
+				success: function() {
+					console.log("getDiagnoseDetail fetch success");
+				},
+				data: $.param(params)
+			});
+
+			return diagnoseModel
 		}
 
 	};

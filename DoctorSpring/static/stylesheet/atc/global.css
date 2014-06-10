@@ -10,27 +10,6 @@ html {
   height: 100%;
   padding: 0;
 }
-body.doctor-site {
-  background-color: #3a92c8;
-  background: radial-gradient(circle, #94d2f8, #3a92c8);
-}
-body.doctor-site #header-region {
-  min-height: 0;
-  margin-top: 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-body.doctor-site #header-region .logo {
-  background: url(http://az382497.vo.msecnd.net/images/doctor_logo.png) no-repeat;
-  display: block;
-  height: 35px;
-}
-body.doctor-site #header-region .unlogin-group,
-body.doctor-site #header-region .login-group {
-  padding-bottom: 8px;
-}
-body.doctor-site > .container {
-  margin-top: 30px;
-}
 body {
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "宋体", Arial, Verdana, sans-serif;
   font-size: 14px;
@@ -488,4 +467,65 @@ body .container.full-width-page .main-block {
 }
 #footer-region table tr .breadcrumb-text p .breadcrumb-lead {
   padding-right: 5px;
+}
+#modalRegion #sharing-form .form-group span.form-text {
+  font-size: 15px;
+  margin-top: 12px;
+  display: inline-block;
+}
+#modalRegion #sharing-form .form-group textarea {
+  height: 280px;
+  margin-top: 12px;
+}
+.sharing-list-wrapper.detail-wrapper ul li {
+  height: auto !important;
+}
+.sharing-list-wrapper ul {
+  padding-left: 0px;
+  margin-top: -5px;
+}
+.sharing-list-wrapper ul li {
+  float: none;
+  list-style: none;
+  position: relative;
+  height: 60px;
+  border-bottom: 1px dashed #e6e6e6;
+  margin-bottom: 30px;
+}
+.sharing-list-wrapper ul li .image {
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  float: left;
+  text-align: center;
+}
+.sharing-list-wrapper ul li dl {
+  margin-left: 70px;
+  line-height: 20px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.sharing-list-wrapper ul li dl dt,
+.sharing-list-wrapper ul li dl dd {
+  line-height: 20px;
+}
+.sharing-list-wrapper ul li dl dt .des-text,
+.sharing-list-wrapper ul li dl dd .des-text {
+  color: #666666;
+}
+.sharing-list-wrapper ul li dl dt .score,
+.sharing-list-wrapper ul li dl dd .score {
+  position: absolute;
+  right: 0px;
+  color: #666666;
+}
+.sharing-list-wrapper ul li dl dt em,
+.sharing-list-wrapper ul li dl dd em {
+  float: right;
+  color: #666666;
+}
+.sharing-list-wrapper ul li dl .time {
+  font-size: 12px;
+  color: #bcbcbc;
+  line-height: 28px;
 }
