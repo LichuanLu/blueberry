@@ -51,19 +51,22 @@ def getDiagnoseDetailInfo(diagnose):
     diagDict={}
     diagDict['id']=diagnose.id
     if hasattr(diagnose,"patient") and diagnose.patient:
-        diagDict['patientName']=diagnose.patient.realname
-        diagDict['gender']=diagnose.patient.gender
+        if diagnose.patient.realname:
+            diagDict['patientName']=diagnose.patient.realname
+        if diagnose.patient.gender:
+            diagDict['gender']=constant.Gender[diagnose.patient.gender]
         if diagnose.patient.birthDate:
             diagDict['birthDate']=diagnose.patient.birthDate.strftime('%Y-%m-%d')
 
     #diagDict['type']=diagnose.type
-    if hasattr(diagnose,"doctor") and diagnose.doctor:
+    if hasattr(diagnose,"doctor") and diagnose.doctor and diagnose.doctor.username:
         diagDict['doctorName']=diagnose.doctor.username
     if diagnose.createDate:
         diagDict["date"]=diagnose.createDate.strftime('%Y-%m-%d')
 
     if hasattr(diagnose,"hospital") and diagnose.hospital:
         diagDict['hospitalHistory']=diagnose.hospital.name
+        diagDict['hospitalId']=diagnose.hospitalId
 
     if diagnose.pathologyId:
         diagDict['dicomUrl']=File.getDicomFileUrl(diagnose.pathologyId)
@@ -84,6 +87,13 @@ def getDiagnoseDetailInfo(diagnose):
                     position=pathologyPositon.position
                     positions+=(u' '+position.name)
                 diagDict['positionName']=positions
+
+    if hasattr(diagnose,'report') and diagnose.report:
+        diagDict['reportId']=diagnose.reportId
+        diagDict['techDes']=diagnose.report.techDesc
+        diagDict['imageDes']=diagnose.report.imageDesc
+        diagDict['diagnoseResult']=diagnose.report.diagnoseDesc
+
     return diagDict
 
 def getDiagnosePositonFromDiagnose(diagnose):

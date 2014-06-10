@@ -237,9 +237,18 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 				if (type) {
 					data += "&type=" + type;
 				}
+				var url;
+				if(window.location.href.indexOf('fenzhen') > -1){
+					console.log('admin fenzhen page');
+					url = '/admin/report/addOrUpate';
+
+				}else{
+					url = '/doctor/diagnose/create';
+
+				}
 				var that = this;
 				$.ajax({
-					url: '/doctor/diagnose/create',
+					url: url,
 					data: data,
 					dataType: 'json',
 					type: 'POST',
@@ -580,6 +589,8 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 			} else if (targetId === 'submitAuditBtn') {
 				type = 2;
 			}
+
+
 			if (type !== 'undefined') {
 				var data = $('#new-audit-form').serialize() + "&type=" + type + "&diagnoseId=" + this.model.get('id');
 				$.ajax({

@@ -44,6 +44,10 @@ define(function(require) {
 		doctorMessageLayout:require('doctorHome/templates/doctorMessageLayout'),
 		doctorConsultLayout:require('doctorHome/templates/doctorConsultLayout'),
 
+		doctorDetailItem:require('doctorList/templates/doctorDetailItem'),
+		doctorDetailList:require('doctorList/templates/doctorDetailList'),
+
+
 
 
 		messageItem:require('message/templates/messageItem')

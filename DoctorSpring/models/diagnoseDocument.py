@@ -164,7 +164,10 @@ class Diagnose(Base):
             # count=Diagnose.getDiagnosesCountByAdmin(session,status,startTime,endTime)
             # pagger.count=count
             if status:
-                query=query.filter(Diagnose.status==status)
+                if status==-1:
+                    query=query.filter(Diagnose.status!=constant.DiagnoseStatus.Triaging)
+                else:
+                    query=query.filter(Diagnose.status==status)
 
             query=query.filter(Diagnose.createDate>startTime,Diagnose.createDate<endTime)
             return query.offset(pagger.getOffset()).limit(pagger.getLimitCount()).all()
@@ -248,10 +251,21 @@ class DiagnoseTemplate(Base):
     @classmethod
     def getDiagnoseAndImageDescs(cls,diagnoseMethod,diagnosePosition):
         if diagnoseMethod and diagnosePosition:
-            return session.query(DiagnoseTemplate.diagnosePosition,DiagnoseTemplate.diagnoseDesc,
+            results =session.query(DiagnoseTemplate.diagnosePosition,DiagnoseTemplate.diagnoseDesc,
                                  DiagnoseTemplate.imageDesc).filter(DiagnoseTemplate.diagnoseMethod==diagnoseMethod,
                                                                            DiagnoseTemplate.diagnosePosition==diagnosePosition) \
                 .group_by(DiagnoseTemplate.diagnoseDesc).all()
+            if results and len(results)>0:
+                resultsDict=[]
+                for result in results:
+                    resultDict={}
+                    resultDict['diagnosePosition']=result[0]
+                    resultDict['diagnoseDesc']=result[1]
+                    resultDict['imageDesc']=result[2]
+                    resultsDict.append(resultDict)
+                return resultsDict
+
+
 
 
 

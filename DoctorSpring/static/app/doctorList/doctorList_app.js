@@ -1,4 +1,4 @@
-define(['homepage/show/show_controller'], function(ShowController) {
+define(['doctorList/show/show_controller'], function(ShowController) {
 	// body...
 	"use strict";
 	return {

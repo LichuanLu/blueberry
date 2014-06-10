@@ -13,6 +13,7 @@ from DoctorSpring.models import User,Comment,Message,DiagnoseLog
 from DoctorSpring.util import result_status as rs,object2dict ,constant
 from DoctorSpring.util.authenticated import authenticated
 from DoctorSpring.util.constant import MessageUserType,Pagger
+import string
 
 
 
@@ -31,8 +32,8 @@ diagnoseView = Blueprint('diagnose', __name__)
 @authenticated('admin',constant.RoleId.Admin)
 def fetchDiagnoseByAdmin():
 
-    diagnoseId=request.args.get('diagnoseId')
-    userId=4#session['userId']
+    diagnoseId=request.form.get('diagnoseId')
+    userId=session['userId']
 
 
     # if diagnoseId is None :
@@ -68,7 +69,7 @@ def fetchDiagnoseByAdmin():
 @diagnoseView.route('/admin/report/addOrUpate',  methods = ['GET', 'POST'])
 def addOrUpdateReport():
 
-    userId=5#session['userId']
+    userId=session['userId']
     user=User.getById(userId)
     if user is None:
         return  json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
@@ -169,8 +170,14 @@ def getReport(reportId):
          return json.dumps(resultDict,ensure_ascii=False)
      return json.dumps(rs.NO_DATA,ensure_ascii=False)
 
-@diagnoseView.route('/diagnose/<int:diagnoseId>/detailInfo',  methods = ['GET', 'POST'])
-def getDiagnoseDetailInfo(diagnoseId):
+@diagnoseView.route('/diagnose/reportdetail',  methods = ['GET', 'POST'])
+def getDiagnoseDetailInfo():
+    diagnoseId=request.args.get('diagnoseId')
+    if diagnoseId:
+        diagnoseId=string.atoi(diagnoseId)
+    else:
+        return json.dumps(rs.PARAM_ERROR,ensure_ascii=False)
+
     diagnose=Diagnose.getDiagnoseById(diagnoseId)
     if diagnose:
         diagnoseResult=dataChangeService.getDiagnoseDetailInfo(diagnose)

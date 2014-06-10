@@ -66,6 +66,9 @@
 #doctorlist-content .query-result-wrapper .result-list li:hover {
   border: 2px solid #16a085;
 }
+#doctorlist-content .query-result-wrapper .pagination-plain {
+  text-align: center;
+}
 #doctorlist-content .query-table {
   margin-top: 20px;
   font-size: 12px;

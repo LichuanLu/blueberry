@@ -11,8 +11,8 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 			"recommandedDoctorRegion": "#recommandedDoctor",
 			"patientProfileRegion": "#patient-already-profile-region",
 			"dicomInfoRegion": "#dicom-already-info-region",
-			"historyAlreadyExistsSelect":"#history-already-exists-select",
-			"dicomAlreadyExistsSelect":"#dicom-already-exists-select"
+			"historyAlreadyExistsSelect": "#history-already-exists-select",
+			"dicomAlreadyExistsSelect": "#dicom-already-exists-select"
 
 		},
 		el: "#applydignose-content",
@@ -53,7 +53,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 			// 	});
 			// }
 
-			
+
 			// jQuery UI Datepicker JS init
 			var datepickerSelector = '#birthdateinput';
 			$(datepickerSelector).datepicker({
@@ -111,7 +111,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 			//init select
 			$("select").not('.multiselect').selectpicker({
 				style: 'btn-sm btn-primary',
-				title:"没有纪录"
+				title: "没有纪录"
 			});
 
 			//radio
@@ -282,7 +282,6 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 		showForm: function(id) {
 
 			//console.dir(this.ui.formPanel);
-
 			var $form = this.ui.formPanel.filter(function() {
 				//console.log($(this).data("form-id"));
 				return $(this).data("form-id") == id
@@ -458,7 +457,18 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 				this.currentPage = $li.find('a').text();
 
 			}
+			this.fetchNewPage();
+
+		},
+		fetchNewPage: function() {
+			console.log($('#select-doctor-modal form').serialize());
+			var data = $('#select-doctor-modal form').serialize();
+			if (data) {
+				data += '&pageNumber='+this.currentPage+'&pageSize=6';
+				ReqCmd.commands.execute("SelectDoctorModalView:searchDoctorHandler", data);
+			}
 		}
+
 	});
 
 	var SelectDoctorItemView = Marionette.ItemView.extend({
