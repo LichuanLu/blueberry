@@ -19,7 +19,7 @@ class Hospital(Base):
     name = sa.Column(sa.String(255))
     address = sa.Column(sa.String(255))
     description = sa.Column(sa.TEXT)
-    locationId = sa.Column(sa.INTEGER)   # Location表ID
+    locationId = sa.Column(sa.INTEGER,sa.ForeignKey('location.id'))   # Location表ID
     location = relationship("Location", backref=backref('hospital', order_by=id))
 
     type = sa.Column(sa.INTEGER)

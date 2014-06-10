@@ -23,8 +23,8 @@ class Pathology(Base):
     diagnoseMethod=sa.Column(sa.String(32))
     #  docmFileId=sa.Column(sa.INTEGER)
     status = sa.Column(sa.INTEGER)      #标记状态 未提交，待审查，待诊断，待审核，结束
-    pathologyFiles = relationship("PathologyPostion", order_by="PathologyPostion.id", backref="Pathology")
-    pathologyPostions=relationship("File2Pathology", order_by="File2Pathology.id", backref="Pathology")
+    pathologyPostions= relationship("PathologyPostion", order_by="PathologyPostion.id", backref="Pathology")
+    pathologyFiles=relationship("File2Pathology", order_by="File2Pathology.id", backref="Pathology")
 
     def __init__(self):
         self.status = ModelStatus.Normal
