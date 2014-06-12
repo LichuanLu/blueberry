@@ -52,6 +52,7 @@ class Comment(Base):
     __tablename__ = 'comment'
     __table_args__ = {
         'mysql_charset': 'utf8',
+        'mysql_engine': 'MyISAM',
         }
     id= sa.Column(sa.BigInteger, primary_key = True, autoincrement = True)
     observer=sa.Column(sa.Integer)

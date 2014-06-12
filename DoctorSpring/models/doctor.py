@@ -15,6 +15,7 @@ class Doctor(Base):
     __tablename__ = 'doctor'
     __table_args__ = {
         'mysql_charset': 'utf8',
+        'mysql_engine': 'MyISAM',
     }
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
@@ -122,7 +123,8 @@ class Skill(Base):
     __tablename__ = 'skill'
     __table_args__ = {
         'mysql_charset': 'utf8',
-        }
+        'mysql_engine': 'MyISAM',
+    }
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     name = sa.Column(sa.String(64))
@@ -143,7 +145,8 @@ class Department(Base):
     __tablename__ = 'department'
     __table_args__ = {
         'mysql_charset': 'utf8',
-        }
+        'mysql_engine': 'MyISAM',
+    }
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     name = sa.Column(sa.String(64))

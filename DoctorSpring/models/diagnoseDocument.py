@@ -29,42 +29,43 @@ class Diagnose(Base):
     __tablename__ = 'diagnose'
     __table_args__ = {
         'mysql_charset': 'utf8',
-        }
+        'mysql_engine': 'MyISAM',
+    }
 
-    id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
-    patientId  = sa.Column(sa.Integer,sa.ForeignKey('patient.id'))
+    id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
+    patientId = sa.Column(sa.Integer, sa.ForeignKey('patient.id'))
     patient = relationship("Patient", backref=backref('diagnose', order_by=id))
-    diagnoseSeriesNumber=sa.Column(sa.String(256))
+    diagnoseSeriesNumber = sa.Column(sa.String(256))
 
 
-    doctorId  = sa.Column(sa.Integer,sa.ForeignKey('doctor.id'))
+    doctorId = sa.Column(sa.Integer, sa.ForeignKey('doctor.id'))
     doctor = relationship("Doctor", backref=backref('diagnose', order_by=id))
 
     #adminId = sa.Column(sa.INTEGER,sa.ForeignKey('User.id'))
     #administrator = relationship("User", backref=backref('diagnose', order_by=id))
     adminId = sa.Column(sa.INTEGER)
 
-    uploadUserId  = sa.Column(sa.Integer,sa.ForeignKey('user.id'))
+    uploadUserId = sa.Column(sa.Integer, sa.ForeignKey('user.id'))
     uploadUser = relationship("User", backref=backref('diagnose', order_by=id))
 
-    pathologyId=sa.Column(sa.Integer,sa.ForeignKey('pathology.id'))
-    pathology=relationship("Pathology", backref=backref('diagnose', order_by=id))
+    pathologyId = sa.Column(sa.Integer, sa.ForeignKey('pathology.id'))
+    pathology = relationship("Pathology", backref=backref('diagnose', order_by=id))
 
-    reportId = sa.Column(sa.Integer,sa.ForeignKey('report.id'))
-    report=relationship("Report", backref=backref('report', order_by=id))
+    reportId = sa.Column(sa.Integer, sa.ForeignKey('report.id'))
+    report = relationship("Report", backref=backref('report', order_by=id))
 
     score = sa.Column(sa.Integer)
 
-    createDate=sa.Column(sa.DateTime)
+    createDate = sa.Column(sa.DateTime)
     reviewDate = sa.Column(sa.DATETIME)
 
     hospitalId = sa.Column(sa.Integer,sa.ForeignKey('hospital.id'))  #医院ID，用于医院批量提交诊断信息
-    hospital=relationship("Hospital", backref=backref('diagnose', order_by=id))
+    hospital = relationship("Hospital", backref=backref('diagnose', order_by=id))
 
     status = sa.Column(sa.INTEGER)
 
     @classmethod
-    def save(cls,diagnose):
+    def save(cls, diagnose):
         if diagnose:
             session.add(diagnose)
             session.commit()
@@ -188,6 +189,8 @@ class DiagnoseLog(Base):
     __tablename__ = 'diagnoseLog'
     __table_args__ = {
         'mysql_charset': 'utf8',
+        'mysql_engine': 'MyISAM',
+
     }
 
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
@@ -217,7 +220,8 @@ class DiagnoseTemplate(Base):
     __tablename__ = 'diagnoseTemplate'
     __table_args__ = {
         'mysql_charset': 'utf8',
-        }
+        'mysql_engine': 'MyISAM',
+    }
 
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
     diagnoseMethod=sa.Column(sa.String(256))
@@ -260,7 +264,8 @@ class Report(Base):
     __tablename__ = 'report'
     __table_args__ = {
         'mysql_charset': 'utf8',
-        }
+        'mysql_engine': 'MyISAM',
+    }
 
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
     seriesNumber=sa.Column(sa.String(256))
@@ -328,7 +333,8 @@ class File(Base):
     __tablename__ = 'file'
     __table_args__ = {
         'mysql_charset': 'utf8',
-        }
+        'mysql_engine': 'MyISAM',
+    }
 
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
     type = sa.Column(sa.Integer)
