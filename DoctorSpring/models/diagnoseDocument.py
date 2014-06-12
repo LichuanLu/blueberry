@@ -194,9 +194,11 @@ class DiagnoseLog(Base):
     }
 
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
-    userId = sa.Column(sa.Integer)
+    userId = sa.Column(sa.Integer,sa.ForeignKey('user.id'))
+    user = relationship("User", backref=backref('diagnoseLog', order_by=id))
     diagnoseId=sa.Column(sa.Integer)
     action=sa.Column(sa.String(128))
+    description=sa.Column(sa.String(624))
     createTime=sa.Column(sa.DateTime)
     def __init__(self,userId,diagnoseId,action):
         self.userId=userId

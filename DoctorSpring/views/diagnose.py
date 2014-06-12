@@ -83,6 +83,9 @@ def addOrUpdateReport():
         #session['remember_me'] = form.remember_me.data
         # login and validate the user...
         if form.reportId:
+            report=Report.getReportById(form.reportId)
+            if report.type==constant.ReportType.Doctor:
+                return  json.dumps(rs.PERMISSION_DENY.__dict__,ensure_ascii=False)
             Report.update(form.reportId,None,form.status,None,form.techDesc,form.imageDesc,form.diagnoseDesc)
         else:
             report=Report(form.techDesc,form.imageDesc,form.diagnoseDesc,form.fileUrl,form.status)
@@ -112,7 +115,7 @@ def addOrUpdateReport():
 @diagnoseView.route('/doctor/report/update',  methods = ['GET', 'POST'])
 def updateReport():
 
-    userId=4#session['userId']
+    userId=session['userId']
     user=User.getById(userId)
     if user is None:
         return  json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
@@ -185,14 +188,28 @@ def getDiagnoseDetailInfo():
         resultDict=resultStatus.__dict__
         return json.dumps(resultDict,ensure_ascii=False)
     return json.dumps(rs.NO_DATA,ensure_ascii=False)
-@diagnoseView.route('/admin/getDiagnose',  methods = ['GET', 'POST'])
-def getDiagnose():
+@diagnoseView.route('/diagnose/actions',  methods = ['GET', 'POST'])
+def getDiagnoseActions():
     try:
         diagnoseId=request.args.get('diagnoseId')
-        adminId=request.args.get('userId')
-        Diagnose.addAdminIdAndChangeStatus(diagnoseId,adminId)
-        resultDict=rs.SUCCESS.__dict__
-        json.dumps(resultDict,ensure_ascii=False)
+
+        userId=session['userId']
+        if userId is None:
+            return json.dumps(rs.NO_LOGIN.__dict__,ensure_ascii=False)
+        userId=string.atoi(userId)
+
+        diagnose=Diagnose.getDiagnoseById(diagnoseId)
+        if diagnose is None :
+            return json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
+        if hasattr(diagnose,'patient') and diagnose.patient and diagnose.patient.userID:
+            if userId!=diagnose.patient.userID:
+                return json.dumps(rs.PERMISSION_DENY.__dict__,ensure_ascii=False)
+        diagDict=dataChangeService.getDiagnoseDetailInfoByPatient(db_session,diagnose)
+        resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagDict)
+        resultDict=resultStatus.__dict__
+        return json.dumps(resultDict,ensure_ascii=False)
+
+
     except Exception, e:
         print e.message
         print e

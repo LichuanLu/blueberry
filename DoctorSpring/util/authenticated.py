@@ -2,6 +2,7 @@ import  functools
 from flask import Flask, request, session, g, redirect, url_for, Blueprint, jsonify
 from DoctorSpring.util import constant
 from database import db_session
+import string
 from DoctorSpring.models import UserRole
 __author__ = 'chengc017'
 
@@ -19,6 +20,8 @@ class authenticated(object):
         @functools.wraps(method)
         def admin_wrapper(*args, **kwargs):
             userId = session['userId']
+            if isinstance(userId,basestring):
+                userId=string.atoi(userId)
             if userId is None:
                 redirect(url_for(NO_LOGIN_URL))
             elif self.role and UserRole.checkRole(db_session,userId,self.role):

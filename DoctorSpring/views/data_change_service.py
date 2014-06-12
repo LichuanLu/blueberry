@@ -1,7 +1,7 @@
 # coding: utf-8
 __author__ = 'chengc017'
 from DoctorSpring.util import constant
-from DoctorSpring.models import File ,Diagnose,User
+from DoctorSpring.models import File ,Diagnose,User,DiagnoseLog,Comment
 
 def userCenterDiagnoses(diagnoses):
     if diagnoses is None or len(diagnoses)<1:
@@ -30,6 +30,9 @@ def userCenterDiagnoses(diagnoses):
             dicomUrl=File.getDicomFileUrl(diagnose.pathologyId)
             if dicomUrl:
                 diagDict['dicomUrl']
+        if hasattr(diagnose,'report') and diagnose.report and diagnose.report.fileUrl:
+            diagDict['reportUrl']= diagnose.report.fileUrl
+
 
         if hasattr(diagnose,"pathology") and diagnose.pathology:
             pathology=diagnose.pathology
@@ -95,6 +98,83 @@ def getDiagnoseDetailInfo(diagnose):
         diagDict['diagnoseResult']=diagnose.report.diagnoseDesc
 
     return diagDict
+
+def getDiagnoseDetailInfoByPatient(session,diagnose):
+    if diagnose is None:
+        return
+    diagDict={}
+    diagDict['id']=diagnose.id
+    if hasattr(diagnose,"patient") and diagnose.patient:
+        if diagnose.patient.realname:
+            diagDict['patientName']=diagnose.patient.realname
+        if diagnose.patient.gender:
+            diagDict['gender']=constant.Gender[diagnose.patient.gender]
+        if diagnose.patient.birthDate:
+            diagDict['birthDate']=diagnose.patient.birthDate.strftime('%Y-%m-%d')
+    if diagnose.diagnoseSeriesNumber:
+        diagDict['diagnosenumber']=diagnose.diagnoseSeriesNumber
+    #diagDict['type']=diagnose.type
+    if hasattr(diagnose,"doctor") and diagnose.doctor and diagnose.doctor.username:
+        diagDict['doctorName']=diagnose.doctor.username
+    if diagnose.createDate:
+        diagDict["applyTime"]=diagnose.createDate.strftime('%Y-%m-%d')
+    if diagnose.status:
+        diagDict['diagnoseStatus']=diagnose.status
+    if hasattr(diagnose,"hospital") and diagnose.hospital:
+        diagDict['hospitalHistory']=diagnose.hospital.name
+        diagDict['hospitalId']=diagnose.hospitalId
+
+    if diagnose.pathologyId:
+        diagDict['dicomUrl']=File.getDicomFileUrl(diagnose.pathologyId)
+
+    if diagnose.pathologyId:
+        diagDict['docUrl']=File.getFilesUrl(diagnose.pathologyId)
+
+
+    if hasattr(diagnose,"pathology") and diagnose.pathology:
+        pathology=diagnose.pathology
+        diagDict['caseHistory']=pathology.caseHistory
+        diagDict['diagnoseType']=pathology.diagnoseMethod
+        if hasattr(pathology,"pathologyPostions") and pathology.pathologyPostions:
+            pathologyPositons=pathology.pathologyPostions
+            if pathologyPositons and len(pathologyPositons)>0:
+                positions=u''
+                for pathologyPositon in pathologyPositons:
+                    position=pathologyPositon.position
+                    positions+=(u' '+position.name)
+                diagDict['positionName']=positions
+
+    if hasattr(diagnose,'report') and diagnose.report:
+        diagDict['reportId']=diagnose.reportId
+        # diagDict['techDes']=diagnose.report.techDesc
+        # diagDict['imageDes']=diagnose.report.imageDesc
+        # diagDict['diagnoseResult']=diagnose.report.diagnoseDesc
+
+    diagnoseLogs=DiagnoseLog.getDiagnoseLogByDiagnoseId(session,diagnose.id)
+    diagnoseLogsDict=getDiagnoseLogsDict(diagnoseLogs)
+    if diagnoseLogs and len(diagnoseLogs)>0:
+        diagDict['actions']=diagnoseLogsDict
+    isFeedback=Comment.existCommentBydiagnose(diagnose.id,type=constant.CommentType.DiagnoseComment)
+    diagDict['isFeedback']=isFeedback
+
+    return diagDict
+def getDiagnoseLogsDict(diagnoseLogs):
+    if diagnoseLogs is None or len(diagnoseLogs)<1:
+        return None
+    results=[]
+    for diagnoseLog in diagnoseLogs:
+        resultDict={}
+        resultDict['id']=diagnoseLog.id
+        if diagnoseLog.createTime:
+            resultDict['time']=diagnoseLog.createTime.strftime('%Y-%m-%d')
+        if diagnoseLog.action:
+            resultDict['title']=diagnoseLog.action
+        if diagnoseLog.description:
+            resultDict['comments']=diagnoseLog.description
+        if hasattr(diagnoseLog,'user') and diagnoseLog.user and diagnoseLog.user.name:
+            resultDict['name']=diagnoseLog.user.name
+        results.append(resultDict)
+    return results
 
 def getDiagnosePositonFromDiagnose(diagnose):
     if diagnose is None:
@@ -254,6 +334,37 @@ def get_doctor(doctor):
         doctorDict["avatarUrl"] = doctor.user.imagePath
 
     return doctorDict
+def getUserFavoritiesDict(userFavorities):
+    if userFavorities is None or len(userFavorities)<1:
+        return None
+    results=[]
+    for userFav in userFavorities:
+        resultDict={}
+        if userFav.id:
+            resultDict['id']=userFav.id
+        if userFav.doctorId:
+            resultDict['doctorId']=userFav.doctorId
+        if hasattr(userFav,'doctor') and userFav.doctor and userFav.doctor.username:
+            resultDict['name']=userFav.doctor.username
+            content=u''
+            if hasattr(userFav.doctor,'hospital') and userFav.doctor.hospital:
+                content+=userFav.doctor.hospital.name
+            if hasattr(userFav.doctor,'department') and userFav.doctor.department:
+                content+='----'
+                content+=userFav.doctor.department.name
+
+
+        if hasattr(userFav,'doctor') and userFav.doctor and userFav.doctor.userId:
+            resultDict['uid']=userFav.doctor.userId
+        if userFav.hospitalId:
+            resultDict['uid']=userFav.hospitalId
+        if userFav.docId:
+            resultDict['uid']=userFav.docId
+        if userFav.type:
+            resultDict['type']=userFav.type
+
+        results.append(resultDict)
+    return results
 
 
 

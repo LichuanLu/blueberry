@@ -9,6 +9,7 @@ from DoctorSpring.util.constant import ModelStatus, PatientStatus,UserFavoritesT
 import config
 from DoctorSpring.util.constant import ModelStatus
 from datetime import datetime
+from sqlalchemy.orm import relationship,backref
 
 
 class User(Base):
@@ -142,7 +143,8 @@ class UserFavorites(Base):
     }
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
     userId = sa.Column(sa.Integer)
-    doctorId = sa.Column(sa.Integer)
+    doctorId = sa.Column(sa.Integer,sa.ForeignKey('doctor.id'))
+    doctor = relationship("Doctor", backref=backref('user_favorites', order_by=id))
     docId = sa.Column(sa.Integer)
     hospitalId=sa.Column(sa.Integer)
     createDate=sa.Column(sa.DateTime)

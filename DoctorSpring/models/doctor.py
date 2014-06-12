@@ -23,7 +23,8 @@ class Doctor(Base):
     username = sa.Column(sa.String(64))
     identityPhone = sa.Column(sa.INTEGER)
     title = sa.Column(sa.String(64))    #职称
-    hospitalId = sa.Column(sa.INTEGER)  #医院ID
+    hospitalId = sa.Column(sa.INTEGER,sa.ForeignKey('hospital.id'))  #医院ID
+    hospital = relationship("Hospital", backref=backref('doctor', order_by=id))
     departmentId = sa.Column(sa.INTEGER,sa.ForeignKey('department.id'))  #科室ID
     department = relationship("Department", backref=backref('Doctor', order_by=id))
 

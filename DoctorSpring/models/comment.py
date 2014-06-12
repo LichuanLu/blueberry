@@ -84,3 +84,8 @@ class Comment(Base):
     def getCommentBydiagnose(cls,diagnoseId,status=ModelStatus.Normal,type=CommentType.Normal):
         return session.query(Comment).filter(Comment.diagnoseId==diagnoseId,Comment.status==status,Comment.type==type).all()
 
+    @classmethod
+    def existCommentBydiagnose(cls,diagnoseId,status=ModelStatus.Normal,type=CommentType.Normal):
+        if diagnoseId is None:
+            return False
+        return session.query(Comment).filter(Comment.diagnoseId==diagnoseId,Comment.status==status,Comment.type==type).count()>0

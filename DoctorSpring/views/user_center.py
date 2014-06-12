@@ -16,6 +16,7 @@ from DoctorSpring.util.authenticated import authenticated
 from param_service import UserCenter
 from database import db_session
 from datetime import datetime
+import string
 
 import  data_change_service as dataChangeService
 import json
@@ -26,23 +27,24 @@ config = config.rec()
 uc = Blueprint('user_center', __name__)
 
 
-@uc.route('/doctor/<int:doctorId>/home',  methods = ['GET', 'POST'])
-def endterDoctorHome(doctorId):
+@uc.route('/doctorhome',  methods = ['GET', 'POST'])
+def endterDoctorHome():
+    userId=session['userId']
+    doctor=Doctor.getByUserId(userId)
 
-    doctor=Doctor.getById(doctorId)
     if doctor is None:
         return redirect(url_for('/300'))
 
     resultDate={}
-    messageCount=Message.getMessageCountByReceiver(doctorId)
+    messageCount=Message.getMessageCountByReceiver(userId)
     resultDate['messageCount']=messageCount
 
-    diagnoseCount=Diagnose.getNewDiagnoseCountByDoctorId(doctorId)
+    diagnoseCount=Diagnose.getNewDiagnoseCountByDoctorId(doctor.id)
     resultDate['diagnoseCount']=diagnoseCount
 
     resultDate['doctor']=doctor
     pager=Pagger(1,20)
-    diagnoses=Diagnose.getDiagnosesByDoctorId(doctorId,pager)
+    diagnoses=Diagnose.getDiagnosesByDoctorId(db_session,doctor.id,pager)
     diagnoseDict=dataChangeService.userCenterDiagnoses(diagnoses)
     resultDate['diagnoses']=diagnoseDict
     return render_template("doctorHome.html",data=resultDate)
@@ -108,7 +110,7 @@ def getDiagnoseListByAdmin():
     resultDict=resultStatus.__dict__
     return json.dumps(resultDict,ensure_ascii=False)
 
-@uc.route('/doctor/diagnose/list/my',  methods = ['GET', 'POST'])
+@uc.route('/diagnose/list',  methods = ['GET', 'POST'])
 @authenticated('admin',constant.RoleId.Doctor)
 def getDiagnoseListByDoctor():
     userId=session['userId']
@@ -121,7 +123,7 @@ def getDiagnoseListByDoctor():
     doctor=Doctor.getByUserId(userId)
     if doctor:
 
-        status=request.args.get('status')
+        status=request.args.get('type')
         if status:
             import string
             status=string.atoi(status)
@@ -210,7 +212,7 @@ def cancleUserFavorties(id):
 def getUserFavorties(userId):
     type=request.args.get('type')
     userFavorites=UserFavorites.getUserFavorties(userId,type)
-    userFavoritesDict=object2dict.objects2dicts(userFavorites)
+    userFavoritesDict=dataChangeService.getUserFavoritiesDict(userFavorites)
     resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,userFavoritesDict)
     return json.dumps(resultStatus.__dict__,ensure_ascii=False)
 
@@ -263,8 +265,11 @@ def addThankNote():
     form =  ThanksNoteForm(request.form)
     formResult=form.validate()
     userId=session['userId']
+
     if userId is None:
         json.dumps(rs.NO_LOGIN.__dict__,ensure_ascii=False)
+
+    userId=string.atoi(userId)
     if formResult.status==rs.SUCCESS.status:
         thanksNote=ThanksNote(userId,form.receiver,form.title,form.content)
         ThanksNote.save(db_session,thanksNote)
