@@ -25,12 +25,12 @@ mc = Blueprint('message_comment', __name__)
 #     g.user = current_user
 @mc.route('/addDiagnoseComment.json', methods = ['GET', 'POST'])
 def addDiagnoseComment():
-    form = CommentsForm(request.args)
+    form = CommentsForm(request.form)
     resultForm=form.validate()
     if resultForm.status==rs.SUCCESS.status:
         #session['remember_me'] = form.remember_me.data
         # login and validate the user...
-        diagnoseComment=Comment(form.userId.data,form.receiverId.data,form.diagnoseId.data,form.content.data)
+        diagnoseComment=Comment(form.userId,form.receiverId,form.diagnoseId,form.content)
         db_session.add(diagnoseComment)
         db_session.commit()
         db_session.flush()
@@ -126,9 +126,9 @@ def remarkMessage(messageId):
     status=request.args.get('status')
     result=None
     if status:
-        result=Message.remarkMessage(messageId,status)
+        result=Message.remarkMessage(db_session,messageId,status)
     else:
-        result=Message.remarkMessage(Message)
+        result=Message.remarkMessage(db_session,messageId)
     resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,result)
     resultDict=resultStatus.__dict__
     return jsonify(resultDict)

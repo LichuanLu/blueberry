@@ -2,9 +2,9 @@
 define(["backbone", "marionette", "utils/reqcmd", "config/base/auth",
 	'homepage/homepage_app','diagnose/diagnose_app','register/register_app',
 	'doctorhome/doctor_home_app','patienthome/patient_home_app',
-	'report/report_app','doctorList/doctorList_app','doctorSite/doctorSite_app','admin/admin_app','config/marionette/modalRegion'], 
+	'report/report_app','doctorList/doctorList_app','doctorSite/doctorSite_app','admin/admin_app','login/loginpage_app','config/marionette/modalRegion'], 
 	function(Backbone, Marionette, ReqCmd, Auth, HomePageApp,DiagnoseApp,
-		RegisterApp,DoctorHomeApp,PatientHomeApp,ReportApp,DoctorListApp,DoctorSiteApp,AdminApp,ModalRegionModule) {
+		RegisterApp,DoctorHomeApp,PatientHomeApp,ReportApp,DoctorListApp,DoctorSiteApp,AdminApp,LoginPageApp,ModalRegionModule) {
 		"use strict";
 		var App = new Marionette.Application();
 		App.addRegions({
@@ -48,6 +48,8 @@ define(["backbone", "marionette", "utils/reqcmd", "config/base/auth",
 				DoctorSiteApp.API.show();
 			} else if(location.indexOf("admin/fenzhen") != -1){
 				AdminApp.API.fenzhen();
+			} else if(location.indexOf("login") != -1){
+				LoginPageApp.API.show();
 			} 
 			else {
 				console.log("do not init");

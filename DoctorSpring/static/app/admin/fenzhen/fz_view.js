@@ -53,7 +53,6 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 			});
 
 			this.ui.diagnoseStatusSelect.multiselect({
-				numberDisplayed: 4,
 				nonSelectedText: "没有选中"
 				// buttonWidth: '300px'
 			});

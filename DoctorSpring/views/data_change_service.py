@@ -45,6 +45,12 @@ def userCenterDiagnoses(diagnoses):
                         positions+=(u' '+position.name)
                     diagDict['positionName']=positions
         #print diagDict['doctorName'],diagDict['positons']
+
+
+        isFeedback=Comment.existCommentBydiagnose(diagnose.id,type=constant.CommentType.DiagnoseComment)
+        diagDict['isFeedback']=isFeedback
+
+
         result.append(diagDict)
 
     return result
@@ -217,7 +223,7 @@ def getDoctorNeedDiagnoseMessageContent(diagnose,doctor):
             diagnoseContent+=' | 诊断部位:'+positions
     content+=diagnoseContent
     return content
-def getPatienDiagnoseMessageContent(diagnose,doctor):
+def getPatienDiagnoseMessageContent(diagnose):
     content=' 您好，系统中有一个影像已被处理，请查看处理结果！'
     #content=' 您好，系统中有一个新到的影像需要您来诊断！'
     if diagnose and hasattr(diagnose,'patient') and hasattr(diagnose.patient,'user') and diagnose.patient.user:
@@ -227,7 +233,7 @@ def getPatienDiagnoseMessageContent(diagnose,doctor):
         diagnoseContent=" 诊断号:"+diagnose.diagnoseSeriesNumber
 
     if hasattr(diagnose,"patient") and diagnose.patient:
-        if diagnose.patient.name:
+        if diagnose.patient.realname:
             diagnoseContent+=' | 患者:'+diagnose.patient.realname
 
     if hasattr(diagnose,"pathology") and diagnose.pathology:
@@ -352,6 +358,7 @@ def getUserFavoritiesDict(userFavorities):
             if hasattr(userFav.doctor,'department') and userFav.doctor.department:
                 content+='----'
                 content+=userFav.doctor.department.name
+            resultDict['content']=content
 
 
         if hasattr(userFav,'doctor') and userFav.doctor and userFav.doctor.userId:
@@ -360,8 +367,8 @@ def getUserFavoritiesDict(userFavorities):
             resultDict['uid']=userFav.hospitalId
         if userFav.docId:
             resultDict['uid']=userFav.docId
-        if userFav.type:
-            resultDict['type']=userFav.type
+        #if userFav.type:
+        resultDict['type']=userFav.type
 
         results.append(resultDict)
     return results

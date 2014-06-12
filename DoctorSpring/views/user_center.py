@@ -49,6 +49,28 @@ def endterDoctorHome():
     resultDate['diagnoses']=diagnoseDict
     return render_template("doctorHome.html",data=resultDate)
 
+@uc.route('/patienthome',  methods = ['GET', 'POST'])
+def endterPatientHome():
+    userId=session['userId']
+    user=User.getById(userId)
+
+    if user is None:
+        return redirect(url_for('/300'))
+
+    resultDate={}
+    messageCount=Message.getMessageCountByReceiver(userId)
+    resultDate['messageCount']=messageCount
+
+    diagnoseCount=Diagnose.getNewDiagnoseCountByUserId(userId)
+    resultDate['diagnoseCount']=diagnoseCount
+
+    resultDate['user']=user
+    #pager=Pagger(1,20)
+    # diagnoses=Diagnose.getDiagnosesByDoctorId(db_session,doctor.id,pager)
+    # diagnoseDict=dataChangeService.userCenterDiagnoses(diagnoses)
+    # resultDate['diagnoses']=diagnoseDict
+    return render_template("patientHome.html",data=resultDate)
+
 
 @uc.route('/admin/diagnose/list/all',  methods = ['GET', 'POST'])
 @authenticated('admin',constant.RoleId.Admin)
@@ -182,7 +204,7 @@ def getDiagnoseAndImageDescList():
 
 @uc.route('/userFavorties/add',  methods = ['GET', 'POST'])
 def addUserFavorties():
-    form =  UserFavortiesForm(request.args)
+    form = UserFavortiesForm(request.form)
     formResult=form.validate()
 
     userId=session['userId']
@@ -211,6 +233,10 @@ def cancleUserFavorties(id):
 @uc.route('/userFavorties/<int:userId>/list',  methods = ['GET', 'POST'])
 def getUserFavorties(userId):
     type=request.args.get('type')
+    if type is None:
+        json.dumps(rs.PARAM_ERROR.__dict__,ensure_ascii=False)
+
+    type=string.atoi(type)
     userFavorites=UserFavorites.getUserFavorties(userId,type)
     userFavoritesDict=dataChangeService.getUserFavoritiesDict(userFavorites)
     resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,userFavoritesDict)

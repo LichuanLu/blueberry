@@ -18,13 +18,7 @@ define(['lodash', 'config/base/constant', 'config/controllers/_base_controller',
 				this.layoutView.attachEndHandler();
 			}, this));
 
-			//instance is this controller instance
-			ReqCmd.commands.setHandler("doctorHomePageLayoutView:attached", Lodash.bind(function(instance) {
-				console.log("attached end");
-				this.layoutView.attachEndHandler();
-
-			}, this));
-
+			
 
 			//click left menu , change view , send from view 
 			ReqCmd.commands.setHandler("doctorHomePageLayoutView:changeContentView", Lodash.bind(function(viewName) {
@@ -39,7 +33,12 @@ define(['lodash', 'config/base/constant', 'config/controllers/_base_controller',
 				// 	type: type
 				// };
 				console.dir(params);
-				this.diagnoseCollection = DiagnoseEntity.API.getDiagnoseList(params);
+				if(this.diagnoseCollection){
+					DiagnoseEntity.API.getDiagnoseList(params,this.diagnoseCollection);
+
+				}else{
+					this.diagnoseCollection = DiagnoseEntity.API.getDiagnoseList(params);
+				}
 			}, this));
 
 			//doctor click the action link , e.g. add diagnose

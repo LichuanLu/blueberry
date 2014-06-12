@@ -243,7 +243,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 					url = '/admin/report/addOrUpate';
 
 				}else{
-					url = '/doctor/diagnose/create';
+					url = '/doctor/report/update';
 
 				}
 				var that = this;

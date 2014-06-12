@@ -46,13 +46,178 @@ ul.message-list li .message-content-wrapper p {
   white-space: nowrap;
   width: 100%;
 }
+.bs-wizard {
+  margin-top: 0px;
+}
+/*Form Wizard*/
+.bs-wizard {
+  border-bottom: solid 1px #e0e0e0;
+  padding: 0 0 10px 0;
+}
+.bs-wizard > .bs-wizard-step {
+  padding: 0;
+  position: relative;
+}
+.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {
+  color: #595959;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+.bs-wizard > .bs-wizard-step .bs-wizard-info {
+  color: #999;
+  font-size: 14px;
+}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  display: block;
+  background: #fbe8aa;
+  top: 45px;
+  left: 50%;
+  margin-top: -10px;
+  margin-left: -15px;
+  border-radius: 50%;
+}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {
+  content: ' ';
+  width: 14px;
+  height: 14px;
+  background: #fbbd19;
+  border-radius: 50px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+.bs-wizard > .bs-wizard-step > .progress {
+  position: relative;
+  border-radius: 0px;
+  height: 8px;
+  box-shadow: none;
+  margin: 20px 0;
+}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar {
+  width: 0px;
+  box-shadow: none;
+  background: #fbe8aa;
+}
+.bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {
+  width: 100%;
+}
+.bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {
+  width: 50%;
+}
+.bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {
+  width: 0%;
+}
+.bs-wizard > .bs-wizard-step:last-child.active > .progress > .progress-bar {
+  width: 100%;
+}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {
+  background-color: #f5f5f5;
+}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {
+  opacity: 0;
+}
+.bs-wizard > .bs-wizard-step:first-child > .progress {
+  left: 50%;
+  width: 50%;
+}
+.bs-wizard > .bs-wizard-step:last-child > .progress {
+  width: 50%;
+}
+.bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot {
+  pointer-events: none;
+}
+/*END Form Wizard*/
 #patienthome-content {
   margin-bottom: 50px;
 }
+#patienthome-content #diagnose-detail-track-wrapper {
+  margin: 20px;
+}
+#patienthome-content #diagnose-detail-track-wrapper .back-link-wrapper {
+  margin-bottom: 10px;
+}
+#patienthome-content #diagnose-detail-track-wrapper .detail-content-wrapper {
+  padding: 20px;
+}
+#patienthome-content #diagnose-detail-track-wrapper .detail-content-wrapper h6.second-title {
+  font-size: 15px;
+  color: #eaeaea;
+  border-bottom: 1px solid;
+}
+#patienthome-content #diagnose-detail-track-wrapper .detail-content-wrapper > div {
+  border: 1px solid #eaeaea;
+}
+#patienthome-content #diagnose-detail-track-wrapper .detail-content-wrapper > div .left-side {
+  border-right: 1px solid #eaeaea;
+  padding: 20px;
+}
+#patienthome-content #diagnose-detail-track-wrapper .detail-content-wrapper > div .left-side > div {
+  line-height: 2.4;
+}
+#patienthome-content #diagnose-detail-track-wrapper .detail-content-wrapper > div .left-side > div span {
+  color: #808080;
+}
+#patienthome-content #diagnose-detail-track-wrapper .detail-content-wrapper > div .left-side > div span.head {
+  color: #000000;
+  font-weight: 700;
+  margin-right: 5px;
+}
+#patienthome-content #diagnose-detail-track-wrapper .detail-content-wrapper > div .left-side > div p {
+  color: #808080;
+  margin: 0;
+  font-size: 13px;
+  display: inline-block;
+}
+#patienthome-content #diagnose-detail-track-wrapper .detail-content-wrapper > div .right-side {
+  padding: 20px;
+}
+#patienthome-content #diagnose-detail-track-wrapper .detail-content-wrapper > div .right-side .top-wrapper {
+  height: 100px;
+}
+#patienthome-content #diagnose-detail-track-wrapper .detail-content-wrapper > div .right-side .top-wrapper h6 {
+  margin-top: 0;
+  font-size: 20px;
+}
+#patienthome-content #diagnose-detail-track-wrapper .detail-content-wrapper > div .right-side .top-wrapper h6 span {
+  margin-right: 10px;
+  color: #16a085;
+}
+#patienthome-content #diagnose-detail-track-wrapper .detail-content-wrapper > div .right-side .bottom-wrapper .record-text {
+  margin-bottom: 10px;
+}
+#patienthome-content #diagnose-detail-track-wrapper .detail-content-wrapper > div .right-side .bottom-wrapper .record-text .content-text {
+  margin: 0 10px;
+}
+#patienthome-content #diagnose-detail-track-wrapper .detail-content-wrapper > div .right-side .bottom-wrapper .comments {
+  position: relative;
+  padding-bottom: 20px;
+}
+#patienthome-content #diagnose-detail-track-wrapper .detail-content-wrapper > div .right-side .bottom-wrapper .comments .popover {
+  margin-left: 50px;
+  display: block;
+  position: relative;
+  width: auto;
+  background-color: #f1c40f;
+}
+#patienthome-content #diagnose-detail-track-wrapper .detail-content-wrapper > div .right-side .bottom-wrapper .comments .popover .arrow {
+  border-right-color: #f1c40f;
+}
+#patienthome-content #diagnose-detail-track-wrapper .detail-content-wrapper > div .right-side .bottom-wrapper .comments .des-text {
+  color: #666666;
+  position: absolute;
+  right: 20px;
+  font-size: 12px;
+}
+#patienthome-content .content-wrapper {
+  border: 1px solid #eaeaea;
+  margin-left: 0;
+}
 #patienthome-content .right-content-wrapper {
   min-height: 700px;
-  border: 1px solid #eaeaea;
-  border-left: 0;
+  border-left: 1px solid #eaeaea;
 }
 #patienthome-content .content-head-wrapper {
   height: 80px;
@@ -69,7 +234,6 @@ ul.message-list li .message-content-wrapper p {
 #patienthome-content .left-menu {
   display: inline-block;
   width: 100%;
-  border: 1px solid #eaeaea;
   min-height: 700px;
 }
 #patienthome-content .left-menu .user-wrapper {
@@ -139,10 +303,18 @@ ul.message-list li .message-content-wrapper p {
   width: 60px;
 }
 #patienthome-content #patient-action-content #diagnose-table {
-  font-size: 15px;
+  font-size: 13px;
 }
 #patienthome-content #patient-action-content #diagnose-table .action-group > a {
   margin-right: 5px;
+}
+#patienthome-content #patient-action-content #diagnose-table .detail-wrapper {
+  min-width: 91px;
+  width: 91px;
+}
+#patienthome-content #patient-action-content #diagnose-table .detail-wrapper span {
+  font-size: 13px;
+  top: 0;
 }
 #patienthome-content #patient-action-content .nav-tabs {
   border-width: 1px;

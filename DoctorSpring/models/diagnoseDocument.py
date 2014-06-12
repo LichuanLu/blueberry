@@ -6,6 +6,7 @@ from  sqlalchemy import distinct
 
 from database import Base
 from sqlalchemy.orm import  relationship,backref,join
+from patient import Patient
 
 __author__ = 'chengc017'
 
@@ -122,15 +123,20 @@ class Diagnose(Base):
     def getDiagnoseCountByDoctorId(cls,doctorId,status=None,startTime=SystemTimeLimiter.startTime,endTime=SystemTimeLimiter.endTime):
         if doctorId:
             if status:
-                return session.query(Diagnose).filter(Diagnose.doctorId==doctorId,Diagnose.status==status,
+                return session.query(Diagnose.id).filter(Diagnose.doctorId==doctorId,Diagnose.status==status,
                                                       Diagnose.createDate>startTime,Diagnose.createDate<endTime).count()
             else:
-                return session.query(Diagnose).filter(Diagnose.doctorId==doctorId,Diagnose.status!=DiagnoseStatus.Del,
+                return session.query(Diagnose.id).filter(Diagnose.doctorId==doctorId,Diagnose.status!=DiagnoseStatus.Del,
                                                       Diagnose.createDate>startTime,Diagnose.createDate<endTime).count()
     @classmethod
     def getNewDiagnoseCountByDoctorId(cls,doctorId):
         if doctorId:
-            return session.query(Diagnose).filter(Diagnose.doctorId==doctorId,Diagnose.status==DiagnoseStatus.NeedDiagnose).count()
+            return session.query(Diagnose.id).filter(Diagnose.doctorId==doctorId,Diagnose.status==DiagnoseStatus.NeedDiagnose).count()
+    @classmethod
+    def getNewDiagnoseCountByUserId(cls,userID):
+        if userID:
+            query=session.query(Diagnose.id).join((Patient,Diagnose.patientId==Patient.id)).filter(Patient.userID==userID,Diagnose.status==DiagnoseStatus.Draft)
+            return query.count()
     @classmethod
     def getPatientListByDoctorId(cls,doctorId):
         if doctorId:

@@ -48,7 +48,7 @@ define(["backbone", "marionette", "config/base/constant", "utils/reqcmd"], funct
 			if (!params) {
 				params = {
 					hospitalId: 0,
-					sectionId: 0,
+					skillId: 0,
 					pageNumber: 1,
 					pageSize: 6
 				};

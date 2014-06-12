@@ -120,8 +120,8 @@ def updateReport():
     if user is None:
         return  json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
 
-    if UserRole.checkRole(db_session,userId,constant.RoleId.Doctor):
-        return  json.dumps(rs.PERMISSION_DENY.__dict__,ensure_ascii=False)
+    # if UserRole.checkRole(db_session,userId,constant.RoleId.Doctor):
+    #     return  json.dumps(rs.PERMISSION_DENY.__dict__,ensure_ascii=False)
 
     form =  ReportForm(request.form)
 
@@ -134,7 +134,7 @@ def updateReport():
             Diagnose.changeDiagnoseStatus(form.diagnoseId,constant.DiagnoseStatus.Diagnosed)
             #需要給用戶發信和記錄操作日誌
             diagnose=Diagnose.getDiagnoseById(form.diagnoseId)
-            sendMessageAndRecordLog(diagnose)
+            sendMessageAndRecordLog(diagnose,userId)
 
         else:
             fileUrl=None#這是草稿，不需要生存文檔
@@ -155,11 +155,11 @@ def sendMessageAndRecordLog(diagnose,userId):
         Message.save(message)
 
     diagnoseLog=DiagnoseLog(userId,diagnose.id,constant.DiagnoseLogAction.DiagnoseFinished)
-    DiagnoseLog.save(diagnoseLog)
+    DiagnoseLog.save(db_session,diagnoseLog)
 
 def recordDiagnoseLog(diagnose,userId):
     diagnoseLog=DiagnoseLog(userId,diagnose.id,constant.DiagnoseLogAction.UpateDiagnoseAction)
-    DiagnoseLog.save(diagnoseLog)
+    DiagnoseLog.save(db_session,diagnoseLog)
 
 
 
@@ -204,7 +204,7 @@ def getDiagnoseActions():
         if hasattr(diagnose,'patient') and diagnose.patient and diagnose.patient.userID:
             if userId!=diagnose.patient.userID:
                 return json.dumps(rs.PERMISSION_DENY.__dict__,ensure_ascii=False)
-        diagDict=dataChangeService.getDiagnoseDetailInfoByPatient(db_session,diagnose)
+            diagDict=dataChangeService.getDiagnoseDetailInfoByPatient(db_session,diagnose)
         resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagDict)
         resultDict=resultStatus.__dict__
         return json.dumps(resultDict,ensure_ascii=False)

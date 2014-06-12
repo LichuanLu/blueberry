@@ -18,6 +18,7 @@ define(['lodash', 'config/base/constant', 'config/controllers/_base_controller',
 				this.layoutView.attachEndHandler();
 				this.doctorPageModel = DoctorEntity.API.getDoctorPageModel();
 				this.doctorListView = this.getDoctorListView(this.doctorPageModel);
+				this.layoutView.doctorListView = this.doctorListView;
 				//console.log(this.modalView.doctorListRegion);
 				this.show(this.doctorListView, {
 					region: this.layoutView.doctorListRegion,
@@ -28,11 +29,12 @@ define(['lodash', 'config/base/constant', 'config/controllers/_base_controller',
 
 
 			//refresh select doctor table
-			ReqCmd.commands.setHandler("SelectDoctorModalView:searchDoctorHandler", Lodash.bind(function(params) {
-				console.log("SelectDoctorModalView searchDoctorHandler");
+			ReqCmd.commands.setHandler("fetchDoctorList:DoctorListLayoutView", Lodash.bind(function(params) {
 				this.doctorPageModel = DoctorEntity.API.getDoctorPageModel(params);
 				this.doctorListView = this.getDoctorListView(this.doctorPageModel);
 				//console.log(this.modalView.doctorListRegion);
+				this.layoutView.doctorListView = this.doctorListView;
+
 				this.show(this.doctorListView, {
 					region: this.layoutView.doctorListRegion,
 					client: true
@@ -51,8 +53,6 @@ define(['lodash', 'config/base/constant', 'config/controllers/_base_controller',
 			}, this));
 			
 			console.log('follow controller init end');
-
-
 
 
 		},

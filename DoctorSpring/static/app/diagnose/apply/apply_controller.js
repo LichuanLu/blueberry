@@ -17,7 +17,6 @@ define(['lodash', 'config/base/constant', 'config/controllers/_base_controller',
 
 				});
 
-
 				// var that = this;
 				// $('#select-doctor-modal').on('shown.bs.modal', function(e) {
 				// 	console.log("modal shown");

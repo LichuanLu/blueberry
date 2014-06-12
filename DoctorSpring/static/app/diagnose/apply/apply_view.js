@@ -212,7 +212,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 						location: {
 							required: true
 						},
-						sectionId: {
+						skillId: {
 							required: true
 						},
 						diagnoseHistory: {

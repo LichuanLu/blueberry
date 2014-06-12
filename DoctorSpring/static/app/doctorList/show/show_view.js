@@ -11,10 +11,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 		},
 		el: "#doctorlist-content",
 		ui: {
-			"queryLinks": ".query-table a",
-			"skillActiveLink":"#skill-wrapper li.active a",
-			"hospitalActiveLink":"#hospital-wrapper li.active a"
-
+			"queryLinks": ".query-table a"
 		},
 		events: {
 			"click @ui.queryLinks": "queryHandler"
@@ -28,9 +25,16 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 			$target.closest('li').addClass("active");
 			$target.closest('li').siblings().removeClass("active");
 
-			var skillId = this.ui.skillActiveLink.data('skillid');
-			var hospitalId = this.ui.hospitalActiveLink.data('hospitalid');
+			var skillId = $('#skill-wrapper li.active a').data('skillid');
+			var hospitalId = $('#hospital-wrapper li.active a').data('hospitalid');
 			console.log("skillId:"+skillId+"hospitalId:"+hospitalId);
+			var data = {
+				pageNumber:this.doctorListView.currentPage,
+				pageSize:6,
+				skillId:skillId,
+				hospitalId:hospitalId
+			}
+			ReqCmd.commands.execute("fetchDoctorList:DoctorListLayoutView", $.param(data));
 		}
 
 	});
@@ -45,7 +49,6 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 		},
 		onShow: function() {
 			console.log("show DoctorDetailListView");
-
 		},
 		// tagName:"ul",
 		// className:"result-list stylenone",
@@ -88,6 +91,15 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 		fetchNewPage: function() {
 			// console.log($('#select-doctor-modal form').serialize());
 			// var data = $('#select-doctor-modal form').serialize();
+			var skillId = $('#skill-wrapper li.active a').data('skillid');
+			var hospitalId = $('#hospital-wrapper li.active a').data('hospitalid');
+			var data = {
+				pageNumber:this.currentPage,
+				pageSize:6,
+				skillId:skillId,
+				hospitalId:hospitalId
+			}
+			ReqCmd.commands.execute("fetchDoctorList:DoctorListLayoutView", $.param(data));
 			// if (data) {
 			// 	data += '&pageNumber=' + this.currentPage + '&pageSize=6';
 			// 	ReqCmd.commands.execute("SelectDoctorModalView:searchDoctorHandler", data);

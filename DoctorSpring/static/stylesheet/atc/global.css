@@ -422,6 +422,10 @@ body .container.full-width-page .main-block {
   margin-left: 30px;
   margin-right: 5px;
 }
+.login-modal .login-error {
+  color: red;
+  font-size: 12px;
+}
 .login-modal .modal-body .submit-group button {
   width: 120px;
 }

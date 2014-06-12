@@ -138,7 +138,12 @@ class DiagnoseTestCase(unittest.TestCase):
         haspitalList.append(1)
         haspitalList.append(3)
         diagnoses=Diagnose.getDiagnoseByAdmin(session,haspitalList,'任志强')
-        print len(diagnoses)
+    def test_getNewDiagnoseCountByUserId(self):
+        count=Diagnose.getNewDiagnoseCountByUserId(5)
+        print count
+    def test_getDiagnoseCountByDoctorId(self):
+        count=Diagnose.getDiagnoseCountByDoctorId(4,5)
+        print count
 class ReportTestCase(unittest.TestCase):
     def test_addReport(self):
         dt=session.query(DiagnoseTemplate).filter(DiagnoseTemplate.id==5).first()
