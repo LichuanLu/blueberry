@@ -10,7 +10,7 @@ from database import  db_session
 from sqlalchemy.exc import IntegrityError
 from DoctorSpring.models import User,Patient,Doctor,Diagnose ,DiagnoseTemplate,Report,UserRole
 from DoctorSpring.models import User,Comment,Message,DiagnoseLog
-from DoctorSpring.util import result_status as rs,object2dict ,constant
+from DoctorSpring.util import result_status as rs,object2dict ,constant,pdf_utils
 from DoctorSpring.util.authenticated import authenticated
 from DoctorSpring.util.constant import MessageUserType,Pagger
 import string
@@ -129,7 +129,8 @@ def updateReport():
         #session['remember_me'] = form.remember_me.data
         # login and validate the user...
         if form.status and form.status==constant.ReportStatus.Commited:
-            fileUrl=None#需要先生存文檔上傳到服務器，獲取url
+
+            fileUrl=pdf_utils.generatorPdf(form.diagnoseId)#需要先生存文檔上傳到服務器，獲取url
             report=Report.update(form.reportId,constant.ReportType.Doctor,form.status,fileUrl,form.techDesc,form.imageDesc,form.diagnoseDesc)
             Diagnose.changeDiagnoseStatus(form.diagnoseId,constant.DiagnoseStatus.Diagnosed)
             #需要給用戶發信和記錄操作日誌

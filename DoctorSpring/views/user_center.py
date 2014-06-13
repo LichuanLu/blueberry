@@ -270,7 +270,7 @@ def generatorPdf(diagnoseId):
                 if birthDate:
                     birthDate=birthDate.strftime('%Y-%m-%d')
                     data['birthDate']=birthDate
-                data['name']=diagnose.patient.name
+                data['name']=diagnose.patient.realname
             if hasattr(diagnose,'doctor'):
                 data['doctorName']=diagnose.doctor.username
 
@@ -323,8 +323,8 @@ def getThanksNotes(userid):
 @uc.route('/redirectPdf', methods=['GET','POST'])
 def testRedirect():
     #return redirect("/pdf")
-    print url_for('user_center.generatorPdf',diagnoseName='ccheng')
-    return redirect(url_for('user_center.generatorPdf'))
+    #print url_for('user_center.generatorPdf',diagnoseName='ccheng')
+    return redirect(url_for('user_center.generatorPdf',diagnoseId=1))
 
 
 
