@@ -72,6 +72,63 @@ def endterPatientHome():
     return render_template("patientHome.html",data=resultDate)
 
 
+
+
+@uc.route('/doctor/site/<int:userId>',  methods = ['GET', 'POST'])
+def endterDoctorSite(userId):
+
+    #user=User.getById(userId)
+    doctor=Doctor.getByUserId(userId)
+
+    if  doctor is None:
+        return redirect(url_for('/300'))
+
+    if  hasattr(doctor,'user') !=True:
+        return redirect(url_for('/300'))
+
+    resultDate={}
+    userFavortiesCount=UserFavorites.getFavortiesCountByDoctorId(doctor.id)
+    resultDate['userFavortiesCount']=userFavortiesCount
+
+    diagnoseCount=Diagnose.getDiagnoseCountByDoctorId(db_session,doctor.id)
+    resultDate['diagnoseCount']=diagnoseCount
+
+    goodDiagnoseCount=Diagnose.getDiagnoseCountByDoctorId(db_session,doctor.id,1)#good
+    goodDiagnoseCount+=Diagnose.getDiagnoseCountByDoctorId(db_session,doctor.id,2)
+    resultDate['goodDiagnoseCount']=goodDiagnoseCount
+
+    resultDate['doctor']=dataChangeService.get_doctor(doctor)
+
+    thanksNoteCount=ThanksNote.getThanksNoteCountByReceiver(db_session,userId)
+    resultDate['thanksNoteCount']=thanksNoteCount
+
+    diagnoseCommentCount=Comment.getCountByReceiver(userId)
+    resultDate['diagnoseCommentCount']=diagnoseCommentCount
+
+
+
+    pager=constant.Pagger(1,10)
+
+    diagnoseComments=Comment.getCommentByReceiver(userId,constant.ModelStatus.Normal,constant.CommentType.DiagnoseComment,pager)
+    if diagnoseComments  and  len(diagnoseComments)>0:
+        diagnoseCommentsDict=object2dict.objects2dicts(diagnoseComments)
+        dataChangeService.setDiagnoseCommentsDetailInfo(diagnoseCommentsDict)
+        resultDate['comments']=diagnoseCommentsDict
+    else:
+        resultDate['comments']=None
+
+
+    thanksNotes=ThanksNote.getThanksNoteByReceiver(db_session,userId)
+    if thanksNotes  and  len(thanksNotes)>0:
+        thanksNotesDict=object2dict.objects2dicts(thanksNotes)
+        dataChangeService.setThanksNoteDetail(thanksNotesDict)
+        resultDate['thanksNotes']=thanksNotesDict
+
+    return render_template("doctorsite.html",data=resultDate)
+
+
+
+
 @uc.route('/admin/diagnose/list/all',  methods = ['GET', 'POST'])
 @authenticated('admin',constant.RoleId.Admin)
 def getDiagnoseListByAdmin2():

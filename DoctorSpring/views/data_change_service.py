@@ -264,18 +264,19 @@ def setDiagnoseCommentsDetailInfo(diagnoseCommentsDict):
            user=User.getById(observer)
            if user:
                diagnoseComment['observerName']=user.name
+               diagnoseComment['avatar']=user.imagePath
         if diagnoseComment.has_key('receiver'):
             receiver=diagnoseComment.get('receiver')
             user=User.getById(receiver)
             if user:
                 diagnoseComment['receiverName']=user.name
 
-        if diagnoseComment.diagnoseId:
-            diagnose=Diagnose.getDiagnoseById(diagnoseComment.diagnoseId)
+        if diagnoseComment.has_key('diagnoseId'):
+            diagnose=Diagnose.getDiagnoseById(diagnoseComment.get('diagnoseId'))
             if diagnose:
                 if diagnose.score:
                     diagnoseComment['scoreName']=constant.DiagnoseScore[diagnose.score]
-                if diagnose.hospitalId and hasattr(diagnose,'hospital') and diagnose.hospital.name:
+                if diagnose.hospitalId and hasattr(diagnose,'hospital') and diagnose.hospital and diagnose.hospita.name:
                     diagnoseComment['hospitalId']= diagnose.hospitalId
                     diagnoseComment['hospitalName']=diagnose.hospital.name
                 if hasattr(diagnose,"pathology") and diagnose.pathology:
@@ -300,6 +301,8 @@ def setThanksNoteDetail(thanksNoteDicts):
             if user:
                 thanksNoteDict['observer']=observer
                 thanksNoteDict['observerName']=user.name
+                if user.imagePath:
+                    thanksNoteDict["avatarUrl"] = user.imagePath
 
 def get_doctors_dict(doctors, pageno=1):
     if doctors is None:
@@ -332,12 +335,16 @@ def get_doctor(doctor):
         doctorDict["skill"] = skill_des
     if hasattr(doctor, "hospital") and hasattr(doctor.hospital, "name") and doctor.hospital.name:
         doctorDict["hospitalname"] = doctor.hospital.name
+    if hasattr(doctor, "department") and hasattr(doctor.department, "name") and doctor.department.name:
+        doctorDict["departmentname"] = doctor.department.name
     if hasattr(doctor, "diagnoseCount") and doctor.diagnoseCount:
         doctorDict["diagnoseNumber"] = doctor.diagnoseCount
     if hasattr(doctor, "feedbackCount") and doctor.feedbackCount:
         doctorDict["goodFeedbackNumber"] = doctor.feedbackCount
     if hasattr(doctor, "user") and hasattr(doctor.user, "imagePath") and doctor.user.imagePath:
         doctorDict["avatarUrl"] = doctor.user.imagePath
+    if  doctor.userId:
+        doctorDict["userId"] = doctor.userId
 
     return doctorDict
 def getUserFavoritiesDict(userFavorities):

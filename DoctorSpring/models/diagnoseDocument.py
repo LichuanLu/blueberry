@@ -108,8 +108,8 @@ class Diagnose(Base):
 
     @classmethod
     def getDiagnosesByDoctorId(cls,session,doctorId,pagger,status=None,startTime=SystemTimeLimiter.startTime,endTime=SystemTimeLimiter.endTime):
-        count=Diagnose.getDiagnoseCountByDoctorId(doctorId,status,startTime,endTime)
-        pagger.count=count
+        # count=Diagnose.getDiagnoseCountByDoctorId(doctorId,status,startTime,endTime)
+        # pagger.count=count
         if doctorId:
             if status:
                 return session.query(Diagnose).filter(Diagnose.doctorId==doctorId,Diagnose.status==status,
@@ -192,6 +192,14 @@ class Diagnose(Base):
             query=session.query(Diagnose).select_from(join(Doctor,Diagnose,Doctor.id==Diagnose.doctorId)) \
                 .filter(Doctor.username==doctorName,Diagnose.status==DiagnoseStatus.NeedTriage).offset(pagger.getOffset()).limit(pagger.getLimitCount())
         return query.all()
+    @classmethod
+    def getDiagnoseCountByDoctorId(cls,session,doctorId,score=None):
+        if doctorId is None:
+            return
+        if score or score==0:
+            return session.query(Diagnose.id).filter(Diagnose.doctorId==doctorId,Diagnose.score==score).count()
+        else:
+            return  session.query(Diagnose.id).filter(Diagnose.doctorId==doctorId).count()
 
 class DiagnoseLog(Base):
     __tablename__ = 'diagnoseLog'

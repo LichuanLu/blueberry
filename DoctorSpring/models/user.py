@@ -215,3 +215,8 @@ class UserFavorites(Base):
                 else:
                     return session.query(UserFavorites).filter(UserFavorites.userId==userId,UserFavorites.status==ModelStatus.Normal).all()
 
+    @classmethod
+    def getFavortiesCountByDoctorId(cls,doctorId):
+        if doctorId is None:
+            return
+        return session.query(UserFavorites.id).filter(UserFavorites.doctorId==doctorId,UserFavorites.status==ModelStatus.Normal).count()
