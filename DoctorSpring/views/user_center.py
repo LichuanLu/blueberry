@@ -343,9 +343,9 @@ def getUserFavorties(userId):
 
 @uc.route('/diagnose/<int:diagnoseId>/pdf', methods=['GET','POST'])
 def generatorPdf(diagnoseId):
-    userId=1
+
     diagnose=Diagnose.getDiagnoseById(diagnoseId)
-    report=None
+
     if hasattr(diagnose,'report'):
         report=diagnose.report
         if diagnose and report and report.status==ReportStatus.Commited and report.type==ReportType.Doctor:
@@ -374,11 +374,11 @@ def generatorPdf(diagnoseId):
                 data['doctorName']=diagnose.doctor.username
 
             html =  render_template('diagnoseResultPdf.html',data=data)
-            fileName=constant.DirConstant.DIAGNOSE_PDF_DIR+'test.pdf'
-            result = open(fileName, 'wb') # Changed from file to filename
-
-            pdf = pdf_utils.save_pdf(html,result,diagnoseId,fileName)
-            result.close()
+            # fileName=constant.DirConstant.DIAGNOSE_PDF_DIR+'test.pdf'
+            # result = open(fileName, 'wb') # Changed from file to filename
+            #
+            # pdf = pdf_utils.save_pdf(html,result,diagnoseId,fileName)
+            # result.close()
             # return render_template("testpdf.html",getAvatar=getAvatar)
             return html
     return None

@@ -33,6 +33,8 @@ def uploadFile(diagnoseId,fileName):
         return fileUrl
 
 
+
+
 if __name__ == "__main__":
     import  constant
 
