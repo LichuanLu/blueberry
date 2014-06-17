@@ -133,6 +133,8 @@ class DiagnoseLogAction(object):
     UpateDiagnoseAction='正在进行诊断'
     DiagnoseNeedUpateAction='暂停分发诊断(需要更多就诊人信息)'
     DiagnoseFinished='完成诊断'
+    CancleDiagnose='取消诊断'
+
 
 DiagnoseScore={
     0:'不满意',
@@ -143,6 +145,13 @@ Gender={
     0:'男',
     1:'女',
 }
+class DoctorProfileType(object):
+    #简历：0  介绍：1 荣誉：2  其他：3
+    Resume=0
+    Intro=1
+    Award=2
+    Other=3
+
 
 
 

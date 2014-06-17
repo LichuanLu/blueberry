@@ -201,6 +201,8 @@ class Diagnose(Base):
         else:
             return  session.query(Diagnose.id).filter(Diagnose.doctorId==doctorId).count()
 
+
+
 class DiagnoseLog(Base):
     __tablename__ = 'diagnoseLog'
     __table_args__ = {

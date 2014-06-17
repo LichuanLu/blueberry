@@ -62,7 +62,7 @@ define(["backbone", "marionette", "config/base/constant", "utils/reqcmd"], funct
 		getDiagnoseList: function(params, collection) {
 			if (!params) {
 				params = {
-					type: 0
+					type: ""
 				};
 			}
 			if (typeof params === 'object') {
@@ -168,6 +168,62 @@ define(["backbone", "marionette", "config/base/constant", "utils/reqcmd"], funct
 
 			return diagnoseCollection
 		},
+		getHospitalUserAllDiagnose: function(params, collection) {
+			if (!params) {
+				params = {};
+			}
+			if (typeof params === 'object') {
+				params = $.param(params);
+			}
+			if (collection) {
+				collection.reset();
+				collection.fetch({
+					success: function() {
+						console.log("fetch success");
+					},
+					data: params
+				});
+				return
+			} else {
+				var diagnoseCollection = new DiagnoseCollection();
+				diagnoseCollection.url = "/hospital/user/list/all";
+				diagnoseCollection.fetch({
+					success: function() {
+						console.log("fetch success");
+					},
+					data: params
+				});
+			}
+
+			return diagnoseCollection
+		},
+		getHospitalUserUnfinishDiagnose: function(collection) {
+			
+			if (collection) {
+				collection.reset();
+				collection.fetch({
+					success: function() {
+						console.log("fetch success");
+					},
+					data: ""
+				});
+				return
+			} else {
+				var diagnoseCollection = new DiagnoseCollection();
+				diagnoseCollection.url = "/hospital/user/list/unfinish";
+				diagnoseCollection.fetch({
+					success: function() {
+						console.log("fetch success");
+					},
+					data: ""
+				});
+
+			}
+
+
+			return diagnoseCollection
+		},
+
 		getDiagnoseDetail: function(params) {
 			if (!params) {
 				params = {};

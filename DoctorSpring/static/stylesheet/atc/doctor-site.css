@@ -36,6 +36,10 @@ body.doctor-site > .container {
 #doctorsite-content .content-wrapper .header-wrapper .avatar-wrapper a {
   margin: 10px 0 0 10px;
 }
+#doctorsite-content .content-wrapper .header-wrapper .avatar-wrapper img {
+  width: 140px;
+  height: 140px;
+}
 #doctorsite-content .content-wrapper .header-wrapper .profile-wrapper > h6 {
   margin-top: 5px;
   position: relative;

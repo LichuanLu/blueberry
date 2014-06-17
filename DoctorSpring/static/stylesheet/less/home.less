@@ -116,12 +116,46 @@
 	}
 	.banner-right .button-wrapper{
 		position: absolute;
-		bottom: 50px;
+		bottom: 10px;
 		width: 100%;
+		> div{
+			margin-top: 10px;
+			font-size: 15px;
+		}
 	}
-	.banner-right .button-wrapper > button:first-child{
+	.banner-right .button-wrapper > .btn:first-child{
 		margin-right: 50px;
 	}
+
+	.banner-right .button-wrapper{
+		position: absolute;
+		width: 100%;
+		.first-btn{
+			margin-right: 50px;
+		}
+		&.unlogin{
+			bottom: 10px;
+			> div{
+				margin-top: 10px;
+				font-size: 15px;
+				color: #666666;
+			}
+			
+
+		}
+		&.login{
+			bottom: 20px;
+			> div{
+				font-size: 15px;
+				color: #666666;
+				margin-bottom: 10px;
+			}
+			
+		}
+
+
+	}
+
 
 
 

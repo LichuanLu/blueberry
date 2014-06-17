@@ -268,7 +268,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 						}
 					},
 					onError: function(res) {
-						this.resetForm();
+						// this.resetForm();
 						//var error = jQuery.parseJSON(data);
 						if (typeof res.msg !== 'undefined') {
 							Messenger().post({
@@ -611,7 +611,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 						}
 					},
 					onError: function(res) {
-						this.resetForm();
+						// this.resetForm();
 						//var error = jQuery.parseJSON(data);
 						if (typeof res.msg !== 'undefined') {
 							Messenger().post({

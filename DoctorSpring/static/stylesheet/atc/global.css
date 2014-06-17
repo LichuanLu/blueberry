@@ -503,6 +503,10 @@ body .container.full-width-page .main-block {
   float: left;
   text-align: center;
 }
+.sharing-list-wrapper ul li .image img {
+  width: 60px;
+  height: 60px;
+}
 .sharing-list-wrapper ul li dl {
   margin-left: 70px;
   line-height: 20px;

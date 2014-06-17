@@ -198,6 +198,18 @@ class UserFavorites(Base):
         result=query.first()
         return result
 
+    @staticmethod
+    def getUerFavortiesByNormalStatus(session,userId,type,favoritesObjectId):
+        if type is None:
+            return False
+        query=session.query(UserFavorites).filter(UserFavorites.userId==userId,UserFavorites.status==ModelStatus.Normal)
+        if type==UserFavoritesType.Doctor:
+            query.filter(UserFavorites.type==type,UserFavorites.doctorId==favoritesObjectId)
+        if type==UserFavoritesType.Hospital:
+            query.filter(UserFavorites.type==type,UserFavorites.hospitalId==favoritesObjectId)
+        result=query.first()
+        return result
+
 
 
     @classmethod

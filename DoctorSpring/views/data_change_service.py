@@ -322,7 +322,7 @@ def get_doctor(doctor):
         return
     doctorDict = {}
     if doctor.user.id:
-        doctorDict['id'] = doctor.user.id
+        doctorDict['id'] = doctor.id
     if hasattr(doctor, "username") and doctor.username:
         doctorDict['doctorname'] = doctor.username
     if hasattr(doctor, "title") and doctor.title:

@@ -49,6 +49,8 @@ define(function(require) {
 		doctorDetailList:require('doctorList/templates/doctorDetailList'),
 
 
+		hospitalUserDignoseItem:require('hospitalUserPage/templates/hospitalUserDiagnoseItem'),
+		hospitalUserSubmittedDignoseItem:require('hospitalUserPage/templates/hospitalUserSubmittedDiagnoseItem'),
 
 
 		messageItem:require('message/templates/messageItem')

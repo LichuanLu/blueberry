@@ -52,9 +52,15 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 				// buttonWidth: '300px'
 			});
 
-			this.ui.diagnoseStatusSelect.multiselect({
-				nonSelectedText: "没有选中"
-				// buttonWidth: '300px'
+			// this.ui.diagnoseStatusSelect.multiselect({
+			// 	nonSelectedText: "没有选中"
+			// 	// buttonWidth: '300px'
+			// });
+
+
+			$("select").not('.multiselect').selectpicker({
+				style: 'btn-sm btn-primary',
+				title: "没有选中"
 			});
 
 			var $datepickerSelector = $("#startDateinput,#endDateinput");

@@ -20,7 +20,7 @@
 {% endblock breadcrumbsHolder %}
 {% block contentHolder %}
 
-<div id="doctorsite-content" class="main-content-padding" data-userid="5">
+<div id="doctorsite-content" class="main-content-padding" data-userid="{{data.doctor.userId}}">
 <div class="content-wrapper row">
 <div class="col-md-12">
 <div class="row header-wrapper">
@@ -28,10 +28,20 @@
         <div class="avatar-wrapper">
             <img src="{{data.doctor.avatarUrl}}">
             <span class="number">{{data.userFavortiesCount}}人收藏</span>
+            {% if data.userFavortiesId %}
+            <a class="btn btn-info btn-xs follow-link following" href="#" data-type="0" data-id="{{data.userFavortiesId}}" data-uid="{{data.doctor.id}}">
+                <span class="fui-heart"></span>
+                <span class="a-text">已收藏</span>
+            </a>
+
+            {% else %}
+
             <a class="btn btn-info btn-xs follow-link" href="#" data-type="0" data-uid="{{data.doctor.userId}}">
                 <span class="fui-heart"></span>
                 <span class="a-text">加入收藏</span>
             </a>
+
+            {% endif %}
         </div>
         <div class="profile-wrapper">
             <h6>
@@ -73,13 +83,30 @@
                             <h6>科室：</h6>
                             <a href="#">{{data.doctor.hospitalname}} {{data.doctor.departmentname}}</a>
                             <h6>简历：</h6>
-                            <p>你好你好你好</p>
+
+                            {% if data.resumes %}
+                            {% for resume in data.resumes %}
+                            <p>{{resume.description}}</p>
+                            {% endfor %}
+                            {% endif %}
+
+
                             <h6>荣誉：</h6>
-                            <p>十大杰出医生</p>
-                            <p>十大杰出医生</p>
+
+                            {% if data.awards %}
+                            {% for award in data.awards %}
+                            <p>{{award.description}}</p>
+                            {% endfor %}
+                            {% endif %}
+
                             <h6>其他职位：</h6>
-                            <p>影像协会会长</p>
-                            <p>影像协会会长</p>
+
+
+                            {% if data.others %}
+                            {% for other in data.others %}
+                            <p>{{other.description}}</p>
+                            {% endfor %}
+                            {% endif %}
                         </div>
                     </div>
                     <div class="panel panel-default">
@@ -100,9 +127,11 @@
                 <div class="tab-pane active" id="home-page">
                     <div class="highlight-info-wrapper">
                         <h6 class="content-title">医生介绍</h6>
-                        <p>
-                            我是中国最好的妇科医生和妇科肿瘤医生之一，我会给予我的患者最好的治疗；我是中国最累的妇科肿瘤医生，每天都在超负荷的工作，因为我的面前是那么多需要我帮助的病人；我是中国最疲倦的医生，每天都在超出生理极限地工作，因为我的病人也在超出极限地等待；我是中国最快乐的妇科肿瘤医生，尤其是看到我的患者和家属一个个带着满意的微笑痊愈出院时
-                        </p>
+                        {% if data.intros %}
+                        {% for intro in data.intros %}
+                        <p>{{intro.description}}</p>
+                        {% endfor %}
+                        {% endif %}
                     </div>
                     <div class="btn-wrapper">
                         <button class="btn btn-warning">申请诊断</button>

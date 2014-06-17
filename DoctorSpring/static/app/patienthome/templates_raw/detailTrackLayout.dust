@@ -7,7 +7,7 @@
 			</a>
 		</div>
 		<div class="row bs-wizard" style="border-bottom:0;">
-			{@if cond="'{diagnoseStatus}' == '2'"}
+			{@if cond="'{diagnoseStatus}' == '2' && '{isFeedback}' == 'false'"}
 			<div class="col-xs-2 bs-wizard-step active">
 			{:else}
 			<div class="col-xs-2 bs-wizard-step disabled">
@@ -20,7 +20,7 @@
 <!-- 				<div class="bs-wizard-info text-center">Lorem ipsum dolor sit amet.</div>
  -->			</div>
 
-			{@if cond="'{diagnoseStatus}' == '3'"}
+			{@if cond="'{diagnoseStatus}' == '3' && '{isFeedback}' == 'false'"}
 			<div class="col-xs-2 bs-wizard-step active">
 			{:else}
 			<div class="col-xs-2 bs-wizard-step disabled">
@@ -36,7 +36,7 @@
 				</div> -->
 			</div>
 
-			{@if cond="'{diagnoseStatus}' == '7'"}
+			{@if cond="'{diagnoseStatus}' == '7' && '{isFeedback}' == 'false'"}
 			<div class="col-xs-2 bs-wizard-step active">
 			{:else}
 			<div class="col-xs-2 bs-wizard-step disabled">
@@ -47,7 +47,7 @@
 					<div class="progress-bar"></div>
 				</div>
 				<a href="#" class="bs-wizard-dot"></a>
-			{@if cond="'{diagnoseStatus}' == '7'"}
+			{@if cond="'{diagnoseStatus}' == '7' && '{isFeedback}' == 'false'"}
 				<div class="bs-wizard-info text-center" style="color:red;">
 			{:else}
 				<div class="bs-wizard-info text-center" style="display:none;color:red;">
@@ -56,7 +56,7 @@
 				</div>
 			</div>
 
-			{@if cond="'{diagnoseStatus}' == '5'"}
+			{@if cond="'{diagnoseStatus}' == '5' && '{isFeedback}' == 'false'"}
 			<div class="col-xs-2 bs-wizard-step active">
 			{:else}
 			<div class="col-xs-2 bs-wizard-step disabled">
@@ -71,7 +71,7 @@
 					Curabitur mollis magna at blandit vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae
 				</div> -->
 			</div>
-			{@if cond="'{diagnoseStatus}' == '6'"}
+			{@if cond="'{diagnoseStatus}' == '6' && '{isFeedback}' == 'false'"}
 			<div class="col-xs-2 bs-wizard-step active">
 			{:else}
 			<div class="col-xs-2 bs-wizard-step disabled">
@@ -162,29 +162,34 @@
 				</div>
 				<div class="col-md-6 right-side">
 					<div class="top-wrapper">
-						{@if cond="'{diagnoseStatus}' == '2'"}
-						<h6><span class="fui-check-inverted"></span>申请诊断成功，请等待客服联系</h6>
-						<span>您可以：<a href="#">联系客服</a></span>
-						{/if}
-						{@if cond="'{diagnoseStatus}' == '3'"}
-						<h6><span class="fui-check-inverted"></span>申请正在处理，等待分诊医生分诊</h6>
-						{/if}
-						{@if cond="'{diagnoseStatus}' == '7'"}
-						<h6><span class="fui-alert"></span>申请资料需要更新并重新提交</h6>
-						<span>您可以：<a href="#">更新申请资料</a></span>
-						{/if}
-						{@if cond="'{diagnoseStatus}' == '5'"}
-						<h6><span class="fui-check-inverted"></span>分诊完成，专家正在诊断</h6>
-						{/if}
-						{@if cond="'{diagnoseStatus}' == '6'"}
-						<h6><span class="fui-check-inverted"></span>专家诊断完成，诊断报告已经生成</h6>
-						<span>您可以：<a href="#">在线查看</a><a href="#">下载</a><a href="#">评价</a></span>
-						{/if}
 						{@if cond="'{isFeedback}' == 'true'"}
 						<h6><span class="fui-check-inverted"></span>评价完成，感谢分享</h6>
 						<span>您可以：<a href="#">写感谢信</a><a href="#">在线查看</a><a href="#">下载</a></span>
+						{:else}
+							{@if cond="'{diagnoseStatus}' == '2'"}
+							<h6><span class="fui-check-inverted"></span>申请诊断成功，请等待客服联系</h6>
+							<span>您可以：<a href="#">联系客服</a></span>
+							{/if}
+							{@if cond="'{diagnoseStatus}' == '3'"}
+							<h6><span class="fui-check-inverted"></span>申请正在处理，等待分诊医生分诊</h6>
+							{/if}
+							{@if cond="'{diagnoseStatus}' == '7'"}
+							<h6><span class="fui-alert"></span>申请资料需要更新并重新提交</h6>
+							<span>您可以：<a href="#">更新申请资料</a></span>
+							{/if}
+							{@if cond="'{diagnoseStatus}' == '5'"}
+							<h6><span class="fui-check-inverted"></span>分诊完成，专家正在诊断</h6>
+							{/if}
+							{@if cond="'{diagnoseStatus}' == '6'"}
+							<h6><span class="fui-check-inverted"></span>专家诊断完成，诊断报告已经生成</h6>
+							<span>您可以：<a href="#">在线查看</a><a href="#">下载</a><a href="#">评价</a></span>
+							{/if}
+							{@if cond="'{isFeedback}' == 'true'"}
+							<h6><span class="fui-check-inverted"></span>评价完成，感谢分享</h6>
+							<span>您可以：<a href="#">写感谢信</a><a href="#">在线查看</a><a href="#">下载</a></span>
+							{/if}
 						{/if}
-
+						
 					</div>
 					<h6 class="second-title">诊断跟踪：</h6>
 					<div class="bottom-wrapper">

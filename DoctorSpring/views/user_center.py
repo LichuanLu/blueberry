@@ -8,7 +8,7 @@ from forms import LoginForm, RegisterForm ,CommentsForm ,MessageForm ,UserFavort
 from DoctorSpring import lm
 from database import  db_session
 from sqlalchemy.exc import IntegrityError
-from DoctorSpring.models import User,Patient,Doctor,Diagnose ,DiagnoseTemplate
+from DoctorSpring.models import User,Patient,Doctor,Diagnose ,DiagnoseTemplate,DoctorProfile
 from DoctorSpring.models import User,Comment,Message ,UserFavorites,UserRole ,ThanksNote
 from DoctorSpring.util import result_status as rs,object2dict,pdf_utils,constant
 from DoctorSpring.util.constant import MessageUserType,Pagger,ReportType,ReportStatus
@@ -105,6 +105,15 @@ def endterDoctorSite(userId):
     diagnoseCommentCount=Comment.getCountByReceiver(userId)
     resultDate['diagnoseCommentCount']=diagnoseCommentCount
 
+    if session.has_key('userId'):
+        loginUserId=session.get('userId')
+        loginUserId=string.atoi(loginUserId)
+        userfavor=UserFavorites.getUerFavortiesByNormalStatus(db_session,loginUserId,constant.UserFavoritesType.Doctor,doctor.id)
+        if userfavor:
+            resultDate['userFavortiesId']=userfavor.id
+
+
+
 
 
     pager=constant.Pagger(1,10)
@@ -123,6 +132,18 @@ def endterDoctorSite(userId):
         thanksNotesDict=object2dict.objects2dicts(thanksNotes)
         dataChangeService.setThanksNoteDetail(thanksNotesDict)
         resultDate['thanksNotes']=thanksNotesDict
+
+    intros=DoctorProfile.getDoctorProfiles(userId,constant.DoctorProfileType.Intro)
+    resultDate['intros']=object2dict.objects2dicts(intros)
+
+    resumes=DoctorProfile.getDoctorProfiles(userId,constant.DoctorProfileType.Resume)
+    resultDate['resumes']=object2dict.objects2dicts(resumes)
+
+    awards=DoctorProfile.getDoctorProfiles(userId,constant.DoctorProfileType.Award)
+    resultDate['awards']=object2dict.objects2dicts(awards)
+
+    others=DoctorProfile.getDoctorProfiles(userId,constant.DoctorProfileType.Other)
+    resultDate['others']=object2dict.objects2dicts(others)
 
     return render_template("doctorsite.html",data=resultDate)
 

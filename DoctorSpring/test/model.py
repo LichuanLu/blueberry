@@ -4,7 +4,7 @@ __author__ = 'chengc017'
 import os
 import unittest
 from DoctorSpring.models.comment import Comment
-from DoctorSpring.models.doctor import Doctor
+from DoctorSpring.models.doctor import Doctor ,DoctorProfile
 from DoctorSpring.models.user import User
 from DoctorSpring.models.patient import Patient
 from DoctorSpring.models.hospital import Hospital
@@ -13,7 +13,7 @@ from DoctorSpring.models.pathology import *
 from DoctorSpring.models.diagnoseDocument import Diagnose ,Report,DiagnoseTemplate
 from database import db_session as session
 from datetime import  datetime
-from DoctorSpring.util.constant import Pagger
+from DoctorSpring.util.constant import Pagger,DoctorProfileType
 
 
 
@@ -189,6 +189,48 @@ class DataUpateTestCase(unittest.TestCase):
         result=query.filter(Doctor.departmentId==2)
         result=query.filter(Doctor.status==9).all()
         print len(result)
+    def test_addDoctorProfile(self):
+        dp=DoctorProfile()
+        dp.type=DoctorProfileType.Intro
+        dp.description='我是中国最好的妇科医生和妇科肿瘤医生之一，我会给予我的患者最好的治疗；我是中国最累的妇科肿瘤医生，每天都在超负荷的工作，因为我的面前是那么多需要我帮助的病人；我是中国最疲倦的医生，每天都在超出生理极限地工作，因为我的病人也在超出极限地等待；我是中国最快乐的妇科肿瘤医生，尤其是看到我的患者和家属一个个带着满意的微笑痊愈出院时'
+        dp.userId=5
+        DoctorProfile.save(dp)
+
+        dp=DoctorProfile()
+        dp.type=DoctorProfileType.Resume
+        dp.userId=5
+        dp.description='1999-2012 北京协和医院'
+        DoctorProfile.save(dp)
+
+        dp=DoctorProfile()
+        dp.type=DoctorProfileType.Resume
+        dp.userId=5
+        dp.description='2012-2014 北京协和医院'
+        DoctorProfile.save(dp)
+
+        dp=DoctorProfile()
+        dp.type=DoctorProfileType.Award
+        dp.userId=5
+        dp.description='全国杰出医生'
+        DoctorProfile.save(dp)
+
+        dp=DoctorProfile()
+        dp.type=DoctorProfileType.Award
+        dp.userId=5
+        dp.description='杰出医生'
+        DoctorProfile.save(dp)
+
+        dp=DoctorProfile()
+        dp.type=DoctorProfileType.Other
+        dp.userId=5
+        dp.description='影像协会会长'
+        DoctorProfile.save(dp)
+
+        dp=DoctorProfile()
+        dp.type=DoctorProfileType.Other
+        dp.userId=5
+        dp.description='协和医院院长'
+        DoctorProfile.save(dp)
 
 
 

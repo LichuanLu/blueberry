@@ -5,7 +5,7 @@
 				<div class="form-group">
 					<label class="" for="">按诊断状态筛选：</label>
 					<select>
-						<option value="0">全部</option>
+						<option value="">全部</option>
 						<option value="1">草稿</option>
 						<option value="2">待付费</option>
 						<option value="6">诊断完成</option>
