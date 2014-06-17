@@ -1,0 +1,13 @@
+*.iml
+bin/
+target/
+.idea/
+*.prefs
+*.project
+*.classpath
+*.svn
+*.pyc
+*.DS_Store
+DoctorSpring/static
+
+
