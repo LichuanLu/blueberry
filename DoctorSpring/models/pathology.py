@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship,backref
 
 from database import Base,db_session as session
 from DoctorSpring.util.constant import ModelStatus
-
+from datetime import time
 
 class Pathology(Base):
     __tablename__ = 'pathology'
@@ -16,19 +16,25 @@ class Pathology(Base):
     }
 
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
+    patientId = sa.Column(sa.INTEGER, sa.ForeignKey('patient.id'))
+    patient = relationship("Patient", backref=backref('pathology', order_by=id))
     hospticalId = sa.Column(sa.INTEGER)    #医院ID
     #diagnoseDocId = sa.Column(sa.INTEGER)  #诊断表ID
     #diagnosePartId = sa.Column(sa.INTEGER)  #检查部位ID
+    name = sa.Column(sa.String(32))
     caseHistory = sa.Column(sa.TEXT)       #病史
     diagnoseMethod=sa.Column(sa.String(32))
     #  docmFileId=sa.Column(sa.INTEGER)
     status = sa.Column(sa.INTEGER)      #标记状态 未提交，待审查，待诊断，待审核，结束
-    pathologyFiles = relationship("PathologyPostion", order_by="PathologyPostion.id", backref="Pathology")
-    pathologyPostions=relationship("File2Pathology", order_by="File2Pathology.id", backref="Pathology")
+    fileid = sa.Column(sa.Integer, sa.ForeignKey('file.id'))
+    file = relationship("File", backref=backref('pathology', order_by=id))
 
     def __init__(self):
         self.status = ModelStatus.Normal
 
+    @classmethod
+    def set_name(id):
+        Pathology.name = id + '-' + time.strftime('%Y-%m-%d-%H-%M-%S',time.localtime(time.time()))
 
     @classmethod
     def save(cls, pathology):
@@ -40,6 +46,12 @@ class Pathology(Base):
     def getById(cls,id):
         if id:
             return session.query(Pathology).filter(Pathology.id == id,Pathology.status == ModelStatus.Normal).first()
+
+    @classmethod
+    def getByPatientId(cls,id):
+        if id:
+            return session.query(Pathology).filter(Pathology.patientId == id,Pathology.status == ModelStatus.Normal).all()
+
 class Position(Base):
 
     __tablename__ = 'position'
@@ -90,32 +102,5 @@ class PathologyPostion(Base):
 
 
 
-class File2Pathology(Base):
-    __tablename__ = 'file2pathology'
-    __table_args__ = {
-        'mysql_charset': 'utf8',
-        'mysql_engine': 'MyISAM',
-    }
-
-    id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
-
-
-    pathologyId = sa.Column(sa.INTEGER, sa.ForeignKey('pathology.id'))
-    pathology = relationship("Pathology", backref=backref('File2Pathology', order_by=id))
-    fileurl = sa.Column(sa.String(255))
-
-    status = sa.Column(sa.INTEGER)
-
-    def __init__(self, pathologyId=pathologyId, fileurl=fileurl):
-        self.pathologyId = pathologyId
-        self.fileurl = fileurl
-        self.status = ModelStatus.Normal
-
-    @classmethod
-    def save(cls, file2pathology):
-        if file2pathology:
-            session.add(file2pathology)
-            session.commit()
-            session.flush()
 
 

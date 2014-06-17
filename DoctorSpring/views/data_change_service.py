@@ -246,6 +246,28 @@ def get_doctor(doctor):
     return doctorDict
 
 
+def get_patient(patient):
+    if patient is None:
+        return
+    patientDict = {}
+    if patient.id:
+        patientDict['id'] = patient.id
+    if hasattr(patient, "realname") and patient.realname:
+        patientDict['name'] = patient.realname
+    if hasattr(patient, "gender") and patient.gender:
+        if patient.gender == 1:
+            patientDict["gender"] = '男'
+        else:
+            patientDict["gender"] = '女'
+    if hasattr(patient, "birthDate") and patient.birthDate:
+        patientDict['birthdate'] = patient.birthDate.strftime("%Y-%m-%d")
+    if hasattr(patient, "identityCode") and patient.identityCode:
+        patientDict['identitynumber'] = patient.identityCode
+    if hasattr(patient, "identityPhone") and patient.identityPhone:
+        patientDict['phonenumber'] = patient.identityPhone
+
+    patientDict['location'] = '陕西 西安'
+    return patientDict
 
 
 

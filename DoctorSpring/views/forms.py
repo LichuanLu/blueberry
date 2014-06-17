@@ -16,6 +16,7 @@ class RegisterForm(Form):
     #     [Required(), EqualTo('password', message='Passwords must match')])
 
 class DiagnoseForm1(Form):
+    patientid = None
     patientname = None
     patientsex = None
     birthdate = None
@@ -23,6 +24,7 @@ class DiagnoseForm1(Form):
     phonenumber = None
     location = None
     def __init__(self, args):
+        self.patientid = args.get('patientId')
         self.patientname = args.get('patientname')
         self.patientsex = args.get('patientsex')
         self.birthdate = args.get('birthdate')
@@ -31,6 +33,8 @@ class DiagnoseForm1(Form):
         self.location = args.get('location')
     def validate(self):
         try:
+            if self.patientid is not None:
+                return SUCCESS
             if self.patientname is None:
                 failure = ResultStatus(FAILURE.status, "请填写就诊人姓名")
                 return failure
@@ -73,7 +77,7 @@ class DiagnoseForm2(Form):
     fileurl = None
     def __init__(self, args):
         self.patientlocation = args.get('patientlocation')
-        self.dicomtype = args.get('dicomtype')
+        self.dicomtype = int(args.get('dicomtype'))
         self.fileurl = args.get('fileurl')
     def validate(self):
         try:

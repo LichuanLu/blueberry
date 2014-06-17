@@ -10,6 +10,7 @@ from sqlalchemy.orm import  relationship,backref,join
 __author__ = 'chengc017'
 
 import sqlalchemy as sa
+from datetime import *
 from DoctorSpring.util.constant import Pagger,SystemTimeLimiter,DiagnoseStatus,ReportStatus,ReportType,\
     SeriesNumberPrefix,SeriesNumberBase,ModelStatus
 from DoctorSpring.util import constant
@@ -62,7 +63,12 @@ class Diagnose(Base):
     hospitalId = sa.Column(sa.Integer,sa.ForeignKey('hospital.id'))  #医院ID，用于医院批量提交诊断信息
     hospital = relationship("Hospital", backref=backref('diagnose', order_by=id))
 
-    status = sa.Column(sa.INTEGER)
+    status = sa.Column(sa.INTEGER)      # 草稿：9， 成稿 1
+
+
+    def __init__(self,createdate=date.today()):
+        self.createDate = createdate
+
 
     @classmethod
     def save(cls, diagnose):
@@ -132,6 +138,12 @@ class Diagnose(Base):
     def getNewDiagnoseCountByDoctorId(cls,doctorId):
         if doctorId:
             return session.query(Diagnose).filter(Diagnose.doctorId==doctorId,Diagnose.status==DiagnoseStatus.NeedDiagnose).count()
+    @classmethod
+    def getNewDiagnoseByStatus(cls, status, userId):
+        if status and userId:
+            return session.query(Diagnose).filter(Diagnose.uploadUserId == userId, Diagnose.status == status).first()
+
+
     @classmethod
     def getPatientListByDoctorId(cls,doctorId):
         if doctorId:
@@ -343,18 +355,19 @@ class File(Base):
     pathologyId=sa.Column(sa.Integer)
 
 
-    def __init__(self,type,statues,url,pathologyId):
-        self.type=type
-        self.status=statues
-        self.url=url
-        self.pathologyId=pathologyId
+    def __init__(self,type,url,pathologyId):
+        self.type = type
+        self.status = ModelStatus.Normal
+        self.url = url
+        self.pathologyId = pathologyId
 
     @classmethod
     def save(cls,dsFile):
-        if dsFile is None:
-            return
-        session.add(File)
-        session.commit()
+        if dsFile:
+            session.add(dsFile)
+            session.commit()
+            session.flush()
+
     @classmethod
     def getFiles(cls,pathologyId,type=constant.FileType.Dicom):
         if pathologyId:

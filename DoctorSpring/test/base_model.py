@@ -71,14 +71,17 @@ class UserTestCase(unittest.TestCase):
         new_department_3 = Department("外科")
         Skill.save(new_department_3)
 
-        new_user_1 = User("任志强", "123456")
+        new_user_1 = User("18511134676", "123456")
         new_user_1.email = "renzhiqiang@qq.com"
-        new_user_1.phone = "1851113456767"
+        new_user_1.phone = "18511134676"
         new_user_1.type = UserStatus.doctor
         User.save(new_user_1)
 
         new_doctor_1 = Doctor(new_user_1.id)
-        new_doctor_1.identityPhone = "010-123455678"
+        new_doctor_1.identityPhone = "010-12345567"
+        new_doctor_1.username = "任大强"
+        new_doctor_1.diagnoseCount = 777
+        new_doctor_1.feedbackCount = 888
 
         new_doctor_1.hospitalId = new_hospital.id
         new_doctor_1.departmentId = new_department_1.id
@@ -91,14 +94,17 @@ class UserTestCase(unittest.TestCase):
         Doctor2Skill.save(new_doctor2skill_1_2)
 
 
-        new_user_2 = User("任小强", "123456")
+        new_user_2 = User("18511122567", "123456")
         new_user_2.email = "renxiaoqiang@qq.com"
-        new_user_2.phone = "1851112256767"
+        new_user_2.phone = "18511122567"
         new_user_2.type = UserStatus.doctor
         User.save(new_user_2)
 
         new_doctor_2 = Doctor(new_user_2.id)
-        new_doctor_2.identityPhone = "010-123456678"
+        new_doctor_2.identityPhone = "010-12345667"
+        new_doctor_2.username = "任小强"
+        new_doctor_2.diagnoseCount = 666
+        new_doctor_2.feedbackCount = 777
 
         new_doctor_2.hospitalId = new_hospital.id
         new_doctor_2.departmentId = new_department_2.id
@@ -111,21 +117,134 @@ class UserTestCase(unittest.TestCase):
         Doctor2Skill.save(new_doctor2skill_2_2)
 
 
-        new_user_3 = User("任大强", "123456")
+        new_user_3 = User("18511142567", "123456")
         new_user_3.email = "rendaqiang@qq.com"
-        new_user_3.phone = "1851114256767"
+        new_user_3.phone = "18511142567"
         new_user_3.type = UserStatus.doctor
         User.save(new_user_3)
 
         new_doctor_3 = Doctor(new_user_3.id)
-        new_doctor_3.identityPhone = "020-123456678"
+        new_doctor_3.identityPhone = "020-12346678"
+        new_doctor_3.username = "任志强"
 
         new_doctor_3.hospitalId = new_hospital.id
         new_doctor_3.departmentId = new_department_3.id
         new_doctor_3.title = "副主任医师2"
-
+        new_doctor_3.diagnoseCount = 999
+        new_doctor_3.feedbackCount = 1000
         Doctor.save(new_doctor_3)
         new_doctor2skill_3_1 = Doctor2Skill(new_doctor_3.id, new_skill_1.id)
         Doctor2Skill.save(new_doctor2skill_3_1)
         new_doctor2skill_3_2 = Doctor2Skill(new_doctor_3.id, new_skill_2.id)
         Doctor2Skill.save(new_doctor2skill_3_2)
+
+
+        new_user_1 = User("18511114676", "123456")
+        new_user_1.email = "renzh2qiang@qq.com"
+        new_user_1.phone = "18511234676"
+        new_user_1.type = UserStatus.doctor
+        User.save(new_user_1)
+
+        new_doctor_1 = Doctor(new_user_1.id)
+        new_doctor_1.identityPhone = "020-12345567"
+        new_doctor_1.username = "任1强"
+        new_doctor_1.diagnoseCount = 775
+        new_doctor_1.feedbackCount = 788
+
+        new_doctor_1.hospitalId = new_hospital.id
+        new_doctor_1.departmentId = new_department_1.id
+        new_doctor_1.title = "副主任医师2"
+
+        Doctor.save(new_doctor_1)
+        new_doctor2skill_1_1 = Doctor2Skill(new_doctor_1.id, new_skill_1.id)
+        Doctor2Skill.save(new_doctor2skill_1_1)
+        new_doctor2skill_1_2 = Doctor2Skill(new_doctor_1.id, new_skill_3.id)
+        Doctor2Skill.save(new_doctor2skill_1_2)
+
+        new_user_1 = User("18511114676", "123456")
+        new_user_1.email = "renzh2qiang@qq.com"
+        new_user_1.phone = "18511234676"
+        new_user_1.type = UserStatus.doctor
+        User.save(new_user_1)
+
+        new_doctor_1 = Doctor(new_user_1.id)
+        new_doctor_1.identityPhone = "020-12345567"
+        new_doctor_1.username = "任1强"
+        new_doctor_1.diagnoseCount = 775
+        new_doctor_1.feedbackCount = 788
+
+        new_doctor_1.hospitalId = new_hospital.id
+        new_doctor_1.departmentId = new_department_1.id
+        new_doctor_1.title = "副主任医师2"
+
+        Doctor.save(new_doctor_1)
+        new_doctor2skill_1_1 = Doctor2Skill(new_doctor_1.id, new_skill_1.id)
+        Doctor2Skill.save(new_doctor2skill_1_1)
+        new_doctor2skill_1_2 = Doctor2Skill(new_doctor_1.id, new_skill_3.id)
+        Doctor2Skill.save(new_doctor2skill_1_2)
+
+        new_user_1 = User("18511114676", "123456")
+        new_user_1.email = "renzh2qiang@qq.com"
+        new_user_1.phone = "18511234676"
+        new_user_1.type = UserStatus.doctor
+        User.save(new_user_1)
+
+        new_doctor_1 = Doctor(new_user_1.id)
+        new_doctor_1.identityPhone = "020-12345567"
+        new_doctor_1.username = "任1强"
+        new_doctor_1.diagnoseCount = 775
+        new_doctor_1.feedbackCount = 788
+
+        new_doctor_1.hospitalId = new_hospital.id
+        new_doctor_1.departmentId = new_department_1.id
+        new_doctor_1.title = "副主任医师2"
+
+        Doctor.save(new_doctor_1)
+        new_doctor2skill_1_1 = Doctor2Skill(new_doctor_1.id, new_skill_1.id)
+        Doctor2Skill.save(new_doctor2skill_1_1)
+        new_doctor2skill_1_2 = Doctor2Skill(new_doctor_1.id, new_skill_3.id)
+        Doctor2Skill.save(new_doctor2skill_1_2)
+
+        new_user_1 = User("18511114676", "123456")
+        new_user_1.email = "renzh2qiang@qq.com"
+        new_user_1.phone = "18511234676"
+        new_user_1.type = UserStatus.doctor
+        User.save(new_user_1)
+
+        new_doctor_1 = Doctor(new_user_1.id)
+        new_doctor_1.identityPhone = "020-12345567"
+        new_doctor_1.username = "任1强"
+        new_doctor_1.diagnoseCount = 775
+        new_doctor_1.feedbackCount = 788
+
+        new_doctor_1.hospitalId = new_hospital.id
+        new_doctor_1.departmentId = new_department_1.id
+        new_doctor_1.title = "副主任医师2"
+
+        Doctor.save(new_doctor_1)
+        new_doctor2skill_1_1 = Doctor2Skill(new_doctor_1.id, new_skill_1.id)
+        Doctor2Skill.save(new_doctor2skill_1_1)
+        new_doctor2skill_1_2 = Doctor2Skill(new_doctor_1.id, new_skill_3.id)
+        Doctor2Skill.save(new_doctor2skill_1_2)
+
+        new_user_1 = User("18511114676", "123456")
+        new_user_1.email = "renzh2qiang@qq.com"
+        new_user_1.phone = "18511234676"
+        new_user_1.type = UserStatus.doctor
+        User.save(new_user_1)
+
+        new_doctor_1 = Doctor(new_user_1.id)
+        new_doctor_1.identityPhone = "020-12345567"
+        new_doctor_1.username = "任1强"
+        new_doctor_1.diagnoseCount = 775
+        new_doctor_1.feedbackCount = 788
+
+        new_doctor_1.hospitalId = new_hospital.id
+        new_doctor_1.departmentId = new_department_1.id
+        new_doctor_1.title = "副主任医师2"
+
+        Doctor.save(new_doctor_1)
+        new_doctor2skill_1_1 = Doctor2Skill(new_doctor_1.id, new_skill_1.id)
+        Doctor2Skill.save(new_doctor2skill_1_1)
+        new_doctor2skill_1_2 = Doctor2Skill(new_doctor_1.id, new_skill_3.id)
+        Doctor2Skill.save(new_doctor2skill_1_2)

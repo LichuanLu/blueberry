@@ -21,7 +21,7 @@ class Patient(Base):
     userID = sa.Column(sa.INTEGER, sa.ForeignKey('user.id'))
     user = relationship("User", backref=backref('patient', order_by=id))
 
-    locationId = sa.Column(sa.INTEGER)     #所在地ID
+    locationId = sa.Column(sa.Integer, sa.ForeignKey('location.id'))     #所在地ID
     location = relationship("Location", backref=backref('patient',order_by=id))
 
     identityCode = sa.Column(sa.String(64))
@@ -48,12 +48,12 @@ class Patient(Base):
     @classmethod
     def get_patient_by_user(cls, userId):
         if userId:
-            session.query(Patient).filter(Patient.userID == userId, Patient.status == PatientStatus.diagnose).all()
+            return session.query(Patient).filter(Patient.userID == userId, Patient.status == PatientStatus.diagnose).all()
 
     @classmethod
     def get_patient_by_id(cls, id):
         if id:
-            session.query(Patient).filter(Patient.id == id, Patient.status == PatientStatus.diagnose).first()
+            return session.query(Patient).filter(Patient.id == id, Patient.status == PatientStatus.diagnose).first()
 
 
 

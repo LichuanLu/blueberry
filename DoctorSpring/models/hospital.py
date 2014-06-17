@@ -11,14 +11,14 @@ class Hospital(Base):
     __tablename__ = 'hospital'
     __table_args__ = {
         'mysql_charset': 'utf8',
-        'mysql_engine' : 'MyISAM',
+        'mysql_engine': 'MyISAM',
     }
 
-    id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
+    id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     name = sa.Column(sa.String(255))
     address = sa.Column(sa.String(255))
     description = sa.Column(sa.TEXT)
-    locationId = sa.Column(sa.INTEGER)   # Location表ID
+    locationId = sa.Column(sa.Integer, sa.ForeignKey('location.id'))   # Location表ID
     location = relationship("Location", backref=backref('hospital', order_by=id))
 
     type = sa.Column(sa.INTEGER)

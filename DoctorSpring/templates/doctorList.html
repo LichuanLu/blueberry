@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block breadcrumbsHolder %}
+<div id="breadcrumb" class="clearfix">
+<!-- #breadcrumb-inside -->
+<div id="breadcrumb-inside" class="main-content-padding clearfix">
+	<span class="sub-text">当前位置：</span>
+	<ol class="breadcrumb">
+		<li>
+			<a href="/">主页</a>
+		</li>
+		<li class="active">专家库</li>
+	</ol>
+</div>
+<!-- EOF: #breadcrumb-inside -->
+</div>
+{% endblock breadcrumbsHolder %}
+{% block contentHolder %}
+<div id="doctorlist-content" class="main-content-padding" data-userid="5">
+<div class="content-wrapper row">
+	<div class="col-md-10">
+		<table class="table table-bordered query-table">
+			<tbody>
+				<tr>
+					<td class="filter-title">影像科目</td>
+					<td>
+						<ul id="skill-wrapper" class="filters">
+							<li class="active">
+								<a href="javascript:void(0);" data-skillId="-1">全部</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);" data-skillId="1">头部</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);" data-skillId="2">肿瘤</a>
+							</li>
+						</ul>
+					</td>
+				</tr>
+				<tr class="more-row">
+					<td class="filter-title">医院</td>
+					<td>
+						<ul id="hospital-wrapper" class="filters">
+							<li class="active">
+								<a href="javascript:void(0);" data-hospitalId="-1">全部</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);" data-hospitalId="1">西京医院</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);" data-hospitalId="2">上海瑞金医院</a>
+							</li>
+						</ul>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="query-result-wrapper">
+			<div class="result-header">
+				<span>符合条件的专家</span>
+				<!-- <span>排序：</span>
+				<select>
+					<option value="1"></option>
+					<option value="2"></option>
+				</select> -->
+
+			</div>
+			<div id="doctor-list-region">
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+{% endblock contentHolder %}

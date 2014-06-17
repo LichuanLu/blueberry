@@ -21,7 +21,7 @@ class PatientStatus(object):
 #     def __init__(self,status,statusName):
 #1. 草稿 2.待付费 3. 待分诊 4. 分诊中 5. 待诊断 6. 诊断完成 7.需要更新信息 8. 无法诊断
 class DiagnoseStatus(object):
-    Draft=0 #草稿
+    Draft=9 #草稿
     Del=1 #删除
     NeedPay=2
     NeedTriage=3 #待分诊

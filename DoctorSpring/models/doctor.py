@@ -4,7 +4,7 @@ __author__ = 'chengc017'
 
 import sqlalchemy as sa
 
-from database import Base,db_session as session
+from database import Base, db_session as session
 from DoctorSpring.util.constant import ModelStatus, UserStatus
 from sqlalchemy.orm import relationship, backref
 from DoctorSpring.models import User
@@ -24,9 +24,11 @@ class Doctor(Base):
     username = sa.Column(sa.String(64))
     identityPhone = sa.Column(sa.INTEGER)
     title = sa.Column(sa.String(64))    #职称
-    hospitalId = sa.Column(sa.INTEGER)  #医院ID
-    departmentId = sa.Column(sa.INTEGER)  #科室ID
-    department = relationship("Department", backref=backref('Doctor', order_by=id))
+    hospitalId = sa.Column(sa.Integer, sa.ForeignKey('hospital.id'))  #医院ID
+    hospital = relationship("Hospital", backref=backref('doctor', order_by=id))
+
+    departmentId = sa.Column(sa.Integer, sa.ForeignKey('department.id'))  #科室ID
+    department = relationship("Department", backref=backref('doctor', order_by=id))
 
     doctorSkills = relationship("Doctor2Skill", order_by="Doctor2Skill.id", backref="Doctor")
     description = sa.Column(sa.TEXT)
@@ -62,7 +64,7 @@ class Doctor(Base):
 
 
     @classmethod
-    def get_doctor_list(cls, hospitalId, sectionId, doctorname, pagger, recommended=False):
+    def get_doctor_list(cls, hospitalId=0, sectionId=0 , doctorname='', pagger=None, recommended=False):
         # return session.query(Doctor).all()
          query = session.query(Doctor).join(User, Doctor.userId == User.id). \
             join(Doctor2Skill, Doctor.id == Doctor2Skill.doctorId). \

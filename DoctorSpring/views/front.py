@@ -7,7 +7,7 @@ import data_change_service as dataChangeService
 from flask import request, redirect, url_for, Blueprint, jsonify, g, send_from_directory, session
 from flask import abort, render_template, flash
 from flask_login import login_required
-from DoctorSpring.models import Doctor, User, Department, Patient, Diagnose, Pathology, PathologyPostion, File2Pathology
+from DoctorSpring.models import Doctor, User, Department, Patient, Diagnose, Pathology, PathologyPostion, File
 from database import db_session
 from werkzeug.utils import secure_filename
 from forms import DiagnoseForm1, DoctorList, DiagnoseForm2, DiagnoseForm3, DiagnoseForm4
@@ -22,37 +22,22 @@ front = Blueprint('front', __name__)
 @front.route('/', methods=['GET', 'POST'])
 @front.route('/homepage', methods=['GET', 'POST'])
 def homepage():
-    doctors = db_session.query(Doctor).all()
-    res_dict = {}
-    res_dict['id'] = ''
-    res_dict['name'] = ''
-    res_dict['title'] = ''
-    res_dict['department'] = ''
-    res_dict['image'] = ''
-    res_dict['count'] = ''
-    res_list = []
-    count = 0
-    # for t in doctors:
-    #     count += 1
-    #     user = db_session.query(User).filter(t.userId == User.id).first()
-    #     res_dict['id'] = user.id
-    #     res_dict['name'] = t.username
-    #     res_dict['title'] = t.title
-    #     department = db_session.query(Department).filter(t.departmentId == Department.id).first()
-    #     res_dict['department'] = department.description
-    #     res_dict['image'] = '/static/assets/image/9-small.jpg'
-    #     res_dict['count'] = 'image' + str(count)
-    #     res_list.append(res_dict)
-
-
-    return render_template("home.html", result=res_list)
+    pager = Pagger(1, 6)
+    doctorsDict = []
+    doctors = Doctor.get_doctor_list(0, 0, "", pager)
+    if doctors is None or len(doctors) < 1:
+        return render_template("home.html", result=doctorsDict)
+    doctorsDict = dataChangeService.get_doctors_dict(doctors)
+    return render_template("home.html", result=doctorsDict)
 
 @front.route('/applyDiagnose', methods=['GET', 'POST'])
 @login_required
 def applyDiagnose():
-    new_patient = Patient.get_patient_by_user(session['userId'])
-    patientdict = object2dict.objects2dicts(new_patient)
-
+    patients = Patient.get_patient_by_user(session['userId'])
+    patientdict = []
+    if patients is None or len(patients) < 1:
+        return render_template("applyDiagnose.html", result=patientdict)
+    patientdict = object2dict.objects2dicts(patients)
     return render_template("applyDiagnose.html", result=patientdict)
 
 
@@ -76,22 +61,24 @@ def applyDiagnoseForm(formid):
         form = DiagnoseForm1(request.form)
         form_result = form.validate()
         if form_result.status == rs.SUCCESS.status:
-            new_diagnose = Diagnose.getNewDiagnoseByStatus(DiagnoseStatus.Draft, session['userId'])
+            new_diagnose = Diagnose.getNewDiagnoseByStatus(DiagnoseStatus.Draft, int(session['userId']))
             if(new_diagnose is not None):
-                if(new_diagnose.patientId):
+                if form.patientid is not None:
+                    new_patient = Patient.get_patient_by_id(form.patientid)
+                else:
                     new_patient = Patient.get_patient_by_id(new_diagnose.patientId)
-                if(new_patient is None):
-                    new_patient = Patient()
-                new_patient.type = PatientStatus.diagnose
-                new_patient.userID = session['userId']
-                new_patient.realname = form.patientname
-                new_patient.gender = form.patientsex
-                new_patient.birthDate = datetime.strptime(form.birthdate, "%Y-%m-%d")
-                new_patient.identityCode = form.identitynumber
-                new_patient.identityPhone = form.phonenumber
-                new_patient.status = PatientStatus.diagnose
-                # new_patient.locationId = form.location
-                Patient.save(new_patient)
+                    if(new_patient is None):
+                        new_patient = Patient()
+                    new_patient.type = PatientStatus.diagnose
+                    new_patient.userID = session['userId']
+                    new_patient.realname = form.patientname
+                    new_patient.gender = form.patientsex
+                    new_patient.birthDate = datetime.strptime(form.birthdate, "%Y-%m-%d")
+                    new_patient.identityCode = form.identitynumber
+                    new_patient.identityPhone = form.phonenumber
+                    new_patient.status = PatientStatus.diagnose
+                    # new_patient.locationId = form.location
+                    Patient.save(new_patient)
                 new_diagnose.patientId = new_patient.id
                 form_result.data = {'formId': 3}
             else:
@@ -113,11 +100,9 @@ def applyDiagnoseForm(formid):
                     if position is not '':
                         new_position_id = PathologyPostion(position, new_pathology.id)
                         PathologyPostion.save(new_position_id)
-                fileurls = form.fileurl.split(',')
-                for url in fileurls:
-                    if url is not '':
-                        new_file2pathology = File2Pathology(new_pathology.id, url)
-                        File2Pathology.save(new_file2pathology)
+
+                new_file = File(form.dicomtype, form.fileurl,new_pathology.id)
+                File.save(new_file)
                 form_result.data = {'formId': 4}
             else:
                 form_result = ResultStatus(FAILURE.status, "找不到上步的草稿")
@@ -133,6 +118,7 @@ def applyDiagnoseForm(formid):
                     new_pathology.caseHistory = form.illnessHistory
                     new_pathology.hospticalId = 2
                     Pathology.save(new_pathology)
+                    new_diagnose.status = DiagnoseStatus.NeedDiagnose
                 else:
                     form_result = ResultStatus(FAILURE.status, "找不到上步的草稿")
             else:
@@ -212,7 +198,7 @@ def doctor_list_json():
         pager = Pagger(form.pageNumber, form.pageSize)
         doctors = Doctor.get_doctor_list(form.hospitalId, form.sectionId, form.doctorname, pager)
         if doctors is None or len(doctors) < 1:
-            return jsonify(rs.SUCCESS.__dict__, ensure_ascii = False)
+            return jsonify(rs.SUCCESS.__dict__, ensure_ascii=False)
         doctorsDict = dataChangeService.get_doctors_dict(doctors, form.pageNumber)
         resultStatus = rs.ResultStatus(rs.SUCCESS.status, rs.SUCCESS.msg, doctorsDict)
         return jsonify(resultStatus.__dict__, ensure_ascii=False)
@@ -222,7 +208,7 @@ def doctor_list_json():
 def doctor_rec():
     doctor = Doctor.get_doctor_list(0, 0, '', None, True)
     if doctor is None:
-        return jsonify(rs.SUCCESS.__dict__, ensure_ascii = False)
+        return jsonify(rs.SUCCESS.__dict__, ensure_ascii=False)
     doctors_dict = dataChangeService.get_doctor(doctor)
     resultStatus = rs.ResultStatus(rs.SUCCESS.status, rs.SUCCESS.msg, doctors_dict)
     return jsonify(resultStatus.__dict__, ensure_ascii=False)
@@ -231,4 +217,31 @@ def doctor_rec():
 @front.route('/doctor/list')
 def doctor_list():
     return render_template("doctorList.html")
+
+
+@front.route('/patient/profile.json')
+def patient_profile():
+    patientId = request.args['patientId']
+    patient = Patient.get_patient_by_id(patientId)
+    resultStatus = rs.ResultStatus(rs.SUCCESS.status, rs.SUCCESS.msg, patient.__dict__)
+    if patient is None:
+        return jsonify(resultStatus.__dict__)
+    resultStatus.data = dataChangeService.get_patient(patient)
+    return jsonify(resultStatus.__dict__)
+
+
+@front.route('/pathlogy/list.json')
+def pathlogy_list():
+    patientId = request.args['patientId']
+    pathlogys = Pathology.getByPatientId(patientId)
+    if pathlogys is None or len(pathlogys) < 1:
+        return jsonify(rs.SUCCESS.__dict__, ensure_ascii=False)
+    patientsDict = object2dict.objects2dicts(pathlogys)
+    resultStatus = rs.ResultStatus(rs.SUCCESS.status, rs.SUCCESS.msg, patientsDict)
+    return jsonify(resultStatus.__dict__, ensure_ascii=False)
+
+
+@front.route('/pathlogy/dicominfo.json')
+def get_pathology():
+    return jsonify(rs.SUCCESS.__dict__, ensure_ascii=False)
 
