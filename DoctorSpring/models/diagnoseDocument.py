@@ -192,6 +192,33 @@ class Diagnose(Base):
             query=session.query(Diagnose).select_from(join(Doctor,Diagnose,Doctor.id==Diagnose.doctorId)) \
                 .filter(Doctor.username==doctorName,Diagnose.status==DiagnoseStatus.NeedTriage).offset(pagger.getOffset()).limit(pagger.getLimitCount())
         return query.all()
+
+    @classmethod
+    def getNeedDealDiagnoseByHospitalUser(cls,session,uploadUserId,patientName=None,pagger=Pagger(1,20) ):
+        if uploadUserId is None :
+            return
+        if patientName is None or patientName == u'':
+            query=session.query(Diagnose).select_from(join(Patient,Diagnose,Patient.id==Diagnose.patientId)) \
+            .filter(Patient.realname==patientName,Diagnose.status.in_((DiagnoseStatus.NeedTriage,DiagnoseStatus.NeedUpdate)),Diagnose.uploadUserId==uploadUserId).offset(pagger.getOffset()).limit(pagger.getLimitCount())
+        else:
+            query=session.query(Diagnose).select_from(join(Patient,Diagnose,Patient.id==Diagnose.patientId)) \
+                .filter(Diagnose.uploadUserId==uploadUserId,Diagnose.status.in_((DiagnoseStatus.NeedTriage,DiagnoseStatus.NeedUpdate))).offset(pagger.getOffset()).limit(pagger.getLimitCount())
+        return query.all()
+    @classmethod
+    def getDealedDiagnoseByHospitalUser(cls,session,uploadUserId,status,pagger=Pagger(1,20) ):
+        if uploadUserId is None or status is None:
+            return
+        query=session.query(Diagnose).filter(Diagnose.uploadUserId==uploadUserId)
+        if status==-1:
+            query=query.filter(Diagnose.status.notin_(DiagnoseStatus.Diagnosed,DiagnoseStatus.Del))
+
+        elif status==0:
+            query=query.filter(Diagnose.status!=DiagnoseStatus.Del)
+        else:
+            query=query.filter(Diagnose.status==DiagnoseStatus.Diagnosed)
+        query=query.offset(pagger.getOffset()).limit(pagger.getLimitCount())
+        return query.all()
+
     @classmethod
     def getDiagnoseCountByDoctorId(cls,session,doctorId,score=None):
         if doctorId is None:

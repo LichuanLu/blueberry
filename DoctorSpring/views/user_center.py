@@ -170,6 +170,27 @@ def getDiagnoseListByAdmin2():
     resultDict=resultStatus.__dict__
     return json.dumps(resultDict,ensure_ascii=False)
 
+
+@uc.route('/hospitalUser/diagnose/list/all',  methods = ['GET', 'POST'])
+#@authenticated('admin',constant.RoleId.Admin)
+def getDiagnoseListByHospitalUser():
+
+    userId=session['userId']
+
+    # hostpitalIds=request.args.get('hospitalId')
+    # hostpitalList=UserCenter.getDiagnoseListByAdmin(hostpitalIds)
+    # doctorName=request.args.get('doctorName')
+    # pageNo=request.args.get('pageNo')
+    # pageSize=request.args.get('pageSize')
+    # pager=Pagger(pageNo,pageSize)
+    # diagnoses=Diagnose.getDiagnoseByAdmin2(db_session,hostpitalList,doctorName,pager)
+    # diagnosesDict=dataChangeService.userCenterDiagnoses(diagnoses)
+    #
+    #
+    # resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnosesDict)
+    # resultDict=resultStatus.__dict__
+    # return json.dumps(resultDict,ensure_ascii=False)
+
 @uc.route('/admin/diagnose/list/my',  methods = ['GET', 'POST'])
 @authenticated('admin',constant.RoleId.Admin)
 def getDiagnoseListByAdmin():
