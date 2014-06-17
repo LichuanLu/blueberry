@@ -23,8 +23,8 @@
 				<div class="user-wrapper content-head-wrapper">
 					<img src="/static/assets/image/young-m.png">
 					
-					<span class="name">张名</span>
-					<a class="description" href="#">我的公众主页</a>
+					<span class="name">张名 主任医师</span>
+					<a class="description" href="#" target="_blank">我的公众主页</a>
 				</div>
 				<ul class="left-menu-nav full-height">
 					<li>
@@ -46,10 +46,10 @@
 	       
 		                </a>
 					</li>
-					<span class="h-divide"></span>
+				<!-- 	<span class="h-divide"></span>
 					<li>
 						<a href="#" class="fui-tag" name="favoritesLink">
-		                  <span class="nav-text">我的收藏</span>
+		                  <span class="nav-text">发布的文章</span>
 	       
 		                </a>
 					</li>
@@ -58,7 +58,7 @@
 		                  <span class="nav-text">我的就诊人</span>
 	       
 		                </a>
-					</li>
+					</li> -->
 
 					<span class="h-divide"></span>
 
@@ -79,12 +79,16 @@
 				</ul>
 			</nav>	
 		</div>
-		<div class="col-md-9 no-padding right-content-wrapper">
+		<div class="col-md-9 nopadding right-content-wrapper">
 			<div id="doctor-action-header" class="content-head-wrapper">
+				<h6>
+					<i class="fui-document"></i>
+					<span>我的诊断</span>
+				</h6>
 			</div>
-			<div id="newDiagnoseRegion">	
+			<div id="newDiagnoseRegion" class="h-padding-20">	
 			</div>
-			<div id="contentRegion">
+			<div id="contentRegion" class="h-padding-20">
 			</div>
 
 		</div>

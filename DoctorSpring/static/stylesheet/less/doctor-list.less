@@ -1,0 +1,123 @@
+@import "variables";
+#doctorlist-content{
+	.query-result-wrapper{
+		.result-list{
+			list-style: none;
+			padding: 0;
+			border: 1px solid #e4e4e4;
+			li{
+				line-height: 20px;
+				overflow: hidden;
+				color: #888;
+				border-bottom: 1px solid #e4e4e4;
+				.doctor-detail-preview{
+					
+					padding: 10px 20px;
+					.image-preview{
+						//overflow: hidden;
+						img{
+							float: left;
+							height: 80px;
+						}
+					}
+					.doctor-preview-des{
+						padding-left: 100px;
+						h6{
+							margin-top: 5px;
+							margin-bottom: 15px;
+							font-size: 16px;
+							a{
+								margin-right: 10px;
+							}
+						}
+						.des-wrapper,.skill-wrapper{
+							font-size: 12px;
+						}
+					}
+					
+				}
+				.doctor-statinfo{
+						border-left: 1px solid #e4e4e4;
+						border-right:1px solid #e4e4e4;
+						height: 100px;
+						.exp-comment{
+							float: left;
+							margin-top: 15px;
+							margin-left: 10px;
+							p{
+								font-size: 16px;
+							}
+
+						}
+						.feedback-comment{
+							float: left;
+							margin-top: 15px;
+							p{
+								font-size: 16px;
+							}
+
+						}
+						img{
+							height: 40px;
+							float: left;
+							margin: 20px 20px 0;
+
+						}
+				}
+				.doctor-action{
+					height: 100px;
+					text-align: center;
+					button{
+						margin-top: 30px;
+					}
+				}
+			}
+			li:hover{
+				border:2px solid @ctt-orange; 
+			}
+		}
+		.pagination-plain{
+			text-align: center;
+		}
+	}
+
+	.query-table{
+		margin-top: 20px;
+
+		td{
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+		font-size: 12px;
+
+		.filter-title{
+			width: 120px;
+			background-color: @table-success;
+
+		}
+		ul.filters{
+			position: relative;
+			display: block;
+			margin-right: 72px;
+			content: "";
+			overflow: hidden;
+			padding: 6px 0;
+			vertical-align: middle;
+			margin-bottom: 0;
+			li{
+				display: block;
+				margin: 2px 0 4px 10px;
+				width: 94px;
+				overflow: hidden;
+				float: left;
+				height: 22px;
+				line-height: 22px;
+			}
+			li.active{
+				a{
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}

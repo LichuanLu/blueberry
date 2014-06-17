@@ -8,7 +8,7 @@ from forms import LoginForm, RegisterForm ,CommentsForm ,MessageForm ,UserFavort
 from DoctorSpring import lm
 from database import  db_session
 from sqlalchemy.exc import IntegrityError
-from DoctorSpring.models import User,Patient,Doctor,Diagnose ,DiagnoseTemplate
+from DoctorSpring.models import User,Patient,Doctor,Diagnose ,DiagnoseTemplate,DoctorProfile
 from DoctorSpring.models import User,Comment,Message ,UserFavorites,UserRole ,ThanksNote
 from DoctorSpring.util import result_status as rs,object2dict,pdf_utils,constant
 from DoctorSpring.util.constant import MessageUserType,Pagger,ReportType,ReportStatus
@@ -16,6 +16,7 @@ from DoctorSpring.util.authenticated import authenticated
 from param_service import UserCenter
 from database import db_session
 from datetime import datetime
+import string
 
 import  data_change_service as dataChangeService
 import json
@@ -26,26 +27,127 @@ config = config.rec()
 uc = Blueprint('user_center', __name__)
 
 
-@uc.route('/doctor/<int:doctorId>/home',  methods = ['GET', 'POST'])
-def endterDoctorHome(doctorId):
+@uc.route('/doctorhome',  methods = ['GET', 'POST'])
+def endterDoctorHome():
+    userId=session['userId']
+    doctor=Doctor.getByUserId(userId)
 
-    doctor=Doctor.getById(doctorId)
     if doctor is None:
         return redirect(url_for('/300'))
 
     resultDate={}
-    messageCount=Message.getMessageCountByReceiver(doctorId)
+    messageCount=Message.getMessageCountByReceiver(userId)
     resultDate['messageCount']=messageCount
 
-    diagnoseCount=Diagnose.getNewDiagnoseCountByDoctorId(doctorId)
+    diagnoseCount=Diagnose.getNewDiagnoseCountByDoctorId(doctor.id)
     resultDate['diagnoseCount']=diagnoseCount
 
     resultDate['doctor']=doctor
     pager=Pagger(1,20)
-    diagnoses=Diagnose.getDiagnosesByDoctorId(doctorId,pager)
+    diagnoses=Diagnose.getDiagnosesByDoctorId(db_session,doctor.id,pager)
     diagnoseDict=dataChangeService.userCenterDiagnoses(diagnoses)
     resultDate['diagnoses']=diagnoseDict
     return render_template("doctorHome.html",data=resultDate)
+
+@uc.route('/patienthome',  methods = ['GET', 'POST'])
+def endterPatientHome():
+    userId=session['userId']
+    user=User.getById(userId)
+
+    if user is None:
+        return redirect(url_for('/300'))
+
+    resultDate={}
+    messageCount=Message.getMessageCountByReceiver(userId)
+    resultDate['messageCount']=messageCount
+
+    diagnoseCount=Diagnose.getNewDiagnoseCountByUserId(userId)
+    resultDate['diagnoseCount']=diagnoseCount
+
+    resultDate['user']=user
+    #pager=Pagger(1,20)
+    # diagnoses=Diagnose.getDiagnosesByDoctorId(db_session,doctor.id,pager)
+    # diagnoseDict=dataChangeService.userCenterDiagnoses(diagnoses)
+    # resultDate['diagnoses']=diagnoseDict
+    return render_template("patientHome.html",data=resultDate)
+
+
+
+
+@uc.route('/doctor/site/<int:userId>',  methods = ['GET', 'POST'])
+def endterDoctorSite(userId):
+
+    #user=User.getById(userId)
+    doctor=Doctor.getByUserId(userId)
+
+    if  doctor is None:
+        return redirect(url_for('/300'))
+
+    if  hasattr(doctor,'user') !=True:
+        return redirect(url_for('/300'))
+
+    resultDate={}
+    userFavortiesCount=UserFavorites.getFavortiesCountByDoctorId(doctor.id)
+    resultDate['userFavortiesCount']=userFavortiesCount
+
+    diagnoseCount=Diagnose.getDiagnoseCountByDoctorId(db_session,doctor.id)
+    resultDate['diagnoseCount']=diagnoseCount
+
+    goodDiagnoseCount=Diagnose.getDiagnoseCountByDoctorId(db_session,doctor.id,1)#good
+    goodDiagnoseCount+=Diagnose.getDiagnoseCountByDoctorId(db_session,doctor.id,2)
+    resultDate['goodDiagnoseCount']=goodDiagnoseCount
+
+    resultDate['doctor']=dataChangeService.get_doctor(doctor)
+
+    thanksNoteCount=ThanksNote.getThanksNoteCountByReceiver(db_session,userId)
+    resultDate['thanksNoteCount']=thanksNoteCount
+
+    diagnoseCommentCount=Comment.getCountByReceiver(userId)
+    resultDate['diagnoseCommentCount']=diagnoseCommentCount
+
+    if session.has_key('userId'):
+        loginUserId=session.get('userId')
+        loginUserId=string.atoi(loginUserId)
+        userfavor=UserFavorites.getUerFavortiesByNormalStatus(db_session,loginUserId,constant.UserFavoritesType.Doctor,doctor.id)
+        if userfavor:
+            resultDate['userFavortiesId']=userfavor.id
+
+
+
+
+
+    pager=constant.Pagger(1,10)
+
+    diagnoseComments=Comment.getCommentByReceiver(userId,constant.ModelStatus.Normal,constant.CommentType.DiagnoseComment,pager)
+    if diagnoseComments  and  len(diagnoseComments)>0:
+        diagnoseCommentsDict=object2dict.objects2dicts(diagnoseComments)
+        dataChangeService.setDiagnoseCommentsDetailInfo(diagnoseCommentsDict)
+        resultDate['comments']=diagnoseCommentsDict
+    else:
+        resultDate['comments']=None
+
+
+    thanksNotes=ThanksNote.getThanksNoteByReceiver(db_session,userId)
+    if thanksNotes  and  len(thanksNotes)>0:
+        thanksNotesDict=object2dict.objects2dicts(thanksNotes)
+        dataChangeService.setThanksNoteDetail(thanksNotesDict)
+        resultDate['thanksNotes']=thanksNotesDict
+
+    intros=DoctorProfile.getDoctorProfiles(userId,constant.DoctorProfileType.Intro)
+    resultDate['intros']=object2dict.objects2dicts(intros)
+
+    resumes=DoctorProfile.getDoctorProfiles(userId,constant.DoctorProfileType.Resume)
+    resultDate['resumes']=object2dict.objects2dicts(resumes)
+
+    awards=DoctorProfile.getDoctorProfiles(userId,constant.DoctorProfileType.Award)
+    resultDate['awards']=object2dict.objects2dicts(awards)
+
+    others=DoctorProfile.getDoctorProfiles(userId,constant.DoctorProfileType.Other)
+    resultDate['others']=object2dict.objects2dicts(others)
+
+    return render_template("doctorsite.html",data=resultDate)
+
+
 
 
 @uc.route('/admin/diagnose/list/all',  methods = ['GET', 'POST'])
@@ -54,7 +156,7 @@ def getDiagnoseListByAdmin2():
 
     userId=session['userId']
 
-    hostpitalIds=request.args.get('hostpitalId')
+    hostpitalIds=request.args.get('hospitalId')
     hostpitalList=UserCenter.getDiagnoseListByAdmin(hostpitalIds)
     doctorName=request.args.get('doctorName')
     pageNo=request.args.get('pageNo')
@@ -67,6 +169,27 @@ def getDiagnoseListByAdmin2():
     resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnosesDict)
     resultDict=resultStatus.__dict__
     return json.dumps(resultDict,ensure_ascii=False)
+
+
+@uc.route('/hospitalUser/diagnose/list/all',  methods = ['GET', 'POST'])
+#@authenticated('admin',constant.RoleId.Admin)
+def getDiagnoseListByHospitalUser():
+
+    userId=session['userId']
+
+    # hostpitalIds=request.args.get('hospitalId')
+    # hostpitalList=UserCenter.getDiagnoseListByAdmin(hostpitalIds)
+    # doctorName=request.args.get('doctorName')
+    # pageNo=request.args.get('pageNo')
+    # pageSize=request.args.get('pageSize')
+    # pager=Pagger(pageNo,pageSize)
+    # diagnoses=Diagnose.getDiagnoseByAdmin2(db_session,hostpitalList,doctorName,pager)
+    # diagnosesDict=dataChangeService.userCenterDiagnoses(diagnoses)
+    #
+    #
+    # resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnosesDict)
+    # resultDict=resultStatus.__dict__
+    # return json.dumps(resultDict,ensure_ascii=False)
 
 @uc.route('/admin/diagnose/list/my',  methods = ['GET', 'POST'])
 @authenticated('admin',constant.RoleId.Admin)
@@ -108,7 +231,7 @@ def getDiagnoseListByAdmin():
     resultDict=resultStatus.__dict__
     return json.dumps(resultDict,ensure_ascii=False)
 
-@uc.route('/doctor/diagnose/list/my',  methods = ['GET', 'POST'])
+@uc.route('/diagnose/list',  methods = ['GET', 'POST'])
 @authenticated('admin',constant.RoleId.Doctor)
 def getDiagnoseListByDoctor():
     userId=session['userId']
@@ -121,7 +244,7 @@ def getDiagnoseListByDoctor():
     doctor=Doctor.getByUserId(userId)
     if doctor:
 
-        status=request.args.get('status')
+        status=request.args.get('type')
         if status:
             import string
             status=string.atoi(status)
@@ -180,7 +303,7 @@ def getDiagnoseAndImageDescList():
 
 @uc.route('/userFavorties/add',  methods = ['GET', 'POST'])
 def addUserFavorties():
-    form =  UserFavortiesForm(request.args)
+    form = UserFavortiesForm(request.form)
     formResult=form.validate()
 
     userId=session['userId']
@@ -209,16 +332,20 @@ def cancleUserFavorties(id):
 @uc.route('/userFavorties/<int:userId>/list',  methods = ['GET', 'POST'])
 def getUserFavorties(userId):
     type=request.args.get('type')
+    if type is None:
+        json.dumps(rs.PARAM_ERROR.__dict__,ensure_ascii=False)
+
+    type=string.atoi(type)
     userFavorites=UserFavorites.getUserFavorties(userId,type)
-    userFavoritesDict=object2dict.objects2dicts(userFavorites)
+    userFavoritesDict=dataChangeService.getUserFavoritiesDict(userFavorites)
     resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,userFavoritesDict)
     return json.dumps(resultStatus.__dict__,ensure_ascii=False)
 
 @uc.route('/diagnose/<int:diagnoseId>/pdf', methods=['GET','POST'])
 def generatorPdf(diagnoseId):
-    userId=1
+
     diagnose=Diagnose.getDiagnoseById(diagnoseId)
-    report=None
+
     if hasattr(diagnose,'report'):
         report=diagnose.report
         if diagnose and report and report.status==ReportStatus.Commited and report.type==ReportType.Doctor:
@@ -242,16 +369,16 @@ def generatorPdf(diagnoseId):
                 if birthDate:
                     birthDate=birthDate.strftime('%Y-%m-%d')
                     data['birthDate']=birthDate
-                data['name']=diagnose.patient.name
+                data['name']=diagnose.patient.realname
             if hasattr(diagnose,'doctor'):
                 data['doctorName']=diagnose.doctor.username
 
             html =  render_template('diagnoseResultPdf.html',data=data)
-            fileName=constant.DirConstant.DIAGNOSE_PDF_DIR+'test.pdf'
-            result = open(fileName, 'wb') # Changed from file to filename
-
-            pdf = pdf_utils.save_pdf(html,result,diagnoseId,fileName)
-            result.close()
+            # fileName=constant.DirConstant.DIAGNOSE_PDF_DIR+'test.pdf'
+            # result = open(fileName, 'wb') # Changed from file to filename
+            #
+            # pdf = pdf_utils.save_pdf(html,result,diagnoseId,fileName)
+            # result.close()
             # return render_template("testpdf.html",getAvatar=getAvatar)
             return html
     return None
@@ -263,8 +390,11 @@ def addThankNote():
     form =  ThanksNoteForm(request.form)
     formResult=form.validate()
     userId=session['userId']
+
     if userId is None:
         json.dumps(rs.NO_LOGIN.__dict__,ensure_ascii=False)
+
+    userId=string.atoi(userId)
     if formResult.status==rs.SUCCESS.status:
         thanksNote=ThanksNote(userId,form.receiver,form.title,form.content)
         ThanksNote.save(db_session,thanksNote)
@@ -292,8 +422,8 @@ def getThanksNotes(userid):
 @uc.route('/redirectPdf', methods=['GET','POST'])
 def testRedirect():
     #return redirect("/pdf")
-    print url_for('user_center.generatorPdf',diagnoseName='ccheng')
-    return redirect(url_for('user_center.generatorPdf'))
+    #print url_for('user_center.generatorPdf',diagnoseName='ccheng')
+    return redirect(url_for('user_center.generatorPdf',diagnoseId=1))
 
 
 

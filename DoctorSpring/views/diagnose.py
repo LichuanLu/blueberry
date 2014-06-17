@@ -10,9 +10,10 @@ from database import  db_session
 from sqlalchemy.exc import IntegrityError
 from DoctorSpring.models import User,Patient,Doctor,Diagnose ,DiagnoseTemplate,Report,UserRole
 from DoctorSpring.models import User,Comment,Message,DiagnoseLog
-from DoctorSpring.util import result_status as rs,object2dict ,constant
+from DoctorSpring.util import result_status as rs,object2dict ,constant,pdf_utils
 from DoctorSpring.util.authenticated import authenticated
 from DoctorSpring.util.constant import MessageUserType,Pagger
+import string
 
 
 
@@ -31,8 +32,8 @@ diagnoseView = Blueprint('diagnose', __name__)
 @authenticated('admin',constant.RoleId.Admin)
 def fetchDiagnoseByAdmin():
 
-    diagnoseId=request.args.get('diagnoseId')
-    userId=4#session['userId']
+    diagnoseId=request.form.get('diagnoseId')
+    userId=session['userId']
 
 
     # if diagnoseId is None :
@@ -68,7 +69,7 @@ def fetchDiagnoseByAdmin():
 @diagnoseView.route('/admin/report/addOrUpate',  methods = ['GET', 'POST'])
 def addOrUpdateReport():
 
-    userId=5#session['userId']
+    userId=session['userId']
     user=User.getById(userId)
     if user is None:
         return  json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
@@ -82,6 +83,9 @@ def addOrUpdateReport():
         #session['remember_me'] = form.remember_me.data
         # login and validate the user...
         if form.reportId:
+            report=Report.getReportById(form.reportId)
+            if report.type==constant.ReportType.Doctor:
+                return  json.dumps(rs.PERMISSION_DENY.__dict__,ensure_ascii=False)
             Report.update(form.reportId,None,form.status,None,form.techDesc,form.imageDesc,form.diagnoseDesc)
         else:
             report=Report(form.techDesc,form.imageDesc,form.diagnoseDesc,form.fileUrl,form.status)
@@ -111,13 +115,13 @@ def addOrUpdateReport():
 @diagnoseView.route('/doctor/report/update',  methods = ['GET', 'POST'])
 def updateReport():
 
-    userId=4#session['userId']
+    userId=session['userId']
     user=User.getById(userId)
     if user is None:
         return  json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
 
-    if UserRole.checkRole(db_session,userId,constant.RoleId.Doctor):
-        return  json.dumps(rs.PERMISSION_DENY.__dict__,ensure_ascii=False)
+    # if UserRole.checkRole(db_session,userId,constant.RoleId.Doctor):
+    #     return  json.dumps(rs.PERMISSION_DENY.__dict__,ensure_ascii=False)
 
     form =  ReportForm(request.form)
 
@@ -125,12 +129,13 @@ def updateReport():
         #session['remember_me'] = form.remember_me.data
         # login and validate the user...
         if form.status and form.status==constant.ReportStatus.Commited:
-            fileUrl=None#需要先生存文檔上傳到服務器，獲取url
+
+            fileUrl=pdf_utils.generatorPdf(form.diagnoseId)#需要先生存文檔上傳到服務器，獲取url
             report=Report.update(form.reportId,constant.ReportType.Doctor,form.status,fileUrl,form.techDesc,form.imageDesc,form.diagnoseDesc)
             Diagnose.changeDiagnoseStatus(form.diagnoseId,constant.DiagnoseStatus.Diagnosed)
             #需要給用戶發信和記錄操作日誌
             diagnose=Diagnose.getDiagnoseById(form.diagnoseId)
-            sendMessageAndRecordLog(diagnose)
+            sendMessageAndRecordLog(diagnose,userId)
 
         else:
             fileUrl=None#這是草稿，不需要生存文檔
@@ -151,11 +156,11 @@ def sendMessageAndRecordLog(diagnose,userId):
         Message.save(message)
 
     diagnoseLog=DiagnoseLog(userId,diagnose.id,constant.DiagnoseLogAction.DiagnoseFinished)
-    DiagnoseLog.save(diagnoseLog)
+    DiagnoseLog.save(db_session,diagnoseLog)
 
 def recordDiagnoseLog(diagnose,userId):
     diagnoseLog=DiagnoseLog(userId,diagnose.id,constant.DiagnoseLogAction.UpateDiagnoseAction)
-    DiagnoseLog.save(diagnoseLog)
+    DiagnoseLog.save(db_session,diagnoseLog)
 
 
 
@@ -169,8 +174,14 @@ def getReport(reportId):
          return json.dumps(resultDict,ensure_ascii=False)
      return json.dumps(rs.NO_DATA,ensure_ascii=False)
 
-@diagnoseView.route('/diagnose/<int:diagnoseId>/detailInfo',  methods = ['GET', 'POST'])
-def getDiagnoseDetailInfo(diagnoseId):
+@diagnoseView.route('/diagnose/reportdetail',  methods = ['GET', 'POST'])
+def getDiagnoseDetailInfo():
+    diagnoseId=request.args.get('diagnoseId')
+    if diagnoseId:
+        diagnoseId=string.atoi(diagnoseId)
+    else:
+        return json.dumps(rs.PARAM_ERROR,ensure_ascii=False)
+
     diagnose=Diagnose.getDiagnoseById(diagnoseId)
     if diagnose:
         diagnoseResult=dataChangeService.getDiagnoseDetailInfo(diagnose)
@@ -178,14 +189,28 @@ def getDiagnoseDetailInfo(diagnoseId):
         resultDict=resultStatus.__dict__
         return json.dumps(resultDict,ensure_ascii=False)
     return json.dumps(rs.NO_DATA,ensure_ascii=False)
-@diagnoseView.route('/admin/getDiagnose',  methods = ['GET', 'POST'])
-def getDiagnose():
+@diagnoseView.route('/diagnose/actions',  methods = ['GET', 'POST'])
+def getDiagnoseActions():
     try:
         diagnoseId=request.args.get('diagnoseId')
-        adminId=request.args.get('userId')
-        Diagnose.addAdminIdAndChangeStatus(diagnoseId,adminId)
-        resultDict=rs.SUCCESS.__dict__
-        json.dumps(resultDict,ensure_ascii=False)
+
+        userId=session['userId']
+        if userId is None:
+            return json.dumps(rs.NO_LOGIN.__dict__,ensure_ascii=False)
+        userId=string.atoi(userId)
+
+        diagnose=Diagnose.getDiagnoseById(diagnoseId)
+        if diagnose is None :
+            return json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
+        if hasattr(diagnose,'patient') and diagnose.patient and diagnose.patient.userID:
+            if userId!=diagnose.patient.userID:
+                return json.dumps(rs.PERMISSION_DENY.__dict__,ensure_ascii=False)
+            diagDict=dataChangeService.getDiagnoseDetailInfoByPatient(db_session,diagnose)
+        resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagDict)
+        resultDict=resultStatus.__dict__
+        return json.dumps(resultDict,ensure_ascii=False)
+
+
     except Exception, e:
         print e.message
         print e
@@ -193,5 +218,88 @@ def getDiagnose():
         json.dumps(resultDict,ensure_ascii=False)
 
 
+@diagnoseView.route('/diagnose/delete/<int:diagnoseId>',  methods = ['GET', 'POST'])
+def cancleDiagnose(diagnoseId):
+    userId=session['uesrId']
+    if userId is None:
+        return json.dumps(rs.NO_LOGIN.__dict__,ensure_ascii=False)
+    userId=string.atoi(userId)
+    diagnose=Diagnose.getDiagnoseById(diagnoseId)
+    if diagnose is None:
+        return  json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
+    if hasattr(diagnose,'patient') and diagnose.patient and diagnose.patient.userID and  diagnose.patient.userID==userId:
+         diagnose.status=constant.DiagnoseStatus.Del
+         Diagnose.save(diagnose)
+
+         diagoseLog=DiagnoseLog(userId,diagnoseId,constant.DiagnoseLogAction.CancleDiagnose)
+         DiagnoseLog.save(db_session,diagoseLog)
+         return  json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+    else:
+         return  json.dumps(rs.PERMISSION_DENY.__dict__,ensure_ascii=False)
+
+@diagnoseView.route('/diagnose/rollback/<int:diagnoseId>',  methods = ['GET', 'POST'])
+def rollbackDiagnose(diagnoseId):
+    userId=session['uesrId']
+    if userId is None:
+        return json.dumps(rs.NO_LOGIN.__dict__,ensure_ascii=False)
+    userId=string.atoi(userId)
+
+    status=request.args.get('status')
+    comments=request.args.get('comments')
+    if status:
+        status=string.atoi(status)
+    diagnose=Diagnose.getDiagnoseById(diagnoseId)
+    if diagnose is None:
+        return  json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
+    if hasattr(diagnose,'uploadUser') and diagnose.uploadUserId and  diagnose.uploadUserId==userId:
+        if status is None:
+            status=constant.DiagnoseStatus.Draft
+        diagnose.status=status
+        Diagnose.save(diagnose)
+
+        diagoseLog=DiagnoseLog(userId,diagnoseId,constant.DiagnoseLogAction.DiagnoseNeedUpateAction)
+        diagoseLog.description=comments
+        DiagnoseLog.save(db_session,diagoseLog)
+
+        if hasattr(diagnose,'patient') and diagnose.patient.userID:
+            content=dataChangeService.getPatienDiagnoseMessageContent(diagnose)
+
+            #诊断通知
+            message=Message(constant.DefaultSystemAdminUserId,diagnose.patient.userID,'诊断通知',content,constant.MessageType.Diagnose)
+            Message.save(message)
+
+        return  json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+    else:
+        return  json.dumps(rs.PERMISSION_DENY.__dict__,ensure_ascii=False)
+
+
+@diagnoseView.route('/diagnose/evaluate/<int:diagnoseId>',  methods = ['GET', 'POST'])
+def evaluateDiagnose(diagnoseId):
+    userId=session['uesrId']
+    if userId is None:
+        return json.dumps(rs.NO_LOGIN.__dict__,ensure_ascii=False)
+    userId=string.atoi(userId)
+
+    score=request.args.get('score')
+    description=request.args.get('description')
+    if score:
+        score=string.atoi(score)
+    else:
+        return  json.dumps(rs.PARAM_ERROR.__dict__,ensure_ascii=False)
+
+    diagnose=Diagnose.getDiagnoseById(diagnoseId)
+    if diagnose is None:
+        return  json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
+    if hasattr(diagnose,'patient') and diagnose.patient and diagnose.patient.userID and  diagnose.patient.userID==userId:
+        diagnose.status=constant.DiagnoseStatus.Diagnosed
+        diagnose.score=score
+        Diagnose.save(diagnose)
+
+        diagoseLog=DiagnoseLog(userId,diagnoseId,constant.DiagnoseLogAction.DiagnoseFinished)
+        diagoseLog.description=description
+        DiagnoseLog.save(db_session,diagoseLog)
+        return  json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+    else:
+        return  json.dumps(rs.PERMISSION_DENY.__dict__,ensure_ascii=False)
 
 

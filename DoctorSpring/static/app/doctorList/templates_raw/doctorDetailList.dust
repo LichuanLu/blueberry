@@ -1,0 +1,14 @@
+<div id="doctor-detail-list-wrapper" class="">
+	<ul class="result-list stylenone">
+	</ul>
+
+</div>
+<ul class="pagination-plain">
+  <li class="previous">
+    <a href="#">向前</a>
+  </li>
+  	{@pager first="1" current="{currentPage}" last="{pageNumber}"/}
+  <li class="next">
+    <a href="#">向后</a>
+  </li>
+</ul>

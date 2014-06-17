@@ -1,7 +1,7 @@
 <div id="header-region" class="full-width">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-lg-8 no-right-padding">
+            <div class="col-md-6 col-lg-6 no-right-padding">
 
                 <nav class="navbar navbar-default">
                     <div class="collapse navbar-collapse">
@@ -23,25 +23,28 @@
                     </div>
                 </nav>
             </div>
-            <div class="col-md-4 col-lg-4 nopadding login-wrap">
-                <!-- <div class="login-group">
-                <span>您好</span>
-                <span class="username">liclu628</span>
-                <a id="usercenter-link" href="#">
-                    <span class="fui-user"></span>
-                    <span>个人中心</span>
-                </a>
-                <a id="user-message-link" href="#">
-                    <span class="visible-md visible-lg message-icon-wrap">
-                        <span class="fui-mail">
-                            <span class="iconbar-unread">1</span>
+            <div class="col-md-6 col-lg-6 nopadding login-wrap">
+                <div class="login-group">
+                    <span>您好</span>
+                    <span class="username">liclu628</span>
+                    <a id="usercenter-link" href="#">
+                        <span class="fui-user"></span>
+                        <span>个人中心</span>
+                    </a>
+                    <a id="user-message-link" href="#">
+                        <span class="visible-md visible-lg message-icon-wrap">
+                            <span class="fui-mail">
+                                <span class="iconbar-unread">1</span>
+                            </span>
                         </span>
-                    </span>
-                    消息
-                </a>
-            </div>
-            -->
-            <div class="unlogin-group">
+                        消息
+                    </a>
+                    <a id="logout_link" href="/user/logout">
+                        退出
+                    </a>
+                </div>
+           
+            <!-- <div class="unlogin-group">
                 <a id="login-link" href="#" data-toggle="modal" data-target=".login-modal">
                     <span>登陆</span>
                 </a>
@@ -49,7 +52,7 @@
                 <a id="register-link" href="#" data-toggle="modal" data-target=".register-modal">
                     <span>注册</span>
                 </a>
-            </div>
+            </div> -->
 
         </div>
     </div>

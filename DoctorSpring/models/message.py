@@ -58,13 +58,13 @@ class Message(Base):
         return session.query(Message).filter(Message.sender==senderId,Message.status==status)\
             .order_by(Message.createTime.desc()).all()
     @classmethod
-    def remarkMessage(cls,messageId,status=MessageStatus.Readed):
+    def remarkMessage(cls,session,messageId,status=MessageStatus.Readed):
         if messageId is None or messageId<1:
             return False
-        message=session.query(Message).filter(Message.id==messageId,MessageStatus.Normal).update({
-            Message.status:status
-        })
+        message=session.query(Message).filter(Message.id==messageId,Message.status==MessageStatus.Normal).first()
         if message:
+            message.status=status
+            session.commit()
             return True
         return False
 

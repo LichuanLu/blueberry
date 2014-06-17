@@ -396,6 +396,8 @@ body .container{
 }
 
 
+
+
 .doctor-preview {
 			.doctor-preview-des{
 
@@ -549,6 +551,10 @@ body .container{
 		margin-right: 5px;
 	}
 }
+.login-modal .login-error{
+	color: red;
+    font-size: 12px;
+}
 .login-modal .modal-body .submit-group button{
 	width:120px;
 }
@@ -606,4 +612,101 @@ body .container{
 	}
 }
 
+#modalRegion{
+	#sharing-form{
+		.form-group{
+			span{
+				&.form-text{
+					font-size: 15px;
+					margin-top: 12px;
+					display: inline-block;
+				}
+			}
+			textarea{
+				height: 280px;
+				margin-top: 12px;
+
+			}
+		}
+	}
+	#rollback-form{
+		.form-group{
+			span{
+				&.form-text{
+					font-size: 15px;
+					margin-top: 12px;
+					display: inline-block;
+				}
+			}
+			textarea{
+				height: 280px;
+				margin-top: 12px;
+
+			}
+		}
+	}
+}
+
+
+.sharing-list-wrapper{
+	&.detail-wrapper{
+		ul{
+			li{
+				height: auto !important;
+			}
+		}
+	}
+	ul{
+			padding-left: 0px;
+			margin-top: -5px;
+			li{
+				float: none;
+				list-style: none;
+				position: relative;
+				height: 60px;
+				border-bottom: 1px dashed #e6e6e6;
+				margin-bottom: 30px;
+				.image{
+					width: 60px;
+					height: 60px;
+					display: inline-block;
+					float: left;
+					text-align: center;
+					img{
+						width: 60px;
+						height: 60px;
+					}
+				}
+				dl{
+					margin-left: 70px;
+					line-height: 20px;
+					margin-bottom: 0;
+					margin-top: 0;
+					dt,dd{
+						line-height: 20px;
+						.des-text{
+							color: #666666;
+						}
+						.score{
+							position: absolute;
+							right: 0px;
+							color: #666666;
+						}
+						em{
+							float: right;
+							color: #666666;
+
+						}
+					}
+					.time{
+						font-size: 12px;
+						color: #bcbcbc;
+						line-height: 28px;
+					}
+				}
+			}
+		}
+
+}
+		
 

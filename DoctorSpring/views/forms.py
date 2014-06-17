@@ -138,12 +138,12 @@ class CommentsForm(object):
                 self.receiverId=diagnose.doctor.userId
             else:
                 return FAILURE
-            if diagnose.patientId and hasattr(diagnose,'patient') and diagnose.patient and diagnose.patient.userId:
-                self.userId=diagnose.patient.userId
+            if diagnose.patientId and hasattr(diagnose,'patient') and diagnose.patient and diagnose.patient.userID:
+                self.userId=diagnose.patient.userID
             else:
                 return FAILURE
-            if self.title is None:
-                return FAILURE
+            # if self.title is None:
+            #     return FAILURE
             if self.content is None or len(self.content)<10:
                 failure=ResultStatus(FAILURE.status,"输入的内容长度必须大于等于10")
                 return  failure
@@ -290,12 +290,12 @@ class UserFavortiesForm(object):
 
         self.userId=args.get('userId')
         self.type=args.get('type')
-        if args.has('doctorId'):
-            self.doctorId=args.get('doctorId')
-        if args.has('hospitalId'):
-            self.hospitalId=args.get('hospitalId')
-        if args.has('docId'):
-            self.docId=args.get('docId')
+        #if args.has('doctorId'):
+        self.doctorId=args.get('doctorId')
+        #if args.has('hospitalId'):
+        self.hospitalId=args.get('hospitalId')
+        #if args.has('docId'):
+        self.docId=args.get('docId')
         #if args.has('doctorId'):
         self.doctorId=args.get('doctorId')
 

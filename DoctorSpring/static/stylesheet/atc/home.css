@@ -45,39 +45,6 @@
   height: 500px;
   overflow: hidden;
 }
-#homepage-content .mainpage-feedback-block ul {
-  padding-left: 0px;
-  margin-top: -5px;
-}
-#homepage-content .mainpage-feedback-block ul li {
-  float: none;
-  list-style: none;
-  position: relative;
-  height: 60px;
-  border-bottom: 1px dashed #e6e6e6;
-  margin-bottom: 30px;
-}
-#homepage-content .mainpage-feedback-block ul li .image {
-  width: 60px;
-  height: 60px;
-  display: inline-block;
-  float: left;
-  text-align: center;
-}
-#homepage-content .mainpage-feedback-block ul li dl {
-  margin-left: 70px;
-  line-height: 20px;
-  margin-bottom: 0;
-  margin-top: 0;
-}
-#homepage-content .mainpage-feedback-block ul li dl dt,
-#homepage-content .mainpage-feedback-block ul li dl dd {
-  line-height: 20px;
-}
-#homepage-content .mainpage-feedback-block ul li dl dt em,
-#homepage-content .mainpage-feedback-block ul li dl dd em {
-  float: right;
-}
 #homepage-content .mainpage-poster-wrapper {
   padding-left: 10px;
   padding-bottom: 10px;
@@ -105,11 +72,38 @@
 }
 #homepage-content .banner-right .button-wrapper {
   position: absolute;
-  bottom: 50px;
+  bottom: 10px;
   width: 100%;
 }
-#homepage-content .banner-right .button-wrapper > button:first-child {
+#homepage-content .banner-right .button-wrapper > div {
+  margin-top: 10px;
+  font-size: 15px;
+}
+#homepage-content .banner-right .button-wrapper > .btn:first-child {
   margin-right: 50px;
+}
+#homepage-content .banner-right .button-wrapper {
+  position: absolute;
+  width: 100%;
+}
+#homepage-content .banner-right .button-wrapper .first-btn {
+  margin-right: 50px;
+}
+#homepage-content .banner-right .button-wrapper.unlogin {
+  bottom: 10px;
+}
+#homepage-content .banner-right .button-wrapper.unlogin > div {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #666666;
+}
+#homepage-content .banner-right .button-wrapper.login {
+  bottom: 20px;
+}
+#homepage-content .banner-right .button-wrapper.login > div {
+  font-size: 15px;
+  color: #666666;
+  margin-bottom: 10px;
 }
 #homepage-content .elastislide-list img {
   /*	padding: 5px;

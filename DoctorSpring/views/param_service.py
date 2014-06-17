@@ -12,7 +12,9 @@ class UserCenter(object):
             return map(lambda x:string.atoi(x),hospitalList)
 
         else:
-            return hospitals
+            result=[]
+            result.append(string.atoi(hospitals))
+            return result
 
 if __name__ == '__main__':
     print UserCenter.getDiagnoseListByAdmin('1')

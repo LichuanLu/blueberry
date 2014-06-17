@@ -6,6 +6,7 @@ from  sqlalchemy import distinct
 
 from database import Base
 from sqlalchemy.orm import  relationship,backref,join
+from patient import Patient
 
 __author__ = 'chengc017'
 
@@ -114,8 +115,8 @@ class Diagnose(Base):
 
     @classmethod
     def getDiagnosesByDoctorId(cls,session,doctorId,pagger,status=None,startTime=SystemTimeLimiter.startTime,endTime=SystemTimeLimiter.endTime):
-        count=Diagnose.getDiagnoseCountByDoctorId(doctorId,status,startTime,endTime)
-        pagger.count=count
+        # count=Diagnose.getDiagnoseCountByDoctorId(doctorId,status,startTime,endTime)
+        # pagger.count=count
         if doctorId:
             if status:
                 return session.query(Diagnose).filter(Diagnose.doctorId==doctorId,Diagnose.status==status,
@@ -129,15 +130,20 @@ class Diagnose(Base):
     def getDiagnoseCountByDoctorId(cls,doctorId,status=None,startTime=SystemTimeLimiter.startTime,endTime=SystemTimeLimiter.endTime):
         if doctorId:
             if status:
-                return session.query(Diagnose).filter(Diagnose.doctorId==doctorId,Diagnose.status==status,
+                return session.query(Diagnose.id).filter(Diagnose.doctorId==doctorId,Diagnose.status==status,
                                                       Diagnose.createDate>startTime,Diagnose.createDate<endTime).count()
             else:
-                return session.query(Diagnose).filter(Diagnose.doctorId==doctorId,Diagnose.status!=DiagnoseStatus.Del,
+                return session.query(Diagnose.id).filter(Diagnose.doctorId==doctorId,Diagnose.status!=DiagnoseStatus.Del,
                                                       Diagnose.createDate>startTime,Diagnose.createDate<endTime).count()
     @classmethod
     def getNewDiagnoseCountByDoctorId(cls,doctorId):
         if doctorId:
-            return session.query(Diagnose).filter(Diagnose.doctorId==doctorId,Diagnose.status==DiagnoseStatus.NeedDiagnose).count()
+            return session.query(Diagnose.id).filter(Diagnose.doctorId==doctorId,Diagnose.status==DiagnoseStatus.NeedDiagnose).count()
+    @classmethod
+    def getNewDiagnoseCountByUserId(cls,userID):
+        if userID:
+            query=session.query(Diagnose.id).join((Patient,Diagnose.patientId==Patient.id)).filter(Patient.userID==userID,Diagnose.status==DiagnoseStatus.Draft)
+            return query.count()
     @classmethod
     def getNewDiagnoseByStatus(cls, status, userId):
         if status and userId:
@@ -177,16 +183,19 @@ class Diagnose(Base):
             # count=Diagnose.getDiagnosesCountByAdmin(session,status,startTime,endTime)
             # pagger.count=count
             if status:
-                query=query.filter(Diagnose.status==status)
+                if status==-1:
+                    query=query.filter(Diagnose.status!=constant.DiagnoseStatus.Triaging)
+                else:
+                    query=query.filter(Diagnose.status==status)
 
             query=query.filter(Diagnose.createDate>startTime,Diagnose.createDate<endTime)
             return query.offset(pagger.getOffset()).limit(pagger.getLimitCount()).all()
 
     @classmethod
     def getDiagnoseByAdmin2(cls,session,hostpitalList=None,doctorName=None,pagger=Pagger(1,20) ):
-        if doctorName is None and hostpitalList is None:
+        if (doctorName is None or doctorName == u'')and hostpitalList is None:
             return session.query(Diagnose).filter(Diagnose.status==DiagnoseStatus.NeedTriage).offset(pagger.getOffset()).limit(pagger.getLimitCount()).all()
-        if doctorName is None:
+        if doctorName is None or doctorName == u'':
             return session.query(Diagnose).filter(Diagnose.hospitalId.in_(hostpitalList),Diagnose.status==DiagnoseStatus.NeedTriage).offset(pagger.getOffset()).limit(pagger.getLimitCount()).all()
 
         if hostpitalList:
@@ -197,6 +206,43 @@ class Diagnose(Base):
                 .filter(Doctor.username==doctorName,Diagnose.status==DiagnoseStatus.NeedTriage).offset(pagger.getOffset()).limit(pagger.getLimitCount())
         return query.all()
 
+    @classmethod
+    def getNeedDealDiagnoseByHospitalUser(cls,session,uploadUserId,patientName=None,pagger=Pagger(1,20) ):
+        if uploadUserId is None :
+            return
+        if patientName is None or patientName == u'':
+            query=session.query(Diagnose).select_from(join(Patient,Diagnose,Patient.id==Diagnose.patientId)) \
+            .filter(Patient.realname==patientName,Diagnose.status.in_((DiagnoseStatus.NeedTriage,DiagnoseStatus.NeedUpdate)),Diagnose.uploadUserId==uploadUserId).offset(pagger.getOffset()).limit(pagger.getLimitCount())
+        else:
+            query=session.query(Diagnose).select_from(join(Patient,Diagnose,Patient.id==Diagnose.patientId)) \
+                .filter(Diagnose.uploadUserId==uploadUserId,Diagnose.status.in_((DiagnoseStatus.NeedTriage,DiagnoseStatus.NeedUpdate))).offset(pagger.getOffset()).limit(pagger.getLimitCount())
+        return query.all()
+    @classmethod
+    def getDealedDiagnoseByHospitalUser(cls,session,uploadUserId,status,pagger=Pagger(1,20) ):
+        if uploadUserId is None or status is None:
+            return
+        query=session.query(Diagnose).filter(Diagnose.uploadUserId==uploadUserId)
+        if status==-1:
+            query=query.filter(Diagnose.status.notin_(DiagnoseStatus.Diagnosed,DiagnoseStatus.Del))
+
+        elif status==0:
+            query=query.filter(Diagnose.status!=DiagnoseStatus.Del)
+        else:
+            query=query.filter(Diagnose.status==DiagnoseStatus.Diagnosed)
+        query=query.offset(pagger.getOffset()).limit(pagger.getLimitCount())
+        return query.all()
+
+    @classmethod
+    def getDiagnoseCountByDoctorId(cls,session,doctorId,score=None):
+        if doctorId is None:
+            return
+        if score or score==0:
+            return session.query(Diagnose.id).filter(Diagnose.doctorId==doctorId,Diagnose.score==score).count()
+        else:
+            return  session.query(Diagnose.id).filter(Diagnose.doctorId==doctorId).count()
+
+
+
 class DiagnoseLog(Base):
     __tablename__ = 'diagnoseLog'
     __table_args__ = {
@@ -206,9 +252,11 @@ class DiagnoseLog(Base):
     }
 
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
-    userId = sa.Column(sa.Integer)
+    userId = sa.Column(sa.Integer,sa.ForeignKey('user.id'))
+    user = relationship("User", backref=backref('diagnoseLog', order_by=id))
     diagnoseId=sa.Column(sa.Integer)
     action=sa.Column(sa.String(128))
+    description=sa.Column(sa.String(624))
     createTime=sa.Column(sa.DateTime)
     def __init__(self,userId,diagnoseId,action):
         self.userId=userId
@@ -264,10 +312,21 @@ class DiagnoseTemplate(Base):
     @classmethod
     def getDiagnoseAndImageDescs(cls,diagnoseMethod,diagnosePosition):
         if diagnoseMethod and diagnosePosition:
-            return session.query(DiagnoseTemplate.diagnosePosition,DiagnoseTemplate.diagnoseDesc,
+            results =session.query(DiagnoseTemplate.diagnosePosition,DiagnoseTemplate.diagnoseDesc,
                                  DiagnoseTemplate.imageDesc).filter(DiagnoseTemplate.diagnoseMethod==diagnoseMethod,
                                                                            DiagnoseTemplate.diagnosePosition==diagnosePosition) \
                 .group_by(DiagnoseTemplate.diagnoseDesc).all()
+            if results and len(results)>0:
+                resultsDict=[]
+                for result in results:
+                    resultDict={}
+                    resultDict['diagnosePosition']=result[0]
+                    resultDict['diagnoseDesc']=result[1]
+                    resultDict['imageDesc']=result[2]
+                    resultsDict.append(resultDict)
+                return resultsDict
+
+
 
 
 

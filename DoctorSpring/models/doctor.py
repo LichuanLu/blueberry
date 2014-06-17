@@ -5,9 +5,11 @@ __author__ = 'chengc017'
 import sqlalchemy as sa
 
 from database import Base, db_session as session
-from DoctorSpring.util.constant import ModelStatus, UserStatus
+from DoctorSpring.util.constant import ModelStatus, UserStatus ,DoctorProfileType
 from sqlalchemy.orm import relationship, backref
 from DoctorSpring.models import User
+from datetime import datetime
+
 import config
 
 
@@ -24,11 +26,10 @@ class Doctor(Base):
     username = sa.Column(sa.String(64))
     identityPhone = sa.Column(sa.INTEGER)
     title = sa.Column(sa.String(64))    #职称
-    hospitalId = sa.Column(sa.Integer, sa.ForeignKey('hospital.id'))  #医院ID
+    hospitalId = sa.Column(sa.INTEGER,sa.ForeignKey('hospital.id'))  #医院ID
     hospital = relationship("Hospital", backref=backref('doctor', order_by=id))
-
-    departmentId = sa.Column(sa.Integer, sa.ForeignKey('department.id'))  #科室ID
-    department = relationship("Department", backref=backref('doctor', order_by=id))
+    departmentId = sa.Column(sa.INTEGER,sa.ForeignKey('department.id'))  #科室ID
+    department = relationship("Department", backref=backref('Doctor', order_by=id))
 
     doctorSkills = relationship("Doctor2Skill", order_by="Doctor2Skill.id", backref="Doctor")
     description = sa.Column(sa.TEXT)
@@ -166,3 +167,35 @@ class Department(Base):
             session.add(department)
             session.commit()
             session.flush()
+
+class DoctorProfile(Base):
+    __tablename__ = 'doctor_profile'
+    __table_args__ = {
+        'mysql_charset': 'utf8',
+        }
+
+    id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
+    userId = sa.Column(sa.Integer)     #对应User表里的ID
+    description=sa.Column(sa.String(1024))
+    type= sa.Column(sa.Integer) #简历：0  介绍：1 荣誉：2  其他：3
+    createTime=sa.Column(sa.DateTime)
+    @classmethod
+    def save(self,doctorProfile):
+        if doctorProfile:
+            if doctorProfile.createTime is None:
+                doctorProfile.createTime=datetime.now()
+            session.add(doctorProfile)
+            session.commit()
+            session.flush()
+
+    @classmethod
+    def getDoctorProfiles(cls,userId,type=None):
+        if userId is None:
+            return
+        query=session.query(DoctorProfile).filter(DoctorProfile.userId==userId)
+        if type or type ==0:
+            query=query.filter(DoctorProfile.type==type)
+
+        return query.order_by(DoctorProfile.createTime).all()
+
+

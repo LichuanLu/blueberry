@@ -18,13 +18,7 @@ define(['lodash', 'config/base/constant', 'config/controllers/_base_controller',
 				this.layoutView.attachEndHandler();
 			}, this));
 
-			//instance is this controller instance
-			ReqCmd.commands.setHandler("doctorHomePageLayoutView:attached", Lodash.bind(function(instance) {
-				console.log("attached end");
-				this.layoutView.attachEndHandler();
-
-			}, this));
-
+			
 
 			//click left menu , change view , send from view 
 			ReqCmd.commands.setHandler("doctorHomePageLayoutView:changeContentView", Lodash.bind(function(viewName) {
@@ -39,7 +33,12 @@ define(['lodash', 'config/base/constant', 'config/controllers/_base_controller',
 				// 	type: type
 				// };
 				console.dir(params);
-				this.diagnoseCollection = DiagnoseEntity.API.getDiagnoseList(params);
+				if(this.diagnoseCollection){
+					DiagnoseEntity.API.getDiagnoseList(params,this.diagnoseCollection);
+
+				}else{
+					this.diagnoseCollection = DiagnoseEntity.API.getDiagnoseList(params);
+				}
 			}, this));
 
 			//doctor click the action link , e.g. add diagnose
@@ -47,10 +46,13 @@ define(['lodash', 'config/base/constant', 'config/controllers/_base_controller',
 				console.log("DiagnoseTableItemView actionHandler");
 				var statusId = model.get('statusId');
 				if (statusId == 5) {
+					this.detailModel = DiagnoseEntity.API.getDiagnoseDetail({
+						diagnoseId:model.get('id')
+					});
 					if (typeof this.diagnoseActionView !== 'undefined') {
 						this.diagnoseActionView.close();
 					}
-					this.diagnoseActionView = this.getNewDiagnoseLayoutView(model);
+					this.diagnoseActionView = this.getNewDiagnoseLayoutView(this.detailModel);
 
 				} else if (statusId == '审核') {
 					if (typeof this.diagnoseActionView !== 'undefined') {
@@ -74,6 +76,8 @@ define(['lodash', 'config/base/constant', 'config/controllers/_base_controller',
 			//close diagnose region
 			ReqCmd.reqres.setHandler("NewDiagnoseLayoutView:closeRegion", Lodash.bind(function() {
 				this.layoutView.newDiagnoseRegion.close();
+				this.contentView.initDiagnoseListView();
+
 			}, this));
 
 
@@ -81,14 +85,18 @@ define(['lodash', 'config/base/constant', 'config/controllers/_base_controller',
 			//show message list after layout show
 			ReqCmd.reqres.setHandler("showMessageList:MessageLayoutView", Lodash.bind(function() {
 
-				this.unreadMessageCollection = MessageEntity.API.getMessageList();
+				this.unreadMessageCollection = MessageEntity.API.getMessageList({
+					status:0
+				});
 				this.unreadMessageCollectionView = this.getMessageListView(this.unreadMessageCollection);
 				this.show(this.unreadMessageCollectionView, {
 					region: this.contentView.unReadMessageRegion,
 					client: true
 				});
 
-				this.readMessageCollection = MessageEntity.API.getMessageList();
+				this.readMessageCollection = MessageEntity.API.getMessageList({
+					status:2
+				});
 				this.readMessageCollectionView = this.getMessageListView(this.readMessageCollection);
 				this.show(this.readMessageCollectionView, {
 					region: this.contentView.readMessageRegion,
@@ -106,7 +114,9 @@ define(['lodash', 'config/base/constant', 'config/controllers/_base_controller',
 				this.diagnoseActionView.close();
 			}
 			if (viewName === 'diagnoseLink') {
-				this.diagnoseCollection = DiagnoseEntity.API.getDiagnoseList();
+				this.diagnoseCollection = DiagnoseEntity.API.getDiagnoseList({
+					type:5
+				});
 				this.contentView = this.getDiagnoseListView(this.diagnoseCollection);
 
 			} else if (viewName === 'accountLink') {
@@ -138,7 +148,8 @@ define(['lodash', 'config/base/constant', 'config/controllers/_base_controller',
 		},
 		getNewDiagnoseLayoutView: function(model) {
 			return new View.NewDiagnoseLayoutView({
-				model: model
+				model: model,
+				typeID:1
 			});
 		},
 		getNewAuditLayoutView: function(model) {

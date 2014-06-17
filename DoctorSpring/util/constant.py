@@ -127,18 +127,32 @@ class RoleId(object):
     Patient=3
     HospitalUser=4
 class DiagnoseLogAction(object):
-    NewDiagnoseAction='新建诊断'
-    FetchDiagnoseAction='领取诊断:'
-    TriageDiagnoseAction='分发诊断:'
-    UpateDiagnoseAction='诊断更新:'
-    DiagnoseNeedUpateAction='诊断需更新:'
-    DiagnoseFinished='诊断完成'
+    NewDiagnoseAction='提出诊断申请'
+    FetchDiagnoseAction='正在分发诊断'
+    TriageDiagnoseAction='正在进行诊断'
+    UpateDiagnoseAction='正在进行诊断'
+    DiagnoseNeedUpateAction='暂停分发诊断(需要更多就诊人信息)'
+    DiagnoseFinished='完成诊断'
+    CancleDiagnose='取消诊断'
+
 
 DiagnoseScore={
     0:'不满意',
     1:'满意',
     2:'很满意',
 }
+Gender={
+    0:'男',
+    1:'女',
+}
+class DoctorProfileType(object):
+    #简历：0  介绍：1 荣誉：2  其他：3
+    Resume=0
+    Intro=1
+    Award=2
+    Other=3
+
+
 
 
 

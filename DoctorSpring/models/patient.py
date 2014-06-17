@@ -48,12 +48,12 @@ class Patient(Base):
     @classmethod
     def get_patient_by_user(cls, userId):
         if userId:
-            return session.query(Patient).filter(Patient.userID == userId, Patient.status == PatientStatus.diagnose).all()
+            session.query(Patient).filter(Patient.userID == userId, Patient.status == PatientStatus.diagnose).all()
 
     @classmethod
     def get_patient_by_id(cls, id):
         if id:
-            return session.query(Patient).filter(Patient.id == id, Patient.status == PatientStatus.diagnose).first()
+            session.query(Patient).filter(Patient.id == id, Patient.status == PatientStatus.diagnose).first()
 
 
 

@@ -63,7 +63,6 @@ class Comment(Base):
     type=sa.Column(sa.Integer)
     status=sa.Column(sa.Integer)
     parent_commend_id=sa.Column(sa.BigInteger)
-
     diagnoseId=sa.Column(sa.BigInteger)
     def __init__(self,observer,receiver,diagnoseId,content):
         self.observer=observer
@@ -85,3 +84,13 @@ class Comment(Base):
     def getCommentBydiagnose(cls,diagnoseId,status=ModelStatus.Normal,type=CommentType.Normal):
         return session.query(Comment).filter(Comment.diagnoseId==diagnoseId,Comment.status==status,Comment.type==type).all()
 
+    @classmethod
+    def existCommentBydiagnose(cls,diagnoseId,status=ModelStatus.Normal,type=CommentType.Normal):
+        if diagnoseId is None:
+            return False
+        return session.query(Comment).filter(Comment.diagnoseId==diagnoseId,Comment.status==status,Comment.type==type).count()>0
+    @classmethod
+    def getCountByReceiver(cls,receiverId,type=CommentType.DiagnoseComment):
+        if receiverId is None:
+            return
+        return session.query(Comment.id).filter(Comment.receiver==receiverId,Comment.type==type,Comment.status==ModelStatus.Normal).count()

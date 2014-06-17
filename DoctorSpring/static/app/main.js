@@ -74,8 +74,11 @@ require.config({
     'modernizr.custom.17475':'lib/elastislide/modernizr.custom.17475',
     'jquery.elastislide.main':'lib/elastislide/_main',
 
-    'bootstrap-treeview':'lib/bootstrap-treeview/src/js/bootstrap-treeview'
+    'bootstrap-treeview':'lib/bootstrap-treeview/src/js/bootstrap-treeview',
 
+    //ladda button
+    'ladda-bootstrap':'lib/ladda-bootstrap/dist/ladda.min',
+    'spin':'lib/ladda-bootstrap/dist/spin.min'
 
     // 'jquery.xdr-transport':'lib/jquery-uploader/jquery.xdr-transport'
   },
@@ -166,6 +169,9 @@ require.config({
     },
     'bootstrap-treeview':{
       deps:['bootstrap']
+    },
+    'ladda-bootstrap':{
+      deps:['bootstrap','spin']
     }
         
 

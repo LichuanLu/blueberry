@@ -8,6 +8,7 @@ from database import Base,db_session as session
 from DoctorSpring.util.constant import ModelStatus
 from datetime import time
 
+
 class Pathology(Base):
     __tablename__ = 'pathology'
     __table_args__ = {
@@ -26,8 +27,8 @@ class Pathology(Base):
     diagnoseMethod=sa.Column(sa.String(32))
     #  docmFileId=sa.Column(sa.INTEGER)
     status = sa.Column(sa.INTEGER)      #标记状态 未提交，待审查，待诊断，待审核，结束
-    fileid = sa.Column(sa.Integer, sa.ForeignKey('file.id'))
-    file = relationship("File", backref=backref('pathology', order_by=id))
+    pathologyFiles = relationship("PathologyPostion", order_by="PathologyPostion.id", backref="Pathology")
+    pathologyPostions=relationship("File2Pathology", order_by="File2Pathology.id", backref="Pathology")
 
     def __init__(self):
         self.status = ModelStatus.Normal
@@ -102,5 +103,32 @@ class PathologyPostion(Base):
 
 
 
+class File2Pathology(Base):
+    __tablename__ = 'file2pathology'
+    __table_args__ = {
+        'mysql_charset': 'utf8',
+        'mysql_engine': 'MyISAM',
+    }
+
+    id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
+
+
+    pathologyId = sa.Column(sa.INTEGER, sa.ForeignKey('pathology.id'))
+    pathology = relationship("Pathology", backref=backref('File2Pathology', order_by=id))
+    fileurl = sa.Column(sa.String(255))
+
+    status = sa.Column(sa.INTEGER)
+
+    def __init__(self, pathologyId=pathologyId, fileurl=fileurl):
+        self.pathologyId = pathologyId
+        self.fileurl = fileurl
+        self.status = ModelStatus.Normal
+
+    @classmethod
+    def save(cls, file2pathology):
+        if file2pathology:
+            session.add(file2pathology)
+            session.commit()
+            session.flush()
 
 

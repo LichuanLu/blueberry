@@ -4,7 +4,7 @@
 			<div class="form-group">
 				<label class="" for="">诊断状态：</label>
 				<select nam="type" name="type" title='选择筛选条件...' data-width="120px">
-					<option value="0">全部</option>
+					<option value="">全部</option>
 					<option value="5" selected="selected">待诊断</option>
 					<option value="6">诊断完成</option>
 				</select>

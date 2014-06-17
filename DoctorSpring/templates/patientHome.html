@@ -1,0 +1,99 @@
+
+{% extends "base.html" %}
+{% block breadcrumbsHolder %}
+
+<div id="breadcrumb-inside" class="main-content-padding clearfix">
+    <span class="sub-text">当前位置：</span>
+    <ol class="breadcrumb">
+        <li>
+            <a href="/">主页</a>
+        </li>
+        <li class="active">个人中心</li>
+    </ol>
+</div>
+
+{% endblock breadcrumbsHolder %}
+{% block contentHolder %}
+
+<div id="patienthome-content" class="main-content-padding" data-userid="5">
+    <div class="content-wrapper row">
+        <div class="col-md-3 nopadding" id="patient-actions" data-diagnose-id="145">
+
+            <nav class="left-menu">
+                <div class="user-wrapper content-head-wrapper">
+                    <img src="{{data.user.imagePath}}">
+
+                    <span class="name">{{data.user.name}}</span>
+                    <span class="description">积分：300</span>
+
+                </div>
+                <ul class="left-menu-nav">
+                    <li>
+                        <a href="#" class="fui-document" name="diagnoseLink">
+                            <span class="nav-text">我的诊断</span>
+                        </a>
+                    </li>
+                    <!-- <li>
+                        <a href="#" class="fui-chat">
+                          <span class="nav-text">我的咨询</span>
+
+                        </a>
+                    </li> -->
+                    <li>
+                        <a href="#" class="fui-mail" name="messageLink">
+                            <span class="iconbar-unread">{{data.messageCount}}</span>
+                            <span class="nav-text">我的消息</span>
+
+                        </a>
+                    </li>
+                    <!-- <li>
+                        <a href="#" class="fui-list-numbered" name="detailTrackLink">
+                          <span class="nav-text">诊断详情</span>
+                        </a>
+                    </li> -->
+                    <span class="h-divide"></span>
+                    <li>
+                        <a href="#" class="fui-tag" name="favoritesLink">
+                            <span class="nav-text">我的收藏</span>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="fui-user" name="patientsLink">
+                            <span class="nav-text">常用就诊人</span>
+
+                        </a>
+                    </li>
+
+                    <span class="h-divide"></span>
+
+                    <li>
+                        <a href="#" class="fui-gear" name="accountLink">
+                            <span class="nav-text">帐号管理</span>
+
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-9 right-content-wrapper nopadding">
+            <div id="patient-action-header" class="content-head-wrapper">
+                <h6>
+                    <i class="fui-document"></i>
+                    <span>我的诊断</span>
+                </h6>
+            </div>
+            <div id="contentRegion" class="h-padding-20">
+            </div>
+            <div id="diagnose-detail-track-wrapper">
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+{% endblock contentHolder %}
+{% block ModalHolder %}
+{% include 'loginModal.html' %}
+{% endblock ModalHolder %}

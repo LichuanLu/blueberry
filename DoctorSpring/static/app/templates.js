@@ -16,6 +16,16 @@ define(function(require) {
 		diagnoseItem:require('patientHome/templates/diagnoseItem'),
 		diagnoseLayout:require('patientHome/templates/diagnoseLayout'),
 		patientAccountManageLayout:require('patientHome/templates/patientAccountManageLayout'),
+		patientMessageLayout:require('patientHome/templates/patientMessageLayout'),
+		sharingModal:require('patientHome/templates/sharingModal'),
+		favoriteLayout:require('patientHome/templates/favoriteLayout'),
+		favoriteItem:require('patientHome/templates/favoriteItem'),
+		cancelFavoriteModalView:require('patientHome/templates/cancelFavoriteModalView'),
+		detailTrackLayout:require('patientHome/templates/detailTrackLayout'),
+
+
+
+
 		selectDoctorItem:require('diagnose/templates/selectDoctorItem'),
 		selectDoctorList:require('diagnose/templates/selectDoctorList'),
 		patientProfile:require('diagnose/templates/patientProfile'),
@@ -25,6 +35,7 @@ define(function(require) {
 		//template for fenzhen
 		allDiagnoseItem:require('admin/fenzhen/templates/allDiagnoseItem'),
 		myDiagnoseItem:require('admin/fenzhen/templates/myDiagnoseItem'),
+		rollbackDiagnoseModal:require('admin/fenzhen/templates/rollbackDiagnoseModal'),
 
 
 		doctorAccountManageLayout:require('doctorHome/templates/doctorAccountManageLayout'),
@@ -35,6 +46,12 @@ define(function(require) {
 		doctorMessageLayout:require('doctorHome/templates/doctorMessageLayout'),
 		doctorConsultLayout:require('doctorHome/templates/doctorConsultLayout'),
 
+		doctorDetailItem:require('doctorList/templates/doctorDetailItem'),
+		doctorDetailList:require('doctorList/templates/doctorDetailList'),
+
+
+		hospitalUserDignoseItem:require('hospitalUserPage/templates/hospitalUserDiagnoseItem'),
+		hospitalUserSubmittedDignoseItem:require('hospitalUserPage/templates/hospitalUserSubmittedDiagnoseItem'),
 
 
 		messageItem:require('message/templates/messageItem')

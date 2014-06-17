@@ -5,10 +5,10 @@ import os.path
 
 ROOT_DIR=os.path.dirname(__file__)
 
-_DBUSER = "root"
-_DBPASS = ""
+_DBUSER = "mduser"
+_DBPASS = "mduser"
 _DBNAME = "medicaldb"
-_DBHOST = "localhost"
+_DBHOST = "airui313.vicp.net:9906"
 
 ROOT_DIR=os.path.dirname(__file__)
 

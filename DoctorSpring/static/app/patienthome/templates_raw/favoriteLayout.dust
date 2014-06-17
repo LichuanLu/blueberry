@@ -1,0 +1,38 @@
+<div id="patient-action-content">
+	<ul class="nav nav-tabs" id="favoriteTab">
+		<li class="active">
+			<a href="#doctor-wrapper">医生</a>
+		</li>
+		<li>
+			<a href="#section-wrapper">科室</a>
+		</li>
+		<li>
+			<a href="#hospital-wrapper">医院</a>
+		</li>
+
+	</ul>
+	<div id='content' class="tab-content">
+		<div class="tab-pane active" id="doctor-wrapper">
+			<ul id="doctor-list" class="favorite-list">
+				<li style="display: list-item;">
+					<span>暂无收藏</span>
+				</li>
+			</ul>
+		</div>
+		<div class="tab-pane" id="section-wrapper">
+			<ul id="section-list" class="favorite-list">
+				<li style="display: list-item;">
+					<span>暂无收藏</span>
+				</li>
+			</ul>
+		</div>
+		<div class="tab-pane" id="hospital-wrapper">
+			<ul id="hospital-list" class="favorite-list">
+				<li style="display: list-item;">
+					<span>暂无收藏</span>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+</div>

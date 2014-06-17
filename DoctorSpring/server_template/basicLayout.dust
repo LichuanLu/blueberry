@@ -19,7 +19,9 @@
             {/headerHolder}
         <div class="container">            
             <div class="main-block full-height"> 
-                {>iconSearch/}
+                {+iconHolder}
+                    {>iconSearch/}
+                {/iconHolder}
                 {+breadcrumbsHolder}
                 {/breadcrumbsHolder}
                 <div id="main-region">
@@ -32,6 +34,8 @@
         </div> 
         {+ModalHolder}
         {/ModalHolder}
+        <div id="modalRegion" class="modal">
+        </div>
         {+scriptsHolder}
         {>scripts/} 
         {/scriptsHolder}    

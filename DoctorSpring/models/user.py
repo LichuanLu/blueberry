@@ -9,6 +9,7 @@ from DoctorSpring.util.constant import ModelStatus, PatientStatus,UserFavoritesT
 import config
 from DoctorSpring.util.constant import ModelStatus
 from datetime import datetime
+from sqlalchemy.orm import relationship,backref
 
 
 class User(Base):
@@ -142,7 +143,8 @@ class UserFavorites(Base):
     }
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
     userId = sa.Column(sa.Integer)
-    doctorId = sa.Column(sa.Integer)
+    doctorId = sa.Column(sa.Integer,sa.ForeignKey('doctor.id'))
+    doctor = relationship("Doctor", backref=backref('user_favorites', order_by=id))
     docId = sa.Column(sa.Integer)
     hospitalId=sa.Column(sa.Integer)
     createDate=sa.Column(sa.DateTime)
@@ -196,12 +198,24 @@ class UserFavorites(Base):
         result=query.first()
         return result
 
+    @staticmethod
+    def getUerFavortiesByNormalStatus(session,userId,type,favoritesObjectId):
+        if type is None:
+            return False
+        query=session.query(UserFavorites).filter(UserFavorites.userId==userId,UserFavorites.status==ModelStatus.Normal)
+        if type==UserFavoritesType.Doctor:
+            query.filter(UserFavorites.type==type,UserFavorites.doctorId==favoritesObjectId)
+        if type==UserFavoritesType.Hospital:
+            query.filter(UserFavorites.type==type,UserFavorites.hospitalId==favoritesObjectId)
+        result=query.first()
+        return result
+
 
 
     @classmethod
     def getUserFavorties(cls,userId,type,status=None):
         if userId:
-            if type:
+            if type and type==0:
                 if status:
                     return session.query(UserFavorites).filter(UserFavorites.userId==userId,UserFavorites.type==type,UserFavorites.status==status).all()
                 else:
@@ -213,3 +227,8 @@ class UserFavorites(Base):
                 else:
                     return session.query(UserFavorites).filter(UserFavorites.userId==userId,UserFavorites.status==ModelStatus.Normal).all()
 
+    @classmethod
+    def getFavortiesCountByDoctorId(cls,doctorId):
+        if doctorId is None:
+            return
+        return session.query(UserFavorites.id).filter(UserFavorites.doctorId==doctorId,UserFavorites.status==ModelStatus.Normal).count()

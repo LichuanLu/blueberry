@@ -1,6 +1,7 @@
 define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.main', 'entities/doctorEntity', 'dust', 'dustMarionette', "bootstrap", 'typeahead', 'flatui.checkbox', 'flatui.radio', 'jquery-ui', 'bootstrap.select', 'flat_ui_custom', 'dust_cus_helpers', 'config/validator/config', 'bootstrap.multiselect'], function(ReqCmd, Lodash, Marionette, Templates, FileUploaderMain, DoctorEntity) {
 	// body...
 	"use strict";
+	//var $;
 	var ApplyDiagnosePageLayoutView = Marionette.Layout.extend({
 		initialize: function() {
 			console.log("init ApplyDiagnosePageLayoutView");
@@ -10,8 +11,8 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 			"recommandedDoctorRegion": "#recommandedDoctor",
 			"patientProfileRegion": "#patient-already-profile-region",
 			"dicomInfoRegion": "#dicom-already-info-region",
-			"historyAlreadyExistsSelect":"#history-already-exists-select",
-			"dicomAlreadyExistsSelect":"#dicom-already-exists-select"
+			"historyAlreadyExistsSelect": "#history-already-exists-select",
+			"dicomAlreadyExistsSelect": "#dicom-already-exists-select"
 
 		},
 		el: "#applydignose-content",
@@ -36,21 +37,22 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 			});
 
 			//init typehead
-			if ($('#locationinput').length) {
-				$('#locationinput').typeahead({
-					name: 'cities',
-					highlight: true,
-					local: ["陕西 西安", "四川 成都"]
-				});
-			}
+			// if ($('#locationinput').length) {
+			// 	$('#locationinput').typeahead({
+			// 		name: 'cities',
+			// 		highlight: true,
+			// 		local: ["陕西 西安", "四川 成都"]
+			// 	});
+			// }
 
-			if ($('#hospitalinput').length) {
-				$('#hospitalinput').typeahead({
-					name: 'hospitals',
-					highlight: true,
-					local: ["西安 西京医院", "四川 华西医科大学附属医院"]
-				});
-			}
+			// if ($('#hospitalinput').length) {
+			// 	$('#hospitalinput').typeahead({
+			// 		name: 'hospitals',
+			// 		highlight: true,
+			// 		local: ["西安 西京医院", "四川 华西医科大学附属医院"]
+			// 	});
+			// }
+
 
 			// jQuery UI Datepicker JS init
 			var datepickerSelector = '#birthdateinput';
@@ -90,7 +92,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 				disableImageResize: false,
 				maxFileSize: 2000000,
 				// acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
-				maxNumberOfFiles: 1,
+				maxNumberOfFiles: 5,
 
 				// Uncomment the following to send cross-domain cookies:
 				//xhrFields: {withCredentials: true},
@@ -107,9 +109,9 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 				}
 			});
 			//init select
-			$("select").not('#patientLocationSelect').selectpicker({
+			$("select").not('.multiselect').selectpicker({
 				style: 'btn-sm btn-primary',
-				title:"没有纪录"
+				title: "没有纪录"
 			});
 
 			//radio
@@ -124,6 +126,21 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 				nonSelectedText: "没有选中"
 				// buttonWidth: '300px'
 			});
+
+			$("#hospitalinput").multiselect({
+				enableFiltering: true,
+				filterPlaceholder: "搜索",
+				nonSelectedText: "没有选中"
+				// buttonWidth: '300px'
+			});
+
+			$("#locationinput").multiselect({
+				enableFiltering: true,
+				filterPlaceholder: "搜索",
+				nonSelectedText: "没有选中"
+				// buttonWidth: '300px'
+			});
+
 
 			$('#patient-profile-radio :radio').on('toggle', function() {
 				var $this = $(this);
@@ -195,7 +212,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 						location: {
 							required: true
 						},
-						sectionId: {
+						skillId: {
 							required: true
 						},
 						diagnoseHistory: {
@@ -265,7 +282,6 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 		showForm: function(id) {
 
 			//console.dir(this.ui.formPanel);
-
 			var $form = this.ui.formPanel.filter(function() {
 				//console.log($(this).data("form-id"));
 				return $(this).data("form-id") == id
@@ -441,7 +457,18 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 				this.currentPage = $li.find('a').text();
 
 			}
+			this.fetchNewPage();
+
+		},
+		fetchNewPage: function() {
+			console.log($('#select-doctor-modal form').serialize());
+			var data = $('#select-doctor-modal form').serialize();
+			if (data) {
+				data += '&pageNumber='+this.currentPage+'&pageSize=6';
+				ReqCmd.commands.execute("SelectDoctorModalView:searchDoctorHandler", data);
+			}
 		}
+
 	});
 
 	var SelectDoctorItemView = Marionette.ItemView.extend({

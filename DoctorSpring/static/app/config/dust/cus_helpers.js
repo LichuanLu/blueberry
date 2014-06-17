@@ -3,6 +3,8 @@ dust.helpers['pager'] = function(chunk, context, bodies, params) {
   var first,last;
   //tapping these to get the actual value (since we passed vsaraibles) and casting as a number with '+'
   first = +dust.helpers.tap(params.first, chunk, context);
+  current = +dust.helpers.tap(params.current, chunk, context);
+
   last = +dust.helpers.tap(params.last, chunk, context);
 
   //this one is all ready since we just passed a string
@@ -11,9 +13,12 @@ dust.helpers['pager'] = function(chunk, context, bodies, params) {
   //build our html - do whatever you need here - this is an example
   // var html = '<ul>';
   var html = '';
+  if(!current){
+    current = first;
+  }
   for(var i = first; i <= last; i++) {
     //I used a replace and placeholder - prob other methods you can use
-    if( i == first){
+    if( i == current){
           html += ('<li class="active"><a href="#">' + i +'</a></li>');
 
     }else{

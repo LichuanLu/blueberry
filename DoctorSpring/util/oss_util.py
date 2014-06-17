@@ -10,6 +10,7 @@ __author__ = 'chengc017'
 
 
 HOST = "oss.aliyuncs.com"
+WEB_HOST="oss-cn-hangzhou.aliyuncs.com"
 ACCESS_ID = "5XxlKb2HfhZWlyLY"
 SECRET_ACCESS_KEY = "SuqEzwOL5Pcl8VZZMgl0cPsgQqboDh"
 #ACCESS_ID and SECRET_ACCESS_KEY 默认是空，请填入您申请的正确的ID和KEY.
@@ -22,16 +23,22 @@ def uploadFile(diagnoseId,fileName):
     res = oss.create_bucket(bucket,"public-read")
     hashCode=hashlib.md5(str(diagnoseId)).hexdigest().lower()
     ossFileName='%i_%s'%(diagnoseId,hashCode)
-    res = oss.upload_large_file(bucket, ossFileName, fileName)
-    if (res.status / 100) == 2:
-        fileUrl='%s.%s/%s'%(bucket,HOST,ossFileName)
+    #res = oss.upload_large_file(bucket, ossFileName, fileName)
+    res2=oss.put_object_from_file(bucket,ossFileName,fileName)
+    #info=oss.get_object_to_file(bucket,ossFileName,fileName)
+
+    #oss.
+    if (res2.status / 100) == 2:
+        fileUrl='http://%s.%s/%s'%(bucket,WEB_HOST,ossFileName)
         return fileUrl
-    print "%s\n%s" % (res.status, res.read())
+
+
+
 
 if __name__ == "__main__":
     import  constant
 
-    uploadFile(1,constant.DirConstant.DIAGNOSE_PDF_DIR+'test')
+    uploadFile(1,constant.DirConstant.DIAGNOSE_PDF_DIR+'test.pdf')
 # #初始化
 #     if len(ACCESS_ID) == 0 or len(SECRET_ACCESS_KEY) == 0:
 #         print "Please make sure ACCESS_ID and SECRET_ACCESS_KEY are correct in ", __file__ , ", init are empty!"

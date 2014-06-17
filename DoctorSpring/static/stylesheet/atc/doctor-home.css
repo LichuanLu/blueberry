@@ -62,15 +62,16 @@ ul.message-list li .message-content-wrapper p {
   font-size: 20px;
   margin-right: 100px;
 }
-#new-diagnose-wrapper .header > div a,
-#new-audit-wrapper .header > div a {
+#new-diagnose-wrapper .header > div .right,
+#new-audit-wrapper .header > div .right {
+  display: inline-block;
   position: absolute;
-  right: 70px;
+  right: 20px;
   top: 6px;
 }
-#new-diagnose-wrapper .header > div a.close-link,
-#new-audit-wrapper .header > div a.close-link {
-  right: 20px;
+#new-diagnose-wrapper .header > div .right #rollback-link,
+#new-audit-wrapper .header > div .right #rollback-link {
+  color: #e74c3c;
 }
 #new-diagnose-wrapper .form-group label,
 #new-audit-wrapper .form-group label {
@@ -102,6 +103,9 @@ ul.message-list li .message-content-wrapper p {
 }
 #new-diagnose-wrapper .content .patient-info > div {
   line-height: 2.4;
+}
+#new-diagnose-wrapper .content .patient-info > div h6 {
+  font-size: 15px;
 }
 #new-diagnose-wrapper .content .patient-info > div span {
   color: #808080;

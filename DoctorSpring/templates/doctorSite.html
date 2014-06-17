@@ -1,0 +1,258 @@
+
+{% extends "base.html" %}
+{% block breadcrumbsHolder %}
+
+<div id="breadcrumb" class="clearfix">
+    <!-- #breadcrumb-inside -->
+    <div id="breadcrumb-inside" class="main-content-padding clearfix">
+        <span class="sub-text">当前位置：</span>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">主页</a>
+            </li>
+            <li class="active">医生个人中心</li>
+        </ol>
+    </div>
+    <!-- EOF: #breadcrumb-inside -->
+</div>
+
+
+{% endblock breadcrumbsHolder %}
+{% block contentHolder %}
+
+<div id="doctorsite-content" class="main-content-padding" data-userid="{{data.doctor.userId}}">
+<div class="content-wrapper row">
+<div class="col-md-12">
+<div class="row header-wrapper">
+    <div class="col-md-9">
+        <div class="avatar-wrapper">
+            <img src="{{data.doctor.avatarUrl}}">
+            <span class="number">{{data.userFavortiesCount}}人收藏</span>
+            {% if data.userFavortiesId %}
+            <a class="btn btn-info btn-xs follow-link following" href="#" data-type="0" data-id="{{data.userFavortiesId}}" data-uid="{{data.doctor.id}}">
+                <span class="fui-heart"></span>
+                <span class="a-text">已收藏</span>
+            </a>
+
+            {% else %}
+
+            <a class="btn btn-info btn-xs follow-link" href="#" data-type="0" data-uid="{{data.doctor.userId}}">
+                <span class="fui-heart"></span>
+                <span class="a-text">加入收藏</span>
+            </a>
+
+            {% endif %}
+        </div>
+        <div class="profile-wrapper">
+            <h6>
+                <span class='name'>{{data.doctor.doctorname}}</span>
+                <span class='title label label-primary'>{{data.doctor.doctortitle}}</span>
+
+            </h6>
+            <div class="sub-info">
+                <h6>所在医院／科室</h6>
+                <a href="#">{{data.doctor.hospitalname}} {{data.doctor.departmentname}}</a>
+            </div>
+            <div class="sub-info">
+                <h6>擅长方向</h6>
+                <p>{{data.doctor.skill}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-wrapper">
+            <p>{{data.diagnoseCount}} 诊断</p>
+            <p>{{data.goodDiagnoseCount}} 好评</p>
+        </div>
+    </div>
+</div>
+<div class="row main-wrapper">
+    <div class="tab-wrapper" id="doctor-site-tab">
+        <a class="active" href="#home-page">首页</a>
+        <a href="#doctor-sharing-page">医生分享</a>
+        <a href="#consult-page">咨询</a>
+        <a href="#feedback-page">就诊反馈</a>
+    </div>
+    <div id="main-region" class="">
+        <div class="col-md-12 nopadding" >
+            <div class="col-md-3">
+                <div class="basic-info-wrapper">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">{{data.doctor.doctorname}}大夫基本信息</div>
+                        <div class="panel-body side-panel">
+                            <h6>科室：</h6>
+                            <a href="#">{{data.doctor.hospitalname}} {{data.doctor.departmentname}}</a>
+                            <h6>简历：</h6>
+
+                            {% if data.resumes %}
+                            {% for resume in data.resumes %}
+                            <p>{{resume.description}}</p>
+                            {% endfor %}
+                            {% endif %}
+
+
+                            <h6>荣誉：</h6>
+
+                            {% if data.awards %}
+                            {% for award in data.awards %}
+                            <p>{{award.description}}</p>
+                            {% endfor %}
+                            {% endif %}
+
+                            <h6>其他职位：</h6>
+
+
+                            {% if data.others %}
+                            {% for other in data.others %}
+                            <p>{{other.description}}</p>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">统计信息</div>
+                        <div class="panel-body side-panel">
+                            <h6>感谢信：</h6>
+                            <p>{{data.thanksNoteCount}} 封</p>
+                            <h6>经验分享：</h6>
+                            <p>{{data.diagnoseCommentCount}} 条</p>
+                            <h6>医生分享：</h6>
+                            <p>无</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 tab-content">
+                <div class="tab-pane active" id="home-page">
+                    <div class="highlight-info-wrapper">
+                        <h6 class="content-title">医生介绍</h6>
+                        {% if data.intros %}
+                        {% for intro in data.intros %}
+                        <p>{{intro.description}}</p>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="btn-wrapper">
+                        <button class="btn btn-warning">申请诊断</button>
+                    </div>
+                    <div class="sharing-wrapper">
+                        <h6 class="content-title">
+                            经验分享
+                            <a href="#" class="action-link">查看所有分享</a>
+                        </h6>
+                        <div class="feedback-wrapper sharing-list-wrapper detail-wrapper">
+                            <ul>
+
+
+                                {% if data.comments %}
+                                {% for comment in data.comments %}
+
+                                <li>
+															<span class="image">
+																<img src="{{comment.avatar}}" alt="young-m"></span>
+                                    <dl>
+                                        <dt>
+																	<span class="des-text">
+																		诊断部位：
+																		{{comment.positionName}}
+																	</span>
+                                            <span class="score">评价： {{comment.scoreName}}</span>
+                                        </dt>
+                                        <dd>
+                                            {{comment.content}}
+                                        </dd>
+                                        <div class="time">{{comment.receiverName}}   于 {{comment.createTime}} 分享的就医经验</div>
+                                    </dl>
+                                </li>
+                                {% endfor %}
+                                {% endif %}
+                                <li>
+															<span class="image">
+																<img src="/static/assets/image/young-m.png" alt="young-m"></span>
+                                    <dl>
+                                        <dt>
+																	<span class="des-text">
+																		诊断部位：
+																		头部，颈部（MRI）
+																	</span>
+                                            <span class="score">评价： 很满意</span>
+                                        </dt>
+                                        <dd>
+                                            秦教授，你好，我是刘一璨五岁宝宝的父亲，感谢您，感谢您的悉心关注，感谢您。您的医德是全国医生的楷模。能遇见您是我的福分，祝愿您工作顺利，身体健康。
+                                        </dd>
+                                        <div class="time">张**   于 2014-06-04 18:40:04 分享的就医经验</div>
+                                    </dl>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="thanks-wrapper">
+                        <h6 class="content-title">
+                            感谢信
+                            <a href="#" class="action-link">查看所有感谢信</a>
+                        </h6>
+                        <textarea class="form-control" id="thanks-content" placeholder="写一些感谢的话吧..."></textarea>
+                        <div class="right-wrapper">
+                            <button class="btn btn-info btn-xs" id="add-thanks-btn">我要感谢ta</button>
+                        </div>
+                        <div class="thanks-list-wrapper">
+
+                            {% if data.thanksNotes %}
+                            {% for thanksNote in data.thanksNotes %}
+
+                            <div class="thanks-list-item">
+														<span class="image">
+															<img src="{{thanksNote.avatarUrl}}" alt=""></span>
+                                <div class="summary">
+                                    <span class="title">发信人： {{thanksNote.observerName}}</span>
+                                    <span class="time">时间：{{thanksNote.createTime}}</span>
+                                </div>
+                                <div class="content">
+                                    <p>
+                                        {{thanksNote.content}}
+                                    </p>
+                                </div>
+                            </div>
+
+                            {% endfor %}
+                            {% endif %}
+                            <div class="thanks-list-item">
+														<span class="image">
+															<img src="/static/assets/Icons/PNG/Gift-Box.png" alt=""></span>
+                                <div class="summary">
+                                    <span class="title">发信人： 黎**</span>
+                                    <span class="time">时间：2014-06-04</span>
+                                </div>
+                                <div class="content">
+                                    <p>
+                                        秦教授，你好，我是刘一璨五岁宝宝的父亲，感谢您，感谢您的悉心关注，感谢您。您的医德是全国医生的楷模。能遇见您是我的福分，祝愿您工作顺利，身体健康。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tab-pane" id="doctor-sharing-page">
+                    <p>暂无分享</p>
+                </div>
+                <div class="tab-pane" id="consult-page">
+                    <p>暂无咨询</p>
+                </div>
+                <div class="tab-pane" id="feedback-page">
+                    <p>暂无反馈</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+{% endblock contentHolder %}
+{% block ModalHolder %}
+{% include 'loginModal.html' %}
+{% endblock ModalHolder %}

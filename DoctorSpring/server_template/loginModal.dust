@@ -8,12 +8,12 @@
                 <div class="modal-body">
                     <!-- UPDATE url -->
 
-                    <form id="loginForm" role="form" action="/user?destination=node" method="post">
+                    <form id="loginForm" role="form" action="/login.json" method="POST">
                       <div class="form-group">
                         <input class="form-control" id="inputUsername" placeholder="邮箱地址／手机号码" name="name">
                       </div>
                       <div class="form-group">
-                        <input type="password" class="form-control" id="inputUserPassword" placeholder="密码" name="pass">
+                        <input type="password" class="form-control" id="inputUserPassword" placeholder="密码" name="password">
                       </div>
                       <input type="hidden" name="form_build_id" value="form-dcYw9pvKdV7FUWMAt9HyPDY8CRWCQL8wV_c2sw2aimk">
                       <input type="hidden" name="form_id" value="user_login">
@@ -26,6 +26,7 @@
                       <div class="remember-wrapper">
                       </div>
                     </form>
+                    <div class="clearfix error-container login-error" style="display: none"></div>
                 </div>
                 <div class="modal-footer">
                     <span>新用户还没有帐号？</span>

@@ -6,21 +6,25 @@
                     <!-- <a href="http://adobe.com" class="adobe－logo">
                     <img alt="Adobe" class="adobe-logo" src="/static/assets/icons/ctt/adobe-logo.png"></a>
                 -->
+
+
             </td>
             <td class="copyright-text">
                 <span>
-                    Copyright © 2014 Adobe Systems Incorporated. All rights reserved.
+                    © 2011-2014版权所有. 浙ICP备12034511号
                 </span>
                 <div class="breadcrumb-text">
                     <p>
-                        <a href="#">Term of use</a>
-                        <a href="#">Status</a>
-                        <a href="#">Developers</a>
+                        <a href="#">关于我们</a>
+                        <a href="#">医院合作</a>
+                        <a href="#">免责条款</a>
+                        <a href="#">联系我们</a>
+                        <a href="#">网站地图</a>
                     </p>
                 </div>
             </td>
         </tr>
-        <tr>
+      <!--   <tr>
             <td></td>
             <td class="language-group">
                 <div class="breadcrumb-text">
@@ -33,7 +37,7 @@
                     </p>
                 </div>
             </td>
-        </tr>
+        </tr> -->
     </tbody>
 </table>
 </footer>
