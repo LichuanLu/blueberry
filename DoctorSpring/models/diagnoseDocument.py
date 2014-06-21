@@ -50,6 +50,8 @@ class Diagnose(Base):
     uploadUserId = sa.Column(sa.Integer, sa.ForeignKey('user.id'))
     uploadUser = relationship("User", backref=backref('diagnose', order_by=id))
 
+    ossUploaded= sa.Column(sa.SmallInteger)
+
     pathologyId = sa.Column(sa.Integer, sa.ForeignKey('pathology.id'))
     pathology = relationship("Pathology", backref=backref('diagnose', order_by=id))
 
@@ -211,21 +213,22 @@ class Diagnose(Base):
         if uploadUserId is None :
             return
         if patientName is None or patientName == u'':
-            query=session.query(Diagnose).select_from(join(Patient,Diagnose,Patient.id==Diagnose.patientId)) \
-            .filter(Patient.realname==patientName,Diagnose.status.in_((DiagnoseStatus.NeedTriage,DiagnoseStatus.NeedUpdate)),Diagnose.uploadUserId==uploadUserId).offset(pagger.getOffset()).limit(pagger.getLimitCount())
+            query=session.query(Diagnose)\
+                .filter(Diagnose.uploadUserId==uploadUserId,Diagnose.status.in_((DiagnoseStatus.NeedTriage,DiagnoseStatus.NeedUpdate))).offset(pagger.getOffset()).limit(pagger.getLimitCount())
         else:
             query=session.query(Diagnose).select_from(join(Patient,Diagnose,Patient.id==Diagnose.patientId)) \
-                .filter(Diagnose.uploadUserId==uploadUserId,Diagnose.status.in_((DiagnoseStatus.NeedTriage,DiagnoseStatus.NeedUpdate))).offset(pagger.getOffset()).limit(pagger.getLimitCount())
+                .filter(Patient.realname==patientName,Diagnose.status.in_((DiagnoseStatus.NeedTriage,DiagnoseStatus.NeedUpdate)),Diagnose.uploadUserId==uploadUserId).offset(pagger.getOffset()).limit(pagger.getLimitCount())
+
         return query.all()
     @classmethod
-    def getDealedDiagnoseByHospitalUser(cls,session,uploadUserId,status,pagger=Pagger(1,20) ):
-        if uploadUserId is None or status is None:
+    def getDealedDiagnoseByHospitalUser(cls,session,uploadUserId,status,startTime,endTime,pagger=Pagger(1,20) ):
+        if uploadUserId is None :
             return
-        query=session.query(Diagnose).filter(Diagnose.uploadUserId==uploadUserId)
+        query=session.query(Diagnose).filter(Diagnose.uploadUserId==uploadUserId,Diagnose.createDate>startTime,Diagnose.createDate<endTime)
         if status==-1:
-            query=query.filter(Diagnose.status.notin_(DiagnoseStatus.Diagnosed,DiagnoseStatus.Del))
+            query=query.filter(Diagnose.status.notin_((DiagnoseStatus.Diagnosed,DiagnoseStatus.Del)))
 
-        elif status==0:
+        elif status is None:
             query=query.filter(Diagnose.status!=DiagnoseStatus.Del)
         else:
             query=query.filter(Diagnose.status==DiagnoseStatus.Diagnosed)

@@ -2,6 +2,7 @@
 __author__ = 'chengc017'
 from datetime import  datetime
 import config
+import string
 class ModelStatus(object):
       Normal=0
       Del=1
@@ -92,9 +93,15 @@ class Pagger(object):
     count=0
     def __init__(self,pageNo,pageSize):
         if pageNo:
-            self.pageNo=pageNo
+            if isinstance(pageNo,basestring):
+                self.pageNo=string.atoi(pageNo)
+            else:
+                self.pageNo=pageNo
         if pageSize:
-            self.pageSize=pageSize
+            if isinstance(pageSize,basestring):
+                self.pageSize=string.atoi(pageSize)
+            else:
+                self.pageSize=pageSize
         #self.count=count
     def getOffset(self):
         offset=(self.pageNo-1)*self.pageSize

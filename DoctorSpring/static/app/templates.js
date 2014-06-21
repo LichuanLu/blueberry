@@ -13,15 +13,15 @@ define(function(require) {
 		// suggestionList:require('translate/templates/suggestionList'),
 		// suggestionListItem:require('translate/templates/suggestionListItem'),
 		// userActivityItem:require('userhome/templates/userActivityItem')
-		diagnoseItem:require('patientHome/templates/diagnoseItem'),
-		diagnoseLayout:require('patientHome/templates/diagnoseLayout'),
-		patientAccountManageLayout:require('patientHome/templates/patientAccountManageLayout'),
-		patientMessageLayout:require('patientHome/templates/patientMessageLayout'),
-		sharingModal:require('patientHome/templates/sharingModal'),
-		favoriteLayout:require('patientHome/templates/favoriteLayout'),
-		favoriteItem:require('patientHome/templates/favoriteItem'),
-		cancelFavoriteModalView:require('patientHome/templates/cancelFavoriteModalView'),
-		detailTrackLayout:require('patientHome/templates/detailTrackLayout'),
+		diagnoseItem:require('patienthome/templates/diagnoseItem'),
+		diagnoseLayout:require('patienthome/templates/diagnoseLayout'),
+		patientAccountManageLayout:require('patienthome/templates/patientAccountManageLayout'),
+		patientMessageLayout:require('patienthome/templates/patientMessageLayout'),
+		sharingModal:require('patienthome/templates/sharingModal'),
+		favoriteLayout:require('patienthome/templates/favoriteLayout'),
+		favoriteItem:require('patienthome/templates/favoriteItem'),
+		cancelFavoriteModalView:require('patienthome/templates/cancelFavoriteModalView'),
+		detailTrackLayout:require('patienthome/templates/detailTrackLayout'),
 
 
 
@@ -38,13 +38,13 @@ define(function(require) {
 		rollbackDiagnoseModal:require('admin/fenzhen/templates/rollbackDiagnoseModal'),
 
 
-		doctorAccountManageLayout:require('doctorHome/templates/doctorAccountManageLayout'),
-		doctorDiagnoseItem:require('doctorHome/templates/doctorDiagnoseItem'),
-		doctorDiagnoseLayout:require('doctorHome/templates/doctorDiagnoseLayout'),
-		newDiagnoseLayout:require('doctorHome/templates/newDiagnoseLayout'),
-		newAuditLayout:require('doctorHome/templates/newAuditLayout'),
-		doctorMessageLayout:require('doctorHome/templates/doctorMessageLayout'),
-		doctorConsultLayout:require('doctorHome/templates/doctorConsultLayout'),
+		doctorAccountManageLayout:require('doctorhome/templates/doctorAccountManageLayout'),
+		doctorDiagnoseItem:require('doctorhome/templates/doctorDiagnoseItem'),
+		doctorDiagnoseLayout:require('doctorhome/templates/doctorDiagnoseLayout'),
+		newDiagnoseLayout:require('doctorhome/templates/newDiagnoseLayout'),
+		newAuditLayout:require('doctorhome/templates/newAuditLayout'),
+		doctorMessageLayout:require('doctorhome/templates/doctorMessageLayout'),
+		doctorConsultLayout:require('doctorhome/templates/doctorConsultLayout'),
 
 		doctorDetailItem:require('doctorList/templates/doctorDetailItem'),
 		doctorDetailList:require('doctorList/templates/doctorDetailList'),
