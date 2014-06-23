@@ -245,3 +245,13 @@ def pathlogy_list():
 def get_pathology():
     return jsonify(rs.SUCCESS.__dict__, ensure_ascii=False)
 
+
+@front.route('/loginPage', methods=['GET', 'POST'])
+def loginPage():
+    return render_template("loginPage.html")
+
+
+@front.route('/error', methods=['GET', 'POST'])
+def errorPage():
+    return render_template("errorPage.html")
+

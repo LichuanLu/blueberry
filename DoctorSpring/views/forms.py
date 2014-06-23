@@ -263,20 +263,7 @@ class RegisterFormPatent(object):
         except Exception, e:
             return FAILURE
         return SUCCESS
-        self.status=args.get('status')
-        self.techDesc=args.get('techDesc')
-        self.imageDesc=args.get('imageDesc')
-        self.diagnoseDesc=args.get('diagnoseDesc')
-    def validate(self):
-        try:
-            if self.reportId is None:
-                return FAILURE
-            if self.status is None:
-                return FAILURE
 
-        except Exception,e:
-            return FAILURE
-        return SUCCESS
 
 
 class UserFavortiesForm(object):

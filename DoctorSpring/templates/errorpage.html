@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="ie lt-ie9 lt-ie8 lt-ie7">
+    <![endif]-->
+<!--[if IE 7]>
+    <html class="ie lt-ie9 lt-ie8">
+        <![endif]-->
+<!--[if IE 8]>
+        <html class="ie lt-ie9">
+            <![endif]-->
+<!--[if (gte IE 8)&(lt IE 10)]>
+            <html class="ie">
+<![endif]-->
+<html>
+{% include 'head.html' %}
+<body>
+        <div class="container errorpage">
+            {% block headerHolder %}
+            {% include 'header.html' %}
+            {% endblock headerHolder %}
+            <div class="main-block full-height">
+                {% block breadcrumbsHolder %}
+                {% endblock breadcrumbsHolder %}
+                <div id="errorpage-content" class="main-content-padding error-404-back" style="">
+					<h4 class="error-title">404</h4>
+					<p class="error-description">很抱歉，您想访问的页面不存在。请检查地址是否正确。</p>
+                    <p class="error-description">如果仍然存在问题，请联系客服人员。</p>
+
+					<a class="btn btn-primary">回到主页</a>
+				</div>
+            </div> 
+        </div>    
+    </body>
+</html>

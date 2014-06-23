@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+{% include 'head.html' %}
+
+<body class="login-page full-width full-height">
+<div id="header-region" class="full-width">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-lg-8 no-right-padding">
+                <a class="logo" href="" title="Home" rel="home"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container full-width-page">
+    <div class="main-block full-width-page">
+        <div id="main-region" class="full-width-page">
+            <div id="loginpage-content" class="main-content-padding">
+                <div class="content-wrapper">
+                    <div class="login-form-container">
+                        <div class="login-form-header">
+                            <h1>用户登陆</h1>
+                            <form id="loginForm" role="form" action="/login.json" method="POST" class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" for="name">用户名:</label>
+                                    <div class="col-md-6">
+                                        <input class="form-control" id="inputUsername" placeholder="邮箱地址／手机号码" name="name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" for="password">密码:</label>
+                                    <div class="col-md-6">
+
+                                        <input type="password" class="form-control" id="inputUserPassword" placeholder="密码" name="password">
+                                    </div>
+                                </div>
+                                <input type="hidden" name="form_build_id" value="form-dcYw9pvKdV7FUWMAt9HyPDY8CRWCQL8wV_c2sw2aimk">
+                                <input type="hidden" name="form_id" value="user_login">
+                                <div class="form-group submit-group">
+                                    <div class="col-md-offset-2">
+                                        <button id="submit" type="submit" nams="op" class="btn btn-info login-btn ladda-button" data-style="expand-right">
+                                            <span class="ladda-label">登陆</span>
+                                        </button>
+                                        <input id="rememberCheck" name="isRemember" type="checkbox" class="no_indent" value="1">
+                                        <span>自动登陆</span>
+                                        <a href="#">
+                                            <span>忘记密码？</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="remember-wrapper"></div>
+                            </form>
+                            <div class="clearfix error-container login-error" style="display: none"></div>
+                        </div>
+                        <div id="loginSocial">
+                            <div class="bottom-group">
+                                <span>新用户还没有帐号？</span>
+                                <a href="#" class="">注册帐号</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer id="footer-region" class="footer full-width">
+            <table class="full-width">
+                <tbody>
+                <tr class="footer-content">
+                    <td>
+                        <!-- <a href="http://adobe.com" class="adobe－logo">
+                        <img alt="Adobe" class="adobe-logo" src="/static/assets/icons/ctt/adobe-logo.png"></a>
+                    -->
+                    </td>
+                    <td class="copyright-text">
+                        <span>© 2011-2014版权所有. 浙ICP备12034511号</span>
+                        <!-- <div class="breadcrumb-text">
+                        <p>
+                            <a href="#">关于我们</a>
+                            <a href="#">医院合作</a>
+                            <a href="#">免责条款</a>
+                            <a href="#">联系我们</a>
+                            <a href="#">网站地图</a>
+                        </p>
+                    </div>
+                    -->
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </footer>
+    </div>
+</div>
+{% include 'scripts.html' %}
+</body>
+</html>

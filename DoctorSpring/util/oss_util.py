@@ -31,14 +31,38 @@ def uploadFile(diagnoseId,fileName):
     if (res2.status / 100) == 2:
         fileUrl='http://%s.%s/%s'%(bucket,WEB_HOST,ossFileName)
         return fileUrl
+def listObjects():
+    oss = OssAPI(HOST, ACCESS_ID, SECRET_ACCESS_KEY)
+    bucket="solidmedicaltest"
+    prefix = "1_c4ca4238a0b923820dcc509a6f75849b"
+    marker = ""
+    delimiter = "/"
+    maxkeys = "100"
+    headers = {}
+    res = oss.get_bucket(bucket, prefix, marker, delimiter, maxkeys, headers)
+    if (res.status / 100) == 2:
+        body = res.read()
+        h = GetBucketXml(body)
+        (file_list, common_list) = h.list()
+        print "object list is:"
+        for i in file_list:
+            print i
+        print "common list is:"
+        for i in common_list:
+            print i
+            obj=oss.get_object(bucket,i)
+            print obj.msg
+            print obj.read()
+
 
 
 
 
 if __name__ == "__main__":
-    import  constant
-
-    uploadFile(1,constant.DirConstant.DIAGNOSE_PDF_DIR+'test.pdf')
+    # import  constant
+    #
+    # uploadFile(1,constant.DirConstant.DIAGNOSE_PDF_DIR+'test.pdf')
+    listObjects()
 # #初始化
 #     if len(ACCESS_ID) == 0 or len(SECRET_ACCESS_KEY) == 0:
 #         print "Please make sure ACCESS_ID and SECRET_ACCESS_KEY are correct in ", __file__ , ", init are empty!"

@@ -7,8 +7,8 @@ from DoctorSpring.models import UserRole
 __author__ = 'chengc017'
 
 
-NO_LOGIN_URL='/'
-PERMISSION_DENY_URL='/'
+NO_LOGIN_URL='/loginPage'
+PERMISSION_DENY_URL='/error'
 class authenticated(object):
 
     def __init__(self, auth_model,role=None):
