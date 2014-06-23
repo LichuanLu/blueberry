@@ -50,7 +50,9 @@ class DiagnoseStatus(object):
         if status==DiagnoseStatus.UnableDiagnose:
             return '无法诊断'
 
-
+class DiagnoseUploaed(object):
+    NoUploaded=0
+    Uploaded=1
 class ReportStatus(object):
     Draft=0
     Del=1

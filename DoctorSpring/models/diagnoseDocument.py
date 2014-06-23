@@ -113,6 +113,15 @@ class Diagnose(Base):
                 session.commit()
                 session.flush()
 
+    @classmethod
+    def setDiagnoseUploaded(cls,diagnoseId):
+        if diagnoseId :
+            diagnose=session.query(Diagnose).filter(Diagnose.id==diagnoseId,Diagnose.status!=DiagnoseStatus.Del).first()
+            if diagnose:
+                diagnose.ossUploaded=constant.DiagnoseUploaed.Uploaded
+                session.commit()
+                session.flush()
+
 
 
     @classmethod

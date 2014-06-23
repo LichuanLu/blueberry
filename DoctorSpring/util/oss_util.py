@@ -45,7 +45,7 @@ def copyObjects():
     res = oss.get_bucket(bucket, prefix, marker, delimiter, maxkeys, headers)
     if (res.status / 100) == 2:
         body = res.read()
-        print body
+        #print body
         h = GetBucketXml(body)
         (file_list, common_list) = h.list()
         print "object list is:"
@@ -54,10 +54,14 @@ def copyObjects():
             diagnoseId=getDiagnoseIdFromFileName(fileName)
             diagnose=Diagnose.getDiagnoseByDiagnoseSeriesNo(diagnoseId)
             if diagnose:
-                oss.copy_object(bucket,i,bucket,diagnoseId)
-                fileName=constant.DirConstant.DIAGNOSE_PDF_DIR+'temp.pdf'
-                rs=oss.get_object_to_file(bucket,i,fileName,None)
-                print rs.msg
+                res=oss.copy_object(bucket,fileName,bucket,diagnoseId)
+                if (res.status / 100) == 2:
+                    fileUrl='http://%s.%s/%s'%(bucket,WEB_HOST,diagnoseId)
+                    Diagnose.setDiagnoseUploaded(diagnoseId)
+                # fileName=constant.DirConstant.DIAGNOSE_PDF_DIR+'temp.pdf'
+                # rs=oss.get_object_to_file(bucket,i[0],fileName,None)
+                # url=uploadFile(diagnoseId,fileName)
+
 
 
 
