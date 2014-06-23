@@ -2,13 +2,11 @@
 __author__ = 'chengc017'
 from apscheduler.scheduler import Scheduler
 from time import sleep
+from oss_util import copyObjects
 sched = Scheduler()
 sched.start()
-def test():
-    print 'test'
-sched.add_interval_job(test,seconds=1)
 
+sched.add_interval_job(copyObjects,seconds=1)
 
-
-
-sleep(3000)
+while(True):
+    sleep(3000)

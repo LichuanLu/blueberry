@@ -168,6 +168,10 @@ class Diagnose(Base):
             return session.query(Diagnose).filter(Diagnose.id==diagnoseId,Diagnose.status!=DiagnoseStatus.Del).first()
 
     @classmethod
+    def getDiagnoseByDiagnoseSeriesNo(cls,diagnoseSeriesNo):
+        if diagnoseSeriesNo:
+            return session.query(Diagnose).filter(Diagnose.diagnoseSeriesNumber==diagnoseSeriesNo,Diagnose.status!=DiagnoseStatus.Del).first()
+    @classmethod
     def getDiagnosesCountByAdmin(cls,session ,status=None,adminId=None,startTime=SystemTimeLimiter.startTime,endTime=SystemTimeLimiter.endTime):
         query=session.query(Diagnose)
         if status:

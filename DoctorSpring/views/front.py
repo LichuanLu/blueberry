@@ -139,18 +139,16 @@ def dicomfileUpload():
             files = request.files
             for key, file in files.iteritems():
                 if file and allowed_file(file.filename):
-                    filename = secure_filename(file.filename)
-                    file.save(os.path.join(UPLOAD_FOLDER, filename))
-                    file_size = os.path.getsize(os.path.join(UPLOAD_FOLDER, filename))
-                    file_url = "/static/tmp/"+filename
-                    file_infos.append(dict(name=filename,
-                                           size=file_size,
-                                           url=file_url))
+                    from DoctorSpring.util.oss_util import uploadFileFromString
+                    uploadFileFromString(4,'cc',file,'',{})
+                    file_infos.append(dict(name='cc',
+                                           size=11,
+                                           url='ccc'))
                 else:
                     return jsonify({'code': 1,  'message' : "error", 'data': ''})
             return jsonify(files=file_infos)
-    except:
-        raise
+    except Exception,e:
+        print e.message
         return jsonify({'code': 1,  'message' : "error", 'data': ''})
 
 @front.route('/patientreport/upload', methods=['POST'])
