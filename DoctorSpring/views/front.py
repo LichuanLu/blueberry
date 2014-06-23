@@ -7,7 +7,7 @@ import data_change_service as dataChangeService
 from flask import request, redirect, url_for, Blueprint, jsonify, g, send_from_directory, session
 from flask import abort, render_template, flash
 from flask_login import login_required
-from DoctorSpring.models import Doctor, User, Department, Patient, Diagnose, Pathology, PathologyPostion, File
+from DoctorSpring.models import Doctor, User, Department, Patient, Diagnose, Pathology, PathologyPostion, File ,Comment
 from database import db_session
 from werkzeug.utils import secure_filename
 from forms import DiagnoseForm1, DoctorList, DiagnoseForm2, DiagnoseForm3, DiagnoseForm4
@@ -28,7 +28,18 @@ def homepage():
     if doctors is None or len(doctors) < 1:
         return render_template("home.html", result=doctorsDict)
     doctorsDict = dataChangeService.get_doctors_dict(doctors)
-    return render_template("home.html", result=doctorsDict)
+
+    resultData={}
+    resultData['doctors']=doctorsDict
+
+    diagnoseComments=Comment.getRecentComments()
+    if diagnoseComments  and  len(diagnoseComments)>0:
+        diagnoseCommentsDict=object2dict.objects2dicts(diagnoseComments)
+        dataChangeService.setDiagnoseCommentsDetailInfo(diagnoseCommentsDict)
+        resultData['comments']=diagnoseCommentsDict
+    else:
+        resultData['comments']=None
+    return render_template("home.html", data=resultData)
 
 @front.route('/applyDiagnose', methods=['GET', 'POST'])
 @login_required

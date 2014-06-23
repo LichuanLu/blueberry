@@ -94,3 +94,6 @@ class Comment(Base):
         if receiverId is None:
             return
         return session.query(Comment.id).filter(Comment.receiver==receiverId,Comment.type==type,Comment.status==ModelStatus.Normal).count()
+    @classmethod
+    def getRecentComments(cls,status=ModelStatus.Normal,type=CommentType.DiagnoseComment):
+        return session.query(Comment).filter(Comment.status==status,Comment.type==type).order_by(Comment.createTime).limit(3).all()

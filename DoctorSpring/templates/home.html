@@ -74,7 +74,8 @@
 		</div>
 		<div class="col-md-8 doctor-slider">
 			<ul id="carousel" class="elastislide-list">
-                {% for i in result %}
+                {% if data.doctors %}
+                {% for i in data.doctors %}
                 <li data-preview="/static/assets/image/9.jpg">
                     <a href="#">
                         <img src="{{ i.image }}" alt="{{i.count}}" />
@@ -85,6 +86,7 @@
                     </a>
                 </li>
                 {% endfor %}
+                {% endif %}
 			</ul>
 		</div>
 	</div>
@@ -108,12 +110,31 @@
 					<h4 class="title-sep">诊断经验分享</h4>
 					<div class="feedback-wrapper">
 					<ul>
-						<li>
-						<span class="image">
-						<img src="/static/assets/image/young-m.png" alt="young-m">
-						</span>
-						<dl><dt><span>就诊医生：<a target="_blank" href="">秦智勇</a>&nbsp;&nbsp;<a target="_blank" href="">(复旦大学附属华山医院（总院）)</a></span><em>1周前</em></dt><dd>秦教授，你好，我是刘一璨五岁宝宝的父亲，感谢您，感谢您的悉心关注，感谢您。您的医德是全国医生的楷模。能遇见您是我的福分，祝愿您工作顺利，身体... <a target="_blank" href="">详情&gt;</a></dd></dl>
-						</li>
+
+                        {% if data.comments %}
+                        {% for comment in data.comments %}
+
+                        <li>
+															<span class="image">
+																<img src="{{comment.avatar}}" alt="young-m"></span>
+                            <dl>
+                                <dt>
+																	<span class="des-text">
+																		诊断部位：
+																		{{comment.positionName}}
+																	</span>
+                                    <span class="score">评价： {{comment.scoreName}}</span>
+                                </dt>
+                                <dd>
+                                    {{comment.content}}
+                                </dd>
+                                <div class="time">{{comment.receiverName}}   于 {{comment.createTime}} 分享的就医经验</div>
+                            </dl>
+                        </li>
+                        {% endfor %}
+                        {% endif %}
+
+
 						<li>
 						<span class="image">
 						<img src="/static/assets/image/young-m.png" alt="young-m">
