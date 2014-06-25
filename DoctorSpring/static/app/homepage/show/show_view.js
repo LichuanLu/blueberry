@@ -1,4 +1,4 @@
-define(['utils/reqcmd', 'lodash', 'marionette', 'templates','login/login_app' ,'dust', 'dustMarionette', "bootstrap",'jquery.elastislide.main'], function(ReqCmd, Lodash, Marionette, Templates, LoginApp) {
+define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'login/login_app', 'dust', 'dustMarionette', "bootstrap", 'jquery.elastislide.main'], function(ReqCmd, Lodash, Marionette, Templates, LoginApp) {
 	// body...
 	"use strict";
 	var HomePageLayoutView = Marionette.Layout.extend({
@@ -9,8 +9,8 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates','login/login_app' ,'
 		regions: {},
 		el: "#homepage-content",
 		ui: {
-			'preview':'#preview',
-			'carouselEl':'#carousel'
+			'preview': '#preview',
+			'carouselEl': '#carousel'
 		},
 		events: {},
 		attachEndHandler: function() {
@@ -20,36 +20,48 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates','login/login_app' ,'
 			//console.log(this.ui.carouselEl);
 			//console.log(this.ui.carouselItems);
 			var that = this;
-			var	homeCarousel = this.ui.carouselEl.elastislide({
-					current: current,
-					minItems: 4,
-					onReady: function() {
+			var homeCarousel = this.ui.carouselEl.elastislide({
+				current: current,
+				minItems: 4,
+				onReady: function() {
 
-						that.changeImage(that.ui.carouselItems.eq(current), current);
+					that.changeImage(that.ui.carouselItems.eq(current), current);
 
-					},
-					onClick: function(el, pos, evt) {
-						that.changeImage(el, pos);
-						evt.preventDefault();
-					},
-					onHover: function(el, pos, evt) {
-						that.changeImage(el, pos);
-						//evt.preventDefault();
-					}
-				});
+				},
+				onClick: function(el, pos, evt) {
+					that.changeImage(el, pos);
+					evt.preventDefault();
+				},
+				onHover: function(el, pos, evt) {
+					that.changeImage(el, pos);
+					//evt.preventDefault();
+				}
+			});
 			//console.dir(myCarousel);
 			//init flatui
 			$('.input-group').on('focus', '.form-control', function() {
-		      $(this).closest('.input-group, .form-group').addClass('focus');
-		    }).on('blur', '.form-control', function() {
-		      $(this).closest('.input-group, .form-group').removeClass('focus');
-		    });
+				$(this).closest('.input-group, .form-group').addClass('focus');
+			}).on('blur', '.form-control', function() {
+				$(this).closest('.input-group, .form-group').removeClass('focus');
+			});
 
-		    //init login modal
-		    LoginApp.loginAction();
+			//init login modal
+			LoginApp.loginAction();
+			var that = this;
+			setInterval(that.autoScroll(".action-wrap"),1000);
+
 
 		},
-		changeImage:function(el, pos) {
+		autoScroll: function(obj) {		
+			$(obj).find("ul:first").animate({
+				marginTop: "-40px"
+			}, 1000, function() {
+				$(this).css({
+					marginTop: "0px"
+				}).find("li:first").appendTo(this);
+			});
+		},
+		changeImage: function(el, pos) {
 			this.ui.preview.attr('src', el.data('preview'));
 			this.ui.carouselItems.removeClass('current-img');
 			el.addClass('current-img');

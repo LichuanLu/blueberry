@@ -16,7 +16,7 @@
 	{/if}
 
 	<td class="action-group">
-		<a id="submit-diagnose-link" href="#" class="">修改</a>
-		<a id="cancel-diagnose-link" href="#" class="">撤销</a>
+		<a id="submit-diagnose-link" href="/applyDiagnose?diagnoseid={id}" target="_blank" class="">修改</a>
+		<a class="rm-diagnose-link" href="#" class="">撤销</a>
 	</td>
 </tr>

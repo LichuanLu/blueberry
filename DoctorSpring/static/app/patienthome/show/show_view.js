@@ -103,11 +103,13 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 		template: "diagnoseItem",
 		ui: {
 			"actionLinks": ".action-group a",
-			"detailLinks": ".detail-wrapper a"
+			"detailLinks": ".detail-link",
+			"deleteLinks": ".rm-diagnose-link"
 		},
 		events: {
 			"click @ui.actionLinks": "actionLinkHandler",
-			"click @ui.detailLinks": "detailLinksHandler"
+			"click @ui.detailLinks": "detailLinksHandler",
+			"click @ui.deleteLinks": "deleteDiagnose"
 		},
 		actionLinkHandler: function(e) {
 			e.preventDefault();
@@ -134,8 +136,90 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 			// assumes 1 child element			
 			this.$el = this.$el.children();
 			this.setElement(this.$el);
+		},
+		deleteDiagnose: function(e) {
+			e.preventDefault();
+			var $link = $(e.target);
+			if ($link.is('.rm-diagnose-link')) {
+				console.log("rm-diagnose-link click");
+				var model = this.model;
+				var deleteDiagnoseModalView = new DeleteDiagnoseModalView({
+					model: model
+				});
+
+				this.parentsInstance.appInstance.modalRegion.show(deleteDiagnoseModalView);
+
+			}
+
 		}
 
+
+	});
+
+	var DeleteDiagnoseModalView = Marionette.ItemView.extend({
+		template: "deleteDiagnoseModal",
+		initialize: function() {
+			console.log("DeleteDiagnoseModalView init");
+
+		},
+		onRender: function() {
+			console.log("DeleteDiagnoseModalView render");
+			// get rid of that pesky wrapping-div
+			// assumes 1 child element			
+			this.$el = this.$el.children();
+			this.setElement(this.$el);
+
+		},
+		onShow: function() {
+
+		},
+		ui: {
+			"saveBtn": "button[name=save]",
+			"confirmForm": "#confirm-form"
+		},
+		events: {
+			"click @ui.saveBtn": "confirmDelete"
+		},
+		confirmDelete: function(e) {
+			var diagnoseId = this.ui.confirmForm.data('id');
+			if (diagnoseId) {
+				var that = this;
+				$.ajax({
+					url: "/diagnose/delete/"+diagnoseId,
+					dataType: 'json',
+					type: 'POST',
+					success: function(data) {
+						if (data.status != 0) {
+							this.onError(data);
+
+						} else {
+							that.close();
+							Messenger().post({
+								message: 'SUCCESS.delete diagnose',
+								type: 'success',
+								showCloseButton: true
+							});
+						}
+					},
+					onError: function(res) {
+						// this.resetForm();
+						//var error = jQuery.parseJSON(data);
+						if (typeof res.msg !== 'undefined') {
+							Messenger().post({
+								message: "%ERROR_MESSAGE:" + res.msg,
+								type: 'error',
+								showCloseButton: true
+							});
+						}
+
+					}
+				});
+
+			}
+
+
+
+		}
 
 	});
 
@@ -354,22 +438,20 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 		onRender: function() {
 			console.log("DetailTrackLayoutView on render");
 			var $activeDiv = $('.bs-wizard .bs-wizard-step.active');
-			if($activeDiv){
+			if ($activeDiv) {
 				$activeDiv.prevAll().removeClass("disabled").addClass("complete");
 			}
-		
+
 		},
 		onShow: function() {
 			console.log("DetailTrackLayoutView on show");
-			
+
 
 		},
 		backLinkHandler: function(e) {
 			ReqCmd.reqres.request("backLinkHandler:DetailTrackLayoutView");
 		}
 	});
-
-
 
 
 
@@ -382,6 +464,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 		FavoriteLayoutView: FavoriteLayoutView,
 		FavoriteCollectionView: FavoriteCollectionView,
 		FavoriteItemView: FavoriteItemView,
-		DetailTrackLayoutView: DetailTrackLayoutView
+		DetailTrackLayoutView: DetailTrackLayoutView,
+		DeleteDiagnoseModalView:DeleteDiagnoseModalView
 	}
 });

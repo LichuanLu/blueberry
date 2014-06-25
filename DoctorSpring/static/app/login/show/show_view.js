@@ -4,6 +4,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates','login/login_app' ,'
 	var LoginPageLayoutView = Marionette.Layout.extend({
 		initialize: function() {
 			console.log("init LoginPageLayoutView");
+			this.returnuri = $.getUrlVar('returnuri');
 			this.bindUIElements();
 		},
 		regions: {},
@@ -12,7 +13,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates','login/login_app' ,'
 		},
 		events: {},
 		attachEndHandler: function() {
-		    LoginApp.loginAction();
+		    LoginApp.loginAction(this.returnuri);
 		}
 
 	});

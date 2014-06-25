@@ -7,7 +7,7 @@ import data_change_service as dataChangeService
 from flask import request, redirect, url_for, Blueprint, jsonify, g, send_from_directory, session
 from flask import abort, render_template, flash
 from flask_login import login_required
-from DoctorSpring.models import Doctor, User, Department, Patient, Diagnose, Pathology, PathologyPostion, File ,Comment
+from DoctorSpring.models import Doctor, User, Department, Patient, Diagnose, Pathology, PathologyPostion, File ,Comment,UserRole,Message
 from database import db_session
 from werkzeug.utils import secure_filename
 from forms import DiagnoseForm1, DoctorList, DiagnoseForm2, DiagnoseForm3, DiagnoseForm4
@@ -39,6 +39,10 @@ def homepage():
         resultData['comments']=diagnoseCommentsDict
     else:
         resultData['comments']=None
+    if session.has_key('userId'):
+        userId=session['userId']
+        messageCount=Message.getMessageCountByReceiver(userId)
+        resultData['messageCount']=messageCount
     return render_template("home.html", data=resultData)
 
 @front.route('/applyDiagnose', methods=['GET', 'POST'])
@@ -150,8 +154,8 @@ def dicomfileUpload():
             files = request.files
             for key, file in files.iteritems():
                 if file and allowed_file(file.filename):
-                    from DoctorSpring.util.oss_util import uploadFileFromString
-                    uploadFileFromString(4,'cc',file,'',{})
+                    from DoctorSpring.util.oss_util import uploadFileFromFileStorage
+                    uploadFileFromFileStorage(4,'cc',file,'',{})
                     file_infos.append(dict(name='cc',
                                            size=11,
                                            url='ccc'))
@@ -262,5 +266,20 @@ def loginPage():
 
 @front.route('/error', methods=['GET', 'POST'])
 def errorPage():
+    return render_template("errorPage.html")
+
+
+@front.route('/userCenter/<int:userId>', methods=['GET', 'POST'])
+def userCenter(userId):
+    userRole=UserRole.getUserRole(db_session,userId)
+    if userRole:
+        if userRole.roleId==constant.RoleId.Admin:
+            return redirect('/admin/fenzhen')
+        if userRole.roleId==constant.RoleId.Doctor:
+            return redirect('/doctorhome')
+        if userRole.roleId==constant.RoleId.HospitalUser:
+            return redirect('/hospital/user')
+        if userRole.roleId==constant.RoleId.Patient:
+            return redirect('/patienthome')
     return render_template("errorPage.html")
 

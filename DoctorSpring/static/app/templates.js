@@ -22,6 +22,7 @@ define(function(require) {
 		favoriteItem:require('patienthome/templates/favoriteItem'),
 		cancelFavoriteModalView:require('patienthome/templates/cancelFavoriteModalView'),
 		detailTrackLayout:require('patienthome/templates/detailTrackLayout'),
+		deleteDiagnoseModal:require('patienthome/templates/deleteDiagnoseModal'),
 
 
 
@@ -31,6 +32,7 @@ define(function(require) {
 		patientProfile:require('diagnose/templates/patientProfile'),
 		dicomInfo:require('diagnose/templates/dicomInfo'),
 		pathologyItem:require('diagnose/templates/pathologyItem'),
+		successSubmitDiagnoseModal:require('diagnose/templates/successSubmitDiagnoseModal'),
 
 		//template for fenzhen
 		allDiagnoseItem:require('admin/fenzhen/templates/allDiagnoseItem'),

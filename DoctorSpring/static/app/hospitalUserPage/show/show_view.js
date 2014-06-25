@@ -1,4 +1,4 @@
-define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarionette', "bootstrap",'bootstrap.select'], function(ReqCmd, Lodash, Marionette, Templates) {
+define(['utils/reqcmd', 'lodash', 'marionette', 'templates','patienthome/show/show_view','dust', 'dustMarionette', "bootstrap",'bootstrap.select'], function(ReqCmd, Lodash, Marionette, Templates,PatientHomeShowView) {
 	// body...
 	"use strict";
 	var HospitalUserPageView = Marionette.Layout.extend({
@@ -115,6 +115,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 	var HospitalUserUnfinishDiagnoseCollectionView = Marionette.CollectionView.extend({
 		initialize: function() {
 			this.listenTo(this.collection, 'sync', this.render, this);
+			this.appInstance = require('app');
 		},
 		onRender: function() {
 			console.log("HospitalUserUnfinishDiagnoseCollectionView render");
@@ -125,15 +126,23 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 			console.log("HospitalUserUnfinishDiagnoseCollectionView onShow");
 			//init the modal onshow
 		},
-		el: "#notsubmit-diagnose-tbody"
+		el: "#notsubmit-diagnose-tbody",
+		itemViewOptions: function() {
+			return {
+				parentsInstance: this
+			};
+		}
 
 	});
 
 	var HospitalUserUnfinishDiagnoseItemView = Marionette.ItemView.extend({
+		
 		template: "hospitalUserDiagnoseItem",
-		initialize: function() {
+		initialize: function(options) {
 			console.log("HospitalUserUnfinishDiagnoseItemView init");
 			this.listenTo(this.model, 'sync', this.render, this);
+			this.parentsInstance = options.parentsInstance;
+
 
 
 		},
@@ -146,8 +155,26 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 
 		},
 		ui: {
+			"deleteLinks":".rm-diagnose-link"
 		},
 		events: {
+			"click @ui.deleteLinks": "deleteDiagnose"
+
+		},
+		deleteDiagnose: function(e) {
+			e.preventDefault();
+			var $link = $(e.target);
+			if ($link.is('.rm-diagnose-link')) {
+				console.log("rm-diagnose-link click");
+				var model = this.model;
+				var deleteDiagnoseModalView = new PatientHomeShowView.DeleteDiagnoseModalView({
+					model: model
+				});
+
+				this.parentsInstance.appInstance.modalRegion.show(deleteDiagnoseModalView);
+
+			}
+
 		}
 
 	});

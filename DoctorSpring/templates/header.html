@@ -28,14 +28,18 @@
                 <div class="login-group">
                 <span>您好</span>
                 <span class="username">{{session['username'] }}</span>
-                <a id="usercenter-link" href="#">
+                <a id="usercenter-link" href="/userCenter/{{session['userId']}}">
                     <span class="fui-user"></span>
                     <span>个人中心</span>
                 </a>
                 <a id="user-message-link" href="#">
                     <span class="visible-md visible-lg message-icon-wrap">
                         <span class="fui-mail">
-                            <span class="iconbar-unread">1</span>
+                            <span class="iconbar-unread">
+                                {% if data and data.messageCount %}
+                                      {{data.messageCount}}
+                                {% endif %}
+                            </span>
                         </span>
                     </span>
                     消息

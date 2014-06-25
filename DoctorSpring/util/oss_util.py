@@ -88,7 +88,7 @@ def getDiagnoseIdFromFileName(fileName):
             diagnoeId=fileNames[0]
             return diagnoeId
 
-def uploadFileFromString(diagnoseId,fileName,input_content,content_type,headers):
+def uploadFileFromFileStorage(diagnoseId,fileName,input_content,content_type,headers):
     if len(ACCESS_ID) == 0 or len(SECRET_ACCESS_KEY) == 0:
         print "Please make sure ACCESS_ID and SECRET_ACCESS_KEY are correct in ", __file__ , ", init are empty!"
         exit(0)

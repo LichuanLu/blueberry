@@ -1,16 +1,22 @@
-define([], function() {
+define(['ladda-bootstrap','crypto-sha256'], function(ladda) {
 	// body...
 	"use strict";
-	var loginAction = function() {
+	var loginAction = function(returnuri) {
 		var $form = $('#loginForm');
 		var $loginBtn = $form.find('.login-btn');
 		$loginBtn.click(function(e) {
 			e.preventDefault();
 			// if ($('#register-form').valid()) {
+			var l = ladda.create(document.querySelector('#submit'));
+
 			var data = validate($form);
+			if(returnuri){
+				data+= "&returnuri="+returnuri;
+			}
 			console.dir(data);
 			if (data) {
 				var that = this;
+				l.start();
 				$.ajax({
 					url: '/login.json',
 					data: data,
@@ -43,6 +49,10 @@ define([], function() {
 						}
 
 					},
+					complete: function(status,request) {
+
+						l.stop();
+					},
 					resetForm: function(leaveInputData) {
 
 					},
@@ -61,6 +71,8 @@ define([], function() {
 	};
 	var validate = function($from) {
 		var data = $from.serialize();
+		// var name = $('#inputUsername').val();
+		// var data = "name="+name+"&password="+CryptoJS.SHA256($('#inputUserPassword').val());
 		return data;
 	};
 	return {
