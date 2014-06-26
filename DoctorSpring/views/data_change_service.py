@@ -161,7 +161,7 @@ def getDiagnoseDetailInfoByPatient(session,diagnose):
     if diagnoseLogs and len(diagnoseLogs)>0:
         diagDict['actions']=diagnoseLogsDict
     isFeedback=Comment.existCommentBydiagnose(diagnose.id,type=constant.CommentType.DiagnoseComment)
-    diagDict['isFeedback']=isFeedback
+    diagDict['isFeedback']=str(isFeedback)
 
     return diagDict
 def getDiagnoseLogsDict(diagnoseLogs):
