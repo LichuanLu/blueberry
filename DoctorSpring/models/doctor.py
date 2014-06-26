@@ -65,6 +65,19 @@ class Doctor(Base):
             session.commit()
             session.flush()
 
+    @classmethod
+    def get_doctor_count(cls, hospitalId=0, sectionId=0 , doctorname='', pagger=None):
+        query = session.query(Doctor).filter(Doctor.status == ModelStatus.Normal)
+        if int(hospitalId) != 0:
+            query = query.filter(Doctor.hospitalId == hospitalId)
+
+        if int(sectionId) != 0:
+            query = query.filter(Doctor2Skill.skillId == sectionId)
+
+        if doctorname is not '':
+            query = query.filter(Doctor.username == doctorname or Doctor.name == doctorname)
+
+        return query.count()/pagger.pageSize + 1
 
     @classmethod
     def get_doctor_list(cls, hospitalId=0, sectionId=0 , doctorname='', pagger=None, recommended=False):

@@ -233,10 +233,11 @@ def doctor_list_json():
     form_result = form.validate()
     if form_result.status == rs.SUCCESS.status:
         pager = Pagger(form.pageNumber, form.pageSize)
+        count = Doctor.get_doctor_count(form.hospitalId, form.sectionId, form.doctorname, pager)
         doctors = Doctor.get_doctor_list(form.hospitalId, form.sectionId, form.doctorname, pager)
         if doctors is None or len(doctors) < 1:
             return jsonify(rs.SUCCESS.__dict__, ensure_ascii=False)
-        doctorsDict = dataChangeService.get_doctors_dict(doctors, form.pageNumber)
+        doctorsDict = dataChangeService.get_doctors_dict(doctors, form.pageNumber, count)
         resultStatus = rs.ResultStatus(rs.SUCCESS.status, rs.SUCCESS.msg, doctorsDict)
         return jsonify(resultStatus.__dict__, ensure_ascii=False)
     return jsonify(FAILURE)
