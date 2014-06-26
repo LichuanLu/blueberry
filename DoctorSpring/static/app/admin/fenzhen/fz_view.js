@@ -9,7 +9,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 		regions: {
 			"allDiagnoseTable": "#all-diagnose-tbody",
 			"myDiagnoseTable": "#my-diagnose-tbody",
-			"newDiagnoseRegion":"#newDiagnoseRegion"
+			"newDiagnoseRegion": "#newDiagnoseRegion"
 
 		},
 		el: "#admin-fenzhen-content",
@@ -142,37 +142,41 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 			e.preventDefault();
 			var diagnoseId = this.model.get('id');
 			var that = this;
-			$.ajax({
-				url: '/admin/diagnose/update',
-				data: "diagnoseId=" + diagnoseId,
-				dataType: 'json',
-				type: 'POST',
-				success: function(data) {
-					if (data.status != 0) {
-						this.onError(data);
+			if (diagnoseId) {
+				$.ajax({
+					url: '/admin/diagnose/update',
+					data: "diagnoseId=" + diagnoseId,
+					dataType: 'json',
+					type: 'POST',
+					success: function(data) {
+						if (data.status != 0) {
+							this.onError(data);
 
-					} else {
-						ReqCmd.reqres.request("getDiagnoseLinkHandler:AdminAllDiagnoseItemView");
-						Messenger().post({
-							message: 'SUCCESS.Get diagnose.',
-							type: 'success',
-							showCloseButton: true
-						});
-					}
-				},
-				onError: function(res) {
-					this.resetForm();
-					//var error = jQuery.parseJSON(data);
-					if (typeof res.msg !== 'undefined') {
-						Messenger().post({
-							message: "%ERROR_MESSAGE:" + res.msg,
-							type: 'error',
-							showCloseButton: true
-						});
-					}
+						} else {
+							ReqCmd.reqres.request("getDiagnoseLinkHandler:AdminAllDiagnoseItemView");
+							Messenger().post({
+								message: 'SUCCESS.Get diagnose.',
+								type: 'success',
+								showCloseButton: true
+							});
+						}
+					},
+					onError: function(res) {
+						this.resetForm();
+						//var error = jQuery.parseJSON(data);
+						if (typeof res.msg !== 'undefined') {
+							Messenger().post({
+								message: "%ERROR_MESSAGE:" + res.msg,
+								type: 'error',
+								showCloseButton: true
+							});
+						}
 
-				}
-			});
+					}
+				});
+
+			}
+
 		}
 	});
 
@@ -223,7 +227,6 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 
 	});
 
-	
 
 
 	return {

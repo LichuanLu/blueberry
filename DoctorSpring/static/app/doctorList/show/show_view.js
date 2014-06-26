@@ -123,10 +123,10 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 			this.setElement(this.$el);
 		},
 		ui: {
-			"chooseBtn": ".apply-btn"
+			// "chooseBtn": ".apply-btn"
 		},
 		events: {
-			"click @ui.chooseBtn": "chooseDoctor"
+			// "click @ui.chooseBtn": "chooseDoctor"
 		},
 
 		onShow: function() {

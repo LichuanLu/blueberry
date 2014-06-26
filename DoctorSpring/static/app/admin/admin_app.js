@@ -1,4 +1,4 @@
-define(['admin/fenzhen/fz_controller'], function(FzController) {
+define(['admin/fenzhen/fz_controller','admin/kefu/kf_controller'], function(FzController,KfController) {
 	// body...
 	"use strict";
 	return {
@@ -6,6 +6,10 @@ define(['admin/fenzhen/fz_controller'], function(FzController) {
 			fenzhen: function() {
 
 				return new FzController();
+			},
+			kefu: function() {
+
+				return new KfController();
 			}
 		}
 	}

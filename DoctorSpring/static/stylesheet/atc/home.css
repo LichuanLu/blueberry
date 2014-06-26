@@ -46,8 +46,13 @@
 }
 #homepage-content .mainpage-feedback-block {
   text-align: left;
-  height: 500px;
+  height: 510px;
   overflow: hidden;
+}
+#homepage-content .mainpage-feedback-block .sharing-list-wrapper {
+  overflow: hidden;
+  padding-top: 5px;
+  padding-right: 5px;
 }
 #homepage-content .mainpage-poster-wrapper {
   padding-left: 10px;

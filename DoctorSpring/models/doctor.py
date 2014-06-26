@@ -34,7 +34,9 @@ class Doctor(Base):
     doctorSkills = relationship("Doctor2Skill", order_by="Doctor2Skill.id", backref="Doctor")
     description = sa.Column(sa.TEXT)
     diagnoseCount = sa.Column(sa.INTEGER)   #统计，诊断量
-    feedbackCount = sa.Column(sa.INTEGER)   #好评数
+    feedbackCount = sa.Column(sa.INTEGER)
+    goodFeedbackCount=sa.Column(sa.INTEGER) #好评数
+    thankNoteCount= sa.Column(sa.INTEGER)   #感谢信的数量
     auditCount = sa.Column(sa.INTEGER)      #审核量
     type = sa.Column(sa.INTEGER)
     status = sa.Column(sa.INTEGER)

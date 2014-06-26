@@ -459,6 +459,13 @@ def addThankNote():
     if formResult.status==rs.SUCCESS.status:
         thanksNote=ThanksNote(userId,form.receiver,form.title,form.content)
         ThanksNote.save(db_session,thanksNote)
+        doctor=Doctor.getByUserId(userId)
+        if doctor:
+            if doctor.thankNoteCount:
+                doctor.thankNoteCount+=1
+            else:
+                doctor.thankNoteCount=1
+            Doctor.save(doctor)
         return json.dumps(formResult.__dict__,ensure_ascii=False)
     return json.dumps(formResult.__dict__,ensure_ascii=False)
 
@@ -484,6 +491,16 @@ def getThanksNotes(userid):
 def testRedirect():
     #return redirect("/pdf")
     #print url_for('user_center.generatorPdf',diagnoseName='ccheng')
+    return redirect(url_for('user_center.generatorPdf',diagnoseId=1))
+
+@uc.route('/acount/admin', methods=['GET','POST'])
+def updateAcountInfo():
+    userId=None
+    if session.has_key('userId'):
+        userId=session['userId']
+    if userId is None:
+        redirect('/loginPage')
+
     return redirect(url_for('user_center.generatorPdf',diagnoseId=1))
 
 

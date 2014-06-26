@@ -49,7 +49,7 @@ define(function(require){
 		"<td>" +
 		"<p class=\"name\" id=\"downloadFile\">" +
 		"{% if (file.url) { %}" +
-		"<a href=\"{%=file.url%}\" title=\"{%=file.name%}\" download=\"{%=file.name%}\" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>" +
+		"<a href=\"{%=file.url%}\" class=\"downloadFileLink\" title=\"{%=file.name%}\" download=\"{%=file.name%}\" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>" +
 		"{% } else { %}" +
 		"<span>{%=file.name%}</span>" +
 		"{% } %}" +

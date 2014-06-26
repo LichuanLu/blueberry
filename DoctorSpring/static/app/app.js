@@ -48,6 +48,8 @@ define(["backbone", "marionette", "utils/reqcmd", "config/base/auth",
 				DoctorSiteApp.API.show();
 			} else if(location.indexOf("admin/fenzhen") != -1){
 				AdminApp.API.fenzhen();
+			} else if(location.indexOf("admin/kefu") != -1){
+				AdminApp.API.kefu();
 			} else if(location.indexOf("login") != -1){
 				LoginPageApp.API.show();
 			} else if(location.indexOf("hospital/user") != -1){

@@ -9,7 +9,7 @@ from DoctorSpring import lm
 from database import  db_session
 from sqlalchemy.exc import IntegrityError
 from DoctorSpring.models import User,Patient
-from DoctorSpring.models import User,Comment,Message ,Consult
+from DoctorSpring.models import User,Comment,Message ,Consult,Diagnose,Doctor
 from DoctorSpring.util import result_status as rs,object2dict,constant
 import json
 import  data_change_service as dataChangeService
@@ -34,6 +34,23 @@ def addDiagnoseComment():
         db_session.add(diagnoseComment)
         db_session.commit()
         db_session.flush()
+        score=constant.DiagnoseScore[form.score]
+        diagnose=Diagnose.getDiagnoseById(form.diagnoseId)
+        diagnose.score=form.score
+        Diagnose.save(diagnose)
+        #为医生添加一些冗余字段
+        if hasattr(diagnose,'doctor'):
+            doctor=diagnose.doctor
+            if score!=0:
+                if doctor.goodFeedbackCount:
+                    doctor.goodFeedbackCount+=1
+                else:
+                    doctor.goodFeedbackCount=1
+            if doctor.feedbackCount:
+                doctor.feedbackCount+=1
+            else:
+                doctor.feedbackCount=1
+            Doctor.save(doctor)
         #flash('成功添加诊断评论')
         return jsonify(rs.SUCCESS.__dict__)
     return jsonify(rs.FAILURE.__dict__)

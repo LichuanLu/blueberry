@@ -151,8 +151,8 @@ DiagnoseScore={
     2:'很满意',
 }
 Gender={
-    0:'男',
-    1:'女',
+    1:'男',
+    2:'女',
 }
 class DoctorProfileType(object):
     #简历：0  介绍：1 荣誉：2  其他：3

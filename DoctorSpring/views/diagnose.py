@@ -71,7 +71,9 @@ def addOrUpdateReport():
 
     userId=session['userId']
     user=User.getById(userId)
-    if user is None:
+
+
+    if user is None  :
         return  json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
     #权限查看
     if  UserRole.checkRole(db_session,userId,constant.RoleId.Admin) == False:
@@ -80,6 +82,9 @@ def addOrUpdateReport():
     form =  ReportForm(request.form)
     formResult=form.validate()
     if formResult.status==rs.SUCCESS.status:
+        diagnose=Diagnose.getDiagnoseById(form.diagnoseId)
+        if diagnose is None:
+            return  json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
         #session['remember_me'] = form.remember_me.data
         # login and validate the user...
         if form.reportId:
@@ -90,6 +95,9 @@ def addOrUpdateReport():
         else:
             report=Report(form.techDesc,form.imageDesc,form.diagnoseDesc,form.fileUrl,form.status)
             Report.save(report)
+
+            diagnose.reportId=report.id
+            Diagnose.save(diagnose)
         #flash('成功添加诊断评论')
         if form.status and form.status == constant.ReportStatus.Commited:
             diagnose=Diagnose.getDiagnoseById(form.diagnoseId)

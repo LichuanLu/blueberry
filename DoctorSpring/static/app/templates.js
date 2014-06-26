@@ -40,6 +40,10 @@ define(function(require) {
 		rollbackDiagnoseModal:require('admin/fenzhen/templates/rollbackDiagnoseModal'),
 
 
+		displayPayLinkModal:require('admin/kefu/templates/displayPayLinkModal'),
+
+
+
 		doctorAccountManageLayout:require('doctorhome/templates/doctorAccountManageLayout'),
 		doctorDiagnoseItem:require('doctorhome/templates/doctorDiagnoseItem'),
 		doctorDiagnoseLayout:require('doctorhome/templates/doctorDiagnoseLayout'),

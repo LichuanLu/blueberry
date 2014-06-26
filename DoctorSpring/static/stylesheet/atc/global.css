@@ -43,16 +43,17 @@ button::-moz-focus-inner {
   display: block;
 }
 .logo-bar .logo {
-  width: 209px;
-  height: 48px;
-  background: url(http://az382497.vo.msecnd.net/images/doctor_logo.png) no-repeat;
+  width: 200px;
+  height: 90px;
+  background: url(../../assets/image/logo.jpg) no-repeat;
   display: block;
+  margin-left: -20px;
 }
 .home-header-wrapper {
   background-color: #fcfcfc;
   position: relative;
   z-index: 5;
-  padding: 20px 0;
+  padding: 5px 0 20px;
   text-align: center;
   min-height: 100px;
   margin-left: 20px;

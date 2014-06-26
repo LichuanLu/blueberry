@@ -9,7 +9,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 			this.diagnoseId = $.getUrlVar('diagnoseid');
 			this.isHospitalUser = $.getUrlVar('type');
 			this.appInstance = require('app');
-			if(this.diagnoseId){
+			if (this.diagnoseId) {
 				$('#diagnose-id-input').val(this.diagnoseId);
 			}
 			this.bindUIElements();
@@ -28,12 +28,14 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 			"submitBtns": ".btn-wrapper .submit-btn",
 			"forms": ".submit-patient-info-wrapper .panel form",
 			"patientAlreadyExistsSelect": "#patient-already-exists select",
-			"dicomAlreadyExistsSelect": "#dicom-already-exists select"
+			"dicomAlreadyExistsSelect": "#dicom-already-exists select",
+			"reuploadBtn": '.edit-file-wrapper .btn'
 		},
 		events: {
 			'click @ui.submitBtns': "submitHandler",
 			'change @ui.patientAlreadyExistsSelect': "changePatientAlreadyExists",
-			'change @ui.dicomAlreadyExistsSelect': "changeDicomAlreadyExists"
+			'change @ui.dicomAlreadyExistsSelect': "changeDicomAlreadyExists",
+			'click @ui.reuploadBtn': "reuploadFile"
 		},
 		attachEndHandler: function() {
 			//init flatui
@@ -94,15 +96,17 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 				uploadTemplateId: FileUploaderMain.uploadTemplateStr,
 				downloadTemplateId: FileUploaderMain.downloadTemplateStr
 
-			}).bind('fileuploadsubmit', function (e, data) {
-			    // The example input, doesn't have to be part of the upload form:
-			    var input = $('#diagnose-id-input');
-			    data.formData = {diagnoseId: input.val()};
-			    // if (!data.formData.diagnoseId) {
-			    //   data.context.find('button').prop('disabled', false);
-			    //   input.focus();
-			    //   return false;
-			    // }
+			}).bind('fileuploadsubmit', function(e, data) {
+				// The example input, doesn't have to be part of the upload form:
+				var input = $('#diagnose-id-input');
+				data.formData = {
+					diagnoseId: input.val()
+				};
+				// if (!data.formData.diagnoseId) {
+				//   data.context.find('button').prop('disabled', false);
+				//   input.focus();
+				//   return false;
+				// }
 			});
 			$('#patient-medical-report-fileupload').fileupload({
 				disableImageResize: false,
@@ -116,15 +120,17 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 				uploadTemplateId: FileUploaderMain.uploadTemplateStr,
 				downloadTemplateId: FileUploaderMain.downloadTemplateStr
 
-			}).bind('fileuploadsubmit', function (e, data) {
-			    // The example input, doesn't have to be part of the upload form:
-			    var input = $('#diagnose-id-input');
-			    data.formData = {diagnoseId: input.val()};
-			    // if (!data.formData.diagnoseId) {
-			    //   data.context.find('button').prop('disabled', false);
-			    //   input.focus();
-			    //   return false;
-			    // }
+			}).bind('fileuploadsubmit', function(e, data) {
+				// The example input, doesn't have to be part of the upload form:
+				var input = $('#diagnose-id-input');
+				data.formData = {
+					diagnoseId: input.val()
+				};
+				// if (!data.formData.diagnoseId) {
+				//   data.context.find('button').prop('disabled', false);
+				//   input.focus();
+				//   return false;
+				// }
 			});
 
 			//init affix
@@ -401,17 +407,31 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 				data = "doctorId=" + $('#recommandedDoctor .doctor-preview').data('doctor-id');
 			} else if (formId == 3) {
 				console.dir($('#dicomfileupload #downloadFile'));
-				var fileurl = encodeURIComponent($("#new-dicom-form .downloadFileLink").attr('href'));
-				data = $form.serialize() + "&fileurl=" + fileurl;
+				var fileurl = "";
+				var tempstr = $("#new-dicom-form .downloadFileLink").attr('href');
+				if (typeof tempstr !== 'undefined' && tempstr != 'undefined') {
+					fileurl = "&fileurl=" + encodeURIComponent(tempstr);
+				}
+				if (typeof fileurl !== 'undefined') {
+					data = $form.serialize() + fileurl;
+				} else {
+					data = $form.serialize()
+				}
 
 			} else {
-				data = $form.serialize();
 				var filelinks = $("#new-history-form").find('.downloadFileLink');
-				var fileurl;
-				filelinks.each(function(index,element){
-					fileurl+="&fileurl="+encodeURIComponent(element.attr('href'));
+				var fileurl = "";
+				filelinks.each(function(index, element) {
+					var tempstr = $(element).attr('href');
+					if (typeof tempstr !== 'undefined' && tempstr != 'undefined') {
+						fileurl += "&fileurl=" + encodeURIComponent(tempstr);
+					}
 				})
-				data += fileurl;
+				if (typeof fileurl !== 'undefined') {
+					data = $form.serialize() + fileurl;
+				} else {
+					data = $form.serialize();
+				}
 			}
 
 			return data;
@@ -430,8 +450,8 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 					if (this.isEdit !== 'true') {
 						this.initDicomInfo();
 					}
-					if(data.data.diagnoseId){
-						$('#diagnose-id-input').val(data.data.diagnoseId);			
+					if (data.data.diagnoseId) {
+						$('#diagnose-id-input').val(data.data.diagnoseId);
 					}
 				}
 				this.showForm(data.data.formId);
@@ -442,15 +462,24 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 
 				});
 				var model = new ModalModel();
-				model.set('isHospitalUser',this.isHospitalUser);
+				model.set('isHospitalUser', this.isHospitalUser);
 				var successSubmitDiagnoseModalView = new SuccessSubmitDiagnoseModalView({
-					model:model
+					model: model
 				});
 				this.appInstance.modalRegion.show(successSubmitDiagnoseModalView);
 
 			}
 
 
+		},
+		reuploadFile: function(e) {
+			e.preventDefault();
+			var $target = $(e.target);
+			var $editWrapper = $target.closest('.edit-file-wrapper');
+			var $newWrapper = $editWrapper.siblings('.new-file-wrapper');
+			$editWrapper.hide();
+			$newWrapper.show();
+			console.log("reupload file");
 		}
 
 
@@ -689,10 +718,8 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 		onShow: function() {
 
 		},
-		ui: {
-		},
-		events: {
-		}
+		ui: {},
+		events: {}
 
 	});
 

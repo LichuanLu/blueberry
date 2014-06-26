@@ -10,7 +10,8 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'login/login_app', 
 		el: "#homepage-content",
 		ui: {
 			'preview': '#preview',
-			'carouselEl': '#carousel'
+			'carouselEl': '#carousel',
+			'previewWrapper':'.doctor-preview-des'
 		},
 		events: {},
 		attachEndHandler: function() {
@@ -35,6 +36,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'login/login_app', 
 				onHover: function(el, pos, evt) {
 					that.changeImage(el, pos);
 					//evt.preventDefault();
+					that.changeInfo(el,pos);
 				}
 			});
 			//console.dir(myCarousel);
@@ -47,19 +49,27 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'login/login_app', 
 
 			//init login modal
 			LoginApp.loginAction();
-			var that = this;
-			setInterval(that.autoScroll(".action-wrap"),1000);
+			setInterval(that.autoScroll, 3000);
 
 
 		},
-		autoScroll: function(obj) {		
-			$(obj).find("ul:first").animate({
+		autoScroll: function(obj) {
+
+			$('.action-wrap').find("ul:first").animate({
 				marginTop: "-40px"
 			}, 1000, function() {
 				$(this).css({
 					marginTop: "0px"
 				}).find("li:first").appendTo(this);
 			});
+
+			// $('.feedback-wrapper').find("ul:first").animate({
+			// 	marginTop: "-90px"
+			// }, 1000, function() {
+			// 	$(this).css({
+			// 		marginTop: "0px"
+			// 	}).find("li:first").appendTo(this);
+			// });
 		},
 		changeImage: function(el, pos) {
 			this.ui.preview.attr('src', el.data('preview'));
@@ -67,6 +77,12 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'login/login_app', 
 			el.addClass('current-img');
 			//myCarousel.setCurrent(pos);
 
+		},
+		changeInfo: function(el, pos) {
+			this.ui.previewWrapper.find('h6').html(el.find('h6').html());
+			this.ui.previewWrapper.find('.hospital').html(el.find('.hospital').html());
+			this.ui.previewWrapper.find('.skill').html(el.find('.skill').html());
+			this.ui.previewWrapper.find('.doctor-link').attr('href',el.find('.doctor-link').html())
 		}
 
 	});

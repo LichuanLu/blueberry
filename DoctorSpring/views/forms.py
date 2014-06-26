@@ -125,15 +125,19 @@ class CommentsForm(object):
     content = None
     title = None
     diagnoseId=None
+    score=None
     def __init__(self,args):
         self.content=args.get('content')
         self.diagnoseId=args.get('diagnoseId')
+        self.score=args.get('score')
 
     def validate(self):
         try:
             if self.diagnoseId is None:
                 return FAILURE
             diagnose=Diagnose.getDiagnoseById(self.diagnoseId)
+            if diagnose is None:
+                return FAILURE
             if diagnose.doctorId and hasattr(diagnose,'doctor') and diagnose.doctor and diagnose.doctor.userId:
                 self.receiverId=diagnose.doctor.userId
             else:
@@ -147,6 +151,10 @@ class CommentsForm(object):
             if self.content is None or len(self.content)<10:
                 failure=ResultStatus(FAILURE.status,"输入的内容长度必须大于等于10")
                 return  failure
+            if self.score is None or self.score == u'':
+                return FAILURE
+            else:
+                self.score=string.atoi(self.score)
         except Exception,e:
             return FAILURE
         return SUCCESS
