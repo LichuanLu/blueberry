@@ -4,16 +4,7 @@ from DoctorSpring.util.result_status import *
 from DoctorSpring.models import User, Patient, Doctor ,Diagnose
 import string
 
-class RegisterForm(Form):
-    name = TextField('Username', validators=[Required(), Length(min=3, max=25)])
-    #email = TextField('Email', validators=[Required(), Length(min=6, max=40)])
-    password = PasswordField('Password',
-                             validators=[Required(), Length(min=6, max=40)])
-    # confirm = PasswordField(
-    #     'Repeat Password',
-    #     [Required(), EqualTo('password', message='Passwords must match')])
-
-class DiagnoseForm1(Form):
+class DiagnoseForm1(object):
     patientid = None
     patientname = None
     patientsex = None
@@ -55,7 +46,7 @@ class DiagnoseForm1(Form):
             return FAILURE
         return SUCCESS
 
-class DiagnoseForm3(Form):
+class DiagnoseForm3(object):
     doctorId = None
     def __init__(self, args):
         self.doctorId = args.get('doctorId')
@@ -68,7 +59,7 @@ class DiagnoseForm3(Form):
             return FAILURE
         return SUCCESS
 
-class DiagnoseForm2(Form):
+class DiagnoseForm2(object):
     # patientlocation=1&patientlocation=2&dicomtype=1&fileurl=http%3A%2F%2F127.0.0.1%3A5000%2Fstatic%2Ftmp%2Flogin.html
     patientlocation = None
     dicomtype = None
@@ -92,7 +83,7 @@ class DiagnoseForm2(Form):
             return FAILURE
         return SUCCESS
 
-class DiagnoseForm4(Form):
+class DiagnoseForm4(object):
     # diagnoseHistory=zzzzzzz&illnessHistory=%E5%8F%91%E7%9F%AD%E5%8F%91%E7%9F%AD%E5%8F%91%E6%88%91%E8%84%9A%E6%89%8B%E6%9E%B6%E6%88%91%E5%8F%AB%E6%88%91%E9%87%91%E9%A2%9D%E5%93%A6%E6%94%BE%E5%81%87%E6%88%91%E5%B0%B1
     hospitalId = None
     illnessHistory = None
@@ -157,12 +148,7 @@ class CommentsForm(object):
             return FAILURE
         return SUCCESS
 
-class MessageForm(Form):
-    senderId = IntegerField('senderId', validators=[Required()])
-    receiverId=IntegerField('receiverId', validators=[Required()])
-    content = TextField('content', validators=[Required()])
-    title = TextField('title')
-    type=IntegerField('type', validators=[Required()])
+
 
 class ConsultForm(object):
     userId =None
@@ -390,7 +376,7 @@ class ThanksNoteForm(object):
             return FAILURE
         return SUCCESS
 
-class DoctorList(Form):
+class DoctorList(object):
     # /doctors/list.json?hospitalId=1&sectionId=0&doctorname=ddd&pageNumber=1&pageSize=6
     hospitalId = None
     sectionId = None

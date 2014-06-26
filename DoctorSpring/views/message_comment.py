@@ -4,7 +4,7 @@ __author__ = 'ccheng'
 from flask import Flask, request, session, g, redirect, url_for, Blueprint, jsonify
 from flask import abort, render_template, flash
 from flask.ext.login import login_user, logout_user, current_user, login_required
-from forms import LoginForm ,CommentsForm ,MessageForm,ConsultForm
+from forms import LoginForm ,CommentsForm ,ConsultForm
 from DoctorSpring import lm
 from database import  db_session
 from sqlalchemy.exc import IntegrityError
@@ -94,7 +94,7 @@ def diagnoseCommentsByDiagnose(diagnoseId):
 
 @mc.route('/message/add', methods = ['GET', 'POST'])
 def addMessage():
-    form = MessageForm(request.form, csrf_enabled=False)
+    form = None
     if form.validate():
         #session['remember_me'] = form.remember_me.data
         # login and validate the user...

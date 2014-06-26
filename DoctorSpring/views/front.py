@@ -22,6 +22,7 @@ front = Blueprint('front', __name__)
 @front.route('/', methods=['GET', 'POST'])
 @front.route('/homepage', methods=['GET', 'POST'])
 def homepage():
+
     resultData={}
     pager = Pagger(1, 6)
     doctors = Doctor.get_doctor_list(0, 0, "", pager)
@@ -43,7 +44,7 @@ def homepage():
         userId=session['userId']
         messageCount=Message.getMessageCountByReceiver(userId)
         resultData['messageCount']=messageCount
-    return render_template("home.html", data=resultData)
+    return render_template("home.html", result=resultData)
 
 @front.route('/applyDiagnose', methods=['GET', 'POST'])
 def applyDiagnose():
