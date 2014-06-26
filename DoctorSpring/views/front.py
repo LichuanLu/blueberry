@@ -229,7 +229,7 @@ def uploaded_file(filename):
 @front.route('/doctors/list.json')
 # /doctors/list.json?hospitalId=1&sectionId=0&doctorname=ddd&pageNumber=1&pageSize=6
 def doctor_list_json():
-    form = DoctorList(request.form)
+    form = DoctorList(request)
     form_result = form.validate()
     if form_result.status == rs.SUCCESS.status:
         pager = Pagger(form.pageNumber, form.pageSize)
@@ -239,6 +239,7 @@ def doctor_list_json():
         doctorsDict = dataChangeService.get_doctors_dict(doctors, form.pageNumber)
         resultStatus = rs.ResultStatus(rs.SUCCESS.status, rs.SUCCESS.msg, doctorsDict)
         return jsonify(resultStatus.__dict__, ensure_ascii=False)
+    return jsonify(FAILURE)
 
 
 @front.route('/doctor/recommanded')
@@ -253,29 +254,41 @@ def doctor_rec():
 
 @front.route('/doctor/list')
 def doctor_list():
-    return render_template("doctorList.html")
+    result = {}
+    hospitals = Hospital.getAllHospitals(db_session)
+    hospitalsDict = object2dict.objects2dicts(hospitals)
+    result['hospitals'] = hospitalsDict
+
+    skills = Skill.getSkills()
+    skillsDict = object2dict.objects2dicts(skills)
+    result['skills'] = skillsDict
+    return render_template("doctorList.html", result=result)
 
 
 @front.route('/patient/profile.json')
 def patient_profile():
-    patientId = request.args['patientId']
-    patient = Patient.get_patient_by_id(patientId)
-    resultStatus = rs.ResultStatus(rs.SUCCESS.status, rs.SUCCESS.msg, patient.__dict__)
-    if patient is None:
+    if hasattr(request.args, 'patientId'):
+        patientId = request.args['patientId']
+        patient = Patient.get_patient_by_id(patientId)
+        resultStatus = rs.ResultStatus(rs.SUCCESS.status, rs.SUCCESS.msg, patient.__dict__)
+        if patient is None:
+            return jsonify(resultStatus.__dict__)
+        resultStatus.data = dataChangeService.get_patient(patient)
         return jsonify(resultStatus.__dict__)
-    resultStatus.data = dataChangeService.get_patient(patient)
-    return jsonify(resultStatus.__dict__)
+    return jsonify(SUCCESS.__dict__)
 
 
 @front.route('/pathlogy/list.json')
 def pathlogy_list():
-    patientId = request.args['patientId']
-    pathlogys = Pathology.getByPatientId(patientId)
-    if pathlogys is None or len(pathlogys) < 1:
-        return jsonify(rs.SUCCESS.__dict__, ensure_ascii=False)
-    patientsDict = object2dict.objects2dicts(pathlogys)
-    resultStatus = rs.ResultStatus(rs.SUCCESS.status, rs.SUCCESS.msg, patientsDict)
-    return jsonify(resultStatus.__dict__, ensure_ascii=False)
+    if hasattr(request.args, 'patientId'):
+        patientId = request.args['patientId']
+        pathlogys = Pathology.getByPatientId(patientId)
+        if pathlogys is None or len(pathlogys) < 1:
+            return jsonify(rs.SUCCESS.__dict__, ensure_ascii=False)
+        patientsDict = object2dict.objects2dicts(pathlogys)
+        resultStatus = rs.ResultStatus(rs.SUCCESS.status, rs.SUCCESS.msg, patientsDict)
+        return jsonify(resultStatus.__dict__, ensure_ascii=False)
+    return jsonify(SUCCESS.__dict__)
 
 
 @front.route('/pathlogy/dicominfo.json')

@@ -47,7 +47,7 @@
             <!--For login user -->
             {% if session['logged_in'] %}
             <div class="button-wrapper login">
-                <div>您好 李响，欢迎来到易诊断！</div>
+                <div>您好 {{session['username']}}，欢迎来到易诊断！</div>
                 <a class="btn btn-info first-btn" type="button">进入个人中心</a>
                 <a class="btn btn-success" type="button">马上进行诊断</a>
             </div>
