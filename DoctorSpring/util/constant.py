@@ -5,6 +5,7 @@ import config
 class ModelStatus(object):
       Normal=0
       Del=1
+      Draft=9   #草稿
 
 
 class UserStatus(object):
@@ -14,7 +15,6 @@ class UserStatus(object):
 class PatientStatus(object):
     patent = 0  # 普通注册用户
     diagnose = 1  # 病例用户
-
 
 
 # class DiagnoseMetaStatus(object):
@@ -60,7 +60,8 @@ class ReportType(object):
 
 class FileType(object):
     Dicom=0
-    FileAboutDiagnose=1
+    FileAboutDiagnose=1   # 诊断书
+
 SeriesNumberPrefix='YZD'
 SeriesNumberBase=500000
 DiagnoseSeriesNumberPrefix='DS'

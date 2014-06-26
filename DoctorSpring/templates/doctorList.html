@@ -27,9 +27,12 @@
 							<li class="active">
 								<a href="javascript:void(0);" data-skillId="-1">全部</a>
 							</li>
-							<li>
-								<a href="javascript:void(0);" data-skillId="1">头部</a>
-							</li>
+                            {% for i in result.skills %}
+                            <li>
+                                <a href="javascript:void(0);" data-skillId="{{i.id}}">{{i.name}}</a>
+                            </li>
+                            {% endfor %}
+
 							<li>
 								<a href="javascript:void(0);" data-skillId="2">肿瘤</a>
 							</li>
@@ -43,12 +46,11 @@
 							<li class="active">
 								<a href="javascript:void(0);" data-hospitalId="-1">全部</a>
 							</li>
-							<li>
-								<a href="javascript:void(0);" data-hospitalId="1">西京医院</a>
-							</li>
-							<li>
-								<a href="javascript:void(0);" data-hospitalId="2">上海瑞金医院</a>
-							</li>
+                            {% for i in result.hospitals %}
+                            <li>
+                                <a href="javascript:void(0);" data-hospitalId="{{i.id}}">{{i.name}}</a>
+                            </li>
+                            {% endfor %}
 						</ul>
 					</td>
 				</tr>

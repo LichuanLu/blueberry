@@ -12,17 +12,18 @@
                           <label class="" for="">所属医院：</label>
                           <select name="hospitalId" class=>
                             <option value="0">不限</option>
-                            <option value="1">北京301医院</option>
-                            <option value="2">西安西京医院</option>
-
+                              {% for i in result.hospitals %}
+                              <option value="{{i.id}}">{{i.name}}</option>
+                              {% endfor %}
                           </select>  
                         </div>
                         <div class="form-group">
                           <label class="" for="">擅长科目：</label>
                           <select name="sectionId">
                             <option value="0">不限</option>
-                            <option value="1">骨科</option>
-                            <option value="2">肿瘤</option>
+                              {% for i in result.skills %}
+                              <option value="{{i.id}}">{{i.name}}</option>
+                              {% endfor %}
                           </select>                        
                         </div>
                         <div class="form-group">

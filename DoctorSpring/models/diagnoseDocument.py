@@ -408,7 +408,7 @@ class File(Base):
     }
 
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
-    type = sa.Column(sa.Integer)
+    type = sa.Column(sa.Integer) # 1.dicom 2.诊断书
     status=sa.Column(sa.Integer)
     url=sa.Column(sa.String(128))
     pathologyId=sa.Column(sa.Integer)

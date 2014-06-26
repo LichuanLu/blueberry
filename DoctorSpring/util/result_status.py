@@ -17,3 +17,7 @@ NO_DATA=ResultStatus(5,'no data')
 LOGIN_CHECK_FARLURE=ResultStatus(6,"login parameter error")
 LOGIN_CHECK_SUCCESS=ResultStatus(7,"login success")
 PARAM_ERROR=ResultStatus(8,"paramter error")
+
+
+
+
