@@ -304,11 +304,12 @@ def setThanksNoteDetail(thanksNoteDicts):
                 if user.imagePath:
                     thanksNoteDict["avatarUrl"] = user.imagePath
 
-def get_doctors_dict(doctors, pageno=1):
+def get_doctors_dict(doctors, pageno=1, count=1):
     if doctors is None:
         return
     result_Dict = {}
     result_Dict['currentPage'] = pageno
+    result_Dict['pageNumber'] = count
     result = []
     for doctor in doctors:
         doctorDict = get_doctor(doctor)

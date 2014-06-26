@@ -25,17 +25,13 @@
 					<td>
 						<ul id="skill-wrapper" class="filters">
 							<li class="active">
-								<a href="javascript:void(0);" data-skillId="-1">全部</a>
+								<a href="javascript:void(0);" data-skillId="0">全部</a>
 							</li>
                             {% for i in result.skills %}
                             <li>
                                 <a href="javascript:void(0);" data-skillId="{{i.id}}">{{i.name}}</a>
                             </li>
                             {% endfor %}
-
-							<li>
-								<a href="javascript:void(0);" data-skillId="2">肿瘤</a>
-							</li>
 						</ul>
 					</td>
 				</tr>
@@ -44,7 +40,7 @@
 					<td>
 						<ul id="hospital-wrapper" class="filters">
 							<li class="active">
-								<a href="javascript:void(0);" data-hospitalId="-1">全部</a>
+								<a href="javascript:void(0);" data-hospitalId="0">全部</a>
 							</li>
                             {% for i in result.hospitals %}
                             <li>
