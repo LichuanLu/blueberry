@@ -28,6 +28,9 @@
 
     <link rel="stylesheet" type="text/css" href="/static/stylesheet/atc/loginpage.css">
     <link rel="stylesheet" type="text/css" href="/static/stylesheet/atc/hospital-user.css">
+    <link rel="stylesheet" type="text/css" href="/static/stylesheet/atc/errorpage.css">
+
+    <link rel="stylesheet" type="text/css" href="/static/stylesheet/atc/help.css">
 
 
 
@@ -45,6 +48,8 @@
         <link rel="stylesheet" href="/static/stylesheet/lib/jquery.fileupload-ui-noscript.css">
     </noscript>
     <link href="/static/stylesheet/lib/bootstrap-multiselect.css" rel="stylesheet">
+    <link href="/static/stylesheet/lib/ladda-themeless.min.css" rel="stylesheet">
+
     <!-- setup product end-->
 
     

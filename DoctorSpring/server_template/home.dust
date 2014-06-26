@@ -8,19 +8,19 @@
           	<!-- Indicators -->
             <ol class="carousel-indicators">
               <li data-target="#homeCarousel" data-slide-to="0" class="active"></li>
-              <li data-target="#homeCarousel" data-slide-to="1"></li>
-              <li data-target="#homeCarousel" data-slide-to="2"></li>
+             <!--  <li data-target="#homeCarousel" data-slide-to="1"></li>
+              <li data-target="#homeCarousel" data-slide-to="2"></li> -->
             </ol>
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
               <div class="item active">
                 <img src="/static/assets/image/carousel/slide-1.png" alt="">
                 <div class="carousel-caption">
-                  <h3>Thumbnail label</h3>
-                  <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec.</p>
+                  <h3>三甲医院影像科主任医师</h3>
+                  <p>上传影像文件，影像科医师诊断并审核。</p>
                 </div>
               </div>
-              <div class="item">
+            <!--   <div class="item">
                 <img src="/static/assets/image/carousel/slide-2.png" alt="">
                 <div class="carousel-caption">
                   <h3>Thumbnail label</h3>
@@ -33,7 +33,7 @@
                   <h3>Thumbnail label</h3>
                   <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec.</p>
                 </div>
-              </div>
+              </div> -->
             </div>
             <!-- Controls -->
             <a class="left carousel-control fui-arrow-left" href="#myCarousel" data-slide="prev"></a>
@@ -52,8 +52,8 @@
 				</div> -->
 				<!--For unlogin user -->
 				<div class="button-wrapper unlogin">
-					<a class="btn btn-info" type="button">用户注册入口</a>
-					<a class="btn btn-warning" type="button">医生注册入口</a>
+					<a class="btn btn-info" type="button" href="/register/patient">用户注册入口</a>
+					<a class="btn btn-warning" type="button" href="/register/doctor">医生注册入口</a>
 					<div>已经有帐号，直接<a href="#" data-toggle="modal" data-target=".login-modal">登陆</a></div>
 				</div>
 			</div>
@@ -61,8 +61,8 @@
 		
 	</div>
 	<div class="panel-title row">
-		<span>在线诊断的专家</span>
-		<a>全部专家 &gt; </a>
+		<span>权威专家库</span>
+		<a href="/doctor/list">全部专家 &gt; </a>
 	</div>
 	<div class="row rowmarginbottom">
 
@@ -75,9 +75,9 @@
 					任志强
 					<span>副主任医师</span>
 				</h6>
-				<p>西安西京医院</p>
-				<p>擅长泌尿科，肿瘤</p>
-				<a>查看详细信息</a>
+				<p class="hospital">西安西京医院</p>
+				<p class="skill">擅长泌尿科，肿瘤</p>
+				<a href="/doctor/site/1" class="doctor-link">查看详细信息</a>
 			</div>
 		</div>
 		<div class="col-md-8 doctor-slider">
@@ -86,8 +86,10 @@
 					<a href="#">
 						<img src="/static/assets/image/9-small.jpg" alt="image01" />
 						<div class="doctor-des">
-							<h6>任志强 副主任医师</h6>
-							<p>西安西京医院</p>
+							<h6>任志强 <span>副主任医师</span></h6>
+							<p class="hospital">西安西京医院</p>
+							<span style="display:none;" class="skill">擅长泌尿科，肿瘤</span>
+							<span style="display:none;" class="doctor-link">/doctor/site/1</span>
 						</div>
 					</a>
 				</li>
@@ -95,8 +97,10 @@
 					<a href="#">
 						<img src="/static/assets/image/9-small.jpg" alt="image02" />
 						<div class="doctor-des">
-							<h6>任志强 副主任医师</h6>
-							<p>西安西京医院</p>
+							<h6>任志强2 <span>副主任医师2</span></h6>
+							<p class="hospital">西安西京医院2</p>
+							<span style="display:none;" class="skill">擅长泌尿科，肿瘤2</span>
+							<span style="display:none;" class="doctor-link">/doctor/site/12</span>
 						</div>
 					</a>
 				</li>
@@ -104,8 +108,10 @@
 					<a href="#">
 						<img src="/static/assets/image/9-small.jpg" alt="image03" />
 						<div class="doctor-des">
-							<h6>任志强 副主任医师</h6>
-							<p>西安西京医院</p>
+							<h6>任志强3 <span>副主任医师3</span></h6>
+							<p class="hospital">西安西京医院3</p>
+							<span style="display:none;" class="skill">擅长泌尿科，肿瘤3</span>
+							<span style="display:none;" class="doctor-link">/doctor/site/13</span>
 						</div>
 					</a>
 				</li>
@@ -113,38 +119,14 @@
 					<a href="#">
 						<img src="/static/assets/image/9-small.jpg" alt="image04" />
 						<div class="doctor-des">
-							<h6>任志强 副主任医师</h6>
-							<p>西安西京医院</p>
+							<h6>任志强4 <span>副主任医师4</span></h6>
+							<p class="hospital">西安西京医院4</p>
+							<span style="display:none;" class="skill">擅长泌尿科，肿瘤4</span>
+							<span style="display:none;" class="doctor-link">/doctor/site/14</span>
 						</div>
 					</a>
 				</li>
-				<li>
-					<a href="#">
-						<img src="/static/assets/image/9-small.jpg" alt="image05" />
-						<div class="doctor-des">
-							<h6>任志强 副主任医师</h6>
-							<p>西安西京医院</p>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<img src="/static/assets/image/9-small.jpg" alt="image06" />
-						<div class="doctor-des">
-							<h6>任志强 副主任医师</h6>
-							<p>西安西京医院</p>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<img src="/static/assets/image/9-small.jpg" alt="image07" />
-						<div class="doctor-des">
-							<h6>任志强 副主任医师</h6>
-							<p>西安西京医院</p>
-						</div>
-					</a>
-				</li>
+				
 			</ul>
 		</div>
 	</div>
@@ -152,22 +134,60 @@
 		<div class="col-md-8 left-content-wrapper">
 				<div class="row main-border-shadow rowmarginbottom mainpage-poster-wrapper">
 					<div class="col-md-4">
-					<h4 class="title-sep"><span class="glyphicon glyphicon-resize-full"></span> 挑选专家，上传影像</h4>
-					<img src="/static/assets/image/doctortemp1.png" alt="doctortemp1">
+						<h4 class="title-sep"><span class="glyphicon glyphicon-resize-full"></span> 上传影像文件</h4>
+						<img style="width:162px;height:110px;" src="/static/assets/image/temp2.jpg" alt="doctortemp1">
 					</div>
 					<div class="col-md-4">
-					<h4 class="title-sep"><span class="glyphicon glyphicon-ok"></span> 多位专家诊断并审核</h4>
-					<img src="/static/assets/image/doctortemp1.png" alt="doctortemp1">
-					</div>
+						<h4 class="title-sep"><span class="glyphicon glyphicon-ok"></span> 权威专家诊断并审核</h4>
+
+						<img src="/static/assets/image/temp4.jpg" style="width:162px;height:110px;" alt="doctortemp1">
+
+ 					</div>
 					<div class="col-md-4">
-					<h4 class="title-sep"><span class="glyphicon glyphicon-globe"></span> 正规诊断报告及后续服务</h4>
-					<img src="/static/assets/image/doctortemp1.png" alt="doctortemp1">
+					<h4 class="title-sep"><span class="glyphicon glyphicon-globe"></span> 详细诊断报告及后续服务</h4>
+					<img src="/static/assets/image/temp3.jpg" style="width:162px;height:110px;" alt="doctortemp1">
 					</div>
 				</div>
 				<div class="row highlighted-block-inside mainpage-feedback-block main-border-shadow">
 					<h4 class="title-sep">诊断经验分享</h4>
 					<div class="feedback-wrapper sharing-list-wrapper">
 					<ul>
+						<li>
+						<span class="image">
+						<img src="/static/assets/image/young-m.png" alt="young-m">
+						</span>
+						<dl><dt><span>就诊医生：<a target="_blank" href="">秦智勇</a>&nbsp;&nbsp;<a target="_blank" href="">(复旦大学附属华山医院（总院）)</a></span><em>1周前</em></dt><dd>秦教授，你好，我是刘一璨五岁宝宝的父亲，感谢您，感谢您的悉心关注，感谢您。您的医德是全国医生的楷模。能遇见您是我的福分，祝愿您工作顺利，身体... <a target="_blank" href="">详情&gt;</a></dd></dl>
+						</li>
+						<li>
+						<span class="image">
+						<img src="/static/assets/image/young-m.png" alt="young-m">
+						</span>
+						<dl><dt><span>就诊医生：<a target="_blank" href="">秦智勇</a>&nbsp;&nbsp;<a target="_blank" href="">(复旦大学附属华山医院（总院）)</a></span><em>1周前</em></dt><dd>秦教授，你好，我是刘一璨五岁宝宝的父亲，感谢您，感谢您的悉心关注，感谢您。您的医德是全国医生的楷模。能遇见您是我的福分，祝愿您工作顺利，身体... <a target="_blank" href="">详情&gt;</a></dd></dl>
+						</li>
+						<li>
+						<span class="image">
+						<img src="/static/assets/image/young-m.png" alt="young-m">
+						</span>
+						<dl><dt><span>就诊医生：<a target="_blank" href="">秦智勇</a>&nbsp;&nbsp;<a target="_blank" href="">(复旦大学附属华山医院（总院）)</a></span><em>1周前</em></dt><dd>秦教授，你好，我是刘一璨五岁宝宝的父亲，感谢您，感谢您的悉心关注，感谢您。您的医德是全国医生的楷模。能遇见您是我的福分，祝愿您工作顺利，身体... <a target="_blank" href="">详情&gt;</a></dd></dl>
+						</li>
+						<li>
+						<span class="image">
+						<img src="/static/assets/image/young-m.png" alt="young-m">
+						</span>
+						<dl><dt><span>就诊医生：<a target="_blank" href="">秦智勇</a>&nbsp;&nbsp;<a target="_blank" href="">(复旦大学附属华山医院（总院）)</a></span><em>1周前</em></dt><dd>秦教授，你好，我是刘一璨五岁宝宝的父亲，感谢您，感谢您的悉心关注，感谢您。您的医德是全国医生的楷模。能遇见您是我的福分，祝愿您工作顺利，身体... <a target="_blank" href="">详情&gt;</a></dd></dl>
+						</li>
+						<li>
+						<span class="image">
+						<img src="/static/assets/image/young-m.png" alt="young-m">
+						</span>
+						<dl><dt><span>就诊医生：<a target="_blank" href="">秦智勇</a>&nbsp;&nbsp;<a target="_blank" href="">(复旦大学附属华山医院（总院）)</a></span><em>1周前</em></dt><dd>秦教授，你好，我是刘一璨五岁宝宝的父亲，感谢您，感谢您的悉心关注，感谢您。您的医德是全国医生的楷模。能遇见您是我的福分，祝愿您工作顺利，身体... <a target="_blank" href="">详情&gt;</a></dd></dl>
+						</li>
+						<li>
+						<span class="image">
+						<img src="/static/assets/image/young-m.png" alt="young-m">
+						</span>
+						<dl><dt><span>就诊医生：<a target="_blank" href="">秦智勇</a>&nbsp;&nbsp;<a target="_blank" href="">(复旦大学附属华山医院（总院）)</a></span><em>1周前</em></dt><dd>秦教授，你好，我是刘一璨五岁宝宝的父亲，感谢您，感谢您的悉心关注，感谢您。您的医德是全国医生的楷模。能遇见您是我的福分，祝愿您工作顺利，身体... <a target="_blank" href="">详情&gt;</a></dd></dl>
+						</li>
 						<li>
 						<span class="image">
 						<img src="/static/assets/image/young-m.png" alt="young-m">
@@ -195,12 +215,42 @@
 				<h4 class="title-sep">网站动态</h4>
 				<div class="action-wrap">
 				<ul>
-				<li>
-				<a href="#" target="_blank">[西安]西京医院与本网站合作.</a>
-				</li>
-				<li>
-				<a href="#" target="_blank">[专家]李效力主任医生与本网站合作.</a>
-				</li>
+					<li>
+						<a href="#" target="_blank">[西安]西京医院与本网站合作1.</a>
+					</li>
+					<li>
+						<a href="#" target="_blank">[专家]李效力主任医生与本网站合作2.</a>
+					</li>
+					<li>
+						<a href="#" target="_blank">[西安]西京医院与本网站合作3.</a>
+					</li>
+					<li>
+						<a href="#" target="_blank">[专家]李效力主任医生与本网站合作4.</a>
+					</li>
+					<li>
+						<a href="#" target="_blank">[西安]西京医院与本网站合作.</a>
+					</li>
+					<li>
+						<a href="#" target="_blank">[专家]李效力主任医生与本网站合作.</a>
+					</li>
+					<li>
+						<a href="#" target="_blank">[西安]西京医院与本网站合作.</a>
+					</li>
+					<li>
+						<a href="#" target="_blank">[专家]李效力主任医生与本网站合作.</a>
+					</li>
+					<li>
+						<a href="#" target="_blank">[西安]西京医院与本网站合作.</a>
+					</li>
+					<li>
+						<a href="#" target="_blank">[专家]李效力主任医生与本网站合作9.</a>
+					</li>
+					<li>
+						<a href="#" target="_blank">[西安]西京医院与本网站合作10.</a>
+					</li>
+					<li>
+						<a href="#" target="_blank">[专家]李效力主任医生与本网站合作.</a>
+					</li>
 				</ul>
 				</div>
 			</div>
