@@ -74,21 +74,19 @@ class Doctor(Base):
             join(Skill, Skill.id == Doctor2Skill.skillId). \
             filter(User.type == UserStatus.doctor, User.status == ModelStatus.Normal,
                    Doctor.status == ModelStatus.Normal)
-
-         if hospitalId != 0:
+         if int(hospitalId) != 0:
             query = query.filter(Doctor.hospitalId == hospitalId)
 
-         if sectionId != 0:
-            query = query.filter(Doctor.sectionId == sectionId)
+         if int(sectionId) != 0:
+            query = query.filter(Doctor2Skill.skillId == sectionId)
 
          if doctorname is not '':
             query = query.filter(Doctor.username == doctorname or Doctor.name == doctorname)
-
-         if pagger is not None:
-            query = query.offset(pagger.count).limit(pagger.pageSize).all()
-
          if(recommended):
-             return query.first()
+            return query.first()
+         else:
+            if pagger is not None:
+                query = query.offset(pagger.count).limit(pagger.pageSize).all()
 
          return query
 
@@ -145,6 +143,10 @@ class Skill(Base):
             session.add(skill)
             session.commit()
             session.flush()
+
+    @classmethod
+    def getSkills(cls):
+        return session.query(Skill).filter(Skill.status==ModelStatus.Normal).all()
 
 class Department(Base):
     __tablename__ = 'department'

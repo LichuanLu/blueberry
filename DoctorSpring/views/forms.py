@@ -1,28 +1,17 @@
 # coding: utf-8
 __author__ = 'Jeremy'
-from wtforms import Form, TextField, PasswordField, DateField, IntegerField, SelectField, BooleanField
-from wtforms.validators import Required, Email, EqualTo, Length
 from DoctorSpring.util.result_status import *
 from DoctorSpring.models import User, Patient, Doctor ,Diagnose
 import string
 
-class RegisterForm(Form):
-    name = TextField('Username', validators=[Required(), Length(min=3, max=25)])
-    #email = TextField('Email', validators=[Required(), Length(min=6, max=40)])
-    password = PasswordField('Password',
-                             validators=[Required(), Length(min=6, max=40)])
-    # confirm = PasswordField(
-    #     'Repeat Password',
-    #     [Required(), EqualTo('password', message='Passwords must match')])
-
-class DiagnoseForm1(Form):
+class DiagnoseForm1(object):
     patientid = None
     patientname = None
     patientsex = None
     birthdate = None
     identitynumber = None
     phonenumber = None
-    location = None
+    locationId = None
     def __init__(self, args):
         self.patientid = args.get('patientId')
         self.patientname = args.get('patientname')
@@ -30,7 +19,7 @@ class DiagnoseForm1(Form):
         self.birthdate = args.get('birthdate')
         self.identitynumber = args.get('identitynumber')
         self.phonenumber = args.get('phonenumber')
-        self.location = args.get('location')
+        self.locationId = args.get('locationId')
     def validate(self):
         try:
             if self.patientid is not None:
@@ -50,14 +39,14 @@ class DiagnoseForm1(Form):
             if self.phonenumber is None:
                 failure = ResultStatus(FAILURE.status, "请填写手机号码")
                 return failure
-            if self.location is None:
+            if self.locationId is None:
                 failure = ResultStatus(FAILURE.status, "请选择所在地")
                 return failure
         except Exception, e:
             return FAILURE
         return SUCCESS
 
-class DiagnoseForm3(Form):
+class DiagnoseForm3(object):
     doctorId = None
     def __init__(self, args):
         self.doctorId = args.get('doctorId')
@@ -70,13 +59,13 @@ class DiagnoseForm3(Form):
             return FAILURE
         return SUCCESS
 
-class DiagnoseForm2(Form):
+class DiagnoseForm2(object):
     # patientlocation=1&patientlocation=2&dicomtype=1&fileurl=http%3A%2F%2F127.0.0.1%3A5000%2Fstatic%2Ftmp%2Flogin.html
     patientlocation = None
     dicomtype = None
     fileurl = None
     def __init__(self, args):
-        self.patientlocation = args.get('patientlocation')
+        self.patientlocation = args.getlist('patientlocation')
         self.dicomtype = int(args.get('dicomtype'))
         self.fileurl = args.get('fileurl')
     def validate(self):
@@ -94,26 +83,26 @@ class DiagnoseForm2(Form):
             return FAILURE
         return SUCCESS
 
-class DiagnoseForm4(Form):
+class DiagnoseForm4(object):
     # diagnoseHistory=zzzzzzz&illnessHistory=%E5%8F%91%E7%9F%AD%E5%8F%91%E7%9F%AD%E5%8F%91%E6%88%91%E8%84%9A%E6%89%8B%E6%9E%B6%E6%88%91%E5%8F%AB%E6%88%91%E9%87%91%E9%A2%9D%E5%93%A6%E6%94%BE%E5%81%87%E6%88%91%E5%B0%B1
-    diagnoseHistory = None
+    hospitalId = None
     illnessHistory = None
     fileurl = None
     def __init__(self, args):
         self.diagnoseHistory = args.get('diagnoseHistory')
         self.illnessHistory = args.get('illnessHistory')
-        self.fileurl = args.get('fileurl')
+        self.fileurl = args.getlist('fileurl')
     def validate(self):
         try:
-            if self.patientlocation is None:
-                failure = ResultStatus(FAILURE.status, "请选择就诊部位")
+            if self.hospitalId is None:
+                failure = ResultStatus(FAILURE.status, "请选择就诊医院")
                 return failure
-            if self.dicomtype is None:
-                failure = ResultStatus(FAILURE.status, "请选择影像类型")
+            if self.illnessHistory is None:
+                failure = ResultStatus(FAILURE.status, "请填写病史信息")
                 return failure
-                # if self.fileurl is None:
-                #     failure = ResultStatus(FAILURE.status, "请上传有效的影音文件")
-                #     return failure
+            if self.fileurl is None:
+                failure = ResultStatus(FAILURE.status, "请上传有效的诊断书")
+                return failure
         except Exception, e:
             return FAILURE
         return SUCCESS
@@ -159,12 +148,7 @@ class CommentsForm(object):
             return FAILURE
         return SUCCESS
 
-class MessageForm(Form):
-    senderId = IntegerField('senderId', validators=[Required()])
-    receiverId=IntegerField('receiverId', validators=[Required()])
-    content = TextField('content', validators=[Required()])
-    title = TextField('title')
-    type=IntegerField('type', validators=[Required()])
+
 
 class ConsultForm(object):
     userId =None
@@ -197,7 +181,7 @@ class LoginForm(object):
     remember_me = None
     def __init__(self, args):
         self.username=args.get('name')
-        self.password=args.get('pass')
+        self.password=args.get('password')
         #self.remember_me=args.get('remember_me')
     def validate(self):
         try:
@@ -271,7 +255,6 @@ class RegisterFormPatent(object):
         except Exception, e:
             return FAILURE
         return SUCCESS
-
 
 
 class UserFavortiesForm(object):
@@ -392,26 +375,33 @@ class ThanksNoteForm(object):
         except Exception,e:
             return FAILURE
         return SUCCESS
-        return SUCCESS
 
-class DoctorList(Form):
+class DoctorList(object):
     # /doctors/list.json?hospitalId=1&sectionId=0&doctorname=ddd&pageNumber=1&pageSize=6
     hospitalId = None
     sectionId = None
     doctorname = None
     pageNumber = None
     pageSize = None
-    def __init__(self, args):
-        self.hospitalId = args.get('hospitalId')
-        self.sectionId = args.get('sectionId')
-        self.doctorname = args.get('doctorname')
-        self.pageNumber = args.get('pageNumber')
-        self.pageSize = args.get('pageSize')
+    def __init__(self, request):
+        if len(request.form) > 0:
+            args = request.form
+            self.hospitalId = args.get('hospitalId')
+            self.sectionId = args.get('sectionId')
+            self.doctorname = args.get('doctorname')
+            self.pageNumber = args.get('pageNumber')
+            self.pageSize = args.get('pageSize')
+        else:
+            args = request.args
+            self.hospitalId = args['hospitalId']
+            self.sectionId = request.args['skillId']
+            self.pageNumber = request.args['pageNumber']
+            self.pageSize = request.args['pageSize']
     def validate(self):
         if self.hospitalId is None:
-            self.hospitalId = 0
+            self.hospitalId = -1
         if self.sectionId is None:
-            self.sectionId = 0
+            self.sectionId = -1
         if self.doctorname is None:
             self.doctorname = ''
         if self.pageNumber is None:
