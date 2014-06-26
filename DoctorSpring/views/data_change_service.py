@@ -308,7 +308,7 @@ def get_doctors_dict(doctors, pageno=1):
     if doctors is None:
         return
     result_Dict = {}
-    result_Dict['pageNumber'] = pageno
+    result_Dict['currentPage'] = pageno
     result = []
     for doctor in doctors:
         doctorDict = get_doctor(doctor)
