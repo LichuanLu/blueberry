@@ -1,7 +1,0 @@
-<li style="display: list-item;">
-	<span>
-		<a href="/doctor/{uid}">{name}</a>
-	</span>
-	<span class="long">{content}</span>
-	<a href="javascript:void(0)" class="del" data-id="{id}" style="">取消收藏</a>
-</li>

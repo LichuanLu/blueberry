@@ -7,7 +7,7 @@ import data_change_service as dataChangeService
 from flask import request, redirect, url_for, Blueprint, jsonify, g, send_from_directory, session
 from flask import abort, render_template, flash
 from flask_login import login_required
-from DoctorSpring.models import Doctor, Hospital, Skill, User, Department, Patient, Diagnose, Pathology, PathologyPostion, File, DiagnoseLog
+from DoctorSpring.models import Doctor, Hospital, Skill, User, Department, Patient, Diagnose, Pathology, PathologyPostion, File, DiagnoseLog, Comment,UserRole,Message
 from database import db_session
 from werkzeug.utils import secure_filename
 from forms import DiagnoseForm1, DoctorList, DiagnoseForm2, DiagnoseForm3, DiagnoseForm4
@@ -22,17 +22,28 @@ front = Blueprint('front', __name__)
 @front.route('/', methods=['GET', 'POST'])
 @front.route('/homepage', methods=['GET', 'POST'])
 def homepage():
-    data = {}
+    resultData={}
     pager = Pagger(1, 6)
     doctors = Doctor.get_doctor_list(0, 0, "", pager)
     doctorsDict = dataChangeService.get_doctors_dict(doctors)
-    data['doctorlist'] = doctorsDict
+    resultData['doctorlist'] = doctorsDict
     doctor = Doctor.get_doctor_list(0, 0, "", pager, True)
     if doctor is not None:
         doctorDict = dataChangeService.get_doctor(doctor)
-    data['doctor'] = doctorDict
-
-    return render_template("home.html", result=data)
+    resultData['doctor'] = doctorDict
+    
+    diagnoseComments=Comment.getRecentComments()
+    if diagnoseComments  and  len(diagnoseComments)>0:
+        diagnoseCommentsDict=object2dict.objects2dicts(diagnoseComments)
+        dataChangeService.setDiagnoseCommentsDetailInfo(diagnoseCommentsDict)
+        resultData['comments']=diagnoseCommentsDict
+    else:
+        resultData['comments']=None
+    if session.has_key('userId'):
+        userId=session['userId']
+        messageCount=Message.getMessageCountByReceiver(userId)
+        resultData['messageCount']=messageCount
+    return render_template("home.html", data=resultData)
 
 @front.route('/applyDiagnose', methods=['GET', 'POST'])
 def applyDiagnose():
@@ -154,37 +165,33 @@ def applyDiagnoseForm(formid):
     else:
         return jsonify(ResultStatus(FAILURE.status, "错误的表单号").__dict__)
 
+UPLOAD_FOLDER = 'DoctorSpring/static/tmp/'
+ALLOWED_EXTENSIONS = set(['doc', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'html', 'zip', 'rar'])
 
 @front.route('/dicomfile/upload', methods=['POST'])
 @login_required
 def dicomfileUpload():
-
-    diagnoseId = 1
-
     try:
-
         if request.method == 'POST':
             file_infos = []
             files = request.files
             for key, file in files.iteritems():
                 if file and allowed_file(file.filename):
-                    filename = secure_filename(file.filename)
-                    # file_url = oss_util.uploadFile(diagnoseId, filename)
-                    file_size = 1024
-                    file_url = 'test/test/' + filename
-                    file_infos.append(dict(name=filename,
-                                           size=file_size,
-                                           url=file_url))
+                    from DoctorSpring.util.oss_util import uploadFileFromFileStorage
+                    uploadFileFromFileStorage(4,'cc',file,'',{})
+                    file_infos.append(dict(name='cc',
+                                           size=11,
+                                           url='ccc'))
                 else:
-                    return jsonify(ResultStatus(FAILURE.status, "上传文件后缀名不对").__dict__)
+                    return jsonify({'code': 1,  'message' : "error", 'data': ''})
             return jsonify(files=file_infos)
-    except:
-        return jsonify(ResultStatus(FAILURE.status, "上传失败").__dict__)
+    except Exception,e:
+        print e.message
+        return jsonify({'code': 1,  'message' : "error", 'data': ''})
 
 @front.route('/patientreport/upload', methods=['POST'])
 @login_required
 def patientReportUpload():
-    diagnoseId = 'test'
     try:
         if request.method == 'POST':
             file_infos = []
@@ -192,29 +199,36 @@ def patientReportUpload():
             for key, file in files.iteritems():
                 if file and allowed_file(file.filename):
                     filename = secure_filename(file.filename)
-                    # file_url = oss_util.uploadFile(diagnoseId, filename)
-                    file_size = 1024
-                    file_url = 'test/test/' + filename
+                    file.save(os.path.join(UPLOAD_FOLDER, filename))
+                    file_size = os.path.getsize(os.path.join(UPLOAD_FOLDER, filename))
+                    file_url = "/static/patientreport/"+filename
                     file_infos.append(dict(name=filename,
                                            size=file_size,
                                            url=file_url))
                 else:
-                    return jsonify(ResultStatus(FAILURE.status, "上传文件后缀名不对").__dict__)
+                    return jsonify({'code': 1,  'message' : "error", 'data': ''})
             return jsonify(files=file_infos)
     except:
-        return jsonify(ResultStatus(FAILURE.status, "上传失败").__dict__)
+        raise
+        return jsonify({'code': 1,  'message' : "error", 'data': ''})
 
-ALLOWED_EXTENSIONS = set(['doc', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'html', 'zip', 'rar'])
+
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
+@front.route('/uploads/<filename>')
+@login_required
+def uploaded_file(filename):
+    return send_from_directory(UPLOAD_FOLDER,
+                               filename)
 
 
 
 @front.route('/doctors/list.json')
 # /doctors/list.json?hospitalId=1&sectionId=0&doctorname=ddd&pageNumber=1&pageSize=6
 def doctor_list_json():
-    form = DoctorList(request)
+    form = DoctorList(request.form)
     form_result = form.validate()
     if form_result.status == rs.SUCCESS.status:
         pager = Pagger(form.pageNumber, form.pageSize)
@@ -224,7 +238,7 @@ def doctor_list_json():
         doctorsDict = dataChangeService.get_doctors_dict(doctors, form.pageNumber)
         resultStatus = rs.ResultStatus(rs.SUCCESS.status, rs.SUCCESS.msg, doctorsDict)
         return jsonify(resultStatus.__dict__, ensure_ascii=False)
-    return jsonify(FAILURE)
+
 
 @front.route('/doctor/recommanded')
 def doctor_rec():
@@ -238,43 +252,57 @@ def doctor_rec():
 
 @front.route('/doctor/list')
 def doctor_list():
-    result = {}
-    hospitals = Hospital.getAllHospitals(db_session)
-    hospitalsDict = object2dict.objects2dicts(hospitals)
-    result['hospitals'] = hospitalsDict
-
-    skills = Skill.getSkills()
-    skillsDict = object2dict.objects2dicts(skills)
-    result['skills'] = skillsDict
-    return render_template("doctorList.html", result=result)
+    return render_template("doctorList.html")
 
 
 @front.route('/patient/profile.json')
 def patient_profile():
-    if hasattr(request.args, 'patientId'):
-        patientId = request.args['patientId']
-        patient = Patient.get_patient_by_id(patientId)
-        resultStatus = rs.ResultStatus(rs.SUCCESS.status, rs.SUCCESS.msg, patient.__dict__)
-        if patient is None:
-            return jsonify(resultStatus.__dict__)
-        resultStatus.data = dataChangeService.get_patient(patient)
+    patientId = request.args['patientId']
+    patient = Patient.get_patient_by_id(patientId)
+    resultStatus = rs.ResultStatus(rs.SUCCESS.status, rs.SUCCESS.msg, patient.__dict__)
+    if patient is None:
         return jsonify(resultStatus.__dict__)
-    return jsonify(SUCCESS.__dict__)
+    resultStatus.data = dataChangeService.get_patient(patient)
+    return jsonify(resultStatus.__dict__)
 
 
 @front.route('/pathlogy/list.json')
 def pathlogy_list():
-    if hasattr(request.args, 'patientId'):
-        patientId = request.args['patientId']
-        pathlogys = Pathology.getByPatientId(patientId)
-        if pathlogys is None or len(pathlogys) < 1:
-            return jsonify(rs.SUCCESS.__dict__, ensure_ascii=False)
-        patientsDict = object2dict.objects2dicts(pathlogys)
-        resultStatus = rs.ResultStatus(rs.SUCCESS.status, rs.SUCCESS.msg, patientsDict)
-        return jsonify(resultStatus.__dict__, ensure_ascii=False)
-    return jsonify(SUCCESS.__dict__)
+    patientId = request.args['patientId']
+    pathlogys = Pathology.getByPatientId(patientId)
+    if pathlogys is None or len(pathlogys) < 1:
+        return jsonify(rs.SUCCESS.__dict__, ensure_ascii=False)
+    patientsDict = object2dict.objects2dicts(pathlogys)
+    resultStatus = rs.ResultStatus(rs.SUCCESS.status, rs.SUCCESS.msg, patientsDict)
+    return jsonify(resultStatus.__dict__, ensure_ascii=False)
+
 
 @front.route('/pathlogy/dicominfo.json')
 def get_pathology():
     return jsonify(rs.SUCCESS.__dict__, ensure_ascii=False)
+
+
+@front.route('/loginPage', methods=['GET', 'POST'])
+def loginPage():
+    return render_template("loginPage.html")
+
+
+@front.route('/error', methods=['GET', 'POST'])
+def errorPage():
+    return render_template("errorPage.html")
+
+
+@front.route('/userCenter/<int:userId>', methods=['GET', 'POST'])
+def userCenter(userId):
+    userRole=UserRole.getUserRole(db_session,userId)
+    if userRole:
+        if userRole.roleId==constant.RoleId.Admin:
+            return redirect('/admin/fenzhen')
+        if userRole.roleId==constant.RoleId.Doctor:
+            return redirect('/doctorhome')
+        if userRole.roleId==constant.RoleId.HospitalUser:
+            return redirect('/hospital/user')
+        if userRole.roleId==constant.RoleId.Patient:
+            return redirect('/patienthome')
+    return render_template("errorPage.html")
 

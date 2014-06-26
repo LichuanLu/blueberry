@@ -71,6 +71,28 @@ def endterPatientHome():
     # resultDate['diagnoses']=diagnoseDict
     return render_template("patientHome.html",data=resultDate)
 
+@uc.route('/hospital/user',  methods = ['GET', 'POST'])
+def endterHospitalUserHome():
+    userId=session['userId']
+    user=User.getById(userId)
+
+    if user is None:
+        return redirect(url_for('/300'))
+
+    resultDate={}
+    # messageCount=Message.getMessageCountByReceiver(userId)
+    # resultDate['messageCount']=messageCount
+    #
+    # diagnoseCount=Diagnose.getNewDiagnoseCountByUserId(userId)
+    # resultDate['diagnoseCount']=diagnoseCount
+    #
+    # resultDate['user']=user
+    #pager=Pagger(1,20)
+    # diagnoses=Diagnose.getDiagnosesByDoctorId(db_session,doctor.id,pager)
+    # diagnoseDict=dataChangeService.userCenterDiagnoses(diagnoses)
+    # resultDate['diagnoses']=diagnoseDict
+    return render_template("hospitalUser.html",data=resultDate)
+
 
 
 
@@ -171,25 +193,6 @@ def getDiagnoseListByAdmin2():
     return json.dumps(resultDict,ensure_ascii=False)
 
 
-@uc.route('/hospitalUser/diagnose/list/all',  methods = ['GET', 'POST'])
-#@authenticated('admin',constant.RoleId.Admin)
-def getDiagnoseListByHospitalUser():
-
-    userId=session['userId']
-
-    # hostpitalIds=request.args.get('hospitalId')
-    # hostpitalList=UserCenter.getDiagnoseListByAdmin(hostpitalIds)
-    # doctorName=request.args.get('doctorName')
-    # pageNo=request.args.get('pageNo')
-    # pageSize=request.args.get('pageSize')
-    # pager=Pagger(pageNo,pageSize)
-    # diagnoses=Diagnose.getDiagnoseByAdmin2(db_session,hostpitalList,doctorName,pager)
-    # diagnosesDict=dataChangeService.userCenterDiagnoses(diagnoses)
-    #
-    #
-    # resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnosesDict)
-    # resultDict=resultStatus.__dict__
-    # return json.dumps(resultDict,ensure_ascii=False)
 
 @uc.route('/admin/diagnose/list/my',  methods = ['GET', 'POST'])
 @authenticated('admin',constant.RoleId.Admin)
@@ -230,6 +233,64 @@ def getDiagnoseListByAdmin():
     resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnosesDict)
     resultDict=resultStatus.__dict__
     return json.dumps(resultDict,ensure_ascii=False)
+
+
+@uc.route('/hospital/user/list/unfinish',  methods = ['GET', 'POST'])
+#@authenticated('admin',constant.RoleId.Admin)
+def getDiagnoseListByHospitalUser():
+
+     userId=session['userId']
+
+
+     pageNo=request.args.get('pageNumber')
+     pageSize=request.args.get('pageSize')
+     pager=Pagger(pageNo,pageSize)
+     diagnoses=Diagnose.getNeedDealDiagnoseByHospitalUser(db_session,userId,None,pager)
+     diagnosesDict=dataChangeService.userCenterDiagnoses(diagnoses)
+
+
+     resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnosesDict)
+     resultDict=resultStatus.__dict__
+     return json.dumps(resultDict,ensure_ascii=False)
+
+
+@uc.route('/hospital/user/list/all',  methods = ['GET', 'POST'])
+@authenticated('admin',constant.RoleId.Doctor)
+def getDiagnoseListByHospitalUser2():
+
+    userId=session['userId']
+
+    status=request.args.get('status')
+    if status:
+        import string
+        status=string.atoi(status)
+
+    startDateStr=request.args.get('startDate')
+    startDate=None
+    if startDateStr:
+        startDate=datetime.strptime(startDateStr,"%Y-%m-%d")
+    else:
+        startDate=constant.SystemTimeLimiter.startTime
+
+    endDateStr=request.args.get('endDate')
+    endDate=None
+    if endDateStr:
+        endDate=datetime.strptime(endDateStr,"%Y-%m-%d")
+    else:
+        endDate=constant.SystemTimeLimiter.endTime
+
+
+    pageNo=request.args.get('pageNumber')
+    pageSize=request.args.get('pageSize')
+    pager=Pagger(pageNo,pageSize)
+    diagnoses=Diagnose.getDealedDiagnoseByHospitalUser(db_session,userId,status,startDate,endDate,pager)
+    diagnosesDict=dataChangeService.userCenterDiagnoses(diagnoses)
+
+
+    resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnosesDict)
+    resultDict=resultStatus.__dict__
+    return json.dumps(resultDict,ensure_ascii=False)
+
 
 @uc.route('/diagnose/list',  methods = ['GET', 'POST'])
 @authenticated('admin',constant.RoleId.Doctor)
@@ -398,6 +459,13 @@ def addThankNote():
     if formResult.status==rs.SUCCESS.status:
         thanksNote=ThanksNote(userId,form.receiver,form.title,form.content)
         ThanksNote.save(db_session,thanksNote)
+        doctor=Doctor.getByUserId(userId)
+        if doctor:
+            if doctor.thankNoteCount:
+                doctor.thankNoteCount+=1
+            else:
+                doctor.thankNoteCount=1
+            Doctor.save(doctor)
         return json.dumps(formResult.__dict__,ensure_ascii=False)
     return json.dumps(formResult.__dict__,ensure_ascii=False)
 
@@ -423,6 +491,16 @@ def getThanksNotes(userid):
 def testRedirect():
     #return redirect("/pdf")
     #print url_for('user_center.generatorPdf',diagnoseName='ccheng')
+    return redirect(url_for('user_center.generatorPdf',diagnoseId=1))
+
+@uc.route('/acount/admin', methods=['GET','POST'])
+def updateAcountInfo():
+    userId=None
+    if session.has_key('userId'):
+        userId=session['userId']
+    if userId is None:
+        redirect('/loginPage')
+
     return redirect(url_for('user_center.generatorPdf',diagnoseId=1))
 
 

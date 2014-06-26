@@ -38,198 +38,135 @@
             <!-- Controls -->
             <a class="left carousel-control fui-arrow-left" href="#myCarousel" data-slide="prev"></a>
             <a class="right carousel-control fui-arrow-right" href="#myCarousel" data-slide="next"></a>
-        </div>
-    </div>
+          </div>
+		</div>
     <div class="col-md-5 nopadding main-entry-wrapper">
         <div class="banner-right">
             <h4>专业的医生，详细的诊断</h4>
             <p>远程诊断，提交影像数据，多位专家共同诊断</p>
             <!--For login user -->
-            <!-- <div class="button-wrapper login">
+            {% if session['logged_in'] %}
+            <div class="button-wrapper login">
                 <div>您好 李响，欢迎来到易诊断！</div>
                 <a class="btn btn-info first-btn" type="button">进入个人中心</a>
                 <a class="btn btn-success" type="button">马上进行诊断</a>
-            </div> -->
+            </div>
+            {% else %}
             <!--For unlogin user -->
             <div class="button-wrapper unlogin">
                 <a class="btn btn-info" type="button" href="/register/patient">用户注册入口</a>
                 <a class="btn btn-warning" type="button" href="/register/doctor">医生注册入口</a>
                 <div>已经有帐号，直接<a href="#" data-toggle="modal" data-target=".login-modal">登陆</a></div>
             </div>
+            {% endif %}
         </div>
     </div>
-
-</div>
-<div class="panel-title row">
-    <span>权威专家库</span>
-    <a href="/doctor/list">全部专家 &gt; </a>
-</div>
-<div class="row rowmarginbottom">
-
-    <div class="col-md-4 doctor-preview">
-        {% if result.doctor %}
-        <div class="image-preview">
-            <img id="preview" src="{{result.doctor.avatarUrl}}" />
-        </div>
-        <div class="doctor-preview-des">
-
-            <h6>
-                {{result.doctor.doctorname}}
-                <span>{{result.doctor.doctortitle}}</span>
-            </h6>
-            <p class="hospital">{{result.doctor.hospitalname}}</p>
-            <p class="skill">擅长{{result.doctor.skill}}</p>
-            <a href="/doctor/site/{{result.doctor.userId}}" class="doctor-link">查看详细信息</a>
-        </div>
-        {% endif %}
+		
+	</div>
+    <div class="panel-title row">
+        <span>权威专家库</span>
+        <a href="/doctor/list">全部专家 &gt; </a>
     </div>
-    <div class="col-md-8 doctor-slider">
-        <ul id="carousel" class="elastislide-list">
-            {% for i in result.doctorlist.doctor %}
-            <li data-preview="{{i.avatarUrl}}">
-                <a href="#">
-                    <img src="{{i.avatarUrl}}" alt="{{i.doctorname}}" />
-                    <div class="doctor-des">
-                        <h6>{{i.doctorname}} <span>{{i.doctortitle}}</span></h6>
-                        <p class="hospital">{{i.hospitalname}}</p>
-                        <span style="display:none;" class="skill">擅长{{i.skill}}</span>
-                        <span style="display:none;" class="doctor-link">/doctor/site/{{i.id}}</span>
-                    </div>
-                </a>
-            </li>
-            {% endfor %}
+    <div class="row rowmarginbottom">
 
-
-        </ul>
-    </div>
-</div>
-<div class="row main-content-wrapper">
-    <div class="col-md-8 left-content-wrapper">
-        <div class="row main-border-shadow rowmarginbottom mainpage-poster-wrapper">
-            <div class="col-md-4">
-                <h4 class="title-sep"><span class="glyphicon glyphicon-resize-full"></span> 上传影像文件</h4>
-                <img style="width:162px;height:110px;" src="/static/assets/image/temp2.jpg" alt="doctortemp1">
+        <div class="col-md-4 doctor-preview">
+            {% if result.doctor %}
+            <div class="image-preview">
+                <img id="preview" src="{{result.doctor.avatarUrl}}" />
             </div>
-            <div class="col-md-4">
-                <h4 class="title-sep"><span class="glyphicon glyphicon-ok"></span> 权威专家诊断并审核</h4>
+            <div class="doctor-preview-des">
 
-                <img src="/static/assets/image/temp4.jpg" style="width:162px;height:110px;" alt="doctortemp1">
-
+                <h6>
+                    {{result.doctor.doctorname}}
+                    <span>{{result.doctor.doctortitle}}</span>
+                </h6>
+                <p class="hospital">{{result.doctor.hospitalname}}</p>
+                <p class="skill">擅长{{result.doctor.skill}}</p>
+                <a href="/doctor/site/{{result.doctor.userId}}" class="doctor-link">查看详细信息</a>
             </div>
-            <div class="col-md-4">
-                <h4 class="title-sep"><span class="glyphicon glyphicon-globe"></span> 详细诊断报告及后续服务</h4>
-                <img src="/static/assets/image/temp3.jpg" style="width:162px;height:110px;" alt="doctortemp1">
-            </div>
+            {% endif %}
         </div>
-        <div class="row highlighted-block-inside mainpage-feedback-block main-border-shadow">
-            <h4 class="title-sep">诊断经验分享</h4>
-            <div class="feedback-wrapper sharing-list-wrapper">
-                <ul>
-                    <li>
-						<span class="image">
-						<img src="/static/assets/image/young-m.png" alt="young-m">
-						</span>
-                        <dl><dt><span>就诊医生：<a target="_blank" href="">秦智勇</a>&nbsp;&nbsp;<a target="_blank" href="">(复旦大学附属华山医院（总院）)</a></span><em>1周前</em></dt><dd>秦教授，你好，我是刘一璨五岁宝宝的父亲，感谢您，感谢您的悉心关注，感谢您。您的医德是全国医生的楷模。能遇见您是我的福分，祝愿您工作顺利，身体... <a target="_blank" href="">详情&gt;</a></dd></dl>
-                    </li>
-                    <li>
-						<span class="image">
-						<img src="/static/assets/image/young-m.png" alt="young-m">
-						</span>
-                        <dl><dt><span>就诊医生：<a target="_blank" href="">秦智勇</a>&nbsp;&nbsp;<a target="_blank" href="">(复旦大学附属华山医院（总院）)</a></span><em>1周前</em></dt><dd>秦教授，你好，我是刘一璨五岁宝宝的父亲，感谢您，感谢您的悉心关注，感谢您。您的医德是全国医生的楷模。能遇见您是我的福分，祝愿您工作顺利，身体... <a target="_blank" href="">详情&gt;</a></dd></dl>
-                    </li>
-                    <li>
-						<span class="image">
-						<img src="/static/assets/image/young-m.png" alt="young-m">
-						</span>
-                        <dl><dt><span>就诊医生：<a target="_blank" href="">秦智勇</a>&nbsp;&nbsp;<a target="_blank" href="">(复旦大学附属华山医院（总院）)</a></span><em>1周前</em></dt><dd>秦教授，你好，我是刘一璨五岁宝宝的父亲，感谢您，感谢您的悉心关注，感谢您。您的医德是全国医生的楷模。能遇见您是我的福分，祝愿您工作顺利，身体... <a target="_blank" href="">详情&gt;</a></dd></dl>
-                    </li>
-                    <li>
-						<span class="image">
-						<img src="/static/assets/image/young-m.png" alt="young-m">
-						</span>
-                        <dl><dt><span>就诊医生：<a target="_blank" href="">秦智勇</a>&nbsp;&nbsp;<a target="_blank" href="">(复旦大学附属华山医院（总院）)</a></span><em>1周前</em></dt><dd>秦教授，你好，我是刘一璨五岁宝宝的父亲，感谢您，感谢您的悉心关注，感谢您。您的医德是全国医生的楷模。能遇见您是我的福分，祝愿您工作顺利，身体... <a target="_blank" href="">详情&gt;</a></dd></dl>
-                    </li>
-                    <li>
-						<span class="image">
-						<img src="/static/assets/image/young-m.png" alt="young-m">
-						</span>
-                        <dl><dt><span>就诊医生：<a target="_blank" href="">秦智勇</a>&nbsp;&nbsp;<a target="_blank" href="">(复旦大学附属华山医院（总院）)</a></span><em>1周前</em></dt><dd>秦教授，你好，我是刘一璨五岁宝宝的父亲，感谢您，感谢您的悉心关注，感谢您。您的医德是全国医生的楷模。能遇见您是我的福分，祝愿您工作顺利，身体... <a target="_blank" href="">详情&gt;</a></dd></dl>
-                    </li>
-                    <li>
-						<span class="image">
-						<img src="/static/assets/image/young-m.png" alt="young-m">
-						</span>
-                        <dl><dt><span>就诊医生：<a target="_blank" href="">秦智勇</a>&nbsp;&nbsp;<a target="_blank" href="">(复旦大学附属华山医院（总院）)</a></span><em>1周前</em></dt><dd>秦教授，你好，我是刘一璨五岁宝宝的父亲，感谢您，感谢您的悉心关注，感谢您。您的医德是全国医生的楷模。能遇见您是我的福分，祝愿您工作顺利，身体... <a target="_blank" href="">详情&gt;</a></dd></dl>
-                    </li>
-                    <li>
-						<span class="image">
-						<img src="/static/assets/image/young-m.png" alt="young-m">
-						</span>
-                        <dl><dt><span>就诊医生：<a target="_blank" href="">秦智勇</a>&nbsp;&nbsp;<a target="_blank" href="">(复旦大学附属华山医院（总院）)</a></span><em>1周前</em></dt><dd>秦教授，你好，我是刘一璨五岁宝宝的父亲，感谢您，感谢您的悉心关注，感谢您。您的医德是全国医生的楷模。能遇见您是我的福分，祝愿您工作顺利，身体... <a target="_blank" href="">详情&gt;</a></dd></dl>
-                    </li>
-                    <li>
-						<span class="image">
-						<img src="/static/assets/image/young-m.png" alt="young-m">
-						</span>
-                        <dl><dt><span>就诊医生：<a target="_blank" href="">秦智勇</a>&nbsp;&nbsp;<a target="_blank" href="">(复旦大学附属华山医院（总院）)</a></span><em>1周前</em></dt><dd>秦教授，你好，我是刘一璨五岁宝宝的父亲，感谢您，感谢您的悉心关注，感谢您。您的医德是全国医生的楷模。能遇见您是我的福分，祝愿您工作顺利，身体... <a target="_blank" href="">详情&gt;</a></dd></dl>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <div class="col-md-8 doctor-slider">
+            <ul id="carousel" class="elastislide-list">
+                {% for i in result.doctorlist.doctor %}
+                <li data-preview="{{i.avatarUrl}}">
+                    <a href="#">
+                        <img src="{{i.avatarUrl}}" alt="{{i.doctorname}}" />
+                        <div class="doctor-des">
+                            <h6>{{i.doctorname}} <span>{{i.doctortitle}}</span></h6>
+                            <p class="hospital">{{i.hospitalname}}</p>
+                            <span style="display:none;" class="skill">擅长{{i.skill}}</span>
+                            <span style="display:none;" class="doctor-link">/doctor/site/{{i.id}}</span>
+                        </div>
+                    </a>
+                </li>
+                {% endfor %}
 
-    </div>
-    <div class="col-md-4 right-content-wrapper no-right-padding">
-        <div class="highlighted-block-inside website-main-news-block main-border-shadow rowmarginbottom">
-            <h4 class="title-sep">网站专题<a href="#" title="more" class="more-link">更多&gt;</a></h4>
-            <img src="/static/assets/image/doctortemp2.png" alt="doctortemp2">
-            <img src="/static/assets/image/doctortemp2.png" alt="doctortemp2">
-        </div>
-        <div class="highlighted-block-inside website-actions-block main-border-shadow">
-            <h4 class="title-sep">网站动态</h4>
-            <div class="action-wrap">
-                <ul>
-                    <li>
-                        <a href="#" target="_blank">[西安]西京医院与本网站合作1.</a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank">[专家]李效力主任医生与本网站合作2.</a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank">[西安]西京医院与本网站合作3.</a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank">[专家]李效力主任医生与本网站合作4.</a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank">[西安]西京医院与本网站合作.</a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank">[专家]李效力主任医生与本网站合作.</a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank">[西安]西京医院与本网站合作.</a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank">[专家]李效力主任医生与本网站合作.</a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank">[西安]西京医院与本网站合作.</a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank">[专家]李效力主任医生与本网站合作9.</a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank">[西安]西京医院与本网站合作10.</a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank">[专家]李效力主任医生与本网站合作.</a>
-                    </li>
-                </ul>
-            </div>
+
+            </ul>
         </div>
     </div>
+	<div class="row main-content-wrapper">
+		<div class="col-md-8 left-content-wrapper">
+				<div class="row main-border-shadow rowmarginbottom mainpage-poster-wrapper">
+					<div class="col-md-4">
+					<h4 class="title-sep"><span class="glyphicon glyphicon-resize-full"></span> 挑选专家，上传影像</h4>
+					<img src="/static/assets/image/doctortemp1.png" alt="doctortemp1">
+					</div>
+					<div class="col-md-4">
+					<h4 class="title-sep"><span class="glyphicon glyphicon-ok"></span> 多位专家诊断并审核</h4>
+					<img src="/static/assets/image/doctortemp1.png" alt="doctortemp1">
+					</div>
+					<div class="col-md-4">
+					<h4 class="title-sep"><span class="glyphicon glyphicon-globe"></span> 正规诊断报告及后续服务</h4>
+					<img src="/static/assets/image/doctortemp1.png" alt="doctortemp1">
+					</div>
+				</div>
+            <div class="row highlighted-block-inside mainpage-feedback-block main-border-shadow">
+                <h4 class="title-sep">诊断经验分享</h4>
+                <div class="feedback-wrapper sharing-list-wrapper">
+                    <ul>
+                        {% if data.comments %}
+                        {% for comment in data.comments %}
+                        <li>
+                            <span class="image">
+                            <img src="{{comment.avatar}}" alt="young-m">
+                            </span>
+                            <dl><dt><span>就诊医生：<a target="_blank" href="">{{comment.receiverName}}</a>&nbsp;&nbsp;<a >({{comment.hospitalName}})</a></span><em>{{comment.createTime}}</em></dt><dd>{{comment.content}} <a target="_blank" href="">详情&gt;</a></dd></dl>
+                        </li>
 
-</div>
+
+
+                        {% endfor %}
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+			
+		</div>
+		<div class="col-md-4 right-content-wrapper no-right-padding">
+			<div class="highlighted-block-inside website-main-news-block main-border-shadow rowmarginbottom">
+				<h4 class="title-sep">网站专题<a href="#" title="more" class="more-link">更多&gt;</a></h4>
+				<img src="/static/assets/image/doctortemp2.png" alt="doctortemp2">
+				<img src="/static/assets/image/doctortemp2.png" alt="doctortemp2">
+			</div>
+			<div class="highlighted-block-inside website-actions-block main-border-shadow">
+				<h4 class="title-sep">网站动态</h4>
+				<div class="action-wrap">
+				<ul>
+				<li>
+				<a href="#" target="_blank">[西安]西京医院与本网站合作.</a>
+				</li>
+				<li>
+				<a href="#" target="_blank">[专家]李效力主任医生与本网站合作.</a>
+				</li>
+				</ul>
+				</div>
+			</div>
+		</div>
+		
+	</div>
 </div>
 {% endblock contentHolder %}
 {% block ModalHolder %}

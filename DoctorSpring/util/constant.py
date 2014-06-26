@@ -2,6 +2,7 @@
 __author__ = 'chengc017'
 from datetime import  datetime
 import config
+import string
 class ModelStatus(object):
       Normal=0
       Del=1
@@ -49,7 +50,9 @@ class DiagnoseStatus(object):
         if status==DiagnoseStatus.UnableDiagnose:
             return '无法诊断'
 
-
+class DiagnoseUploaed(object):
+    NoUploaded=0
+    Uploaded=1
 class ReportStatus(object):
     Draft=0
     Del=1
@@ -93,9 +96,15 @@ class Pagger(object):
     count=0
     def __init__(self,pageNo,pageSize):
         if pageNo:
-            self.pageNo=pageNo
+            if isinstance(pageNo,basestring):
+                self.pageNo=string.atoi(pageNo)
+            else:
+                self.pageNo=pageNo
         if pageSize:
-            self.pageSize=pageSize
+            if isinstance(pageSize,basestring):
+                self.pageSize=string.atoi(pageSize)
+            else:
+                self.pageSize=pageSize
         #self.count=count
     def getOffset(self):
         offset=(self.pageNo-1)*self.pageSize
@@ -143,8 +152,8 @@ DiagnoseScore={
     2:'很满意',
 }
 Gender={
-    0:'男',
-    1:'女',
+    1:'男',
+    2:'女',
 }
 class DoctorProfileType(object):
     #简历：0  介绍：1 荣誉：2  其他：3

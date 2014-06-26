@@ -212,16 +212,16 @@ def getDoctorNeedDiagnoseMessageContent(diagnose,doctor):
         pathology=diagnose.pathology
         if pathology.diagnoseMethod:
             diagnoseContent+=' | 诊断类型:'+pathology.diagnoseMethod
-    if hasattr(pathology,"pathologyPostions") and pathology.pathologyPostions:
-        pathologyPositons=pathology.pathologyPostions
-        if pathologyPositons and len(pathologyPositons)>0:
-            positions=u''
-            for pathologyPositon in pathologyPositons:
-                position=pathologyPositon.position
-                if position and position.name:
-                    positions+=(u' '+position.name)
-            diagnoseContent+=' | 诊断部位:'+positions
-    content+=diagnoseContent
+        if pathology and hasattr(pathology,"pathologyPostions") and pathology.pathologyPostions:
+            pathologyPositons=pathology.pathologyPostions
+            if pathologyPositons and len(pathologyPositons)>0:
+                positions=u''
+                for pathologyPositon in pathologyPositons:
+                    position=pathologyPositon.position
+                    if position and position.name:
+                        positions+=(u' '+position.name)
+                diagnoseContent+=' | 诊断部位:'+positions
+        content+=diagnoseContent
     return content
 def getPatienDiagnoseMessageContent(diagnose):
     content=' 您好，系统中有一个影像已被处理，请查看处理结果！'
@@ -240,16 +240,16 @@ def getPatienDiagnoseMessageContent(diagnose):
         pathology=diagnose.pathology
         if pathology.diagnoseMethod:
             diagnoseContent+=' | 诊断类型:'+pathology.diagnoseMethod
-    if hasattr(pathology,"pathologyPostions") and pathology.pathologyPostions:
-        pathologyPositons=pathology.pathologyPostions
-        if pathologyPositons and len(pathologyPositons)>0:
-            positions=u''
-            for pathologyPositon in pathologyPositons:
-                position=pathologyPositon.position
-                if position and position.name:
-                    positions+=(u' '+position.name)
-            diagnoseContent+=' | 诊断部位:'+positions
-    content+=diagnoseContent
+        if hasattr(pathology,"pathologyPostions") and pathology.pathologyPostions:
+            pathologyPositons=pathology.pathologyPostions
+            if pathologyPositons and len(pathologyPositons)>0:
+                positions=u''
+                for pathologyPositon in pathologyPositons:
+                    position=pathologyPositon.position
+                    if position and position.name:
+                        positions+=(u' '+position.name)
+                diagnoseContent+=' | 诊断部位:'+positions
+        content+=diagnoseContent
     return content
 
 

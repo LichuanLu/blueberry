@@ -114,7 +114,7 @@ class UserRole(Base):
     }
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
     userId = sa.Column(sa.Integer)
-    roleId= sa.Column(sa.String(30))
+    roleId= sa.Column(sa.Integer)
 
     @staticmethod
     def checkRole(session,userId,roleId):
@@ -122,6 +122,11 @@ class UserRole(Base):
            return session.query(UserRole).filter(UserRole.userId==userId,UserRole.roleId==roleId).count()>0
         else:
             return False
+    @classmethod
+    def getUserRole(cls,session,userId):
+        if userId is None:
+            return
+        return session.query(UserRole).filter(UserRole.userId==userId).first()
 class Role(Base):
     __tablename__ = 'role'
     __table_args__ = {
