@@ -1,0 +1,51 @@
+// Loading config with variables (changing them leads to changing a color scheme)
+@import "variables";
+
+// Utility mixins for greater good
+@import "mixins";
+
+#helppage-content{
+	.nav{
+		li{
+			a{
+				font-size: 15px;
+				line-height: 200%;
+				color: #666666;
+			}
+			&.active{
+				a{
+					color:#ffffff;
+					margin-right: -34px;
+				}
+				a:after{
+					border: 23px solid #ffffff;
+					border-left-color: transparent;
+					border-right-width: 0;
+					content: '';
+					height: 0;
+					position: absolute;
+					right: 0;
+					top: 0;
+					width: 0;
+				}
+			}
+		}
+	}
+	.tab-content{
+		border-width: 1px;
+		h2,h3{
+			font-size: 16px;
+			color: #000000;
+		}
+		p{
+			color: #666666;
+			a{
+				color: @ctt-orange;
+			}
+		}
+		ul{
+			list-style: none;
+			padding: 0;
+		}
+	}
+}

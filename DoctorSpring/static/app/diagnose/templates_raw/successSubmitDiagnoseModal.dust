@@ -1,0 +1,30 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close fui-cross" data-dismiss="modal" aria-hidden="true"></button>
+            <h4 class="modal-title">申请成功！</h4>
+        </div>
+        <div class="modal-body">
+            <div id="success-submit-diagnose-modal-wrapper">
+                {@if cond="'{isHospitalUser}' == '1'"}
+                    <p>您好：</p>
+                    <p>您已经成功申请诊断，请继续申请诊断或者批量上传影像文件。</p>
+                    <div class="button-wrapper">
+                        <span>链接：</span>
+                        <a class="btn btn-info" href="/hospital/user">个人中心</a>
+                        <a class="btn btn-warning" href="/applyDiagnose?type=1">申请新的诊断</a>
+                    </div>
+                {:else}
+                    
+                    <p>您好：</p>
+                    <p>您已经成功申请诊断，客服人员会一天内联系您，并且确认申请信息。</p>
+                    <div class="button-wrapper">
+                        <span>您还可以：</span>
+                        <a class="btn btn-info" href="/patient/home">进入个人中心</a>
+                        <a class="btn btn-warning" href="/applyDiagnose">申请新的诊断</a>
+                    </div>
+                {/if}
+            </div>
+        </div>
+    </div>
+</div>

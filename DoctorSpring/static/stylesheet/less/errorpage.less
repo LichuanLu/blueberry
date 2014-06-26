@@ -1,0 +1,39 @@
+@import "variables";
+
+.errorpage{
+	&.container{
+		height: 100% !important;
+		min-height: 100% !important;
+		.main-block{
+			height: 100% !important;
+			min-height: 100% !important;
+		}
+	}
+	
+}
+
+.error-404-back{
+	background: url("/static/assets/image/404image.jpeg") no-repeat;
+
+}
+
+#errorpage-content{
+	height: 100%;
+	min-height: 100%;
+	padding-top: 15%;
+	.error-title{
+		font-size: 60px;
+		color: @ctt-orange;
+		font-weight: normal;
+	}
+	.error-description{
+		font-size: 18px;
+		font-weight: 700;
+	}
+	.btn{
+		width: 140px;
+		height: 26px;
+		font-size: 12px;
+		line-height: 8px;
+	}
+}

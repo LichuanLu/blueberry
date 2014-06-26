@@ -1,0 +1,41 @@
+<tr>
+	<td>{diagnosenumber}</td>
+	<td>{date}</td>
+	<td>{doctorName}</td>
+	<td>{patientName}</td>
+<!-- 	<td>{section}</td>
+ -->	{@if cond="'{statusId}' == '7'"}
+		<td>{status}  <a href="#{id}" class="warning"><span class="fui-question"></span></a></td>
+	{:else}
+		<td>{status}</td>
+	{/if}
+	<td class="action-group">
+		{@if cond="'{statusId}' == '0'"}
+			<a href="/applyDiagnose?diagnoseid={id}" target="_blank">修改</a>
+			<a class="rm-diagnose-link" href="#">删除</a>
+		{/if}
+		{@if cond="'{statusId}' == '7'"}
+			<a class="detail-link" href="#">查看原因</a>
+		{/if}
+		{@if cond="'{statusId}' == '2'"}
+			<a href="/kefu" target="_blank">联系客服</a>
+			<a class="rm-diagnose-link" href="#">撤销</a>
+		{/if}
+		{@if cond="'{statusId}' == '6'"}
+			<a href="/diagnose/{id}/pdf" target="_blank">查看报告</a>
+			<a href="{reportUrl}">下载</a>
+			{@if cond="{isFeedback}"}
+			{:else}
+				<a href="#" class="sharing-link">评价</a>
+			{/if}
+		{/if}
+	</td>
+	<td class="detail-wrapper">
+		{@if cond="'{statusId}' != '0'"}
+			<a class="detail-link" href="#">
+				详细
+				<span class="fui-arrow-right"></span>
+			</a>
+		{/if}
+	</td>
+</tr>

@@ -1,0 +1,124 @@
+@import "variables";
+	
+#new-diagnose-wrapper,#new-audit-wrapper{
+		.header{
+			>div{
+				position: relative;
+				border-bottom: 1px solid #eaeaea;
+				margin: 10px 15px 20px;
+				span{
+					font-size: 13px;
+					margin-right: 10px;
+					&.title{
+						font-size: 20px;
+						margin-right: 100px;
+
+					}
+				}
+				// a{
+				// 	&.close-link{
+				// 		right: 20px;
+				// 	}
+
+				// 	position: absolute;
+				// 	right: 70px;
+				// 	top: 6px;
+
+				// }
+				.right{
+					display: inline-block;
+					position: absolute;
+					right: 20px;
+					top: 6px;
+					#rollback-link{
+						color: @brand-danger;
+					}
+
+				}
+			}
+		}
+		
+		.form-group{
+			label{
+						font-size: 14px;
+				}
+			.submit-btn{
+						margin-right: 10px;
+				}
+		}
+		
+		
+	}
+	#new-audit-wrapper{
+		#exists-diagnose-wrapper{
+			margin-bottom: 50px;
+			#auditText{
+				height: 150px;
+			}
+			.form-group{
+				p{
+					font-size: 15px;
+					padding-top: 10px;
+				}
+			}
+		}
+	}
+
+	#new-diagnose-wrapper{
+		margin-bottom: 50px;
+
+		.content{
+			position: relative;
+			//border-bottom: 1px solid #eaeaea;
+			.patient-info{
+				border-bottom: 1px solid #eaeaea;
+				padding-bottom: 20px;
+				>div{
+					line-height: 2.4;
+					h6{
+						font-size: 15px;
+					}
+					span{
+						color: #808080;
+						&.head{
+							color: #000000;
+							font-weight: 700;
+							margin-right: 5px;
+						}
+					}
+					p{
+						color: #808080;
+						margin: 0;
+						font-size: 13px;
+						display: inline-block;
+					}
+				}
+			}
+			.tree-top{
+				position: relative;
+				margin-top: 20px;
+				height: 30px;
+			}
+			.tree-title{
+				font-size: 14px;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+			}
+			.load-template-btn{
+				position: absolute;
+				right: 0;
+				top: -2px;
+			}
+			#tree{
+				margin-top: 0px;
+			}
+			
+			#imageDes{
+				height: 200px;
+			}
+			#diagnoseResult{
+				height: 200px;
+			}
+		}
+	}

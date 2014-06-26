@@ -1,0 +1,105 @@
+#doctorlist-content .query-result-wrapper .result-list {
+  list-style: none;
+  padding: 0;
+  border: 1px solid #e4e4e4;
+}
+#doctorlist-content .query-result-wrapper .result-list li {
+  line-height: 20px;
+  overflow: hidden;
+  color: #888;
+  border-bottom: 1px solid #e4e4e4;
+}
+#doctorlist-content .query-result-wrapper .result-list li .doctor-detail-preview {
+  padding: 10px 20px;
+}
+#doctorlist-content .query-result-wrapper .result-list li .doctor-detail-preview .image-preview img {
+  float: left;
+  height: 80px;
+}
+#doctorlist-content .query-result-wrapper .result-list li .doctor-detail-preview .doctor-preview-des {
+  padding-left: 100px;
+}
+#doctorlist-content .query-result-wrapper .result-list li .doctor-detail-preview .doctor-preview-des h6 {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+#doctorlist-content .query-result-wrapper .result-list li .doctor-detail-preview .doctor-preview-des h6 a {
+  margin-right: 10px;
+}
+#doctorlist-content .query-result-wrapper .result-list li .doctor-detail-preview .doctor-preview-des .des-wrapper,
+#doctorlist-content .query-result-wrapper .result-list li .doctor-detail-preview .doctor-preview-des .skill-wrapper {
+  font-size: 12px;
+}
+#doctorlist-content .query-result-wrapper .result-list li .doctor-statinfo {
+  border-left: 1px solid #e4e4e4;
+  border-right: 1px solid #e4e4e4;
+  height: 100px;
+}
+#doctorlist-content .query-result-wrapper .result-list li .doctor-statinfo .exp-comment {
+  float: left;
+  margin-top: 15px;
+  margin-left: 10px;
+}
+#doctorlist-content .query-result-wrapper .result-list li .doctor-statinfo .exp-comment p {
+  font-size: 16px;
+}
+#doctorlist-content .query-result-wrapper .result-list li .doctor-statinfo .feedback-comment {
+  float: left;
+  margin-top: 15px;
+}
+#doctorlist-content .query-result-wrapper .result-list li .doctor-statinfo .feedback-comment p {
+  font-size: 16px;
+}
+#doctorlist-content .query-result-wrapper .result-list li .doctor-statinfo img {
+  height: 40px;
+  float: left;
+  margin: 20px 20px 0;
+}
+#doctorlist-content .query-result-wrapper .result-list li .doctor-action {
+  height: 100px;
+  text-align: center;
+}
+#doctorlist-content .query-result-wrapper .result-list li .doctor-action .btn {
+  margin-top: 30px;
+}
+#doctorlist-content .query-result-wrapper .result-list li:hover {
+  border: 2px solid #16a085;
+}
+#doctorlist-content .query-result-wrapper .pagination-plain {
+  text-align: center;
+}
+#doctorlist-content .query-table {
+  margin-top: 20px;
+  font-size: 12px;
+}
+#doctorlist-content .query-table td {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+#doctorlist-content .query-table .filter-title {
+  width: 120px;
+  background-color: #ecfaf2;
+}
+#doctorlist-content .query-table ul.filters {
+  position: relative;
+  display: block;
+  margin-right: 72px;
+  content: "";
+  overflow: hidden;
+  padding: 6px 0;
+  vertical-align: middle;
+  margin-bottom: 0;
+}
+#doctorlist-content .query-table ul.filters li {
+  display: block;
+  margin: 2px 0 4px 10px;
+  width: 94px;
+  overflow: hidden;
+  float: left;
+  height: 22px;
+  line-height: 22px;
+}
+#doctorlist-content .query-table ul.filters li.active a {
+  text-decoration: underline;
+}
