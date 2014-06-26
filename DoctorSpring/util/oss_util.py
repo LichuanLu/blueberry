@@ -58,6 +58,7 @@ def copyObjects():
                 if (res.status / 100) == 2:
                     fileUrl='http://%s.%s/%s'%(bucket,WEB_HOST,diagnoseId)
                     Diagnose.setDiagnoseUploaded(diagnoseId)
+
                 # fileName=constant.DirConstant.DIAGNOSE_PDF_DIR+'temp.pdf'
                 # rs=oss.get_object_to_file(bucket,i[0],fileName,None)
                 # url=uploadFile(diagnoseId,fileName)
@@ -113,7 +114,7 @@ def uploadFileFromFileStorage(diagnoseId,fileName,input_content,content_type,hea
     oss = OssAPI(HOST, ACCESS_ID, SECRET_ACCESS_KEY)
     bucket="solidmedicaltest"
     res = oss.create_bucket(bucket,"public-read")
-    hashCode=hashlib.md5(str(diagnoseId)).hexdigest().lower()
+    hashCode=hashlib.md5(str(fileName)).hexdigest().lower()
     ossFileName='%i_%s'%(diagnoseId,hashCode)
     #res = oss.upload_large_file(bucket, ossFileName, fileName)
     # res2=oss.put_object_from_file(bucket,ossFileName,fileName)

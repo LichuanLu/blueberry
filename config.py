@@ -5,10 +5,10 @@ import os.path
 
 ROOT_DIR=os.path.dirname(__file__)
 
-_DBUSER = "ibeaconuser"
-_DBPASS = "ibeacon"
+_DBUSER = "mduser"
+_DBPASS = "mduser"
 _DBNAME = "medicaldb"
-_DBHOST = "114.215.179.6"
+_DBHOST = "localhost:3306"
 
 ROOT_DIR=os.path.dirname(__file__)
 

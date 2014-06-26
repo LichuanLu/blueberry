@@ -1,0 +1,74 @@
+<div id="new-audit-wrapper">
+	<div class="row header">
+		<div class="">
+			<span class="title">审核诊断报告</span>
+			<span>日期：{date}</span>
+			<span>就诊者：{patientName}</span>
+			<span>部位：{section}</span>
+			<a href="#{id}">下载DICOM影像</a>
+			<a href="#" class="close-link">关闭</a>
+		</div>
+		<!-- <div class="alert alert-warning">
+            <button type="button" class="close fui-cross" data-dismiss="alert"></button>
+            <h4>未保存的数据将会丢失，确定关闭？</h4>
+            <a href="#" class="btn btn-primary"><span class="fui-check-inverted"></span>确定关闭</a>
+            <a href="#" class="btn btn-default btn-info">取消</a>
+          </div> -->
+	</div>
+	<div class="row content">
+
+		<div id="exists-diagnose-wrapper" class="col-md-offset-2 col-md-8">
+			<form class="form-horizontal" role="form" id="exists-diagnose-form">
+				<div class="form-group">
+					<label class="col-md-3 control-label">诊断医生：</label>
+					<div class="col-md-9 form-body">
+						<p id="diagnose-doctor-name"  class="">
+							<a href="#{diagnoseDoctorId}" target="_blank">{diagnoseDoctorName} {diagnoseDoctorTitle}</a>
+						</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3 control-label">检查技术描述：</label>
+					<div class="col-md-9 form-body">
+						<p id="exists-techDes"  class="">
+							{techDes}
+						</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="col-md-3 control-label">影像描述：</label>
+					<div class="col-md-9 form-body">
+						<p id="exists-imageDes"  class="">
+							{imageDes}
+						</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3 control-label">诊断意见：</label>
+					<div class="col-md-9 form-body">
+						<p id="exists-diagnoseResult" class="">
+							{diagnoseResult}
+						</p>
+					</div>
+				</div>
+				
+			</form>
+			<form class="form-horizontal" role="form" id="new-audit-form">
+				<div class="form-group">
+					<label for="auditText" class="col-md-3 control-label">审核意见：</label>
+					<div class="col-md-9 form-body">
+						<textarea id="auditText" name="auditText" class="form-control">
+						</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+				    <div class="col-md-offset-3 col-md-9">
+				        <button id="saveAuditBtn" type="submit" class="btn btn-primary btn-sm submit-btn">保存草稿</button>
+				        <button id="previewAuditBtn" type="submit" class="btn btn-primary btn-sm submit-btn">预览诊断书</button>
+				        <button id="submitAuditBtn" type="submit" class="btn btn-primary btn-sm submit-btn">提交诊断书</button>
+				    </div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

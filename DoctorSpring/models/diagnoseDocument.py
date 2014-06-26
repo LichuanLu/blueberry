@@ -234,10 +234,18 @@ class Diagnose(Base):
 
         return query.all()
     @classmethod
-    def getDealedDiagnoseByHospitalUser(cls,session,uploadUserId,status,startTime,endTime,pagger=Pagger(1,20) ):
+    def getDealedDiagnoseByHospitalUser(cls,session,uploadUserId,patientName,status,startTime,endTime,pagger=Pagger(1,20) ):
         if uploadUserId is None :
             return
-        query=session.query(Diagnose).filter(Diagnose.uploadUserId==uploadUserId,Diagnose.createDate>startTime,Diagnose.createDate<endTime)
+        query=None
+        if patientName is None or patientName == u'':
+            query=session.query(Diagnose) \
+                .filter(Diagnose.uploadUserId==uploadUserId,Diagnose.createDate>startTime,Diagnose.createDate<endTime)
+        else:
+            query=session.query(Diagnose).select_from(join(Patient,Diagnose,Patient.id==Diagnose.patientId)) \
+                .filter(Diagnose.uploadUserId==uploadUserId,Diagnose.createDate>startTime,Diagnose.createDate<endTime,Patient.realname==patientName)
+
+
         if status==-1:
             query=query.filter(Diagnose.status.notin_((DiagnoseStatus.Diagnosed,DiagnoseStatus.Del)))
 

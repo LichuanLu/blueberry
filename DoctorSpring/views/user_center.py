@@ -279,11 +279,11 @@ def getDiagnoseListByHospitalUser2():
     else:
         endDate=constant.SystemTimeLimiter.endTime
 
-
+    patientName=request.args.get('patientName')
     pageNo=request.args.get('pageNumber')
     pageSize=request.args.get('pageSize')
     pager=Pagger(pageNo,pageSize)
-    diagnoses=Diagnose.getDealedDiagnoseByHospitalUser(db_session,userId,status,startDate,endDate,pager)
+    diagnoses=Diagnose.getDealedDiagnoseByHospitalUser(db_session,userId,patientName,status,startDate,endDate,pager)
     diagnosesDict=dataChangeService.userCenterDiagnoses(diagnoses)
 
 

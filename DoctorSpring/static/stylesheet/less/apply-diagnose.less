@@ -1,0 +1,271 @@
+@import "variables";
+
+
+
+#select-doctor-modal{
+	.all-doctor-wrapper{
+		overflow: hidden;
+		.row-fluid{
+			overflow: hidden;
+			text-align: left;
+			padding: 20px 0;
+			.doctor-preview{
+				margin-bottom: 10px;
+			}
+			.doctor-preview-des{
+				h6{
+					position: relative;
+					.choose-btn{
+						position: absolute;
+						left: 300px;
+						top: -5px;
+					}
+
+				}
+			}
+		}
+
+	}
+	.modal-dialog{
+		width: 980px;
+		.all-doctor-wrapper{
+			text-align: center;
+		}
+		.form-inline{
+			text-align: center;
+			.form-group{
+				margin-right: 10px;
+				label{
+					margin-right: 10px;
+				}
+				#inName{
+					margin-bottom: 8px;
+					//margin-left: 10px;
+					width: 120px;
+				}
+				.dropdown-menu{
+					width: 100%;
+				}
+			}
+			.btn{
+				//margin-left: 10px;
+				//margin-bottom: 8px;
+				&.search-btn{
+					margin-left: 10px;
+					margin-bottom: 8px;
+				}
+			}
+		}
+	}
+}
+
+
+
+
+#applydignose-content{
+	
+
+
+
+
+
+	.submit-patient-info-wrapper .location-wrapper .line,.submit-patient-info-wrapper .location-wrapper .ball, .submit-patient-info-wrapper .location-wrapper .side-description{
+		margin-top: 10px !important;
+	}
+
+	.submit-patient-info-wrapper .twitter-typeahead {
+		width: 400px;
+
+	}
+
+	.submit-patient-info-wrapper .affix{position:fixed;top:30px;bottom: 40px;}
+	.submit-patient-info-wrapper .affix-bottom{position:absolute;}
+	.submit-patient-info-wrapper 
+	{
+		#recommandedDoctor{
+			.doctor-preview{
+				width: 100%;
+			}
+			.choose-btn{
+				display: none;
+			}
+		}
+		.apply-warning-text{
+			text-align: center;
+			color: red;
+		}
+		.panel{
+			position: relative;
+			transition: left 1s;
+			-webkit-transition: left 1s;
+			-moz-transition: left 1s;
+			-ms-transition: left 1s;
+			-o-transition: left 1s;
+			left: 150%;
+			&.visible{
+				left: 0;
+			}
+			.panel-heading{
+				position: relative;
+				span{
+					position: absolute;
+					right: 30px;
+					top: 14px;
+				}
+			}
+		}
+		
+		.pi-title-sidebar {
+			width: 300px;
+			background-color: #fcfcfc;
+			h4{
+				font-size: 20px;
+			}
+			h4:after{
+				content: '';
+				display: block;
+				background-color: #e6e6e6;
+				height: 1px;
+				margin-top: 10px;
+			}
+		}
+		.location-wrapper {
+			margin-top: 5px;
+		}
+		p,span{
+			font-size: 13px;
+		}	
+		.upload-file-wrapper {
+			display: inline-block;
+			width: 100%;
+			vertical-align: middle;
+			padding-left: 0px;
+			.progress {
+				width: 40%;
+			}
+		}
+		
+
+		.patientlocation-wrapper {
+			display: inline-block;
+			vertical-align: middle;
+			width: 100%;
+			.btn-group{
+				width: 100%;
+				max-width: 400px;
+			}
+			.checkbox-wrapper {
+				width: 400px;
+				display: inline-block;
+				vertical-align: middle;
+			}
+			
+		}
+
+
+		.btn-wrapper {
+			margin: 20px 0;
+			text-align: center;
+		}
+		.input-group,textarea,input{
+			max-width: 400px;
+		}
+		.line-area {
+			display: inline-block;
+			margin: 0 10px;
+			.line {
+				height: 1px;
+				width: 118px;
+				vertical-align: middle;
+				display: inline-block;
+				background-color: #b6d7e5;
+			}
+			.ball {
+				width: 7px;
+				height: 7px;
+				border-radius: 10px;
+				vertical-align: middle;
+				display: inline-block;
+				background-color: #b6d7e5;
+			}
+		}
+		.form-inline .form-group {
+			.help-block{
+				// position: absolute;
+				// left: 5px;
+				// bottom: -20px;
+			}
+			.radio,.checkbox{
+				display: inline-block;
+				position: relative;
+				padding-left: 32px;
+				margin: 0 20px 10px 0px;
+			}
+			width: 100%;
+			margin-bottom: 20px;
+			label{
+				display: block;
+				margin-bottom: 0;
+			}
+			.required-text {
+				font-size: 12px;
+				font-style: italic;
+				color: red;
+			}
+			p.side-description {
+				display: inline-block;
+				width: 230px;
+				margin: 0;
+				vertical-align: middle;
+			}
+		}
+
+		.select-doctor{
+			p{
+				margin-top: 10px;
+
+
+			}
+		}
+
+		.patient-radio-wrapper{
+			display: inline-block;
+			.radio{
+				display: inline-block;
+				margin-right: 100px;
+			}
+		}
+		#patient-already-exists{
+			padding-top: 20px;
+			#patient-already-profile-region{
+			}
+		}
+
+		.patient-info{
+					border-bottom: 1px solid #eaeaea;
+					padding-bottom: 20px;
+					padding-left: 10px;
+					>div{
+						line-height: 2.4;
+						span{
+							color: #808080;
+							&.head{
+								color: #000000;
+								font-weight: 700;
+								margin-right: 5px;
+							}
+						}
+						p{
+							color: #808080;
+							margin: 0;
+							font-size: 13px;
+							display: inline-block;
+						}
+					}
+		}
+
+
+	}
+
+	
+}

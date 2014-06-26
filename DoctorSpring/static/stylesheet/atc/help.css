@@ -1,0 +1,42 @@
+.dropdown-arrow-inverse {
+  border-bottom-color: #34495e !important;
+  border-top-color: #34495e !important;
+}
+#helppage-content .nav li a {
+  font-size: 15px;
+  line-height: 200%;
+  color: #666666;
+}
+#helppage-content .nav li.active a {
+  color: #ffffff;
+  margin-right: -34px;
+}
+#helppage-content .nav li.active a:after {
+  border: 23px solid #ffffff;
+  border-left-color: transparent;
+  border-right-width: 0;
+  content: '';
+  height: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+}
+#helppage-content .tab-content {
+  border-width: 1px;
+}
+#helppage-content .tab-content h2,
+#helppage-content .tab-content h3 {
+  font-size: 16px;
+  color: #000000;
+}
+#helppage-content .tab-content p {
+  color: #666666;
+}
+#helppage-content .tab-content p a {
+  color: #16a085;
+}
+#helppage-content .tab-content ul {
+  list-style: none;
+  padding: 0;
+}
