@@ -247,13 +247,13 @@ def cancleDiagnose(diagnoseId):
 
 @diagnoseView.route('/diagnose/rollback/<int:diagnoseId>',  methods = ['GET', 'POST'])
 def rollbackDiagnose(diagnoseId):
-    userId=session['uesrId']
+    userId=session['userId']
     if userId is None:
         return json.dumps(rs.NO_LOGIN.__dict__,ensure_ascii=False)
     userId=string.atoi(userId)
 
-    status=request.args.get('status')
-    comments=request.args.get('comments')
+    status=request.form.get('status')
+    comments=request.form.get('comments')
     if status:
         status=string.atoi(status)
     diagnose=Diagnose.getDiagnoseById(diagnoseId)
