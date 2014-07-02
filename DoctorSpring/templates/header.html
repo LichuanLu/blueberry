@@ -35,11 +35,13 @@
                 <a id="user-message-link" href="#">
                     <span class="visible-md visible-lg message-icon-wrap">
                         <span class="fui-mail">
+                            {% if data and data.messageCount %}
                             <span class="iconbar-unread">
-                                {% if data and data.messageCount %}
+
                                       {{data.messageCount}}
-                                {% endif %}
+
                             </span>
+                            {% endif %}
                         </span>
                     </span>
                     消息

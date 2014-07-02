@@ -34,7 +34,7 @@ def generatorPdf(diagnoseId):
     report=None
     if hasattr(diagnose,'report'):
         report=diagnose.report
-        if diagnose and report and report.status==constant.ReportStatus.Commited and report.type==constant.ReportType.Doctor:
+        if diagnose and report and report.type==constant.ReportType.Doctor:
             data={}
             data['techDesc']=report.techDesc
             data['imageDesc']=report.imageDesc
