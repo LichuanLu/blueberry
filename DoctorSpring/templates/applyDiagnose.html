@@ -189,7 +189,6 @@
                                     %}>{{i.name}}</option>
                                     {% endfor %}
                                     {%endif%}
-									<option value="0">其他</option>
 								</select>
 								<div class="line-area">
 									<div class="line"></div>
@@ -409,7 +408,6 @@
                                 <option value="{{i.id}}"{%if result.pathology%}{%if i.id == result.pathology.hospitalId %} selected {% endif %}{%endif%}>{{i.name}}</option>
                                 {% endfor %}
                                 {% endif %}
-								<option value="0">其他</option>
 
 							</select>
 							<div class="line-area">

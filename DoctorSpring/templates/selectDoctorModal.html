@@ -21,9 +21,11 @@
                           <label class="" for="">擅长科目：</label>
                           <select name="skillId">
                             <option value="0">不限</option>
-                              {% for i in result.skills %}
+                              {% if result.positions %}
+                              {% for i in result.positions %}
                               <option value="{{i.id}}">{{i.name}}</option>
                               {% endfor %}
+                              {% endif %}
                           </select>                        
                         </div>
                         <div class="form-group">

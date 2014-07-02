@@ -14,7 +14,7 @@ NO_LOGIN=ResultStatus(2,'no login')
 NO_REGISTER=ResultStatus(3,'no register')
 PERMISSION_DENY=ResultStatus(4,'permission deny')
 NO_DATA=ResultStatus(5,'no data')
-LOGIN_CHECK_FARLURE=ResultStatus(6,"login parameter error")
+LOGIN_CHECK_FARLURE=ResultStatus(6,"用户名或者密码错误")
 LOGIN_CHECK_SUCCESS=ResultStatus(7,"login success")
 PARAM_ERROR=ResultStatus(8,"paramter error")
 

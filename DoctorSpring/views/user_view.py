@@ -39,8 +39,10 @@ def login():
         user = User.get_by_name(form.username)
         if user is not None:
             login_session(user)
-            #return jsonify(formResult.__dict__)
-    formResult.msg = request.host_url + "homepage"
+            formResult.msg = request.host_url + "homepage"
+        else:
+            formResult = rs.LOGIN_CHECK_FARLURE
+
     return jsonify(formResult.__dict__)
 
 @user_view.route('/logout')
