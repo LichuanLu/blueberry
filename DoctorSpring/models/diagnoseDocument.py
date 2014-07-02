@@ -432,17 +432,20 @@ class File(Base):
     }
 
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
+    name = sa.Column(sa.String(128))
     type = sa.Column(sa.Integer) # 1.dicom 2.诊断书
+    size = sa.Column(sa.String(32))
     status=sa.Column(sa.Integer)
     url=sa.Column(sa.String(128))
     pathologyId=sa.Column(sa.Integer)
 
 
-    def __init__(self,type,url,pathologyId):
+    def __init__(self,type,name,size,url):
         self.type = type
+        self.name = name
+        self.size = size
         self.status = ModelStatus.Normal
         self.url = url
-        self.pathologyId = pathologyId
 
     @classmethod
     def save(cls,dsFile):
@@ -454,10 +457,14 @@ class File(Base):
     @classmethod
     def getFiles(cls,pathologyId,type=constant.FileType.Dicom):
         if pathologyId:
-            if type:
-                return session.query(File).filter(File.pathologyId==pathologyId,File.type==type,File.status==ModelStatus.Normal).all()
-            else:
-                return session.query(File).filter(File.pathologyId==pathologyId,File.status==ModelStatus.Normal).all()
+            return session.query(File).filter(File.pathologyId==pathologyId,File.type==type,File.status==ModelStatus.Normal).all()
+
+    @classmethod
+    def getFilebyId(cls, id):
+        if id:
+            return session.query(File).filter(File.id == id, File.status==ModelStatus.Normal).first()
+
+
     @classmethod
     def getDicomFileUrl(cls,pathologyId):
         if pathologyId:

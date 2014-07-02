@@ -3,7 +3,6 @@ __author__ = 'chengc017'
 # coding: utf-8
 
 import sqlalchemy as sa
-
 from database import Base, db_session as session
 from DoctorSpring.util.constant import ModelStatus, UserStatus ,DoctorProfileType
 from sqlalchemy.orm import relationship, backref
@@ -24,7 +23,7 @@ class Doctor(Base):
     userId = sa.Column(sa.Integer, sa.ForeignKey('user.id'))     #对应User表里的ID
     user = relationship("User", backref=backref('doctor', order_by=id))
     username = sa.Column(sa.String(64))
-    identityPhone = sa.Column(sa.INTEGER)
+    identityPhone = sa.Column(sa.String(20))
     title = sa.Column(sa.String(64))    #职称
     hospitalId = sa.Column(sa.INTEGER,sa.ForeignKey('hospital.id'))  #医院ID
     hospital = relationship("Hospital", backref=backref('doctor', order_by=id))
@@ -44,7 +43,8 @@ class Doctor(Base):
     def __init__(self, userId=None):
         self.userId = userId
         self.title = config.DEFAULT_TITLE
-        self.status = ModelStatus.Normal
+        self.status = ModelStatus.Draft
+
 
     @classmethod
     def getById(cls,doctorId):
@@ -67,7 +67,11 @@ class Doctor(Base):
 
     @classmethod
     def get_doctor_count(cls, hospitalId=0, sectionId=0 , doctorname='', pagger=None):
-        query = session.query(Doctor).filter(Doctor.status == ModelStatus.Normal)
+        query = session.query(Doctor).join(User, Doctor.userId == User.id). \
+            join(Doctor2Skill, Doctor.id == Doctor2Skill.doctorId). \
+            join(Skill, Skill.id == Doctor2Skill.skillId). \
+            filter(User.type == UserStatus.doctor, User.status == ModelStatus.Normal,
+                   Doctor.status == ModelStatus.Normal).distinct()
         if int(hospitalId) != 0:
             query = query.filter(Doctor.hospitalId == hospitalId)
 
@@ -75,18 +79,34 @@ class Doctor(Base):
             query = query.filter(Doctor2Skill.skillId == sectionId)
 
         if doctorname is not '':
-            query = query.filter(Doctor.username == doctorname or Doctor.name == doctorname)
+            query = query.filter(Doctor.username.like('%' + doctorname + '%'))
 
-        return query.count()/pagger.pageSize + 1
+        return query.count()
 
     @classmethod
-    def get_doctor_list(cls, hospitalId=0, sectionId=0 , doctorname='', pagger=None, recommended=False):
+    def get_doctor(cls, id, recommended):
+        query = session.query(Doctor).join(User, Doctor.userId == User.id). \
+            join(Doctor2Skill, Doctor.id == Doctor2Skill.doctorId). \
+            join(Skill, Skill.id == Doctor2Skill.skillId). \
+            filter(User.type == UserStatus.doctor, User.status == ModelStatus.Normal,
+                   Doctor.status == ModelStatus.Normal).distinct()
+        if id:
+            query = query.filter(Doctor.id == id)
+
+        if recommended:
+            query = query.filter()
+
+        return query.first()
+
+
+    @classmethod
+    def get_doctor_list(cls, hospitalId=0, sectionId=0 , doctorname='', pagger=None):
         # return session.query(Doctor).all()
          query = session.query(Doctor).join(User, Doctor.userId == User.id). \
             join(Doctor2Skill, Doctor.id == Doctor2Skill.doctorId). \
             join(Skill, Skill.id == Doctor2Skill.skillId). \
             filter(User.type == UserStatus.doctor, User.status == ModelStatus.Normal,
-                   Doctor.status == ModelStatus.Normal)
+                   Doctor.status == ModelStatus.Normal).distinct()
          if int(hospitalId) != 0:
             query = query.filter(Doctor.hospitalId == hospitalId)
 
@@ -94,14 +114,13 @@ class Doctor(Base):
             query = query.filter(Doctor2Skill.skillId == sectionId)
 
          if doctorname is not '':
-            query = query.filter(Doctor.username == doctorname or Doctor.name == doctorname)
-         if(recommended):
-            return query.first()
-         else:
-            if pagger is not None:
-                query = query.offset(pagger.count).limit(pagger.pageSize).all()
+            query = query.filter(Doctor.username.like('%' + doctorname + '%'))
 
-         return query
+         if pagger is not None:
+            query = query.offset(pagger.getOffset()).limit(pagger.getLimitCount())
+
+
+         return query.all()
 
 
 

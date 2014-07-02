@@ -29,3 +29,7 @@ class Location(Base):
             session.add(location)
             session.commit()
             session.flush()
+
+    @staticmethod
+    def getAllLocations(session):
+        return session.query(Location).filter(Location.status==ModelStatus.Normal).all()

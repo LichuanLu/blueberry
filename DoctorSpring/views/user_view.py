@@ -8,9 +8,9 @@ from forms import LoginForm, RegisterFormPatent, RegisterFormDoctor
 from DoctorSpring import lm
 from database import db_session
 from sqlalchemy.exc import IntegrityError
-from DoctorSpring.models import User, Patient, Doctor
+from DoctorSpring.models import User, Patient, Doctor, UserRole, Doctor2Skill
 from DoctorSpring.util import result_status as rs, object2dict,constant
-from DoctorSpring.util.constant import UserStatus
+from DoctorSpring.util.constant import UserStatus, RoleId, ModelStatus
 
 import json
 
@@ -68,13 +68,18 @@ def register_doctor():
         new_user.email = form.email
         new_user.phone = form.cellphone
         new_user.type = UserStatus.doctor
+        new_user.status = ModelStatus.Draft
         User.save(new_user)
         new_doctor = Doctor(new_user.id)
+        new_doctor.username = form.real_name
         new_doctor.identityPhone = form.identity_phone
         Doctor.save(new_doctor)
-        login_session(new_user)
 
-        #return jsonify(form_result.__dict__)
+        new_doctor2skill = Doctor2Skill(new_doctor.id, 1)
+        Doctor2Skill.save(new_doctor2skill)
+
+        new_userrole = UserRole(new_user.id, RoleId.Doctor)
+        UserRole.save(new_userrole)
 
     return jsonify(form_result.__dict__)
 
@@ -87,11 +92,14 @@ def register_patient():
         new_user.type = UserStatus.patent
         User.save(new_user)
         new_patient = Patient(new_user.id)
+        new_userrole = UserRole(new_user.id, RoleId.Patient)
+        UserRole.save(new_userrole)
         Patient.save(new_patient)
         login_session(new_user)
-        return json.dumps(form_result.__dict__,ensure_ascii=False)
+        form_result.msg = request.host_url + 'homepage'
+        return jsonify(form_result.__dict__,ensure_ascii=False)
 
-    return json.dumps(form_result.__dict__,ensure_ascii=False)
+    return jsonify(form_result.__dict__,ensure_ascii=False)
 
 
 

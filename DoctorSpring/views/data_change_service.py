@@ -406,7 +406,34 @@ def get_patient(patient):
     return patientDict
 
 
+def get_pathology_list(pathologys):
+    if len(pathologys) < 1:
+        return
+    results=[]
+    for pathology in pathologys:
+        pathologyDict={}
+        pathologyDict['id'] = pathology.id
+        if hasattr(pathology, "name") and pathology.name:
+            pathologyDict['name'] = pathology.name
 
+        results.append(pathologyDict)
 
+    return results
 
+def get_pathology(pathology):
+    pathologyDict={}
+    pathologyDict['id'] = pathology.id
+    if hasattr(pathology, "diagnoseMethod") and pathology.diagnoseMethod:
+        pathologyDict['type'] = pathology.diagnoseMethod
+    if hasattr(pathology, "name") and pathology.name:
+        pathologyDict['dicomFile'] = pathology.name
+    if hasattr(pathology, "pathologyPostions") and len(pathology.pathologyPostions) >= 1:
+        positions = ''
+        for position in pathology.pathologyPostions:
+            if position.position:
+                positions = positions + position.position.name + ', '
+        pathologyDict["position"] = positions
+    dicomUrl = File.getDicomFileUrl(pathology.id)
+    pathologyDict["dicomUrl"] = dicomUrl
 
+    return pathologyDict

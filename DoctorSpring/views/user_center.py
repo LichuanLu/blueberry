@@ -324,8 +324,6 @@ def getDiagnoseListByDoctor():
         else:
             endDate=constant.SystemTimeLimiter.endTime
 
-
-
         pageNo=request.args.get('pageNo')
         pageSize=request.args.get('pageSize')
         pager=Pagger(pageNo,pageSize)

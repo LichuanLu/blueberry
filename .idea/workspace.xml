@@ -1,14 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="41284883-9385-481b-82c3-409aafaead68" name="Default" comment="XY">
+    <list default="true" id="41284883-9385-481b-82c3-409aafaead68" name="Default" comment="">
+      <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\server_template\diagnoseList.dust" afterPath="" />
+      <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\server_template\patientAccountSetting.dust" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/image/logo.jpg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/image/logo.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/jquery-uploader/_main.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/jquery-uploader/_main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/server_template/applyDiagnose.dust" afterPath="$PROJECT_DIR$/DoctorSpring/server_template/applyDiagnose.dust" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blueberry.iml" afterPath="$PROJECT_DIR$/blueberry.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/templates/applyDiagnose.html" afterPath="$PROJECT_DIR$/DoctorSpring/templates/applyDiagnose.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/diagnose/apply/apply_controller.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/diagnose/apply/apply_controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/diagnose/apply/apply_view.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/diagnose/apply/apply_view.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/test/base_model.py" afterPath="$PROJECT_DIR$/DoctorSpring/test/base_model.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.py" afterPath="$PROJECT_DIR$/config.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/util/constant.py" afterPath="$PROJECT_DIR$/DoctorSpring/util/constant.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/views/data_change_service.py" afterPath="$PROJECT_DIR$/DoctorSpring/views/data_change_service.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py" afterPath="$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/patienthome/templates_raw/diagnoseItem.dust" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/patienthome/templates_raw/diagnoseItem.dust" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/patienthome/templates/diagnoseItem.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/patienthome/templates/diagnoseItem.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/doctor-site.css" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/doctor-site.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/less/doctor-site.less" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/less/doctor-site.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/models/doctor.py" afterPath="$PROJECT_DIR$/DoctorSpring/models/doctor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/config/jquery/file_uploader.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/config/jquery/file_uploader.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/server_template/footer.dust" afterPath="$PROJECT_DIR$/DoctorSpring/server_template/footer.dust" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/server_template/head.dust" afterPath="$PROJECT_DIR$/DoctorSpring/server_template/head.dust" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/views/forms.py" afterPath="$PROJECT_DIR$/DoctorSpring/views/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/views/front.py" afterPath="$PROJECT_DIR$/DoctorSpring/views/front.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/global.css" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/global.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/less/global.less" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/less/global.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/help.css" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/help.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/less/help.less" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/less/help.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/server_template/home.dust" afterPath="$PROJECT_DIR$/DoctorSpring/server_template/home.dust" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/server_template/loginModal.dust" afterPath="$PROJECT_DIR$/DoctorSpring/server_template/loginModal.dust" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/models/hospital.py" afterPath="$PROJECT_DIR$/DoctorSpring/models/hospital.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/server_template/iconSearch.dust" afterPath="$PROJECT_DIR$/DoctorSpring/server_template/iconSearch.dust" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/models/location.py" afterPath="$PROJECT_DIR$/DoctorSpring/models/location.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/models/pathology.py" afterPath="$PROJECT_DIR$/DoctorSpring/models/pathology.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/entities/pathologyEntity.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/entities/pathologyEntity.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/models/patient.py" afterPath="$PROJECT_DIR$/DoctorSpring/models/patient.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/templates/selectDoctorModal.html" afterPath="$PROJECT_DIR$/DoctorSpring/templates/selectDoctorModal.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/patienthome/show/show_view.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/patienthome/show/show_view.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/diagnose/templates_raw/successSubmitDiagnoseModal.dust" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/diagnose/templates_raw/successSubmitDiagnoseModal.dust" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/diagnose/templates/successSubmitDiagnoseModal.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/diagnose/templates/successSubmitDiagnoseModal.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/models/user.py" afterPath="$PROJECT_DIR$/DoctorSpring/models/user.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/views/user_center.py" afterPath="$PROJECT_DIR$/DoctorSpring/views/user_center.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/views/user_view.py" afterPath="$PROJECT_DIR$/DoctorSpring/views/user_view.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="887d96d1-400d-4b67-a4aa-50a663a93dfe" name="never" comment="" />
@@ -34,9 +67,11 @@
     <splitter proportion="0.5" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/blueberry$app.coverage" NAME="app Coverage Results" MODIFIED="1403788831840" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/blueberry$Unittest_UserTestCase_test_add_patient.coverage" NAME="Unittest UserTestCase.test_add_patient Coverage Results" MODIFIED="1403788214221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DoctorSpring/test" />
-    <SUITE FILE_PATH="coverage/blueberry$Unittest_UserTestCase_test_add_doctor.coverage" NAME="Unittest UserTestCase.test_add_doctor Coverage Results" MODIFIED="1403788219205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DoctorSpring/test" />
+    <SUITE FILE_PATH="coverage/blueberry$app.coverage" NAME="app Coverage Results" MODIFIED="1404293470189" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/blueberry$Unittest_UserTestCase_test_add_patient.coverage" NAME="Unittest UserTestCase.test_add_patient Coverage Results" MODIFIED="1404292240227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DoctorSpring/test" />
+    <SUITE FILE_PATH="coverage/blueberry$Unittest_UserTestCase_test_add_doctor.coverage" NAME="Unittest UserTestCase.test_add_doctor Coverage Results" MODIFIED="1404292246454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DoctorSpring/test" />
+    <SUITE FILE_PATH="coverage/blueberry$Unittest_ModelTestCase_test_add_location.coverage" NAME="Unittest ModelTestCase.test_add_location Coverage Results" MODIFIED="1403839878579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DoctorSpring/test" />
+    <SUITE FILE_PATH="coverage/blueberry$Unittest_ModelTestCase_test_add_position.coverage" NAME="Unittest ModelTestCase.test_add_position Coverage Results" MODIFIED="1404194489142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DoctorSpring/test" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -91,11 +126,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="front.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="front.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DoctorSpring/views/front.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.032258" vertical-offset="4321" max-vertical-offset="6251">
-              <caret line="234" column="53" selection-start-line="234" selection-start-column="45" selection-end-line="234" selection-end-column="53" />
+            <state vertical-scroll-proportion="6.3636365" vertical-offset="5868" max-vertical-offset="7904">
+              <caret line="342" column="52" selection-start-line="342" selection-start-column="52" selection-end-line="342" selection-end-column="52" />
               <folding>
                 <element signature="e#39#53#0" expanded="true" />
               </folding>
@@ -103,31 +138,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data_change_service.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DoctorSpring/views/data_change_service.py">
+      <file leaf-file-name="user_view.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DoctorSpring/views/user_view.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="5632" max-vertical-offset="7923">
-              <caret line="306" column="45" selection-start-line="306" selection-start-column="40" selection-end-line="306" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="comment.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DoctorSpring/models/comment.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.032259" vertical-offset="1194" max-vertical-offset="1881">
-              <caret line="95" column="28" selection-start-line="95" selection-start-column="23" selection-end-line="95" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user_center.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DoctorSpring/views/user_center.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2250" max-vertical-offset="9766">
-              <caret line="126" column="42" selection-start-line="126" selection-start-column="42" selection-end-line="126" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1102" max-vertical-offset="2204">
+              <caret line="75" column="31" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="31" />
               <folding>
                 <element signature="e#39#122#0" expanded="true" />
               </folding>
@@ -135,41 +150,73 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="user.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DoctorSpring/models/user.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1437" max-vertical-offset="4826">
+              <caret line="102" column="8" selection-start-line="102" selection-start-column="8" selection-end-line="102" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="state.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/PyVM/Medical/Lib/site-packages/sqlalchemy/orm/state.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3454" max-vertical-offset="11723">
+              <caret line="195" column="0" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="result_status.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DoctorSpring/util/result_status.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="551">
+              <caret line="4" column="7" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base_model.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DoctorSpring/test/base_model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.451613" vertical-offset="0" max-vertical-offset="5757">
+              <caret line="4" column="24" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="doctor.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DoctorSpring/models/doctor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="456" max-vertical-offset="4104">
-              <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="331" max-vertical-offset="4617">
+              <caret line="24" column="12" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="12" />
+              <folding>
+                <element signature="e#58#81#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="constant.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DoctorSpring/util/constant.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3344">
+              <caret line="31" column="21" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="oss_util.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DoctorSpring/util/oss_util.py">
+      <file leaf-file-name="pathology.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DoctorSpring/models/pathology.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2299" max-vertical-offset="4921">
-              <caret line="143" column="28" selection-start-line="143" selection-start-column="28" selection-end-line="143" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="hospital.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DoctorSpring/models/hospital.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="586" max-vertical-offset="1007">
-              <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="serving.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/PyVM/Medical/Lib/site-packages/werkzeug/serving.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="7859" max-vertical-offset="14212">
-              <caret line="522" column="23" selection-start-line="522" selection-start-column="23" selection-end-line="522" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="2375">
+              <caret line="22" column="14" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -178,20 +225,8 @@
       <file leaf-file-name="forms.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DoctorSpring/views/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7923">
-              <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-              <folding>
-                <element signature="e#38#83#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="doctorList.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/doctorList.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.4597701" vertical-offset="829" max-vertical-offset="1463">
-              <caret line="57" column="37" selection-start-line="57" selection-start-column="37" selection-end-line="57" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="6320" max-vertical-offset="8550">
+              <caret line="353" column="22" selection-start-line="353" selection-start-column="13" selection-end-line="353" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -216,13 +251,10 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/DoctorSpring/models/comment.py" />
-        <option value="$PROJECT_DIR$/DoctorSpring/models/location.py" />
         <option value="$PROJECT_DIR$/DoctorSpring/models/message.py" />
-        <option value="$PROJECT_DIR$/DoctorSpring/models/user.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/DoctorSpring/templates/doctorHome.html" />
         <option value="$PROJECT_DIR$/DoctorSpring/templates/head.html" />
-        <option value="$PROJECT_DIR$/DoctorSpring/test/base_model.py" />
         <option value="$PROJECT_DIR$/DoctorSpring/__init__.py" />
         <option value="$PROJECT_DIR$/DoctorSpring/models/__init__.py" />
         <option value="$PROJECT_DIR$/DoctorSpring/util/result_status.py" />
@@ -230,29 +262,33 @@
         <option value="$PROJECT_DIR$/DoctorSpring/static/app/lib/jquery-uploader/_main.js" />
         <option value="$PROJECT_DIR$/DoctorSpring/static/app/diagnose/apply/apply_controller.js" />
         <option value="$PROJECT_DIR$/DoctorSpring/static/app/diagnose/apply/apply_view.js" />
-        <option value="$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py" />
-        <option value="$PROJECT_DIR$/DoctorSpring/models/pathology.py" />
-        <option value="$PROJECT_DIR$/config.py" />
-        <option value="$PROJECT_DIR$/DoctorSpring/views/user_view.py" />
         <option value="$PROJECT_DIR$/DoctorSpring/templates/loginModal.html" />
-        <option value="$PROJECT_DIR$/DoctorSpring/models/hospital.py" />
         <option value="$PROJECT_DIR$/DoctorSpring/util/helper.py" />
-        <option value="$PROJECT_DIR$/DoctorSpring/templates/selectDoctorModal.html" />
-        <option value="$PROJECT_DIR$/DoctorSpring/util/constant.py" />
-        <option value="$PROJECT_DIR$/DoctorSpring/models/patient.py" />
-        <option value="$PROJECT_DIR$/DoctorSpring/templates/applyDiagnose.html" />
         <option value="$PROJECT_DIR$/DoctorSpring/server_template/home.dust" />
         <option value="$PROJECT_DIR$/DoctorSpring/templates/header.html" />
-        <option value="$PROJECT_DIR$/DoctorSpring/views/forms.py" />
         <option value="$PROJECT_DIR$/DoctorSpring/views/message_comment.py" />
-        <option value="$PROJECT_DIR$/DoctorSpring/views/user_center.py" />
         <option value="$PROJECT_DIR$/DoctorSpring/views/diagnose.py" />
         <option value="$PROJECT_DIR$/DoctorSpring/views/diagnose_front.py" />
         <option value="$PROJECT_DIR$/DoctorSpring/templates/home.html" />
-        <option value="$PROJECT_DIR$/DoctorSpring/views/data_change_service.py" />
-        <option value="$PROJECT_DIR$/DoctorSpring/views/front.py" />
-        <option value="$PROJECT_DIR$/DoctorSpring/models/doctor.py" />
         <option value="$PROJECT_DIR$/DoctorSpring/templates/doctorList.html" />
+        <option value="$PROJECT_DIR$/config.py" />
+        <option value="$PROJECT_DIR$/DoctorSpring/models/location.py" />
+        <option value="$PROJECT_DIR$/DoctorSpring/test/base_model.py" />
+        <option value="$PROJECT_DIR$/DoctorSpring/models/hospital.py" />
+        <option value="$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py" />
+        <option value="$PROJECT_DIR$/DoctorSpring/server_template/applyDiagnose.dust" />
+        <option value="$PROJECT_DIR$/DoctorSpring/views/user_center.py" />
+        <option value="$PROJECT_DIR$/DoctorSpring/views/data_change_service.py" />
+        <option value="$PROJECT_DIR$/DoctorSpring/models/pathology.py" />
+        <option value="$PROJECT_DIR$/DoctorSpring/util/constant.py" />
+        <option value="$PROJECT_DIR$/DoctorSpring/templates/selectDoctorModal.html" />
+        <option value="$PROJECT_DIR$/DoctorSpring/models/patient.py" />
+        <option value="$PROJECT_DIR$/DoctorSpring/templates/applyDiagnose.html" />
+        <option value="$PROJECT_DIR$/DoctorSpring/views/front.py" />
+        <option value="$PROJECT_DIR$/DoctorSpring/views/forms.py" />
+        <option value="$PROJECT_DIR$/DoctorSpring/models/user.py" />
+        <option value="$PROJECT_DIR$/DoctorSpring/models/doctor.py" />
+        <option value="$PROJECT_DIR$/DoctorSpring/views/user_view.py" />
       </list>
     </option>
   </component>
@@ -306,7 +342,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="2" />
+    <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -322,7 +358,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -338,20 +373,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="blueberry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="blueberry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="blueberry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MedicalApp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -461,6 +482,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -510,56 +532,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Python tests.Unittest UserTestCase.test_add_doctor">
-    <configuration default="false" name="Unittest ModelTestCase.test_add_department" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DoctorSpring/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="blueberry" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DoctorSpring/test/base_model.py" />
-      <option name="CLASS_NAME" value="ModelTestCase" />
-      <option name="METHOD_NAME" value="test_add_department" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittest ModelTestCase.test_add_hospital" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DoctorSpring/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="blueberry" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DoctorSpring/test/base_model.py" />
-      <option name="CLASS_NAME" value="ModelTestCase" />
-      <option name="METHOD_NAME" value="test_add_hospital" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
     <configuration default="false" name="Unittest UserTestCase.test_add_doctor" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -632,6 +604,56 @@
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <ConfigurationWrapper RunnerId="PythonCover" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest ModelTestCase.test_add_location" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DoctorSpring/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="blueberry" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DoctorSpring/test/base_model.py" />
+      <option name="CLASS_NAME" value="ModelTestCase" />
+      <option name="METHOD_NAME" value="test_add_location" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest ModelTestCase.test_add_position" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DoctorSpring/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="blueberry" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DoctorSpring/test/base_model.py" />
+      <option name="CLASS_NAME" value="ModelTestCase" />
+      <option name="METHOD_NAME" value="test_add_position" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
@@ -996,17 +1018,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest ModelTestCase.test_add_department" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest ModelTestCase.test_add_hospital" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest UserTestCase.test_add_doctor" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest UserTestCase.test_add_patient" />
-      <item index="4" class="java.lang.String" itemvalue="Python.app" />
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest UserTestCase.test_add_doctor" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest UserTestCase.test_add_patient" />
+      <item index="2" class="java.lang.String" itemvalue="Python.app" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest ModelTestCase.test_add_location" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest ModelTestCase.test_add_position" />
     </list>
     <recent_temporary>
-      <list size="3">
+      <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.app" />
         <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest UserTestCase.test_add_doctor" />
         <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest UserTestCase.test_add_patient" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest ModelTestCase.test_add_position" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest ModelTestCase.test_add_location" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -1053,7 +1077,15 @@
       <workItem from="1403619853995" duration="1534000" />
       <workItem from="1403704455201" duration="1798000" />
       <workItem from="1403769053214" duration="11388000" />
-      <workItem from="1403785010143" duration="5730000" />
+      <workItem from="1403785010143" duration="9021000" />
+      <workItem from="1403800297839" duration="3187000" />
+      <workItem from="1403845724354" duration="9179000" />
+      <workItem from="1404045762952" duration="2460000" />
+      <workItem from="1404129616237" duration="1057000" />
+      <workItem from="1404181915518" duration="13687000" />
+      <workItem from="1404197579734" duration="35000" />
+      <workItem from="1404197752543" duration="15683000" />
+      <workItem from="1404271462097" duration="21943000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1403013420621</created>
@@ -1087,11 +1119,19 @@
       <created>1403790515136</created>
       <updated>1403790515136</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="XY">
+      <created>1403790772231</created>
+      <updated>1403790772231</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Merge branch 'master' of https://github.com/LichuanLu/blueberry&#10;&#10;Conflicts:&#10;&#9;blueberry.iml&#10;xy">
+      <created>1403791126423</created>
+      <updated>1403791126423</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106918000" />
+    <option name="totallyTimeSpent" value="177440000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1118,62 +1158,62 @@
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.61333334" sideWeight="0.6423969" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.768" sideWeight="0.5618557" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41733333" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36266667" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5826667" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.64933336" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.44933334" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15528351" sideWeight="0.32933334" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5466667" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22266667" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.39974293" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22744845" sideWeight="0.67112297" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.64933336" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15528351" sideWeight="0.6706667" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.52847683" sideWeight="0.42352185" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41466665" sideWeight="0.5618557" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.44933334" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.52847683" sideWeight="0.5764781" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5483444" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22266667" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980132" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24742268" sideWeight="0.67112297" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.64933336" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15528351" sideWeight="0.6706667" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980132" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.75761586" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.484" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980132" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41733333" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5826667" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15528351" sideWeight="0.32933334" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.39974293" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -1196,23 +1236,32 @@
     <MESSAGE value="cc" />
     <MESSAGE value="update" />
     <MESSAGE value="XY" />
-    <option name="LAST_COMMIT_MESSAGE" value="XY" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/LichuanLu/blueberry&#10;&#10;Conflicts:&#10;&#9;blueberry.iml&#10;xy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/LichuanLu/blueberry&#10;&#10;Conflicts:&#10;&#9;blueberry.iml&#10;xy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/DoctorSpring/views/forms.py</url>
-          <line>186</line>
-          <option name="timeStamp" value="104" />
+          <url>file://$PROJECT_DIR$/DoctorSpring/views/front.py</url>
+          <line>171</line>
+          <option name="timeStamp" value="223" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/DoctorSpring/models/doctor.py</url>
-          <line>84</line>
-          <option name="timeStamp" value="116" />
+          <url>file://$PROJECT_DIR$/DoctorSpring/views/front.py</url>
+          <line>208</line>
+          <option name="timeStamp" value="224" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/DoctorSpring/models/user.py</url>
+          <line>61</line>
+          <option name="timeStamp" value="227" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="117" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="230" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1220,55 +1269,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/message.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="117" max-vertical-offset="513">
-          <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/_macroHelper.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="209" max-vertical-offset="323">
-          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/server_template/doctorHome.dust">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1198" max-vertical-offset="1919">
-          <caret line="92" column="10" selection-start-line="92" selection-start-column="10" selection-end-line="92" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/doctorHome.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1881" max-vertical-offset="2147">
-          <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/head.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1026" max-vertical-offset="1159">
-          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DoctorSpring/models/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/user.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4389">
-          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -1290,50 +1294,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/server_template/applyDiagnose.dust">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="209" max-vertical-offset="9177">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/util/pdf_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.92" vertical-offset="266" max-vertical-offset="1596">
-          <caret line="31" column="29" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/util/result_status.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.28" vertical-offset="0" max-vertical-offset="551">
-          <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4165" max-vertical-offset="7769">
-          <caret line="245" column="12" selection-start-line="245" selection-start-column="6" selection-end-line="245" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/pathology.py">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="247" max-vertical-offset="2109">
-          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1361,27 +1321,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/test/base_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="779" max-vertical-offset="4807">
-          <caret line="87" column="30" selection-start-line="87" selection-start-column="30" selection-end-line="87" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/PyVM/Medical/Lib/site-packages/wtforms/form.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="3245" max-vertical-offset="5871">
           <caret line="177" column="0" selection-start-line="177" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/views/user_view.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2" max-vertical-offset="1805">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1389,7 +1332,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-20.607143" vertical-offset="164" max-vertical-offset="855">
           <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1414,46 +1356,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/selectDoctorModal.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.107143" vertical-offset="133" max-vertical-offset="1026">
-          <caret line="16" column="42" selection-start-line="14" selection-start-column="30" selection-end-line="16" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/applyDiagnose.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2041" max-vertical-offset="9272">
-          <caret line="143" column="30" selection-start-line="143" selection-start-column="30" selection-end-line="143" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/patient.py">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="650" max-vertical-offset="1330">
-          <caret line="44" column="28" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/util/constant.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="247" max-vertical-offset="3363">
-          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DoctorSpring/server_template/home.dust">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7205882" vertical-offset="4431" max-vertical-offset="5111">
           <caret line="259" column="6" selection-start-line="2" selection-start-column="0" selection-end-line="259" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1465,19 +1371,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1026">
-          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="551">
           <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1485,7 +1382,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="228">
           <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1493,9 +1389,64 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.580646" vertical-offset="1596" max-vertical-offset="3667">
           <caret line="98" column="29" selection-start-line="98" selection-start-column="29" selection-end-line="98" selection-end-column="29" />
-          <folding>
-            <element signature="e#39#122#0" expanded="false" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/views/diagnose_front.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="798">
+          <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/SocketServer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2710" max-vertical-offset="13927">
+          <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="19.644068" vertical-offset="2052" max-vertical-offset="3401">
+          <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/doctorList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="1463">
+          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1026">
+          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/PyVM/Medical/Lib/site-packages/werkzeug/serving.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="7859" max-vertical-offset="14212">
+          <caret line="522" column="23" selection-start-line="522" selection-start-column="23" selection-end-line="522" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/location.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="199" max-vertical-offset="760">
+          <caret line="33" column="23" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/util/oss_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1455" max-vertical-offset="4940">
+          <caret line="109" column="29" selection-start-line="109" selection-start-column="4" selection-end-line="109" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1504,65 +1455,200 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6061">
-          <caret line="6" column="42" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="678" max-vertical-offset="6061">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/views/diagnose_front.py">
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/util/authenticated.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="798">
-          <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="188" max-vertical-offset="741">
+          <caret line="29" column="45" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/SocketServer.py">
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/hospital.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2710" max-vertical-offset="13927">
-          <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="572" max-vertical-offset="1102">
+          <caret line="36" column="49" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/header.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.464286" vertical-offset="314" max-vertical-offset="1349">
-          <caret line="29" column="63" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="63" />
+        <state vertical-scroll-proportion="-4.3050847" vertical-offset="715" max-vertical-offset="1349">
+          <caret line="51" column="23" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/test/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1282" max-vertical-offset="4484">
+          <caret line="97" column="43" selection-start-line="97" selection-start-column="43" selection-end-line="97" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/home.html">
+    <entry file="file://$USER_HOME$/PyVM/Medical/Lib/site-packages/jinja2/environment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="19.644068" vertical-offset="2052" max-vertical-offset="3401">
-          <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="7524" max-vertical-offset="22743">
+          <caret line="396" column="42" selection-start-line="396" selection-start-column="42" selection-end-line="396" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/views/user_center.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2145" max-vertical-offset="9348">
+          <caret line="142" column="40" selection-start-line="142" selection-start-column="40" selection-end-line="142" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/comment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1252" max-vertical-offset="1881">
+          <caret line="80" column="134" selection-start-line="80" selection-start-column="134" selection-end-line="80" selection-end-column="134" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/server_template/applyDiagnose.dust">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.836066" vertical-offset="4037" max-vertical-offset="10564">
+          <caret line="228" column="30" selection-start-line="225" selection-start-column="24" selection-end-line="228" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/util/pdf_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="182" max-vertical-offset="1406">
+          <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9272">
+          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+          <folding>
+            <element signature="e#42#65#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/selectDoctorModal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.071429" vertical-offset="285" max-vertical-offset="1026">
+          <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/patient.py">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="592" max-vertical-offset="1311">
+          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/PyVM/Medical/Lib/site-packages/flask/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1900238" vertical-offset="27239" max-vertical-offset="34637">
-          <caret line="1485" column="28" selection-start-line="1485" selection-start-column="28" selection-end-line="1485" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="27149" max-vertical-offset="34637">
+          <caret line="1460" column="0" selection-start-line="1460" selection-start-column="0" selection-end-line="1460" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/hospital.py">
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/views/data_change_service.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="586" max-vertical-offset="1007">
-          <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="7486" max-vertical-offset="8436">
+          <caret line="399" column="14" selection-start-line="399" selection-start-column="7" selection-end-line="399" selection-end-column="14" />
+          <folding>
+            <element signature="e#41#79#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/applyDiagnose.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="43.22034" vertical-offset="7357" max-vertical-offset="10811">
+          <caret line="253" column="161" selection-start-line="253" selection-start-column="161" selection-end-line="253" selection-end-column="161" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/PyVM/Medical/Lib/site-packages/werkzeug/serving.py">
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/pathology.py">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="7859" max-vertical-offset="14212">
-          <caret line="522" column="23" selection-start-line="522" selection-start-column="23" selection-end-line="522" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="2375">
+          <caret line="22" column="14" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="14" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/util/result_status.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="551">
+          <caret line="4" column="7" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/test/base_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.451613" vertical-offset="0" max-vertical-offset="5757">
+          <caret line="4" column="24" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/PyVM/Medical/Lib/site-packages/sqlalchemy/orm/state.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3454" max-vertical-offset="11723">
+          <caret line="195" column="0" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/util/constant.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3344">
+          <caret line="31" column="21" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1437" max-vertical-offset="4826">
+          <caret line="102" column="8" selection-start-line="102" selection-start-column="8" selection-end-line="102" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/doctor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="331" max-vertical-offset="4617">
+          <caret line="24" column="12" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="12" />
+          <folding>
+            <element signature="e#58#81#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1571,37 +1657,19 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7923">
-          <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-          <folding>
-            <element signature="e#38#83#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/views/data_change_service.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5632" max-vertical-offset="7923">
-          <caret line="306" column="45" selection-start-line="306" selection-start-column="40" selection-end-line="306" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="6320" max-vertical-offset="8550">
+          <caret line="353" column="22" selection-start-line="353" selection-start-column="13" selection-end-line="353" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/views/user_center.py">
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/views/user_view.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2250" max-vertical-offset="9766">
-          <caret line="126" column="42" selection-start-line="126" selection-start-column="42" selection-end-line="126" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1102" max-vertical-offset="2204">
+          <caret line="75" column="31" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="31" />
           <folding>
             <element signature="e#39#122#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/comment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.032259" vertical-offset="1194" max-vertical-offset="1881">
-          <caret line="95" column="28" selection-start-line="95" selection-start-column="23" selection-end-line="95" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1610,35 +1678,11 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.032258" vertical-offset="4321" max-vertical-offset="6251">
-          <caret line="234" column="53" selection-start-line="234" selection-start-column="45" selection-end-line="234" selection-end-column="53" />
+        <state vertical-scroll-proportion="6.3636365" vertical-offset="5868" max-vertical-offset="7904">
+          <caret line="342" column="52" selection-start-line="342" selection-start-column="52" selection-end-line="342" selection-end-column="52" />
           <folding>
             <element signature="e#39#53#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/doctor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="456" max-vertical-offset="4104">
-          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/util/oss_util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2299" max-vertical-offset="4921">
-          <caret line="143" column="28" selection-start-line="143" selection-start-column="28" selection-end-line="143" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/doctorList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4597701" vertical-offset="829" max-vertical-offset="1463">
-          <caret line="57" column="37" selection-start-line="57" selection-start-column="37" selection-end-line="57" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>

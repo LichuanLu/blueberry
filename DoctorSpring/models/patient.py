@@ -58,10 +58,9 @@ class Patient(Base):
 
     @classmethod
     def get_patient_draft(cls, id):
-        patient = cls.get_patient_by_id(id)
-        if patient is None:
-            patient = session.query(Patient).filter(Patient.status == ModelStatus.Draft).first()
-        return patient
+        if id:
+            return session.query(Patient).filter(Patient.userID == id, Patient.status == ModelStatus.Draft).first()
+
 
 '''
     def __repr__(self):

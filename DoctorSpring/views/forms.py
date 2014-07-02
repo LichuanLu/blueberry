@@ -12,43 +12,63 @@ class DiagnoseForm1(object):
     identitynumber = None
     phonenumber = None
     locationId = None
+    isHospitalUser = False
+    exist = False
+    diagnoseId = None
     def __init__(self, args):
-        self.patientid = args.get('patientId')
-        self.patientname = args.get('patientname')
-        self.patientsex = args.get('patientsex')
-        self.birthdate = args.get('birthdate')
-        self.identitynumber = args.get('identitynumber')
-        self.phonenumber = args.get('phonenumber')
-        self.locationId = args.get('locationId')
+
+        if 'type' in args.keys() and args.get('type') == 1:
+            isHospitalUser = True
+
+        if 'diagnoseId' not in args.keys():
+            self.diagnoseId = args.get('diagnoseId')
+
+        if 'patientname' not in args.keys():
+            self.exist = True
+            self.patientid = args.get('patientId')
+        else:
+            self.patientid = args.get('patientId')
+            self.patientname = args.get('patientname')
+            self.patientsex = args.get('patientsex')
+            self.birthdate = args.get('birthdate')
+            self.identitynumber = args.get('identitynumber')
+            self.phonenumber = args.get('phonenumber')
+            self.locationId = args.get('locationId')
     def validate(self):
         try:
-            if self.patientid is not None:
-                return SUCCESS
-            if self.patientname is None:
-                failure = ResultStatus(FAILURE.status, "请填写就诊人姓名")
-                return failure
-            if self.patientsex is None:
-                failure = ResultStatus(FAILURE.status, "请选择性别")
-                return failure
-            if self.birthdate is None:
-                failure = ResultStatus(FAILURE.status, "请选择出生日期")
-                return failure
-            if self.identitynumber is None:
-                failure = ResultStatus(FAILURE.status, "请填写身份证号")
-                return failure
-            if self.phonenumber is None:
-                failure = ResultStatus(FAILURE.status, "请填写手机号码")
-                return failure
-            if self.locationId is None:
-                failure = ResultStatus(FAILURE.status, "请选择所在地")
-                return failure
+            if(self.exist):
+                if self.patientid is not None:
+                    return SUCCESS
+            else:
+                if self.patientid is not None:
+                    return SUCCESS
+                if self.patientname is None:
+                    failure = ResultStatus(FAILURE.status, "请填写就诊人姓名")
+                    return failure
+                if self.patientsex is None:
+                    failure = ResultStatus(FAILURE.status, "请选择性别")
+                    return failure
+                if self.birthdate is None:
+                    failure = ResultStatus(FAILURE.status, "请选择出生日期")
+                    return failure
+                if self.identitynumber is None:
+                    failure = ResultStatus(FAILURE.status, "请填写身份证号")
+                    return failure
+                if self.phonenumber is None:
+                    failure = ResultStatus(FAILURE.status, "请填写手机号码")
+                    return failure
+                if self.locationId is None:
+                    failure = ResultStatus(FAILURE.status, "请选择所在地")
+                    return failure
         except Exception, e:
             return FAILURE
         return SUCCESS
 
 class DiagnoseForm3(object):
     doctorId = None
+    diagnoseId = None
     def __init__(self, args):
+        self.diagnoseId = args.get('diagnoseId')
         self.doctorId = args.get('doctorId')
     def validate(self):
         try:
@@ -64,12 +84,23 @@ class DiagnoseForm2(object):
     patientlocation = None
     dicomtype = None
     fileurl = None
+    pathologyId = None
+    exist = False
+    diagnoseId = None
     def __init__(self, args):
+        if 'pathologyId' in args.keys():
+            self.pathologyId = args.get('pathologyId')
+            self.exist = True
+        if 'diagnoseId' not in args.keys():
+            self.diagnoseId = args.get('diagnoseId')
+        self.patientid = args.get('patientId')
         self.patientlocation = args.getlist('patientlocation')
-        self.dicomtype = int(args.get('dicomtype'))
-        self.fileurl = args.get('fileurl')
+        self.dicomtype = args.get('dicomtype')
+        self.fileurl = args.get('fileid')
     def validate(self):
         try:
+            if self.pathologyId is not None:
+                return SUCCESS
             if self.patientlocation is None:
                 failure = ResultStatus(FAILURE.status, "请选择就诊部位")
                 return failure
@@ -88,10 +119,13 @@ class DiagnoseForm4(object):
     hospitalId = None
     illnessHistory = None
     fileurl = None
+    diagnoseId = None
     def __init__(self, args):
-        self.diagnoseHistory = args.get('diagnoseHistory')
+        if 'diagnoseId' not in args.keys():
+            self.diagnoseId = args.get('diagnoseId')
+        self.hospitalId = int(args.get('hospitalId'))
         self.illnessHistory = args.get('illnessHistory')
-        self.fileurl = args.getlist('fileurl')
+        self.fileurl = args.getlist('fileid')
     def validate(self):
         try:
             if self.hospitalId is None:
@@ -384,19 +418,13 @@ class DoctorList(object):
     pageNumber = None
     pageSize = None
     def __init__(self, request):
-        if len(request.form) > 0:
-            args = request.form
-            self.hospitalId = args.get('hospitalId')
-            self.sectionId = args.get('sectionId')
-            self.doctorname = args.get('doctorname')
-            self.pageNumber = args.get('pageNumber')
-            self.pageSize = args.get('pageSize')
-        else:
-            args = request.args
-            self.hospitalId = args['hospitalId']
-            self.sectionId = request.args['skillId']
-            self.pageNumber = request.args['pageNumber']
-            self.pageSize = request.args['pageSize']
+        args = request.args
+        if 'doctorname' in args.keys():
+            self.doctorname = str(args.get('doctorname'))
+        self.hospitalId = args['hospitalId']
+        self.sectionId = request.args['skillId']
+        self.pageNumber = request.args['pageNumber']
+        self.pageSize = request.args['pageSize']
     def validate(self):
         if self.hospitalId is None:
             self.hospitalId = -1
@@ -409,3 +437,11 @@ class DoctorList(object):
         if self.pageSize is None:
             self.pageSize = 6
         return SUCCESS
+
+
+class Dicominfo(object):
+    hospitalId = None
+    sectionId = None
+    doctorname = None
+    pageNumber = None
+    pageSize = None

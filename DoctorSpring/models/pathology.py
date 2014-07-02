@@ -6,7 +6,8 @@ from sqlalchemy.orm import relationship,backref
 
 from database import Base,db_session as session
 from DoctorSpring.util.constant import ModelStatus
-from datetime import time
+import time
+from DoctorSpring.models import File
 
 
 class Pathology(Base):
@@ -19,7 +20,9 @@ class Pathology(Base):
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
     patientId = sa.Column(sa.INTEGER, sa.ForeignKey('patient.id'))
     patient = relationship("Patient", backref=backref('pathology', order_by=id))
-    hospticalId = sa.Column(sa.INTEGER)    #医院ID
+    hospitalId = sa.Column(sa.INTEGER, sa.ForeignKey('hospital.id'))    #医院ID
+    hospital = relationship("Hospital", backref=backref('pathology', order_by=id))
+
     #diagnoseDocId = sa.Column(sa.INTEGER)  #诊断表ID
     #diagnosePartId = sa.Column(sa.INTEGER)  #检查部位ID
     name = sa.Column(sa.String(32))
@@ -29,12 +32,14 @@ class Pathology(Base):
     status = sa.Column(sa.INTEGER)      #标记状态 未提交，待审查，待诊断，待审核，结束
     pathologyPostions = relationship("PathologyPostion", order_by="PathologyPostion.id", backref="Pathology")
 
-    def __init__(self):
+    def __init__(self, id):
+        self.name = 'BL-' + str(id) + '-' + time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime(time.time()))
+        self.patientId = id
         self.status = ModelStatus.Normal
 
     @classmethod
     def set_name(id):
-        Pathology.name = id + '-' + time.strftime('%Y-%m-%d', time.localtime(time.time()))
+        Pathology.name = 'BL-' + str(id) + '-' + time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time()))
 
     @classmethod
     def save(cls, pathology):
@@ -52,6 +57,12 @@ class Pathology(Base):
         if id:
             return session.query(Pathology).filter(Pathology.patientId == id,Pathology.status == ModelStatus.Normal).all()
 
+    @classmethod
+    def getByPatientStatus(cls, id, status):
+        if id:
+            return session.query(Pathology).filter(Pathology.patientId == id, Pathology.status == status).first()
+
+
 class Position(Base):
 
     __tablename__ = 'position'
@@ -62,9 +73,11 @@ class Position(Base):
 
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
     name=sa.Column(sa.String(512))
-    parentId=sa.Column(sa.Integer)
     status=sa.Column(sa.Integer)
 
+    def __init__(self, name=name):
+        self.name = name
+        self.status = ModelStatus.Normal
 
     @classmethod
     def save(cls,position):
@@ -72,6 +85,13 @@ class Position(Base):
             session.add(position)
             session.commit()
             session.flush()
+
+
+    @classmethod
+    def getPositions(cls):
+        return session.query(Position).filter(Position.status==ModelStatus.Normal).all()
+
+
 
 class PathologyPostion(Base):
     __tablename__ = 'pathologyPostion'

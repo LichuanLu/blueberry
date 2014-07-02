@@ -9,6 +9,7 @@ class ModelStatus(object):
       Draft=9   #草稿
 
 
+
 class UserStatus(object):
     patent = 0  # 普通用户
     doctor = 1  # 医生账户

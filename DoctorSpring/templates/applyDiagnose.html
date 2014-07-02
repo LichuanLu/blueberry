@@ -76,13 +76,15 @@
 							<input type="radio" name="patientProfile" value="2" data-toggle="radio" checked="true">新就诊人</label>
 					</div>
 					<form id="patient-already-exists" class="full-width-dropdown" style="display:none;">
-						<select name="patientId">
-                            {% for i in result.patientdict %}
-                            <!--<option value="1">李响</option>-->
-                            <!--<option value="2">张名</option>-->
-                            <option value='{{ i.id }}'>{{i.realname}}</option>
-                            {% endfor %}
-						</select>
+
+                            <select name="patientId">
+                                {% for i in result.patientdict %}
+                                <!--<option value="1">李响</option>-->
+                                <!--<option value="2">张名</option>-->
+                                <option value='{{ i.id }}'>{{i.realname}}</option>
+                                {% endfor %}
+                            </select>
+
 						<div id="patient-already-profile-region">
 						</div>
 					</form>
@@ -95,7 +97,7 @@
 								<span class="required-text">（必填）</span>
 							</label>
 							<div class="input-wrapper">
-								<input type="text" class="form-control" name="patientname" id="patientnameinput" placeholder="就诊人姓名">
+								<input type="text" class="form-control" name="patientname" value="{%if result.patient%}{{result.patient.realname}}{%endif%}" id="patientnameinput" placeholder="就诊人姓名">
 								<div class="line-area">
 									<div class="line"></div>
 									<div class="ball"></div>
@@ -109,19 +111,19 @@
 								<span class="required-text">（必填）</span>
 							</label>
 							<div class="">
-								<label class="radio">
+								<label class="radio {%if result.patient%}{% if result.patient.gender == 1 %} checked{% endif %}{%endif%}">
 									<span class="icons">
 										<span class="first-icon fui-radio-unchecked"></span>
 										<span class="second-icon fui-radio-checked"></span>
 									</span>
-									<input type="radio" name="patientsex" value="1" data-toggle="radio">男</label>
+									<input type="radio" name="patientsex" value="1" data-toggle="radio" {%if result.patient%}{% if result.patient.gender == 1 %} checked{% endif %}{%endif%}>男</label>
 
-								<label class="radio">
+								<label class="radio {%if result.patient%}{% if result.patient.gender == 2 %} checked{% endif %}{%endif%}">
 									<span class="icons">
 										<span class="first-icon fui-radio-unchecked"></span>
 										<span class="second-icon fui-radio-checked"></span>
 									</span>
-									<input type="radio" name="patientsex" value="2" data-toggle="radio">女</label>
+									<input type="radio" name="patientsex" value="2" data-toggle="radio" {%if result.patient%}{% if result.patient.gender == 2 %} checked{% endif %}{%endif%}>女</label>
 							</div>
 						</div>
 
@@ -138,7 +140,7 @@
 											<span class="fui-calendar"></span>
 										</button>
 									</span>
-									<input type="text" class="form-control" id="birthdateinput" name="birthdate"></div>
+									<input type="text" class="form-control" value="{%if result.patient%}{{result.patient.birthDate}}{%endif%}" id="birthdateinput" name="birthdate"></div>
 
 							</div>
 						</div>
@@ -149,7 +151,7 @@
 								<span class="required-text">（必填）</span>
 							</label>
 							<div class="input-wrapper">
-								<input type="text" class="form-control" id="identityNumberInput" name="identitynumber" placeholder="身份证号码">
+								<input type="text" class="form-control" id="identityNumberInput" value="{%if result.patient%}{{result.patient.identityCode}}{%endif%}" name="identitynumber" placeholder="身份证号码">
 								<div class="line-area">
 									<div class="line"></div>
 									<div class="ball"></div>
@@ -164,7 +166,7 @@
 								<span class="required-text">（必填）</span>
 							</label>
 							<div class="input-wrapper">
-								<input type="text" class="form-control" id="phonenumberinput" name="phonenumber" placeholder="手机号码">
+								<input type="text" class="form-control" id="phonenumberinput" value="{%if result.patient%}{{result.patient.identityPhone}}{%endif%}" name="phonenumber" placeholder="手机号码">
 								<div class="line-area">
 									<div class="line"></div>
 									<div class="ball"></div>
@@ -180,10 +182,14 @@
 							<div class="input-wrapper location-wrapper">
 								<!-- <input type="text" id="locationinput" class="form-control" name="location" data-provide="typeahead" /> -->
 								<select id="locationinput" name="locationId" class="multiselect">
- 									<option value="0">未选中</option>
-									<option value="1">陕西，西安</option>
-									<option value="2">陕西，汉中</option>
-									<option value="－1">其他</option>
+ 									<option value="-1">未选中</option>
+                                    {%if result.locations%}
+                                    {% for i in result.locations %}
+                                    <option value="{{i.id}}" {%if result.patient%}{%if result.patient.locationId == i.id %} selected {% endif %}{%endif
+                                    %}>{{i.name}}</option>
+                                    {% endfor %}
+                                    {%endif%}
+									<option value="0">其他</option>
 								</select>
 								<div class="line-area">
 									<div class="line"></div>
@@ -226,8 +232,11 @@
 							<input type="radio" name="dicomInfo" value="2" data-toggle="radio" checked="true">新影像信息</label>
 					</div>
 					<form id="dicom-already-exists" class="full-width-dropdown" style="display:none;">
-						<select id="dicom-already-exists-select" name="pathologyId">
-						</select>
+                        <div id="dicom-already-exists-select-region">
+
+                            <select id="dicom-already-exists-select" name="pathologyId">
+                            </select>
+                        </div>
 						<div id="dicom-already-info-region">
 						</div>
 					</form>
@@ -240,9 +249,11 @@
 
 							<div class="patientlocation-wrapper">
 								<select id="patientLocationSelect" name="patientlocation" class="multiselect" multiple="multiple">
-                                    {% for i in result.skills %}
-                                    <option value="{{i.id}}">{{i.name}}</option>
+                                    {% if result.positions %}
+                                    {% for i in result.positions %}
+                                    <option value="{{i.id}}"{%if result.pathology%} {%for position in result.pathologyPositions%}{%if i.id == position.positionId %} selected {% endif %}{% endfor %}{%endif%}>{{i.name}}</option>
                                     {% endfor %}
+                                    {% endif %}
 								</select>
 								<!-- <div class="line-area">
 								<div class="line"></div>
@@ -250,66 +261,101 @@
 							</div>
 							<p class="side-description">就诊人姓名须与诊断书和影像数据上姓名相符就诊人姓名须与诊断书和影像数据上姓名相符</p>
 							-->
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="dicomtype">
-							影像类型：
-							<span class="required-text">（必填）</span>
-						</label>
-						<div class="">
-							<label class="radio">
+						    </div>
+					    </div>
+
+                        <div class="form-group">
+                            <label for="dicomtype">
+                                影像类型：
+                                <span class="required-text">（必填）</span>
+                            </label>
+                            <div class="">
+                                <label class="radio {%if result.pathology%}{% if result.pathology.diagnoseMethod == 'ct' %} checked{% endif %}{%endif%}" >
 								<span class="icons">
 									<span class="first-icon fui-radio-unchecked"></span>
 									<span class="second-icon fui-radio-checked"></span>
 								</span>
-								<input type="radio" name="dicomtype" value="1" data-toggle="radio">CT</label>
+                                    <input type="radio" name="dicomtype" value="ct" data-toggle="radio" {%if result.pathology%}{% if result.pathology.diagnoseMethod == 'ct' %} checked{% endif %}{%endif%}>CT</label>
 
-							<label class="radio">
+                                <label class="radio {%if result.pathology%}{% if result.pathology.diagnoseMethod == 'mri' %} checked{% endif %}{%endif%}">
 								<span class="icons">
 									<span class="first-icon fui-radio-unchecked"></span>
 									<span class="second-icon fui-radio-checked"></span>
 								</span>
-								<input type="radio" name="dicomtype" value="2" data-toggle="radio">核磁共振(MR)</label>
-						</div>
-					</div>
-					<div class="form-group" id="dicomfileupload">
-						<label for="dicomfileinput">
-							DICOM影像文件：
-							<span class="required-text">（必填）</span>
-						</label>
-						<p class="">必须包含有效的影像文件</p>
-						<div class="row fileupload-buttonbar upload-file-wrapper">
-							<div class="col-md-4">
-								<!-- The fileinput-button span is used to style the file input field as button -->
-								<span class="btn btn-success fileinput-button"> <i class="glyphicon glyphicon-plus"></i>
-									<span>上传文件...</span>
-									<input id="dicomfileinput" type="file" name="files[]" multiple=""></span>
-								<!-- The global file processing state -->
-								<span class="fileupload-process"></span>
-							</div>
-							<!-- The global progress state -->
-							<div class="col-md-8 fileupload-progress fade">
-								<!-- The global progress bar -->
-								<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-									<div class="progress-bar progress-bar-success" style="width:0%;"></div>
-								</div>
-								<!-- The extended global progress state -->
-								<div class="progress-extended">&nbsp;</div>
-							</div>
+                                    <input type="radio" name="dicomtype" value="mri" data-toggle="radio" {%if result.pathology%}{% if result.pathology.diagnoseMethod == 'mri' %} checked{% endif %}{%endif%}>核磁共振(MR)</label>
+                            </div>
+                        </div>
 
-						</div>
 
-						<!-- The table listing the files available for upload/download -->
-						<div class="full-width">
-							<table role="presentation" class="table table-striped">
-								<tbody class="files"></tbody>
-							</table>
-						</div>
-					</div>
+                        <div class="form-group" id="dicomfileupload">
+                            <label for="dicomfileinput">
+                                DICOM影像文件：
+                                <span class="required-text">（必填）</span>
+                            </label>
+                            {%if result.pathology%}
+                            <div class="edit-file-wrapper">
+                            {%else%}
+                            <div class="edit-file-wrapper" style="display:none;">
+                            {%endif%}
 
+                                <p class="">已经上传的文件列表</p>
+                                {%if result.dicomfile%}
+                                {%for file in result.dicomfile%}
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <a class="file-link" data-fileid="{{file.id}}" href="{{file.url}}">{{file.name}}</a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <span>文件大小：{{file.size}}</span>
+                                    </div>
+                                    <div>
+                                        <a class="btn btn-warning btn-xs">重新上传</a>
+                                    </div>
+                                </div>
+                                {%endfor%}
+                                {%endif%}
+                            </div>
+
+                            {%if result.pathology%}
+                            <div class="new-file-wrapper" style="display:none;">
+                            {%else%}
+                            <div class="new-file-wrapper">
+                            {%endif%}
+
+                                <p class="">必须包含有效的影像文件</p>
+                                <div class="row fileupload-buttonbar upload-file-wrapper">
+                                    <div class="col-md-4">
+                                        <!-- The fileinput-button span is used to style the file input field as button -->
+                                <span class="btn btn-success fileinput-button"> <i class="glyphicon glyphicon-plus"></i>
+                                    <span>上传文件...</span>
+                                    <input id="dicomfileinput" type="file" name="files[]" multiple=""></span>
+                                        <!-- The global file processing state -->
+                                        <span class="fileupload-process"></span>
+                                    </div>
+                                    <!-- The global progress state -->
+                                    <div class="col-md-8 fileupload-progress fade">
+                                        <!-- The global progress bar -->
+                                        <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+                                        </div>
+                                        <!-- The extended global progress state -->
+                                        <div class="progress-extended">&nbsp;</div>
+                                    </div>
+
+                                </div>
+
+                                        <!-- The table listing the files available for upload/download -->
+                                <div class="full-width">
+                                    <table role="presentation" class="table table-striped">
+                                        <tbody class="files"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
 					
-				</form>
+				    </form>
 				<div class="btn-wrapper">
 					<button type="submit" class="btn btn-info submit-btn">保存并继续</button>
 
@@ -339,8 +385,11 @@
 							<input type="radio" name="historyInfo" value="2" data-toggle="radio" checked="true">新额外信息</label>
 				</div>
 				<form id="history-already-exists" class="full-width-dropdown" style="display:none;">
-						<select id="history-already-exists-select" name="pathologyId">
-						</select>
+                        <div id="history-already-exists-select-region">
+
+                            <select id="history-already-exists-select" name="pathologyId">
+                            </select>
+                        </div>
 						<div id="history-already-info-region">
 						</div>
 				</form>
@@ -354,10 +403,13 @@
 <!-- 							<input type="text" id="hospitalinput" name="hospitalId" class="form-control" data-provide="typeahead" />
  -->
  							<select id="hospitalinput" name="hospitalId" class="multiselect">
- 								<option value="0">未选中</option>
-								<option value="1">西安西京医院</option>
-								<option value="2">301医院</option>
-								<option value="－1">其他</option>
+ 								<option value="-1">未选中</option>
+                                {% if result.hospitals %}
+                                {% for i in result.hospitals %}
+                                <option value="{{i.id}}"{%if result.pathology%}{%if i.id == result.pathology.hospitalId %} selected {% endif %}{%endif%}>{{i.name}}</option>
+                                {% endfor %}
+                                {% endif %}
+								<option value="0">其他</option>
 
 							</select>
 							<div class="line-area">
@@ -374,7 +426,7 @@
 							<span class="required-text">（必填）</span>
 						</label>
 						<div class="illhistory-wrapper">
-							<textarea id="illhistory" name="illnessHistory" class="form-control" placeholder="病史"></textarea>
+							<textarea id="illhistory" name="illnessHistory" class="form-control" placeholder="病史">{%if result.pathology%}{{result.pathology.caseHistory}}{%endif%}</textarea>
 							<div class="line-area">
 								<div class="line"></div>
 								<div class="ball"></div>
@@ -383,40 +435,69 @@
 						</div>
 
 					</div>
-					<div class="form-group" id="patient-medical-report-fileupload">
-						<label for="patient-medical-report-file">
-							诊断书：
-							<span class="required-text"></span>
-						</label>
-						<p class="">需要清晰的扫描件或者照片</p>
-						<div class="row fileupload-buttonbar upload-file-wrapper">
-							<div class="col-md-4">
-								<!-- The fileinput-button span is used to style the file input field as button -->
-								<span class="btn btn-success fileinput-button"> <i class="glyphicon glyphicon-plus"></i>
-									<span>上传文件...</span>
-									<input id="patient-medical-report-file" type="file" name="files[]" multiple=""></span>
-								<!-- The global file processing state -->
-								<span class="fileupload-process"></span>
-							</div>
-							<!-- The global progress state -->
-							<div class="col-md-8 fileupload-progress fade">
-								<!-- The global progress bar -->
-								<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-									<div class="progress-bar progress-bar-success" style="width:0%;"></div>
-								</div>
-								<!-- The extended global progress state -->
-								<div class="progress-extended">&nbsp;</div>
-							</div>
+                    <div class="form-group" id="patient-medical-report-fileupload">
+                        <label for="patient-medical-report-file">
+                            诊断书：
+                            <span class="required-text"></span>
+                        </label>
+                        {%if result.pathology%}
+                        <div class="edit-file-wrapper">
+                        {%else%}
+                        <div class="edit-file-wrapper" style="display:none;">
+                        {%endif%}
+                            <p class="">已经上传的文件列表	<a class="btn btn-warning btn-xs">全部重新上传</a></p>
+                            {%if result.fileAboutDiagnose%}
+                            {%for file in result.fileAboutDiagnose%}
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <a class="file-link" data-fileid="{{file.id}}" href="{{file.url}}">{{file.name}}</a>
+                                </div>
+                                <div class="col-md-4">
+                                    <span>文件大小：{{file.size}}</span>
+                                </div>
+                                <!-- <div>
+                                    <a class="btn btn-warning btn-xs">重新上传</a>
+                                </div> -->
+                            </div>
+                            {%endfor%}
+                            {%endif%}
+                        </div>
 
-						</div>
+                        {%if result.pathology%}
+                        <div class="new-file-wrapper" style="display:none;">
+                        {%else%}
+                        <div class="new-file-wrapper">
+                        {%endif%}
+                            <p class="">需要清晰的扫描件或者照片</p>
+                            <div class="row fileupload-buttonbar upload-file-wrapper">
+                                <div class="col-md-4">
+                                    <!-- The fileinput-button span is used to style the file input field as button -->
+                                <span class="btn btn-success fileinput-button"> <i class="glyphicon glyphicon-plus"></i>
+                                    <span>上传文件...</span>
+                                    <input id="patient-medical-report-file" type="file" name="files[]" multiple=""></span>
+                                    <!-- The global file processing state -->
+                                    <span class="fileupload-process"></span>
+                                </div>
+                                <!-- The global progress state -->
+                                <div class="col-md-8 fileupload-progress fade">
+                                    <!-- The global progress bar -->
+                                    <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                        <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+                                    </div>
+                                    <!-- The extended global progress state -->
+                                    <div class="progress-extended">&nbsp;</div>
+                                </div>
 
-						<!-- The table listing the files available for upload/download -->
-						<div class="full-width">
-							<table role="presentation" class="table table-striped">
-								<tbody class="files"></tbody>
-							</table>
-						</div>
-					</div>
+                            </div>
+
+                            <!-- The table listing the files available for upload/download -->
+                            <div class="full-width">
+                                <table role="presentation" class="table table-striped">
+                                    <tbody class="files"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 					
 				</form>
 				<p class="apply-warning-text">请详细检查您申请的请求并确保您已经提供了需要的信息</p>

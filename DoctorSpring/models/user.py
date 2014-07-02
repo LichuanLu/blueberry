@@ -28,7 +28,7 @@ class User(Base):
     email = sa.Column(sa.String(64))
     imagePath = sa.Column(sa.String(255))
     sex = sa.Column(sa.INTEGER)   # Location表ID
-    phone = sa.Column(sa.INTEGER)
+    phone = sa.Column(sa.String(20))
     type=sa.Column(sa.Integer)  # 0:patent,1:doctor
     status = sa.Column(sa.INTEGER)  # 0:normal,1:delete,2:overdue
 
@@ -58,12 +58,15 @@ class User(Base):
     def get_id(self):
         return unicode(self.id)
 
-    def __init__(self, name=None, password=None):
+    def __init__(self, name=None, password=None, encryption=True):
         if '@' in name:
             self.email = name
         else:
             self.phone = name
-        self.password = generate_password_hash(password)
+        if(encryption):
+            self.password = generate_password_hash(password)
+        else:
+            self.password = password
         self.imagePath = config.DEFAULT_IMAGE
         self.status = ModelStatus.Normal
 
@@ -116,6 +119,13 @@ class UserRole(Base):
     userId = sa.Column(sa.Integer)
     roleId= sa.Column(sa.Integer)
 
+
+    def __init__(self, userId, roleId):
+        if userId and roleId:
+            self.userId = userId
+            self.roleId = roleId
+
+
     @staticmethod
     def checkRole(session,userId,roleId):
         if userId and roleId:
@@ -127,6 +137,14 @@ class UserRole(Base):
         if userId is None:
             return
         return session.query(UserRole).filter(UserRole.userId==userId).first()
+
+    @classmethod
+    def save(cls, userrole):
+        if userrole:
+            session.add(userrole)
+            session.commit()
+            session.flush()
+
 class Role(Base):
     __tablename__ = 'role'
     __table_args__ = {

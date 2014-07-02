@@ -34,6 +34,7 @@ class Hospital(Base):
         self.address = address
         self.description = description
         self.locationId = locationId
+        self.status = constant.ModelStatus.Normal
 
 
     def __repr__(self):
