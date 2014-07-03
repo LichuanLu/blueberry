@@ -5,18 +5,18 @@ import os.path
 
 ROOT_DIR=os.path.dirname(__file__)
 
-_DBUSER = "ibeaconuser"
-_DBPASS = "ibeacon"
+_DBUSER = "ctt"
+_DBPASS = "ctt"
 _DBNAME = "medicaldb"
-_DBHOST = "114.215.179.6"
+_DBHOST = "localhost:3306"
 
 ROOT_DIR=os.path.dirname(__file__)
 
 #config
 SECRET_KEY = 'flasksimplelaw'
-SITE_TITLE = 'Welcome. | Simple LAW'
-SITE_URL = 'http://www.simplelaw.cn'
-SITE_NAME = 'simplelaw'
+SITE_TITLE = '易诊断'
+SITE_URL = 'http://www.ezhenduan.com'
+SITE_NAME = '易诊断'
 
 #admin info
 ADMIN_INFO = ''
@@ -29,15 +29,15 @@ UPLOADS_FOLDER = os.path.realpath('.') + '/static/'
 FILE_SYSTEM_STORAGE_FILE_VIEW = 'static'
 
 # User
-DEFAULT_IMAGE = '/static/assets/image/9-small.jpg'
+DEFAULT_IMAGE = '/static/assets/image/young-m.jpg'
 DEFAULT_TITLE = '待定'
 
 class rec:
     pass
 
 rec.database = 'mysql://%s:%s@%s/%s' % (_DBUSER, _DBPASS, _DBHOST, _DBNAME)
-rec.description = u"simple law"
-rec.url = 'http://www.simplelaw.cn'
+rec.description = u"易诊断"
+rec.url = 'http://www.ezhenduan.com'
 rec.paged = 8
 rec.archive_paged = 20
 rec.admin_username = 'admin'

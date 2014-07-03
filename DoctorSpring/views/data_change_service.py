@@ -29,7 +29,7 @@ def userCenterDiagnoses(diagnoses):
         if diagnose.pathologyId:
             dicomUrl=File.getDicomFileUrl(diagnose.pathologyId)
             if dicomUrl:
-                diagDict['dicomUrl']
+                diagDict['dicomUrl'] = dicomUrl
         if hasattr(diagnose,'report') and diagnose.report and diagnose.report.fileUrl:
             diagDict['reportUrl']= diagnose.report.fileUrl
 
