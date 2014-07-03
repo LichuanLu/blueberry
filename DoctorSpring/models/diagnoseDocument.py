@@ -464,6 +464,14 @@ class File(Base):
         if id:
             return session.query(File).filter(File.id == id, File.status==ModelStatus.Normal).first()
 
+    @classmethod
+    def getFilebypathologyId(cls, pathologyId, type=None):
+        if pathologyId:
+            query = session.query(File).filter(File.pathologyId == pathologyId, File.status==ModelStatus.Normal)
+            if type is not None:
+                query = query.filter(File.type == type)
+
+            return query.all()
 
     @classmethod
     def getDicomFileUrl(cls,pathologyId):
@@ -476,7 +484,13 @@ class File(Base):
             return session.query(File.url).filter(File.pathologyId==pathologyId,File.type==constant.FileType.FileAboutDiagnose,File.status==ModelStatus.Normal).all()
 
 
-
+    @classmethod
+    def cleanDirtyFile(cls, fileIds, pathologyId, type):
+        if fileIds is not None and len(fileIds) > 0 and pathologyId:
+            files = File.getFilebypathologyId(pathologyId, type)
+            for file in files:
+                if not unicode(file.id) in fileIds:
+                        file.status = ModelStatus.Del
 
 
 

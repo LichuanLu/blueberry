@@ -121,5 +121,13 @@ class PathologyPostion(Base):
             session.flush()
 
 
+    @classmethod
+    def deleteByPathologyId(cls,pathologyId):
+        if pathologyId:
+            pathologyPostions = session.query(PathologyPostion).filter(PathologyPostion.pathologyId == pathologyId).all()
+            for position in pathologyPostions:
+                session.delete(position)
+            session.commit()
+            session.flush()
 
 

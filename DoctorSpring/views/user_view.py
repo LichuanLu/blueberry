@@ -48,7 +48,8 @@ def login():
 @user_view.route('/logout')
 def logout():
     session['logged_in'] = False
-    session['username'] = ''
+    session['username'] = None
+    session['userId'] = None
     logout_user()
     return redirect('/homepage')
 

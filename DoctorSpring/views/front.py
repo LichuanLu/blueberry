@@ -47,6 +47,12 @@ def homepage():
 
 @front.route('/applyDiagnose', methods=['GET', 'POST'])
 def applyDiagnose():
+
+    if session.has_key('userId'):
+        userId=session['userId']
+    if userId is None:
+        return redirect('/loginPage')
+
     data = {}
     hospitals = Hospital.getAllHospitals(db_session)
     hospitalsDict = object2dict.objects2dicts(hospitals)
@@ -180,14 +186,19 @@ def applyDiagnoseForm(formid):
 
                 if new_pathology is None:
                     new_pathology = Pathology(new_diagnose.patientId)
-                    new_pathology.diagnoseMethod = form.dicomtype
-                    new_pathology.status = ModelStatus.Draft
-                    new_pathology.save(new_pathology)
-                    for position in form.patientlocation:
-                        new_position_id = PathologyPostion(new_pathology.id, position)
-                        PathologyPostion.save(new_position_id)
 
-                    new_file = File.getFilebyId(form.fileurl)
+                new_pathology.diagnoseMethod = form.dicomtype
+                new_pathology.status = ModelStatus.Draft
+                new_pathology.save(new_pathology)
+
+                PathologyPostion.deleteByPathologyId(new_pathology.id)
+                for position in form.patientlocation:
+                    new_position_id = PathologyPostion(new_pathology.id, position)
+                    PathologyPostion.save(new_position_id)
+
+                File.cleanDirtyFile(form.fileurl, new_pathology.id, FileType.Dicom)
+                for fileurl in form.fileurl:
+                    new_file = File.getFilebyId(int(fileurl))
                     new_file.pathologyId = new_pathology.id
                     File.save(new_file)
 
@@ -209,13 +220,16 @@ def applyDiagnoseForm(formid):
                 new_pathology = Pathology.getById(new_diagnose.pathologyId)
                 if(new_pathology is not None):
                     new_pathology.caseHistory = form.illnessHistory
-                    new_pathology.hospticalId = form.hospitalId
-                    for fileurl in form.fileurl:
-                        new_file = File.getFilebyId(fileurl)
-                        new_file.pathologyId = new_pathology.id
-                        File.save(new_file)
+                    new_pathology.hospitalId = form.hospitalId
                     new_pathology.status = ModelStatus.Normal
                     Pathology.save(new_pathology)
+
+                    File.cleanDirtyFile(form.fileurl, new_pathology.id, FileType.FileAboutDiagnose)
+                    for fileurl in form.fileurl:
+                        new_file = File.getFilebyId(int(fileurl))
+                        new_file.pathologyId = new_pathology.id
+                        File.save(new_file)
+
                     new_patient = Patient.get_patient_by_id(new_diagnose.patientId)
                     new_patient.status = PatientStatus.diagnose
                     new_diagnose.status = DiagnoseStatus.NeedPay
@@ -242,7 +256,7 @@ def dicomfileUpload():
             files = request.files
             for key, file in files.iteritems():
                 if file and allowed_file(file.filename):
-                    filename = secure_filename(file.filename)
+                    filename = file.filename
                     # file_url = oss_util.uploadFile(diagnoseId, filename)
                     from DoctorSpring.util.oss_util import uploadFileFromFileStorage
                     fileurl = uploadFileFromFileStorage(4, filename, file,'',{})
@@ -271,7 +285,7 @@ def patientReportUpload():
             files = request.files
             for key, file in files.iteritems():
                 if file and allowed_file(file.filename):
-                    filename = secure_filename(file.filename)
+                    filename = file.filename
                     # file_url = oss_util.uploadFile(diagnoseId, filename)
                     from DoctorSpring.util.oss_util import uploadFileFromFileStorage
                     fileurl = uploadFileFromFileStorage(4, filename, file,'',{})
@@ -331,7 +345,7 @@ def doctor_rec():
         doctorId = request.args['doctorid']
         doctor = Doctor.get_doctor(doctorId)
     elif 'diagnoseId' in request.args.keys():
-        diagnoseId = request.args['diagnoseId']
+        diagnoseId = int(request.args['diagnoseId'])
         diagnose = Diagnose.getDiagnoseById(diagnoseId)
         if diagnose is not None:
             doctor = diagnose.doctor
