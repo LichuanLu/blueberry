@@ -290,7 +290,15 @@ class UserTestCase(unittest.TestCase):
         new_userrole2 = UserRole(user.id, RoleId.Admin)
         UserRole.save(new_userrole2)
 
+class CommentTestCase(unittest.TestCase):
 
+    def test_addcomment(self):
+        diagnoseComment=Comment(5,5,1,"诊断很不错，非常感谢")
+        session.add(diagnoseComment)
+        session.commit()
+        diagnoseComment2=Comment(5,5,1,"张主任，非常感谢您的诊断，帮助我避免了误诊，而且节约了时间，非常感谢。")
+        session.add(diagnoseComment2)
+        session.commit()
 
 
 
