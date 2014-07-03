@@ -80,9 +80,9 @@
                     {{result.doctor.doctorname}}
                     <span>{{result.doctor.doctortitle}}</span>
                 </h6>
-                <p class="hospital">{{result.doctor.hospitalname}}</p>
-                <p class="skill">擅长{{result.doctor.skill}}</p>
-                <a href="/doctor/site/{{result.doctor.userId}}" class="doctor-link">查看详细信息</a>
+                <p class="hospital">医院：{{result.doctor.hospitalname}}</p>
+                <p class="skill">擅长：{{result.doctor.skill}}</p>
+                <a href="/doctor/site/{{result.doctor.userId}}" class="doctor-link">进入医生公共主页</a>
             </div>
             {% endif %}
         </div>
@@ -94,8 +94,8 @@
                         <img src="{{i.avatarUrl}}" alt="{{i.doctorname}}" />
                         <div class="doctor-des">
                             <h6>{{i.doctorname}} <span>{{i.doctortitle}}</span></h6>
-                            <p class="hospital">{{i.hospitalname}}</p>
-                            <span style="display:none;" class="skill">擅长{{i.skill}}</span>
+                            <!--<p class="hospital">{{i.hospitalname}}</p>-->
+                            <span style="display:none;" class="skill">{{i.skill}}</span>
                             <span style="display:none;" class="doctor-link">/doctor/site/{{i.id}}</span>
                         </div>
                     </a>
@@ -134,7 +134,7 @@
                             <span class="image">
                             <img src="{{comment.avatar}}" alt="young-m">
                             </span>
-                            <dl><dt><span>就诊医生：<a target="_blank" href="">{{comment.receiverName}}</a>&nbsp;&nbsp;<a >({{comment.hospitalName}})</a></span><em>{{comment.createTime}}</em></dt><dd>{{comment.content}} <a target="_blank" href="">详情&gt;</a></dd></dl>
+                            <dl><dt><span>就诊医生：<a target="_blank" href="">{{comment.receiverName}}</a>&nbsp;&nbsp;<a >(西安西京医院)</a></span><em>{{comment.createTime}}</em></dt><dd>{{comment.content}} <a target="_blank" href="">详情&gt;</a></dd></dl>
                         </li>
 
 

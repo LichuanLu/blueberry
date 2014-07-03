@@ -4,7 +4,34 @@ __author__ = 'jeremyxu'
 import unittest
 from DoctorSpring.models import Skill, Location, User, Doctor, Hospital, Department, Patient, Doctor2Skill ,Position, UserRole, DoctorProfile
 from DoctorSpring.util.constant import UserStatus, RoleId, DoctorProfileType
+from database import db_session as session
+from DoctorSpring.models.comment import Comment
 
+class RoleTestCase(unittest.TestCase):
+    def test_addAllRole(self):
+        from DoctorSpring.models.user import Role,UserRole
+        role=Role()
+        role.id=1
+        role.roleName='admin'
+        session.add(role)
+
+        role=Role()
+        role.id=2
+        role.roleName='doctor'
+        session.add(role)
+
+        role=Role()
+        role.id=3
+        role.roleName='patient'
+        session.add(role)
+
+        role=Role()
+        role.id=4
+        role.roleName='hospitalUser'
+        session.add(role)
+
+        session.commit()
+        session.flush()
 
 class RealModelTestCase(unittest.TestCase):
 
@@ -218,5 +245,53 @@ class UserTestCase(unittest.TestCase):
         dp3.userId= new_user_3.id
         dp3.description='获得省科技进步一等奖1项，全军医疗成果二等奖2项，全军医疗成果三等奖6项'
         DoctorProfile.save(dp3)
+
+    def test_addSuperUser(self):
+        source='123456'
+        from DoctorSpring.util.hash_method import getHashPasswd
+        passwd=getHashPasswd(source)
+        user=User('zhoufan',passwd)
+        user.sex=0
+        user.status=0
+        user.email='zhoufan@adobe.com'
+        user.address='四川省 通江县'
+        user.phone = '13426026573'
+        user.type = UserStatus.doctor
+        user.name = "张西"
+        User.save(user)
+
+
+        patient=Patient()
+        patient.gender=0
+        patient.Name='zf'
+        patient.status=0
+        patient.userID=user.id
+        Patient.save(patient)
+        new_userrole = UserRole(user.id, RoleId.Patient)
+        UserRole.save(new_userrole)
+
+        new_doctor_1 = Doctor(user.id)
+        new_doctor_1.identityPhone = "029-12345567"
+        new_doctor_1.username = "张西"
+        new_doctor_1.diagnoseCount = 10
+        new_doctor_1.feedbackCount = 5
+        new_doctor_1.goodFeedbackCount = 5
+        new_doctor_1.hospitalId = 1
+        new_doctor_1.departmentId = 1
+        new_doctor_1.title = "副主任医师"
+        new_doctor_1.status = 0
+
+
+        Doctor.save(new_doctor_1)
+        new_doctor2skill_1_1 = Doctor2Skill(new_doctor_1.id,1)
+        Doctor2Skill.save(new_doctor2skill_1_1)
+        new_userrole1 = UserRole(user.id, RoleId.Doctor)
+        UserRole.save(new_userrole1)
+        new_userrole2 = UserRole(user.id, RoleId.Admin)
+        UserRole.save(new_userrole2)
+
+
+
+
 
 
