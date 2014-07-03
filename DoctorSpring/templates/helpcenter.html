@@ -1,0 +1,74 @@
+
+{% extends "base.html" %}
+{% block breadcrumbsHolder %}
+
+<div id="breadcrumb" class="clearfix">
+    <!-- #breadcrumb-inside -->
+    <div id="breadcrumb-inside" class="main-content-padding clearfix">
+        <span class="sub-text">当前位置：</span>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">主页</a>
+            </li>
+            <li class="active">帮助中心</li>
+        </ol>
+    </div>
+    <!-- EOF: #breadcrumb-inside -->
+</div>
+
+
+{% endblock breadcrumbsHolder %}
+{% block contentHolder %}
+
+<div id="help-center-content" class="main-content-padding">
+    <ul class="nav nav-tabs" id="helpcenter-tab">
+        <li class="active">
+            <a href="#doc-wrapper"><i class="fui-question"></i>常见问题解答</a>
+            <p>你可以寻找常见问题的答案。比如：“忘记密码怎么办？”</p>
+        </li>
+        <li>
+            <a href="#online-help-wrapper"><i class="fui-chat"></i>在线客服</a>
+            <p>在线客服为您提供咨询服务和问题解答。您也可以发送问题到我们的邮箱。</p>
+            <p class="mt10">服务时间：工作日9:00-18:00</p>
+
+        </li>
+        <li>
+            <a href="#phone-help-wrapper"><i class="fa fa-phone"></i>电话咨询</a>
+            <p>客服热线需要您耐心等待一段时间,咨询类问题,建议选择在线客服。</p>
+            <p class="mt10">服务时间：工作日9:00-18:00</p>
+
+        </li>
+    </ul>
+    <div id='content' class="tab-content">
+        <div class="tab-pane active" id="doc-wrapper">
+            <div class="help-content-1">
+                <div class="help-content-1-des">
+                    <p>您在易诊断遇到的问题,可以先去常见问题里面看看有没有解答。</p>
+                    <a href="/help/doc" class="btn btn-warning">点击进入</a>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="online-help-wrapper">
+            <div class="help-content-2">
+                <div class="help-content-2-des">
+                    <p>在线客服：<span>稍后上线</span></p>
+                    <p>邮箱地址：<span>feedback-ezhenduan@163.com</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="phone-help-wrapper">
+            <div class="help-content-3">
+                <div class="help-content-3-des">
+                    <p>客服电话：<span>稍后上线</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock contentHolder %}
+{% block scriptsHolder %}
+<script type="text/javascript" src="/static/app/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/static/app/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/app/help/helpCenterApp.js"></script>
+{% endblock scriptsHolder %}

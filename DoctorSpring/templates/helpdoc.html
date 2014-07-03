@@ -1,0 +1,113 @@
+
+{% extends "base.html" %}
+{% block breadcrumbsHolder %}
+
+<div id="breadcrumb" class="clearfix">
+    <!-- #breadcrumb-inside -->
+    <div id="breadcrumb-inside" class="main-content-padding clearfix">
+        <span class="sub-text">当前位置：</span>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">主页</a>
+            </li>
+            <li class="active">常用问题解答</li>
+        </ol>
+    </div>
+    <!-- EOF: #breadcrumb-inside -->
+</div>
+
+
+{% endblock breadcrumbsHolder %}
+{% block contentHolder %}
+<div id="helppage-content" class="main-content-padding">
+    <div class="row help-doc-content">
+        <div class="col-md-3">
+            <ul class="nav nav-list nav-list-vivid vertical-list" id="help-tab">
+                <li class="active">
+                    <a href="#register">
+                        注册与登陆
+                    </a>
+                </li>
+                <li class="">
+                    <a href="#account">
+                        帐号相关
+                    </a>
+                </li>
+                <li class="">
+                    <a href="#zhenduan">
+                        诊断相关
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <div id='content' class="tab-content vertical-tab-content">
+
+                <div id="register" class="tab-pane active">
+                    <h6 class="title">注册与登陆</h6>
+                    <ul>
+                        <li>
+                            <h3>如何使用手机注册？</h3>
+                            <p>第一步，在主页上点击“用户注册入口”。</p>
+                            <p>第二步，填写手机号，设置密码。</p>
+                            <p>第三步，点击“同意服务条款并提交”。</p>
+                        </li>
+                        <li>
+                            <h3>如何登陆易诊断？</h3>
+                            <p>第一步，在主页上右方点击“登陆”。</p>
+                            <p>第二步，在弹出框中输入正确的帐号和密码，帐号为手机号或者邮箱。</p>
+                            <p>第三步，点击“确定”。</p>
+                        </li>
+                    </ul>
+                </div>
+                <div id="account" class="tab-pane">
+                    <h6 class="title">帐号相关问题</h6>
+                    <ul>
+                        <li>
+                            <h3>忘记密码怎么办？</h3>
+                            <p>第一步，在主页上右方点击“登陆”。</p>
+                            <p>第二步，在弹出框中点击“忘记密码”。</p>
+                            <p>第三步，在弹出页面中，输入手机号，填写验证码。</p>
+                            <p>第四步，输入新密码并点击“确认”。</p>
+                        </li>
+                        <li>
+                            <h3>如何修改密码？</h3>
+                            <p>第一步，登陆易诊断。</p>
+                            <p>第二步，选择“进入个人中心”。</p>
+                            <p>第三步，在个人中心页面，选择“帐号管理”。</p>
+                            <p>第四步，选择“修改密码”，并且输入旧密码和新密码，点击“提交”。</p>
+                        </li>
+                    </ul>
+                </div>
+                <div id="zhenduan" class="tab-pane">
+                    <h6 class="title">诊断相关问题</h6>
+                    <ul>
+                        <li>
+                            <h3>如何申请新的诊断？</h3>
+                            <p>第一步，登陆易诊断。</p>
+                            <p>第二步，选择“马上进行诊断”。</p>
+                            <p>第三步，在申请页面中，详细填写每一步的信息，每一步填写完成后都需要保存。</p>
+                            <p>第四步，填写完成后，点击“最终确认并提交”。</p>
+                        </li>
+                        <li>
+                            <h3>如何查看诊断状态？</h3>
+                            <p>第一步，登陆易诊断。</p>
+                            <p>第二步，选择“进入个人中心”。</p>
+                            <p>第三步，在个人中心页面中，选择我的诊断，输入查询条件。</p>
+                            <p>第四步，点击“查询”，可以找到需要的诊断，并查看状态。</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock contentHolder %}
+{% block scriptsHolder %}
+<script type="text/javascript" src="/static/app/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/static/app/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/app/help/helpapp.js"></script>
+{% endblock scriptsHolder %}

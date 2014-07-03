@@ -1,0 +1,109 @@
+
+{% extends "base.html" %}
+{% block breadcrumbsHolder %}
+
+<div id="breadcrumb" class="clearfix">
+    <!-- #breadcrumb-inside -->
+    <div id="breadcrumb-inside" class="main-content-padding clearfix">
+        <span class="sub-text">当前位置：</span>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">主页</a>
+            </li>
+            <li class="active">关于易诊断</li>
+        </ol>
+    </div>
+    <!-- EOF: #breadcrumb-inside -->
+</div>
+
+
+{% endblock breadcrumbsHolder %}
+{% block contentHolder %}
+
+<div id="aboutpage-content" class="main-content-padding">
+    <div class="row help-doc-content">
+        <div class="col-md-3">
+            <ul class="nav nav-list nav-list-vivid vertical-list" id="about-tab">
+                <li class="active">
+                    <a href="#aboutus">
+                        关于我们
+                    </a>
+                </li>
+                <li class="">
+                    <a href="#responsible">
+                        用户条款及免责条款
+                    </a>
+                </li>
+                <li class="">
+                    <a href="#contact">
+                        联系我们
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <div id='content' class="tab-content vertical-tab-content">
+
+                <div id="aboutus" class="tab-pane active about-content-1">
+                    <h6 class="title">关于我们</h6>
+                    <ul>
+                        <li>
+                            <h3>“易诊断”项目</h3>
+                            <p>
+                                “易诊断”项目是一个创新的医疗影像诊断互联网平台和移动互联网解决方案。易诊断的目标是成为领先的影像医疗决策诊断平台和医疗健康信息管理平台： <br/>
+                            <p>1. 成为医疗影像诊断首选网站/APP<p/>
+                            <p>2. 有利于科研，改进影像医疗诊断，建立最大的医疗数据库，通过数据挖掘发现治疗新方法和病例<p/>
+                            <p>3. 建立个人影像健康档案，提升用户的健康管理水平 <p/>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div id="responsible" class="tab-pane">
+                    <h6 class="title">用户条款及免责条款</h6>
+                    当有用户访问或使用本网站之行为时，即表示用户已同意接受本条款的各项内容的约束。
+                    <ul>
+                        <li>
+                            <h3>医学内容免责声明</h3>
+                            <p>易诊断旨在提供医疗影像诊断平台，服务大众，促进影像医疗发展。所有产生的影像诊断，平台保证均是相关医疗机构相关影像科医生所产生，但平台不对诊断内容负有任何责任。在用户在对诊断结果有相关的问题时，请务必向医生或其他合格的医疗机构征求意见。</p>
+                        </li>
+                        <li>
+                            <h3>分享产权</h3>
+                            <p>易诊断拥有本应用及/或相关网站所有内容的版权，包括但不限于文本、图片、模块等。未经易诊断的书面许可，禁止挪用或复制本站内容。所有未在此明确授予用户的权利，看处方将予以保留。</p>
+                        </li>
+                        <li>
+                            <h3>责任限制</h3>
+                            <p>
+                                用户理解并同意自主选择、使用易诊断服务的风险自负。在任何条件下，易诊断及附属公司、员工、创建或者维护易诊断应用的人员对用户使用本站或链接本站的第三方网站导致的直接、间接、偶然、特殊、关联性损害或利益损失，或由错误、疏漏、信号中断、文件删除、病毒、网站出错，漏洞导致的直接或间接损害，或由于运行不稳、通信故障、盗窃、破坏或未经授权使用导致的损害不承担任何法律责任。
+                            </p>
+                        </li>
+                        <li>
+                            <h3>条款变更</h3>
+                            <p>易诊断保留不需事先通知即可修改本条款并在本站公布修改条款的权利。用户应定期阅读该条款，了解本条款的任何变更以及变更的生效日期。用户理解并同意，如果用户在本条款做出变更后继续使用本网站，则视为接受该变更。</p>
+                        </li>
+                    </ul>
+                </div>
+                <div id="contact" class="tab-pane">
+                    <h6 class="title">联系我们</h6>
+                    <ul>
+                        <li>
+                            <h3>用户反馈邮箱</h3>
+                            <p>feedback-ezhenduan@163.com</p>
+                        </li>
+                        <li>
+                            <h3>医生及其他反馈邮箱</h3>
+                            <p>otherfeedback-ezhenduan@163.com</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock contentHolder %}
+{% block scriptsHolder %}
+<script type="text/javascript" src="/static/app/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/static/app/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/app/about/aboutapp.js"></script>
+{% endblock scriptsHolder %}

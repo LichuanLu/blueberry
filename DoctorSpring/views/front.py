@@ -22,6 +22,9 @@ config = config.rec()
 front = Blueprint('front', __name__)
 
 @front.route('/', methods=['GET', 'POST'])
+def index():
+    return redirect('/homepage')
+
 @front.route('/homepage', methods=['GET', 'POST'])
 def homepage():
 
@@ -431,3 +434,15 @@ def userCenter(userId):
             return redirect('/patienthome')
     return render_template("errorPage.html")
 
+@front.route('/help/center', methods=['GET', 'POST'])
+def helpCenterPage():
+    return render_template("helpcenter.html")
+
+@front.route('/help/doc', methods=['GET', 'POST'])
+def helpDocPage():
+    return render_template("helpdoc.html")
+
+
+@front.route('/about', methods=['GET', 'POST'])
+def aboutPage():
+    return render_template("about.html")

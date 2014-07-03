@@ -6,12 +6,13 @@
 <div id="header-region" class="full-width">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-lg-8 no-right-padding">
-                <a class="logo" href="" title="Home" rel="home"></a>
+            <div class="col-md-6 col-lg-6 no-right-padding">
+                <a class="logo" href="/homepage" title="Home" rel="home"></a>
             </div>
         </div>
     </div>
 </div>
+
 <div class="container full-width-page">
     <div class="main-block full-width-page">
         <div id="main-region" class="full-width-page">
@@ -55,39 +56,15 @@
                         <div id="loginSocial">
                             <div class="bottom-group">
                                 <span>新用户还没有帐号？</span>
-                                <a href="#" class="">注册帐号</a>
+                                <a href="/register/patient" class="">注册帐号</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <footer id="footer-region" class="footer full-width">
-            <table class="full-width">
-                <tbody>
-                <tr class="footer-content">
-                    <td>
-                        <!-- <a href="http://adobe.com" class="adobe－logo">
-                        <img alt="Adobe" class="adobe-logo" src="/static/assets/icons/ctt/adobe-logo.png"></a>
-                    -->
-                    </td>
-                    <td class="copyright-text">
-                        <span>© 2011-2014版权所有. 浙ICP备12034511号</span>
-                        <!-- <div class="breadcrumb-text">
-                        <p>
-                            <a href="#">关于我们</a>
-                            <a href="#">医院合作</a>
-                            <a href="#">免责条款</a>
-                            <a href="#">联系我们</a>
-                            <a href="#">网站地图</a>
-                        </p>
-                    </div>
-                    -->
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </footer>
+        {% include 'footer.html' %}
+
     </div>
 </div>
 {% include 'scripts.html' %}

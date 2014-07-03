@@ -48,8 +48,8 @@
             {% if session['logged_in'] %}
             <div class="button-wrapper login">
                 <div>您好 {{session['username']}}，欢迎来到易诊断！</div>
-                <a class="btn btn-info first-btn" type="button">进入个人中心</a>
-                <a class="btn btn-success" type="button">马上进行诊断</a>
+                <a class="btn btn-info first-btn" type="button" href="/userCenter/{{session['userId']}}">进入个人中心</a>
+                <a class="btn btn-success" type="button" href="/applyDiagnose">马上进行诊断</a>
             </div>
             {% else %}
             <!--For unlogin user -->
@@ -108,20 +108,22 @@
     </div>
 	<div class="row main-content-wrapper">
 		<div class="col-md-8 left-content-wrapper">
-				<div class="row main-border-shadow rowmarginbottom mainpage-poster-wrapper">
-					<div class="col-md-4">
-					<h4 class="title-sep"><span class="glyphicon glyphicon-resize-full"></span> 挑选专家，上传影像</h4>
-					<img src="/static/assets/image/doctortemp1.png" alt="doctortemp1">
-					</div>
-					<div class="col-md-4">
-					<h4 class="title-sep"><span class="glyphicon glyphicon-ok"></span> 多位专家诊断并审核</h4>
-					<img src="/static/assets/image/doctortemp1.png" alt="doctortemp1">
-					</div>
-					<div class="col-md-4">
-					<h4 class="title-sep"><span class="glyphicon glyphicon-globe"></span> 正规诊断报告及后续服务</h4>
-					<img src="/static/assets/image/doctortemp1.png" alt="doctortemp1">
-					</div>
-				</div>
+            <div class="row main-border-shadow rowmarginbottom mainpage-poster-wrapper">
+                <div class="col-md-4">
+                    <h4 class="title-sep"><span class="glyphicon glyphicon-resize-full"></span> 上传影像文件</h4>
+                    <img style="width:162px;height:110px;" src="/static/assets/image/temp2.jpg" alt="doctortemp1">
+                </div>
+                <div class="col-md-4">
+                    <h4 class="title-sep"><span class="glyphicon glyphicon-ok"></span> 权威专家诊断并审核</h4>
+
+                    <img src="/static/assets/image/temp4.jpg" style="width:162px;height:110px;" alt="doctortemp1">
+
+                </div>
+                <div class="col-md-4">
+                    <h4 class="title-sep"><span class="glyphicon glyphicon-globe"></span> 详细诊断报告及后续服务</h4>
+                    <img src="/static/assets/image/temp3.jpg" style="width:162px;height:110px;" alt="doctortemp1">
+                </div>
+            </div>
             <div class="row highlighted-block-inside mainpage-feedback-block main-border-shadow">
                 <h4 class="title-sep">诊断经验分享</h4>
                 <div class="feedback-wrapper sharing-list-wrapper">
@@ -155,12 +157,31 @@
 				<h4 class="title-sep">网站动态</h4>
 				<div class="action-wrap">
 				<ul>
-				<li>
-				<a href="#" target="_blank">[西安]西京医院与本网站合作.</a>
-				</li>
-				<li>
-				<a href="#" target="_blank">[专家]李效力主任医生与本网站合作.</a>
-				</li>
+                    <li>
+                        <a href="#" target="_blank">[西安]西京医院与本网站合作.</a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">[专家]印弘主任医生与本网站合作.</a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">[专家]宦怡主任医生与本网站合作.</a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">[专家]张劲松副主任医生与本网站合作.</a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">[专家]李华副主任医生与本网站合作.</a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">[西安]唐都医院与本网站合作.</a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">[专家]张西副主任医生与本网站合作.</a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">[西安]交大医附院与本网站合作.</a>
+                    </li>
+
 				</ul>
 				</div>
 			</div>

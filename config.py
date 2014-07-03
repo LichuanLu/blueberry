@@ -29,7 +29,7 @@ UPLOADS_FOLDER = os.path.realpath('.') + '/static/'
 FILE_SYSTEM_STORAGE_FILE_VIEW = 'static'
 
 # User
-DEFAULT_IMAGE = '/static/assets/image/young-m.jpg'
+DEFAULT_IMAGE = '/static/assets/image/young-m.png'
 DEFAULT_TITLE = '待定'
 
 class rec:

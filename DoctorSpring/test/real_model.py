@@ -72,6 +72,8 @@ class UserTestCase(unittest.TestCase):
         patient.status=0
         patient.userID=user.id
         Patient.save(patient)
+        new_userrole = UserRole(user.id, RoleId.Patient)
+        UserRole.save(new_userrole)
 
 
     def test_addDoctor(self):
@@ -94,6 +96,13 @@ class UserTestCase(unittest.TestCase):
 
 
         Doctor.save(new_doctor_1)
+        new_doctor2skill_1_1 = Doctor2Skill(new_doctor_1.id,1)
+        Doctor2Skill.save(new_doctor2skill_1_1)
+        new_userrole = UserRole(new_user_1.id, RoleId.Doctor)
+        UserRole.save(new_userrole)
+
+
+
 
         new_user_2 = User("22222222222", "123456")
         new_user_2.email = "huanyi@qq.com"
@@ -114,6 +123,10 @@ class UserTestCase(unittest.TestCase):
         new_doctor_2.goodFeedbackCount = 2
 
         Doctor.save(new_doctor_2)
+        new_doctor2skill_1_2 = Doctor2Skill(new_doctor_2.id,2)
+        Doctor2Skill.save(new_doctor2skill_1_2)
+        new_userrole2 = UserRole(new_user_2.id, RoleId.Doctor)
+        UserRole.save(new_userrole2)
 
         new_user_3 = User("33333333333", "123456")
         new_user_3.email = "zhangjinsong@qq.com"
@@ -134,6 +147,10 @@ class UserTestCase(unittest.TestCase):
         new_doctor_3.goodFeedbackCount = 3
 
         Doctor.save(new_doctor_3)
+        new_doctor2skill_1_3 = Doctor2Skill(new_doctor_3.id,3)
+        Doctor2Skill.save(new_doctor2skill_1_3)
+        new_userrole3 = UserRole(new_user_3.id, RoleId.Doctor)
+        UserRole.save(new_userrole3)
 
 
         dp=DoctorProfile()
