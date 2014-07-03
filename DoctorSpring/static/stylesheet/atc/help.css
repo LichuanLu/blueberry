@@ -2,16 +2,23 @@
   border-bottom-color: #34495e !important;
   border-top-color: #34495e !important;
 }
-#helppage-content .nav li a {
+#helppage-content .help-doc-content,
+#aboutpage-content .help-doc-content {
+  margin-top: 20px;
+}
+#helppage-content .nav.vertical-list li a,
+#aboutpage-content .nav.vertical-list li a {
   font-size: 15px;
   line-height: 200%;
   color: #666666;
 }
-#helppage-content .nav li.active a {
+#helppage-content .nav.vertical-list li.active a,
+#aboutpage-content .nav.vertical-list li.active a {
   color: #ffffff;
   margin-right: -34px;
 }
-#helppage-content .nav li.active a:after {
+#helppage-content .nav.vertical-list li.active a:after,
+#aboutpage-content .nav.vertical-list li.active a:after {
   border: 23px solid #ffffff;
   border-left-color: transparent;
   border-right-width: 0;
@@ -22,21 +29,107 @@
   top: 0;
   width: 0;
 }
-#helppage-content .tab-content {
+#helppage-content .tab-content.vertical-tab-content,
+#aboutpage-content .tab-content.vertical-tab-content {
   border-width: 1px;
 }
-#helppage-content .tab-content h2,
-#helppage-content .tab-content h3 {
+#helppage-content .tab-content.vertical-tab-content h6.title,
+#aboutpage-content .tab-content.vertical-tab-content h6.title {
+  font-size: 18px;
+  border-bottom: 1px solid #16a085;
+  margin: 5px 0;
+  color: #666666;
+  padding-bottom: 10px;
+}
+#helppage-content .tab-content.vertical-tab-content h2,
+#aboutpage-content .tab-content.vertical-tab-content h2,
+#helppage-content .tab-content.vertical-tab-content h3,
+#aboutpage-content .tab-content.vertical-tab-content h3 {
   font-size: 16px;
   color: #000000;
 }
-#helppage-content .tab-content p {
+#helppage-content .tab-content.vertical-tab-content p,
+#aboutpage-content .tab-content.vertical-tab-content p {
   color: #666666;
+  font-size: 14px;
 }
-#helppage-content .tab-content p a {
+#helppage-content .tab-content.vertical-tab-content p a,
+#aboutpage-content .tab-content.vertical-tab-content p a {
   color: #16a085;
 }
-#helppage-content .tab-content ul {
+#helppage-content .tab-content.vertical-tab-content ul,
+#aboutpage-content .tab-content.vertical-tab-content ul {
   list-style: none;
   padding: 0;
+}
+#help-center-content {
+  width: 923px;
+  margin: 20px auto;
+}
+#help-center-content .tab-content {
+  border: 1px solid #eaeaea;
+  border-radius: 0;
+  border-top: 0;
+  padding-bottom: 20px;
+}
+#help-center-content .tab-content .help-content-1 {
+  background: url(../../assets/image/help1.png) 85px 28px no-repeat;
+  height: 290px;
+}
+#help-center-content .tab-content .help-content-1 .help-content-1-des {
+  padding: 90px 0 0 313px;
+}
+#help-center-content .tab-content .help-content-2 {
+  background: url(../../assets/image/help2.png) 85px 28px no-repeat;
+  height: 290px;
+}
+#help-center-content .tab-content .help-content-2 .help-content-2-des {
+  padding: 100px 0 0 400px;
+}
+#help-center-content .tab-content .help-content-3 {
+  background: url(../../assets/image/help3.png) 85px 28px no-repeat;
+  height: 290px;
+}
+#help-center-content .tab-content .help-content-3 .help-content-3-des {
+  padding: 100px 0 0 400px;
+}
+#help-center-content .nav {
+  text-align: center;
+  border: 1px solid #eaeaea;
+  border-right: none;
+  margin-bottom: 0;
+}
+#help-center-content .nav li {
+  width: 295px;
+  border-right: 1px solid #eaeaea;
+  margin: 0;
+  height: 150px;
+}
+#help-center-content .nav li a {
+  display: block;
+  border-radius: 0;
+  margin: 5px 0 10px;
+  border: none;
+  font-size: 20px;
+}
+#help-center-content .nav li a i {
+  margin-right: 10px;
+}
+#help-center-content .nav li p {
+  text-align: left;
+  font-size: 13px;
+  padding: 0 20px;
+  margin-bottom: 0;
+  color: #666;
+}
+#help-center-content .nav li.active {
+  margin-bottom: -1px;
+  height: 151px;
+  background-color: #ffffff;
+}
+#help-center-content .nav li.active a {
+  background-color: #fdfdfd;
+  background-image: #fdfdfd;
+  color: #3498db;
+  border: none;
 }

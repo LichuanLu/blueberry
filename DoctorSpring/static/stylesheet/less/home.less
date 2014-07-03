@@ -49,8 +49,15 @@
 
 	.website-main-news-block .more-link {
 		position: absolute;
-		font-size: 14px;
+		font-size: 13px;
 		right: 20px;
+		color: #000000;
+		font-weight: normal;
+	}
+
+	.website-main-news-block .more-link:hover {
+		
+		color: @ctt-orange;
 	}
 
 
@@ -85,7 +92,7 @@
 		}
 		span{
 			font-size: 20px;
-			//font-weight: 700;
+			font-weight: 700;
 		}
 
 	}
@@ -183,10 +190,16 @@
 
 	}
 	.doctor-preview .doctor-preview-des h6{
-		font-size: 15px;
+		font-size: 17px;
+		// color: #666666;
+		font-weight: 700;
+		span{
+			margin-left: 10px;
+			font-weight: normal;
+		}
 	}
 	.doctor-preview .doctor-preview-des span,p{
-		font-size: 13px;
+		font-size: 14px;
 	}
 
 	.doctor-preview .image-preview{
@@ -203,5 +216,13 @@
 		border-radius: 10px;
 		border: none;
 		box-shadow: 0 1px 2px #000;
+	}
+
+
+	.carousel-inner > .item > img, .carousel-inner > .item > a > img{
+		border-radius: 2px;
+	}
+	.carousel-inner > .item.active > img, .carousel-inner > .item.active > a > img{
+		border-radius: 2px;
 	}
 }

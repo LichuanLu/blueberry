@@ -8,9 +8,10 @@ body.doctor-site #header-region {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 body.doctor-site #header-region .logo {
-  background: url(http://az382497.vo.msecnd.net/images/doctor_logo.png) no-repeat;
+  background: url(../../assets/image/logo-3.jpg) no-repeat;
   display: block;
   height: 35px;
+  margin-top: 3px;
 }
 body.doctor-site #header-region .unlogin-group,
 body.doctor-site #header-region .login-group {

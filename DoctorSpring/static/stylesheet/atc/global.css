@@ -45,17 +45,17 @@ button::-moz-focus-inner {
 .logo-bar .logo {
   width: 200px;
   height: 90px;
-  background: url(../../assets/image/logo.jpg) no-repeat;
+  background: url(../../assets/image/logo-1.jpg) no-repeat;
   display: block;
-  margin-left: -20px;
+  margin-left: -5px;
 }
 .home-header-wrapper {
   background-color: #fcfcfc;
   position: relative;
   z-index: 5;
-  padding: 5px 0 20px;
+  padding: 5px 0 0px;
   text-align: center;
-  min-height: 100px;
+  min-height: 90px;
   margin-left: 20px;
 }
 .home-header-wrapper .search-group {
@@ -207,6 +207,9 @@ p.help-block {
 .title-sep .glyphicon {
   font-size: 13px;
   padding-right: 18px;
+}
+.mt10 {
+  margin-top: 10px;
 }
 .multiselect {
   /* background: transparent; */

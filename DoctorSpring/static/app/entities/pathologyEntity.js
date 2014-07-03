@@ -59,6 +59,7 @@ define(["backbone", "marionette", "config/base/constant", "utils/reqcmd"], funct
 			pathlogyCollection.fetch({
 				success: function() {
 					console.log("pathlogyCollection fetch success");
+					ReqCmd.reqres.request('getPathologyList:Done');
 
 				},
 				data: params

@@ -41,8 +41,13 @@
 }
 #homepage-content .website-main-news-block .more-link {
   position: absolute;
-  font-size: 14px;
+  font-size: 13px;
   right: 20px;
+  color: #000000;
+  font-weight: normal;
+}
+#homepage-content .website-main-news-block .more-link:hover {
+  color: #16a085;
 }
 #homepage-content .mainpage-feedback-block {
   text-align: left;
@@ -73,6 +78,7 @@
 }
 #homepage-content .panel-title span {
   font-size: 20px;
+  font-weight: 700;
 }
 #homepage-content .banner-right {
   height: 280px;
@@ -149,11 +155,16 @@
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 #homepage-content .doctor-preview .doctor-preview-des h6 {
-  font-size: 15px;
+  font-size: 17px;
+  font-weight: 700;
+}
+#homepage-content .doctor-preview .doctor-preview-des h6 span {
+  margin-left: 10px;
+  font-weight: normal;
 }
 #homepage-content .doctor-preview .doctor-preview-des span,
 #homepage-content p {
-  font-size: 13px;
+  font-size: 14px;
 }
 #homepage-content .doctor-preview .image-preview {
   padding: 10px;
@@ -168,4 +179,12 @@
   border-radius: 10px;
   border: none;
   box-shadow: 0 1px 2px #000;
+}
+#homepage-content .carousel-inner > .item > img,
+#homepage-content .carousel-inner > .item > a > img {
+  border-radius: 2px;
+}
+#homepage-content .carousel-inner > .item.active > img,
+#homepage-content .carousel-inner > .item.active > a > img {
+  border-radius: 2px;
 }

@@ -12,21 +12,21 @@
 	<td class="action-group">
 		{@if cond="'{statusId}' == '0'"}
 			<a href="/applyDiagnose?diagnoseid={id}" target="_blank">修改</a>
-			<a class="rm-diagnose-link" href="#">删除</a>
+			<a class="rm-diagnose-link action-link" href="#">删除</a>
 		{/if}
 		{@if cond="'{statusId}' == '7'"}
 			<a class="detail-link" href="#">查看原因</a>
 		{/if}
 		{@if cond="'{statusId}' == '2'"}
 			<a href="/kefu" target="_blank">联系客服</a>
-			<a class="rm-diagnose-link" href="#">撤销</a>
+			<a class="rm-diagnose-link action-link" href="#">撤销</a>
 		{/if}
 		{@if cond="'{statusId}' == '6'"}
 			<a href="/diagnose/{id}/pdf" target="_blank">查看报告</a>
 			<a href="{reportUrl}">下载</a>
 			{@if cond="{isFeedback}"}
 			{:else}
-				<a href="#" class="sharing-link">评价</a>
+				<a href="#" class="sharing-link action-link">评价</a>
 			{/if}
 		{/if}
 	</td>

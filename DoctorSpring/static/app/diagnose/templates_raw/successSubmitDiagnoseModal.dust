@@ -18,10 +18,10 @@
                     
                     <p>您好：</p>
                     <p>您已经成功申请诊断，客服人员会一天内联系您，并且确认申请信息。</p>
-                    <div class="button-wrapper">
+                    <div class="button-wrapper" style="margin-bottom:20px;">
                         <span>您还可以：</span>
-                        <a class="btn btn-info" href="/patient/home">进入个人中心</a>
-                        <a class="btn btn-warning" href="/applyDiagnose">申请新的诊断</a>
+                        <a class="btn btn-info btn-sm" style="margin-left:10px;" href="/patienthome">进入个人中心</a>
+                        <a class="btn btn-warning btn-sm" style="margin-left:20px;" href="/applyDiagnose">申请新的诊断</a>
                     </div>
                 {/if}
             </div>

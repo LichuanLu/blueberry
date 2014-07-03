@@ -113,10 +113,9 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 		},
 		actionLinkHandler: function(e) {
 			var $link = $(e.target);
-			if ($link.is('.sharing-link')) {
-                e.preventDefault();
-
-                console.log("sharing-link click");
+			if ($link.is('.action-link')) {
+				e.preventDefault();
+				console.log("sharing-link click");
 				var model = this.model;
 				var sharingModalView = new SharingModalView({
 					model: model

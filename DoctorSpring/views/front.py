@@ -63,6 +63,7 @@ def applyDiagnose():
 
     if 'edit' in request.args.keys() and 'diagnoseid' in request.args.keys():
         new_diagnose = Diagnose.getDiagnoseById(request.args['diagnoseid'])
+        data['edit'] = 1
     else:
         new_diagnose = Diagnose.getNewDiagnoseByStatus(ModelStatus.Draft, session['userId'])
 
@@ -105,9 +106,11 @@ def applyDiagnoseForm(formid):
                 new_diagnose = Diagnose.getNewDiagnoseByStatus(DiagnoseStatus.Draft, session['userId'])
             if(new_diagnose is None):
                 new_diagnose = Diagnose()
+                new_diagnose.status = DiagnoseStatus.Draft
+
             new_diagnose.doctorId = form.doctorId
             new_diagnose.uploadUserId = session['userId']
-            new_diagnose.status = DiagnoseStatus.Draft
+
             Diagnose.save(new_diagnose)
             form_result.data = {'formId': 2, 'diagnoseId': new_diagnose.id}
         return jsonify(form_result.__dict__)
@@ -321,13 +324,19 @@ def doctor_list_json():
 
 @front.route('/doctor/recommanded')
 def doctor_rec():
-    doctorId = 0
+
+    doctor = None
 
     if 'doctorid' in request.args.keys():
         doctorId = request.args['doctorid']
         doctor = Doctor.get_doctor(doctorId)
+    elif 'diagnoseId' in request.args.keys():
+        diagnoseId = request.args['diagnoseId']
+        diagnose = Diagnose.getDiagnoseById(diagnoseId)
+        if diagnose is not None:
+            doctor = diagnose.doctor
     else:
-        doctor = Doctor.get_doctor(doctorId, True)
+        doctor = Doctor.get_doctor(0, True)
 
     if doctor is None:
         return jsonify(rs.SUCCESS.__dict__, ensure_ascii=False)

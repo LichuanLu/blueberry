@@ -20,7 +20,7 @@ class DiagnoseForm1(object):
         if 'type' in args.keys() and args.get('type') == 1:
             isHospitalUser = True
 
-        if 'diagnoseId' not in args.keys():
+        if 'diagnoseId' in args.keys():
             self.diagnoseId = args.get('diagnoseId')
 
         if 'patientname' not in args.keys():
@@ -91,7 +91,7 @@ class DiagnoseForm2(object):
         if 'pathologyId' in args.keys():
             self.pathologyId = args.get('pathologyId')
             self.exist = True
-        if 'diagnoseId' not in args.keys():
+        if 'diagnoseId' in args.keys():
             self.diagnoseId = args.get('diagnoseId')
         self.patientid = args.get('patientId')
         self.patientlocation = args.getlist('patientlocation')
@@ -121,7 +121,7 @@ class DiagnoseForm4(object):
     fileurl = None
     diagnoseId = None
     def __init__(self, args):
-        if 'diagnoseId' not in args.keys():
+        if 'diagnoseId' in args.keys():
             self.diagnoseId = args.get('diagnoseId')
         self.hospitalId = int(args.get('hospitalId'))
         self.illnessHistory = args.get('illnessHistory')

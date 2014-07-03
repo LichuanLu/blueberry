@@ -4,8 +4,11 @@
 // Utility mixins for greater good
 @import "mixins";
 
-#helppage-content{
-	.nav{
+#helppage-content,#aboutpage-content{
+	.help-doc-content{
+		margin-top: 20px;
+	}
+	.nav.vertical-list{
 		li{
 			a{
 				font-size: 15px;
@@ -31,14 +34,22 @@
 			}
 		}
 	}
-	.tab-content{
+	.tab-content.vertical-tab-content{
 		border-width: 1px;
+		h6.title{
+			font-size: 18px;
+			border-bottom: 1px solid @ctt-orange;
+			margin: 5px 0;
+			color: #666666;
+			padding-bottom: 10px;
+		}
 		h2,h3{
 			font-size: 16px;
 			color: #000000;
 		}
 		p{
 			color: #666666;
+			font-size: 14px;
 			a{
 				color: @ctt-orange;
 			}
@@ -46,6 +57,83 @@
 		ul{
 			list-style: none;
 			padding: 0;
+		}
+	}
+}
+
+#help-center-content{
+	width: 923px;
+	margin: 20px auto;
+	.tab-content{
+		border:1px solid #eaeaea;
+		border-radius: 0;
+		border-top: 0;
+		padding-bottom: 20px;
+		.help-content-1{
+			background: url(../../assets/image/help1.png) 85px 28px no-repeat;
+			height: 290px;
+			.help-content-1-des{
+				padding: 90px 0 0 313px;
+			}
+		}
+		.help-content-2{
+			background: url(../../assets/image/help2.png) 85px 28px no-repeat;
+			height: 290px;
+			.help-content-2-des{
+				padding: 100px 0 0 400px;
+			}
+		}
+		.help-content-3{
+			background: url(../../assets/image/help3.png) 85px 28px no-repeat;
+			height: 290px;
+			.help-content-3-des{
+				padding: 100px 0 0 400px;
+			}
+		}
+
+	}
+	.nav{
+		text-align: center;
+		border:1px solid #eaeaea;
+		border-right: none;
+		margin-bottom: 0;
+		li{
+			width: 295px;
+			border-right:1px solid #eaeaea;
+			margin: 0;
+			height: 150px;
+			a{
+				i{
+					margin-right: 10px;
+				}
+				// height: 150px;
+				display: block;
+				border-radius: 0;
+				margin: 5px 0 10px;
+				border: none;
+				font-size: 20px;
+			}
+			p{
+				text-align: left;
+				font-size: 13px;
+				padding: 0 20px;
+				margin-bottom: 0;
+				color: #666;
+			}
+		}
+		li.active{
+			margin-bottom: -1px;
+			height: 151px;
+			background-color: #ffffff;
+			a{
+				
+				background-color: #fdfdfd;
+				background-image: #fdfdfd;
+				color: @brand-info;
+				border: none;
+				
+
+			}
 		}
 	}
 }

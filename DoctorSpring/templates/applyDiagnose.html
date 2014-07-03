@@ -60,6 +60,8 @@
 					<span>第二部分／总共四部分</span>
 				</div>
 				<div class="panel-body">
+
+                    {% if result.edit != 1%}
 					<div id="patient-profile-radio" class="patient-radio-wrapper">
 						<label class="radio">
 							<span class="icons">
@@ -75,6 +77,7 @@
 							</span>
 							<input type="radio" name="patientProfile" value="2" data-toggle="radio" checked="true">新就诊人</label>
 					</div>
+                    {% endif %}
 					<form id="patient-already-exists" class="full-width-dropdown" style="display:none;">
 
                             <select name="patientId">
@@ -214,7 +217,7 @@
 				</div>
 				<div class="panel-body">
 					<p class="side-description">请确保已经在正规医院医疗影像科做过诊断，有诊断单和dicom影像数据（什么是dicom影像数据？）</p>
-					
+                    {% if result.edit != 1%}
 					<div id="patient-dicom-radio" class="patient-radio-wrapper">
 						<label class="radio">
 							<span class="icons">
@@ -230,6 +233,7 @@
 							</span>
 							<input type="radio" name="dicomInfo" value="2" data-toggle="radio" checked="true">新影像信息</label>
 					</div>
+                    {%endif%}
 					<form id="dicom-already-exists" class="full-width-dropdown" style="display:none;">
                         <div id="dicom-already-exists-select-region">
 
@@ -368,6 +372,7 @@
 				<span>第四部分／总共四部分</span>
 			</div>
 			<div class="panel-body">
+                {% if result.edit != 1%}
 				<div id="patient-history-radio" class="patient-radio-wrapper">
 						<label class="radio">
 							<span class="icons">
@@ -383,6 +388,7 @@
 							</span>
 							<input type="radio" name="historyInfo" value="2" data-toggle="radio" checked="true">新额外信息</label>
 				</div>
+                {% endif %}
 				<form id="history-already-exists" class="full-width-dropdown" style="display:none;">
                         <div id="history-already-exists-select-region">
 
