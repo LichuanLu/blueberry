@@ -129,10 +129,11 @@ def endterDoctorSite(userId):
 
     if session.has_key('userId'):
         loginUserId=session.get('userId')
-        loginUserId=string.atoi(loginUserId)
-        userfavor=UserFavorites.getUerFavortiesByNormalStatus(db_session,loginUserId,constant.UserFavoritesType.Doctor,doctor.id)
-        if userfavor:
-            resultDate['userFavortiesId']=userfavor.id
+        if loginUserId:
+            loginUserId=string.atoi(loginUserId)
+            userfavor=UserFavorites.getUerFavortiesByNormalStatus(db_session,loginUserId,constant.UserFavoritesType.Doctor,doctor.id)
+            if userfavor:
+                resultDate['userFavortiesId']=userfavor.id
 
 
 
