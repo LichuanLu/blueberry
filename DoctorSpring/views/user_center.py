@@ -337,7 +337,7 @@ def getDiagnoseListByDoctor():
 
 
 @uc.route('/patient/diagnose/list',  methods = ['GET', 'POST'])
-@authenticated('admin',constant.RoleId.Doctor)
+@authenticated('admin',constant.RoleId.Patient)
 def getDiagnoseListByPatient():
     userId=session['userId']
     # user=User.getById(userId)
