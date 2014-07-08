@@ -263,18 +263,20 @@ def setDiagnoseCommentsDetailInfo(diagnoseCommentsDict):
            observer=diagnoseComment.get('observer')
            user=User.getById(observer)
            if user:
-               diagnoseComment['observerName']=user.name
-               diagnoseComment['avatar']=user.imagePath
-           doctor=Doctor.getByUserId(observer)
-           if doctor and hasattr(doctor,"hospital") and doctor.hospital :
-               diagnoseComment['hospitalId']= doctor.hospitalId
-               diagnoseComment['hospitalName']=doctor.hospital.name
+              diagnoseComment['avatar']=user.imagePath
+
 
         if diagnoseComment.has_key('receiver'):
             receiver=diagnoseComment.get('receiver')
             user=User.getById(receiver)
             if user:
-                diagnoseComment['receiverName']=user.name
+                #diagnoseComment['receiverName']=user.name
+                doctor=Doctor.getByUserId(receiver)
+                if doctor and hasattr(doctor,"hospital") and doctor.hospital :
+                    diagnoseComment['doctorUserId']=receiver
+                    diagnoseComment['hospitalId']= doctor.hospitalId
+                    diagnoseComment['hospitalName']=doctor.hospital.name
+                    diagnoseComment['receiverName']=doctor.username
 
         if diagnoseComment.has_key('diagnoseId'):
             diagnose=Diagnose.getDiagnoseById(diagnoseComment.get('diagnoseId'))

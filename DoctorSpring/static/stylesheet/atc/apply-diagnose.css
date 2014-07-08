@@ -1,3 +1,7 @@
+#select-doctor-modal .doctor-preview .image-preview img {
+  height: 90px;
+  width: 90px;
+}
 #select-doctor-modal .all-doctor-wrapper {
   overflow: hidden;
 }
@@ -42,6 +46,10 @@
 #select-doctor-modal .modal-dialog .form-inline .btn.search-btn {
   margin-left: 10px;
   margin-bottom: 8px;
+}
+#applydignose-content .doctor-preview .image-preview img {
+  height: 90px;
+  width: 90px;
 }
 #applydignose-content .submit-patient-info-wrapper .location-wrapper .line,
 #applydignose-content .submit-patient-info-wrapper .location-wrapper .ball,

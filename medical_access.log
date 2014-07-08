@@ -119,3 +119,26 @@ INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:48] "GET /static/app/lib/jquery-u
 INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:48] "GET /static/app/lib/jquery-uploader/jquery.ui.widget.js HTTP/1.1" 304 -
 INFO:werkzeug: * Detected change in '/Users/chengc017/Documents/doctorSpring/doctorSpring5_27/blueberry/config.py', reloading
 INFO:werkzeug: * Restarting with reloader
+INFO:werkzeug: * Running on http://127.0.0.1:5000/
+INFO:werkzeug: * Restarting with reloader
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:59:25] "GET /homepage HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:59:25] "GET /static/app/lib/requirejs/require.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:59:25] "GET /static/assets/image/logo-1.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:59:25] "GET /static/app/main.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:59:35] "GET /homepage HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 16:01:46] "GET /homepage HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://127.0.0.1:5000/
+INFO:werkzeug: * Restarting with reloader
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 16:05:55] "GET /homepage HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 16:06:09] "GET /homepage HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/chengc017/Documents/doctorSpring/doctorSpring5_27/blueberry/DoctorSpring/views/data_change_service.py', reloading
+INFO:werkzeug: * Restarting with reloader
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 16:09:46] "GET /homepage HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 16:09:52] "GET /doctor/site/5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 16:09:52] "GET /static/assets/image/logo-3.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 16:09:52] "GET /static/assets/resource/fonts/lato/lato-regular.woff HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 16:09:52] "GET /static/assets/image/young-m.png HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 16:09:52] "GET /static/assets/Icons/PNG/Gift-Box.png HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 16:10:02] "GET /doctor/site/5 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/chengc017/Documents/doctorSpring/doctorSpring5_27/blueberry/config.py', reloading
+INFO:werkzeug: * Restarting with reloader

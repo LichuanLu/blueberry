@@ -18,7 +18,7 @@
 			<a class="detail-link" href="#">查看原因</a>
 		{/if}
 		{@if cond="'{statusId}' == '2'"}
-			<a href="/kefu" target="_blank">联系客服</a>
+			<a href="/help/center" target="_blank">联系客服</a>
 			<a class="rm-diagnose-link action-link" href="#">撤销</a>
 		{/if}
 		{@if cond="'{statusId}' == '6'"}

@@ -93,6 +93,40 @@ define(["backbone", "marionette", "config/base/constant", "utils/reqcmd"], funct
 
 			return diagnoseCollection
 		},
+		getPatientDiagnoseList: function(params, collection) {
+			if (!params) {
+				params = {
+					type: ""
+				};
+			}
+			if (typeof params === 'object') {
+				params = $.param(params);
+			}
+			if (collection) {
+				collection.reset();
+				collection.fetch({
+					success: function() {
+						console.log("fetch success");
+					},
+					data: params
+				});
+				var diagnoseCollection = collection;
+
+			} else {
+				var diagnoseCollection = new DiagnoseCollection();
+				diagnoseCollection.url = "/patient/diagnose/list";
+				diagnoseCollection.fetch({
+					success: function() {
+						console.log("fetch success");
+					},
+					data: params
+				});
+
+			}
+
+
+			return diagnoseCollection
+		},
 		getExistsDiagnose: function(params) {
 			if (!params) {
 				params = {};

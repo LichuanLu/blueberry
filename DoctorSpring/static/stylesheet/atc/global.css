@@ -13,7 +13,7 @@ html {
 body {
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "宋体", Arial, Verdana, sans-serif;
   font-size: 14px;
-  background-color: #fcfcfc;
+  background-color: #ffffff;
 }
 @media screen and (max-width: 768px) {
   body {
@@ -45,7 +45,7 @@ button::-moz-focus-inner {
 .logo-bar .logo {
   width: 200px;
   height: 90px;
-  background: url(../../assets/image/logo-1.jpg) no-repeat;
+  background: url(http://static.ezhenduan.com/static/logo-1.jpg) no-repeat;
   display: block;
   margin-left: -5px;
 }
@@ -438,7 +438,7 @@ body .container.full-width-page .main-block {
 }
 .login-modal .modal-body .submit-group a {
   font-size: 13px;
-  margin-left: 30px;
+  margin-left: 10px;
 }
 .login-modal .modal-footer {
   padding-left: 150px;
