@@ -1,7 +1,7 @@
 # coding: utf-8
 __author__ = 'chengc017'
 from DoctorSpring.util import constant
-from DoctorSpring.models import File ,Diagnose,User,DiagnoseLog,Comment
+from DoctorSpring.models import File ,Diagnose,User,DiagnoseLog,Comment,Doctor,Hospital
 
 def userCenterDiagnoses(diagnoses):
     if diagnoses is None or len(diagnoses)<1:
@@ -265,6 +265,11 @@ def setDiagnoseCommentsDetailInfo(diagnoseCommentsDict):
            if user:
                diagnoseComment['observerName']=user.name
                diagnoseComment['avatar']=user.imagePath
+           doctor=Doctor.getByUserId(observer)
+           if doctor and hasattr(doctor,"hospital") and doctor.hospital :
+               diagnoseComment['hospitalId']= doctor.hospitalId
+               diagnoseComment['hospitalName']=doctor.hospital.name
+
         if diagnoseComment.has_key('receiver'):
             receiver=diagnoseComment.get('receiver')
             user=User.getById(receiver)
@@ -276,9 +281,9 @@ def setDiagnoseCommentsDetailInfo(diagnoseCommentsDict):
             if diagnose:
                 if diagnose.score:
                     diagnoseComment['scoreName']=constant.DiagnoseScore[diagnose.score]
-                if diagnose.hospitalId and hasattr(diagnose,'hospital') and diagnose.hospital and diagnose.hospita.name:
-                    diagnoseComment['hospitalId']= diagnose.hospitalId
-                    diagnoseComment['hospitalName']=diagnose.hospital.name
+                # if diagnose.hospitalId and hasattr(diagnose,'hospital') and diagnose.hospital and diagnose.hospita.name:
+                #     diagnoseComment['hospitalId']= diagnose.hospitalId
+                #     diagnoseComment['hospitalName']=diagnose.hospital.name
                 if hasattr(diagnose,"pathology") and diagnose.pathology:
                     pathology=diagnose.pathology
                     if hasattr(pathology,"pathologyPostions") and pathology.pathologyPostions:
