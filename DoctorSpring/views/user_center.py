@@ -168,7 +168,7 @@ def endterDoctorSite(userId):
     others=DoctorProfile.getDoctorProfiles(userId,constant.DoctorProfileType.Other)
     resultDate['others']=object2dict.objects2dicts(others)
 
-    return render_template("doctorsite.html",data=resultDate)
+    return render_template("doctorSite.html",data=resultDate)
 
 
 
