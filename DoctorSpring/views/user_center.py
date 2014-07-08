@@ -334,6 +334,49 @@ def getDiagnoseListByDoctor():
         resultDict=resultStatus.__dict__
         return json.dumps(resultDict,ensure_ascii=False)
     return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
+
+
+@uc.route('/patient/diagnose/list',  methods = ['GET', 'POST'])
+@authenticated('admin',constant.RoleId.Doctor)
+def getDiagnoseListByPatient():
+    userId=session['userId']
+    # user=User.getById(userId)
+    # if user is None:
+    #     return  json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
+    #     #权限查看
+    # if UserRole.checkRole(db_session,userId,constant.RoleId.Admin):
+    #     return  json.dumps(rs.PERMISSION_DENY.__dict__,ensure_ascii=False)
+
+    if userId:
+
+        status=request.args.get('type')
+        if status:
+            import string
+            status=string.atoi(status)
+
+        startDateStr=request.args.get('startDate')
+        startDate=None
+        if startDateStr:
+            startDate=datetime.strptime(startDateStr,"%Y-%m-%d")
+        else:
+            startDate=constant.SystemTimeLimiter.startTime
+
+        endDateStr=request.args.get('endDate')
+        endDate=None
+        if endDateStr:
+            endDate=datetime.strptime(endDateStr,"%Y-%m-%d")
+        else:
+            endDate=constant.SystemTimeLimiter.endTime
+
+        pageNo=request.args.get('pageNo')
+        pageSize=request.args.get('pageSize')
+        pager=Pagger(pageNo,pageSize)
+        diagnoses=Diagnose.getDiagnoseByPatientUser(db_session,userId,status,pager)
+        diagnosesDict=dataChangeService.userCenterDiagnoses(diagnoses)
+        resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnosesDict)
+        resultDict=resultStatus.__dict__
+        return json.dumps(resultDict,ensure_ascii=False)
+    return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
 @uc.route('/doctor/<int:doctorId>/patientList',  methods = ['GET', 'POST'])
 def getPatients(doctorId):
      patients=Diagnose.getPatientListByDoctorId(doctorId)
