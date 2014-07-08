@@ -12,6 +12,14 @@ import config
 app = Flask(__name__)
 app.config.from_object(config)
 
+import logging
+from logging.handlers import RotatingFileHandler
+file_handler = RotatingFileHandler('medical.log', maxBytes=1024 * 1024 * 100, backupCount=1)
+file_handler.setLevel(logging.INFO)
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+file_handler.setFormatter(formatter)
+app.logger.addHandler(file_handler)
+logging.basicConfig(filename='medical_access.log',level=logging.DEBUG)
 
 lm = LoginManager()
 lm.init_app(app)

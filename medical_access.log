@@ -1,0 +1,144 @@
+INFO:werkzeug: * Detected change in '/Users/chengc017/Documents/doctorSpring/doctorSpring5_27/blueberry/DoctorSpring/__init__.py', reloading
+INFO:werkzeug: * Detected change in '/Users/chengc017/Documents/doctorSpring/doctorSpring5_27/blueberry/app.py', reloading
+INFO:werkzeug: * Running on http://127.0.0.1:5000/
+INFO:werkzeug: * Restarting with reloader
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /homepage HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/stylesheet/lib/bootstrap.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/stylesheet/lib/flat-ui.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/stylesheet/lib/font-awesome.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/stylesheet/lib/messenger.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/stylesheet/lib/messenger-theme-future.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/stylesheet/atc/global.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/stylesheet/atc/apply-diagnose.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/stylesheet/atc/patient-home.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/stylesheet/atc/doctor-home.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/stylesheet/lib/ladda-themeless.min.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/app/lib/requirejs/require.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/assets/image/temp2.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/assets/image/temp4.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/assets/image/temp3.jpg HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/assets/image/doctortemp2.png HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/assets/image/logo-1.jpg HTTP/1.1" 404 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/app/main.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/app/lib/jquery/jquery.min.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/app/lib/underscore/underscore-min.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/app/lib/backbone.marionette/lib/core/amd/backbone.marionette.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/app/lib/lodash-amd/compat/main.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/app/config/jquery/ajax_setup.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/app/lib/backbone/backbone.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/app/lib/backbone.wreqr/lib/amd/backbone.wreqr.min.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/app/lib/backbone.babysitter/lib/amd/backbone.babysitter.min.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/app/lib/lodash-amd/compat/arrays.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/app/lib/lodash-amd/compat/collections.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:45] "GET /static/app/lib/lodash-amd/compat/objects.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/objects/forOwn.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/objects/isArray.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/utilities/mixin.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/support.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/utilities/template.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/internals/baseIsEqual.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/app.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/messenger/build/js/messenger.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/arrays/difference.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/arrays/findIndex.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/arrays/findLastIndex.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/arrays/first.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/arrays/flatten.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/arrays/indexOf.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/arrays/initial.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/arrays/intersection.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/arrays/last.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/arrays/lastIndexOf.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/arrays/pull.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/arrays/range.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/arrays/remove.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/arrays/rest.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/arrays/sortedIndex.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/arrays/uniq.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/collections/max.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/collections/map.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/collections/at.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/collections/contains.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/collections/countBy.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/collections/every.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/collections/filter.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/collections/find.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/collections/findLast.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/collections/forEach.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/collections/forEachRight.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:46] "GET /static/app/lib/lodash-amd/compat/collections/groupBy.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/lodash-amd/compat/collections/indexBy.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/lodash-amd/compat/collections/invoke.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/lodash-amd/compat/collections/min.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/lodash-amd/compat/collections/reduce.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/lodash-amd/compat/collections/reduceRight.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/lodash-amd/compat/collections/reject.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/lodash-amd/compat/collections/sample.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/lodash-amd/compat/collections/some.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/lodash-amd/compat/collections/sortBy.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/lodash-amd/compat/collections/where.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/entities/session.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/diagnose/apply/apply_controller.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/doctorhome/show/show_controller.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/patienthome/show/show_controller.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/doctorList/show/show_controller.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/admin/fenzhen/fz_controller.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/hospitalUserPage/show/show_controller.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/bootstrap/dist/js/bootstrap.min.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/elastislide/modernizr.custom.17475.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/dust-full-linkedin.min.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/elastislide/jquerypp.custom.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/diagnose/apply/apply_view.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/doctorhome/show/show_view.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/patienthome/show/show_view.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/admin/fenzhen/fz_view.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/hospitalUserPage/show/show_view.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/dust-helpers.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/patienthome/templates/diagnoseItem.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/patienthome/templates/patientAccountManageLayout.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/patienthome/templates/detailTrackLayout.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/doctorhome/templates/doctorAccountManageLayout.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/doctorhome/templates/newDiagnoseLayout.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/doctorhome/templates/newAuditLayout.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/elastislide/jquery.elastislide.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/flatui/typeahead.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/blueimp-load-image/js/load-image.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/jquery-uploader/jquery.iframe-transport.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/jquery-uploader/jquery.fileupload-ui.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/flatui/jquery-ui-1.10.3.custom.min.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/flatui/bootstrap-select.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/bootstrap-multiselect.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:47] "GET /static/app/lib/jquery.validate.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:48] "GET /static/app/lib/bootstrap-treeview/src/js/bootstrap-treeview.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:48] "GET /static/app/lib/jquery-uploader/jquery.fileupload-image.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:48] "GET /static/app/lib/jquery-uploader/jquery.fileupload-process.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:48] "GET /static/app/lib/blueimp-load-image/js/load-image-meta.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:48] "GET /static/app/lib/blueimp-load-image/js/load-image-exif.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:48] "GET /static/app/lib/blueimp-load-image/js/load-image-ios.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:48] "GET /static/app/lib/jquery-uploader/jquery.fileupload.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:44:48] "GET /static/app/lib/jquery-uploader/jquery.ui.widget.js HTTP/1.1" 304 -
+INFO:werkzeug: * Detected change in '/Users/chengc017/Documents/doctorSpring/doctorSpring5_27/blueberry/config.py', reloading
+INFO:werkzeug: * Restarting with reloader
+INFO:werkzeug: * Running on http://127.0.0.1:5000/
+INFO:werkzeug: * Restarting with reloader
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:59:25] "GET /homepage HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:59:25] "GET /static/app/lib/requirejs/require.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:59:25] "GET /static/assets/image/logo-1.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:59:25] "GET /static/app/main.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 15:59:35] "GET /homepage HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 16:01:46] "GET /homepage HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://127.0.0.1:5000/
+INFO:werkzeug: * Restarting with reloader
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 16:05:55] "GET /homepage HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 16:06:09] "GET /homepage HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/chengc017/Documents/doctorSpring/doctorSpring5_27/blueberry/DoctorSpring/views/data_change_service.py', reloading
+INFO:werkzeug: * Restarting with reloader
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 16:09:46] "GET /homepage HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 16:09:52] "GET /doctor/site/5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 16:09:52] "GET /static/assets/image/logo-3.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 16:09:52] "GET /static/assets/resource/fonts/lato/lato-regular.woff HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 16:09:52] "GET /static/assets/image/young-m.png HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 16:09:52] "GET /static/assets/Icons/PNG/Gift-Box.png HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Jul/2014 16:10:02] "GET /doctor/site/5 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/chengc017/Documents/doctorSpring/doctorSpring5_27/blueberry/config.py', reloading
+INFO:werkzeug: * Restarting with reloader

@@ -1,7 +1,7 @@
 # coding: utf-8
 __author__ = 'chengc017'
 from DoctorSpring.util import constant
-from DoctorSpring.models import File ,Diagnose,User,DiagnoseLog,Comment
+from DoctorSpring.models import File ,Diagnose,User,DiagnoseLog,Comment,Doctor,Hospital
 
 def userCenterDiagnoses(diagnoses):
     if diagnoses is None or len(diagnoses)<1:
@@ -263,22 +263,29 @@ def setDiagnoseCommentsDetailInfo(diagnoseCommentsDict):
            observer=diagnoseComment.get('observer')
            user=User.getById(observer)
            if user:
-               diagnoseComment['observerName']=user.name
-               diagnoseComment['avatar']=user.imagePath
+              diagnoseComment['avatar']=user.imagePath
+
+
         if diagnoseComment.has_key('receiver'):
             receiver=diagnoseComment.get('receiver')
             user=User.getById(receiver)
             if user:
-                diagnoseComment['receiverName']=user.name
+                #diagnoseComment['receiverName']=user.name
+                doctor=Doctor.getByUserId(receiver)
+                if doctor and hasattr(doctor,"hospital") and doctor.hospital :
+                    diagnoseComment['doctorUserId']=receiver
+                    diagnoseComment['hospitalId']= doctor.hospitalId
+                    diagnoseComment['hospitalName']=doctor.hospital.name
+                    diagnoseComment['receiverName']=doctor.username
 
         if diagnoseComment.has_key('diagnoseId'):
             diagnose=Diagnose.getDiagnoseById(diagnoseComment.get('diagnoseId'))
             if diagnose:
                 if diagnose.score:
                     diagnoseComment['scoreName']=constant.DiagnoseScore[diagnose.score]
-                if diagnose.hospitalId and hasattr(diagnose,'hospital') and diagnose.hospital and diagnose.hospita.name:
-                    diagnoseComment['hospitalId']= diagnose.hospitalId
-                    diagnoseComment['hospitalName']=diagnose.hospital.name
+                # if diagnose.hospitalId and hasattr(diagnose,'hospital') and diagnose.hospital and diagnose.hospita.name:
+                #     diagnoseComment['hospitalId']= diagnose.hospitalId
+                #     diagnoseComment['hospitalName']=diagnose.hospital.name
                 if hasattr(diagnose,"pathology") and diagnose.pathology:
                     pathology=diagnose.pathology
                     if hasattr(pathology,"pathologyPostions") and pathology.pathologyPostions:

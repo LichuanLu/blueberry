@@ -37,7 +37,7 @@ def homepage():
         resultData['doctor'] = doctorsList['doctor'][0]
     diagnoseComments=Comment.getRecentComments()
     if diagnoseComments  and  len(diagnoseComments)>0:
-        diagnoseCommentsDict=object2dict.objects2dicts(diagnoseComments)
+        diagnoseCommentsDict=object2dict.objects2dicts_2(diagnoseComments)
         dataChangeService.setDiagnoseCommentsDetailInfo(diagnoseCommentsDict)
         resultData['comments']=diagnoseCommentsDict
     else:

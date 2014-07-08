@@ -35,10 +35,10 @@ define(['lodash', 'config/base/constant', 'config/controllers/_base_controller',
 				};
 				console.dir(params);
 				if (this.diagnoseCollection) {
-					DiagnoseEntity.API.getDiagnoseList(params, this.diagnoseCollection);
+					DiagnoseEntity.API.getPatientDiagnoseList(params, this.diagnoseCollection);
 
 				} else {
-					this.diagnoseCollection = DiagnoseEntity.API.getDiagnoseList(params);
+					this.diagnoseCollection = DiagnoseEntity.API.getPatientDiagnoseList(params);
 				}
 			}, this));
 
@@ -197,7 +197,7 @@ define(['lodash', 'config/base/constant', 'config/controllers/_base_controller',
 			this.layoutView.diagnoseDetailTrackRegion.close();
 
 			if (viewName === 'diagnoseLink') {
-				this.diagnoseCollection = DiagnoseEntity.API.getDiagnoseList();
+				this.diagnoseCollection = DiagnoseEntity.API.getPatientDiagnoseList();
 				this.contentView = this.getDiagnoseListView(this.diagnoseCollection);
 
 			} else if (viewName === 'accountLink') {
