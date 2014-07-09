@@ -168,7 +168,7 @@
 						{:else}
 							{@if cond="'{diagnoseStatus}' == '2'"}
 							<h6><span class="fui-check-inverted"></span>申请诊断成功，请等待客服联系</h6>
-							<span>您可以：<a href="#">联系客服</a></span>
+							<span>您可以：<a href="/help/center">联系客服</a></span>
 							{/if}
 							{@if cond="'{diagnoseStatus}' == '3'"}
 							<h6><span class="fui-check-inverted"></span>申请正在处理，等待分诊医生分诊</h6>

@@ -415,7 +415,7 @@ you can use the generic selector below, but it's slower:
   border-top-color: #34495e !important;
 }
 body {
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 18px;
   line-height: 1.72222;
   color: #34495e;
@@ -1019,8 +1019,8 @@ fieldset[disabled] .btn-success.active {
 .btn-warning.active,
 .open .dropdown-toggle.btn-warning {
   color: #ffffff;
-  background-color: #f5d313;
-  border-color: #f5d313;
+  background-color: #f4d313;
+  border-color: #f4d313;
 }
 .btn-warning:active,
 .btn-warning.active,
@@ -1369,10 +1369,8 @@ fieldset[disabled] .btn-link:focus {
 .select.select-block:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 .select.select-block:after {
   clear: both;
@@ -1504,7 +1502,7 @@ label {
 .form-control {
   border: 2px solid #bdc3c7;
   color: #34495e;
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 15px;
   line-height: 1.467;
   padding: 8px 12px;
@@ -1733,10 +1731,8 @@ select[multiple].input-hg {
 .form-horizontal .form-group:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 .form-horizontal .form-group:after {
   clear: both;
@@ -2367,7 +2363,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
   background: transparent;
   border: none;
   color: #34495e;
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 14px;
   margin: 0px;
   padding: 0 0 0 5px;
@@ -2446,7 +2442,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
 .twitter-typeahead .tt-hint {
   border: 2px solid #bdc3c7;
   color: #34495e;
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 15px;
   line-height: 1.467;
   padding: 8px 12px;
@@ -3330,7 +3326,7 @@ fieldset[disabled] .twitter-typeahead .tt-hint {
 .pagination-warning ul li > span:hover,
 .pagination-warning ul li > a:focus,
 .pagination-warning ul li > span:focus {
-  background-color: #f5d313;
+  background-color: #f4d313;
 }
 .pagination-warning ul li > a:active,
 .pagination-warning ul li > span:active {
@@ -3695,10 +3691,8 @@ fieldset[disabled] .twitter-typeahead .tt-hint {
 .dropdown-menu li > a:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 .dropdown-menu li > a:after {
   clear: both;
@@ -4221,10 +4215,8 @@ a.list-group-item.active > .badge,
 .bottom-menu .bottom-icons:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 .bottom-menu .bottom-links:after,
 .bottom-menu .bottom-icons:after {
@@ -4934,7 +4926,7 @@ select[multiple].navbar-form .btn {
 }
 .navbar-unread,
 .navbar-new {
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   background-color: #1abc9c;
   border-radius: 50%;
   color: #ffffff;
@@ -5439,10 +5431,8 @@ fieldset[disabled] .navbar-inverse .navbar-btn.active {
 .iconbar:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 .iconbar:after {
   clear: both;
@@ -5520,7 +5510,7 @@ fieldset[disabled] .navbar-inverse .navbar-btn.active {
   background-color: #2a7aaf;
   border-radius: 50%;
   color: #ffffff;
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 12px;
   font-weight: 700;
   line-height: 1.667;

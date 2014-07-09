@@ -258,12 +258,18 @@
                                     {% endfor %}
                                     {% endif %}
 								</select>
-								<!-- <div class="line-area">
-								<div class="line"></div>
-								<div class="ball"></div>
-							</div>
-							<p class="side-description">就诊人姓名须与诊断书和影像数据上姓名相符就诊人姓名须与诊断书和影像数据上姓名相符</p>
-							-->
+                                <div class="line-area">
+                                    <div class="line"></div>
+                                    <div class="ball"></div>
+                                </div>
+                                <p class="side-description">诊断的部位，需要与您上传的dicom影像文件部位一致。</p>
+
+                                <!-- <div class="line-area">
+                                <div class="line"></div>
+                                <div class="ball"></div>
+                            </div>
+                            <p class="side-description">就诊人姓名须与诊断书和影像数据上姓名相符就诊人姓名须与诊断书和影像数据上姓名相符</p>
+                            -->
 						    </div>
 					    </div>
 
@@ -287,6 +293,8 @@
 								</span>
                                     <input type="radio" name="dicomtype" value="mri" data-toggle="radio" {%if result.pathology%}{% if result.pathology.diagnoseMethod == 'mri' %} checked{% endif %}{%endif%}>核磁共振(MR)</label>
                             </div>
+                            <p class="warning-mes">专家的参考诊断费用为：CT诊断180元每个部位，MRI诊断200元每个部位。易诊断平台不收取任何费用。</p>
+
                         </div>
 
 

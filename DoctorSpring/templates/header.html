@@ -7,16 +7,13 @@
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav gray-base">
                             <li class="active">
-                                <a href="#">主页</a>
+                                <a href="/homepage">主页</a>
                             </li>
                             <li>
-                                <a href="#">诊断项目</a>
+                                <a href="/doctor/list">专家库</a>
                             </li>
                             <li>
-                                <a href="#">专家库</a>
-                            </li>
-                            <li>
-                                <a href="#">客服中心</a>
+                                <a href="/help/center">客服中心</a>
                             </li>
 
                         </ul>
@@ -32,7 +29,7 @@
                     <span class="fui-user"></span>
                     <span>个人中心</span>
                 </a>
-                <a id="user-message-link" href="#">
+                <a id="user-message-link" href="/userCenter/{{session['userId']}}">
                     <span class="visible-md visible-lg message-icon-wrap">
                         <span class="fui-mail">
                             {% if data and data.messageCount %}
@@ -57,7 +54,7 @@
                     <span>登陆</span>
                 </a>
                 <div class="bullet"></div>
-                <a id="register-link" href="#" data-toggle="modal" data-target=".register-modal">
+                <a id="register-link" href="/register/patient">
                     <span>注册</span>
                 </a>
                 </div>

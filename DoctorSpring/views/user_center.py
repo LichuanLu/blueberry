@@ -26,6 +26,8 @@ config = config.rec()
 
 uc = Blueprint('user_center', __name__)
 
+LOGIN_URL='/loginPage'
+ERROR_URL='/error'
 
 @uc.route('/doctorhome',  methods = ['GET', 'POST'])
 def endterDoctorHome():
@@ -33,7 +35,7 @@ def endterDoctorHome():
     doctor=Doctor.getByUserId(userId)
 
     if doctor is None:
-        return redirect(url_for('/300'))
+        return redirect(ERROR_URL)
 
     resultDate={}
     messageCount=Message.getMessageCountByReceiver(userId)
@@ -55,7 +57,7 @@ def endterPatientHome():
     user=User.getById(userId)
 
     if user is None:
-        return redirect(url_for('/300'))
+        return redirect(ERROR_URL)
 
     resultDate={}
     messageCount=Message.getMessageCountByReceiver(userId)
@@ -77,7 +79,7 @@ def endterHospitalUserHome():
     user=User.getById(userId)
 
     if user is None:
-        return redirect(url_for('/300'))
+        return redirect(ERROR_URL)
 
     resultDate={}
     # messageCount=Message.getMessageCountByReceiver(userId)
@@ -103,10 +105,10 @@ def endterDoctorSite(userId):
     doctor=Doctor.getByUserId(userId)
 
     if  doctor is None:
-        return redirect(url_for('/300'))
+        return redirect(ERROR_URL)
 
     if  hasattr(doctor,'user') !=True:
-        return redirect(url_for('/300'))
+        return redirect(ERROR_URL)
 
     resultDate={}
     userFavortiesCount=UserFavorites.getFavortiesCountByDoctorId(doctor.id)
@@ -129,10 +131,11 @@ def endterDoctorSite(userId):
 
     if session.has_key('userId'):
         loginUserId=session.get('userId')
-        loginUserId=string.atoi(loginUserId)
-        userfavor=UserFavorites.getUerFavortiesByNormalStatus(db_session,loginUserId,constant.UserFavoritesType.Doctor,doctor.id)
-        if userfavor:
-            resultDate['userFavortiesId']=userfavor.id
+        if loginUserId:
+            loginUserId=string.atoi(loginUserId)
+            userfavor=UserFavorites.getUerFavortiesByNormalStatus(db_session,loginUserId,constant.UserFavoritesType.Doctor,doctor.id)
+            if userfavor:
+                resultDate['userFavortiesId']=userfavor.id
 
 
 
@@ -167,7 +170,7 @@ def endterDoctorSite(userId):
     others=DoctorProfile.getDoctorProfiles(userId,constant.DoctorProfileType.Other)
     resultDate['others']=object2dict.objects2dicts(others)
 
-    return render_template("doctorsite.html",data=resultDate)
+    return render_template("doctorSite.html",data=resultDate)
 
 
 
@@ -333,6 +336,49 @@ def getDiagnoseListByDoctor():
         resultDict=resultStatus.__dict__
         return json.dumps(resultDict,ensure_ascii=False)
     return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
+
+
+@uc.route('/patient/diagnose/list',  methods = ['GET', 'POST'])
+@authenticated('admin',constant.RoleId.Patient)
+def getDiagnoseListByPatient():
+    userId=session['userId']
+    # user=User.getById(userId)
+    # if user is None:
+    #     return  json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
+    #     #权限查看
+    # if UserRole.checkRole(db_session,userId,constant.RoleId.Admin):
+    #     return  json.dumps(rs.PERMISSION_DENY.__dict__,ensure_ascii=False)
+
+    if userId:
+
+        status=request.args.get('type')
+        if status:
+            import string
+            status=string.atoi(status)
+
+        startDateStr=request.args.get('startDate')
+        startDate=None
+        if startDateStr:
+            startDate=datetime.strptime(startDateStr,"%Y-%m-%d")
+        else:
+            startDate=constant.SystemTimeLimiter.startTime
+
+        endDateStr=request.args.get('endDate')
+        endDate=None
+        if endDateStr:
+            endDate=datetime.strptime(endDateStr,"%Y-%m-%d")
+        else:
+            endDate=constant.SystemTimeLimiter.endTime
+
+        pageNo=request.args.get('pageNo')
+        pageSize=request.args.get('pageSize')
+        pager=Pagger(pageNo,pageSize)
+        diagnoses=Diagnose.getDiagnoseByPatientUser(db_session,userId,status,pager)
+        diagnosesDict=dataChangeService.userCenterDiagnoses(diagnoses)
+        resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnosesDict)
+        resultDict=resultStatus.__dict__
+        return json.dumps(resultDict,ensure_ascii=False)
+    return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
 @uc.route('/doctor/<int:doctorId>/patientList',  methods = ['GET', 'POST'])
 def getPatients(doctorId):
      patients=Diagnose.getPatientListByDoctorId(doctorId)
@@ -367,7 +413,7 @@ def addUserFavorties():
 
     userId=session['userId']
     if userId is None:
-        return json.dumps(rs.NO_LOGIN.__dict__,ensure_ascii=False)
+        return redirect(LOGIN_URL)
 
     if formResult.status==rs.SUCCESS.status:
         if UserFavorites.checkUerFavorties(db_session,userId,constant.UserFavoritesType.Doctor,form.doctorId):

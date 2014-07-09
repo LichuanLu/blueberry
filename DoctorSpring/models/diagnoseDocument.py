@@ -233,6 +233,22 @@ class Diagnose(Base):
                 .filter(Patient.realname==patientName,Diagnose.status.in_((DiagnoseStatus.NeedTriage,DiagnoseStatus.NeedUpdate)),Diagnose.uploadUserId==uploadUserId).offset(pagger.getOffset()).limit(pagger.getLimitCount())
 
         return query.all()
+
+    @classmethod
+    def getDiagnoseByPatientUser(cls,session,userId,status=None,pagger=Pagger(1,20) ):
+        if userId is None :
+            return
+        query=None
+        if status is None:
+            query=session.query(Diagnose).select_from(join(Patient,Diagnose,Patient.id==Diagnose.patientId)) \
+                .filter(Patient.userID==userId,Diagnose.status!=DiagnoseStatus.Del).offset(pagger.getOffset()).limit(pagger.getLimitCount())
+
+        else:
+            query=session.query(Diagnose).select_from(join(Patient,Diagnose,Patient.id==Diagnose.patientId)) \
+                .filter(Patient.userID==userId,Diagnose.status==status).offset(pagger.getOffset()).limit(pagger.getLimitCount())
+
+
+        return query.all()
     @classmethod
     def getDealedDiagnoseByHospitalUser(cls,session,uploadUserId,patientName,status,startTime,endTime,pagger=Pagger(1,20) ):
         if uploadUserId is None :

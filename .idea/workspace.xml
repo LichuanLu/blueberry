@@ -2,6 +2,70 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41284883-9385-481b-82c3-409aafaead68" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/FontAwesome.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/image/doctor1-old.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/image/doctor1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/image/doctor2-old.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/image/doctor2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/image/doctor3-old.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/image/doctor3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/flat-ui-icons-regular.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/flat-ui-icons-regular.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/flat-ui-icons-regular.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/fontawesome-webfont.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/fontawesome-webfont.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/fontawesome-webfont.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/glyphicons-halflings-regular.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/glyphicons-halflings-regular.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/glyphicons-halflings-regular.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/image/help1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/image/help2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/image/help3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-black.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-black.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-black.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-bold.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-bold.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-bold.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-bolditalic.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-bolditalic.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-bolditalic.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-italic.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-italic.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-italic.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-light.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-light.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-light.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-regular.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-regular.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-regular.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/image/logo-1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/image/logo-2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/image/logo-3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/image/logo-small.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/image/severlistbg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/image/temp1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/templates/about.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/about/aboutapp.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/dist/debug/stylesheet/ctt-debug-full.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/flat-ui-icons-regular.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/fontawesome-webfont.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/lib/global.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/glyphicons-halflings-regular.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/help/helpCenterApp.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/templates/helpcenter.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/templates/helpdoc.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-black.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-bold.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-bolditalic.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-italic.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-light.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/fonts/lato/lato-regular.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/medical.log" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/medical_access.log" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/test/real_model.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/dist/debug/js/yizhenduan-debug.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DoctorSpring/static/dist/release/js/yizhenduan-release.js" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\admin\admin_app.js" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\admin\fenzhen\fz_controller.js" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\admin\fenzhen\fz_view.js" afterPath="" />
@@ -73,7 +137,6 @@
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\doctorhome\templates_raw\newAuditLayout.dust" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\doctorhome\templates_raw\newDiagnoseLayout.dust" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\entities\base\_utilities.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\entities\diagnoseEntity.js" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\entities\doctorEntity.js" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\entities\favoriteEntity.js" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\entities\localeEntity.js" afterPath="" />
@@ -1912,13 +1975,10 @@
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\message\templates\messageItem.js" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\message\templates_raw\messageItem.dust" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\patienthome\patient_home_app.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\patienthome\show\show_controller.js" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\patienthome\show\show_view.js" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\patienthome\templates\CancelFavoriteModalView.js" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\patienthome\templates\commonPatient.js" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\patienthome\templates\deleteDiagnoseModal.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\patienthome\templates\detailTrackLayout.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\patienthome\templates\diagnoseItem.js" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\patienthome\templates\diagnoseLayout.js" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\patienthome\templates\favoriteItem.js" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\patienthome\templates\favoriteLayout.js" afterPath="" />
@@ -1928,8 +1988,6 @@
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\patienthome\templates_raw\cancelFavoriteModalView.dust" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\patienthome\templates_raw\commonPatient.dust" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\patienthome\templates_raw\deleteDiagnoseModal.dust" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\patienthome\templates_raw\detailTrackLayout.dust" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\patienthome\templates_raw\diagnoseItem.dust" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\patienthome\templates_raw\diagnoseLayout.dust" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\patienthome\templates_raw\favoriteItem.dust" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\patienthome\templates_raw\favoriteLayout.dust" afterPath="" />
@@ -1937,7 +1995,6 @@
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\patienthome\templates_raw\patientMessageLayout.dust" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\patienthome\templates_raw\sharingModal.dust" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\register\doctor\show_controller.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\register\doctor\show_view.js" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\register\patient\show_controller.js" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\register\patient\show_view.js" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\app\register\register_app.js" afterPath="" />
@@ -2408,7 +2465,6 @@
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\assets\image\exaple-image.jpg" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\assets\image\loading-2.gif" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\assets\image\loading.gif" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\assets\image\logo.jpg" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\assets\image\logo.png" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\assets\image\nav.png" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\assets\image\progressbar.gif" afterPath="" />
@@ -2459,37 +2515,26 @@
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\font\msyh-2.ttf" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\font\msyh.ttf" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\pdf\test.pdf" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\atc\apply-diagnose.css" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\atc\doctor-home.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\atc\doctor-list.css" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\atc\doctor-site.css" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\atc\errorpage.css" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\atc\fenzhen.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\atc\flat-ui.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\atc\global.css" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\atc\help.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\atc\home.css" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\atc\hospital-user.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\atc\loginpage.css" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\atc\message.css" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\atc\patient-home.css" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\atc\register.css" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\atc\report.css" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\atc\variables.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\less\apply-diagnose.less" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\less\bs-wizard.less" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\less\diagnose-wrapper.less" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\less\doctor-home.less" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\less\doctor-list.less" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\less\doctor-site.less" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\less\errorpage.less" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\less\fenzhen.less" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\less\flat-ui.less" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\less\global.less" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\less\help.less" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\less\home.less" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\less\hospital-user.less" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\less\loginpage.less" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\less\message.less" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\less\mixins.less" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\less\modules\alerts.less" afterPath="" />
@@ -2545,7 +2590,6 @@
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\lib\bootstrap.css" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\lib\bootstrap.min.css" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\lib\elastislide.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\lib\flat-ui.css" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\lib\font-awesome.css" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\lib\jquery.fileupload-noscript.css" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\lib\jquery.fileupload-ui-noscript.css" afterPath="" />
@@ -2554,7 +2598,50 @@
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\lib\ladda-themeless.min.css" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\lib\messenger-theme-future.css" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\lib\messenger.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/image/logo.jpg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/image/logo.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/__init__.py" afterPath="$PROJECT_DIR$/DoctorSpring/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/templates/adminFenzhen.html" afterPath="$PROJECT_DIR$/DoctorSpring/templates/adminFenzhen.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/apply-diagnose.css" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/apply-diagnose.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/less/apply-diagnose.less" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/less/apply-diagnose.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/templates/applyDiagnose.html" afterPath="$PROJECT_DIR$/DoctorSpring/templates/applyDiagnose.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/util/authenticated.py" afterPath="$PROJECT_DIR$/DoctorSpring/util/authenticated.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blueberry.iml" afterPath="$PROJECT_DIR$/blueberry.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.py" afterPath="$PROJECT_DIR$/config.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/views/data_change_service.py" afterPath="$PROJECT_DIR$/DoctorSpring/views/data_change_service.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/patienthome/templates_raw/detailTrackLayout.dust" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/patienthome/templates_raw/detailTrackLayout.dust" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/patienthome/templates/detailTrackLayout.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/patienthome/templates/detailTrackLayout.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py" afterPath="$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/entities/diagnoseEntity.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/entities/diagnoseEntity.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/patienthome/templates_raw/diagnoseItem.dust" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/patienthome/templates_raw/diagnoseItem.dust" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/patienthome/templates/diagnoseItem.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/patienthome/templates/diagnoseItem.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/doctor-list.css" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/doctor-list.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/less/doctor-list.less" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/less/doctor-list.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/templates/doctorHome.html" afterPath="$PROJECT_DIR$/DoctorSpring/templates/doctorHome.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/templates/doctorSite.html" afterPath="$PROJECT_DIR$/DoctorSpring/templates/doctorSite.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/lib/flat-ui.css" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/lib/flat-ui.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/templates/footer.html" afterPath="$PROJECT_DIR$/DoctorSpring/templates/footer.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/views/front.py" afterPath="$PROJECT_DIR$/DoctorSpring/views/front.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/global.css" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/global.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/less/global.less" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/less/global.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/templates/head.html" afterPath="$PROJECT_DIR$/DoctorSpring/templates/head.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/templates/header.html" afterPath="$PROJECT_DIR$/DoctorSpring/templates/header.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/home.css" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/home.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/templates/home.html" afterPath="$PROJECT_DIR$/DoctorSpring/templates/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/less/home.less" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/less/home.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/templates/iconSearch.html" afterPath="$PROJECT_DIR$/DoctorSpring/templates/iconSearch.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/templates/loginModal.html" afterPath="$PROJECT_DIR$/DoctorSpring/templates/loginModal.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/templates/loginPage.html" afterPath="$PROJECT_DIR$/DoctorSpring/templates/loginPage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/loginpage.css" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/loginpage.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/less/loginpage.less" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/less/loginpage.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/util/object2dict.py" afterPath="$PROJECT_DIR$/DoctorSpring/util/object2dict.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/templates/patientRegister.html" afterPath="$PROJECT_DIR$/DoctorSpring/templates/patientRegister.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/templates/scripts.html" afterPath="$PROJECT_DIR$/DoctorSpring/templates/scripts.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/patienthome/show/show_controller.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/patienthome/show/show_controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/register/doctor/show_view.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/register/doctor/show_view.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/views/user_center.py" afterPath="$PROJECT_DIR$/DoctorSpring/views/user_center.py" />
+      <change type="MOVED" beforePath="D:\workspace\Python\blueberry\DoctorSpring\static\stylesheet\atc\flat-ui.css" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/yizhenduan-debug-full.css" />
     </list>
     <list id="887d96d1-400d-4b67-a4aa-50a663a93dfe" name="never" comment="" />
     <ignored path="blueberry.iws" />
@@ -2581,8 +2668,8 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/blueberry$app.coverage" NAME="app Coverage Results" MODIFIED="1404908662213" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/blueberry$Unittest_UserTestCase_test_add_patient.coverage" NAME="Unittest UserTestCase.test_add_patient Coverage Results" MODIFIED="1404292240227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DoctorSpring/test" />
-    <SUITE FILE_PATH="coverage/blueberry$Unittest_UserTestCase_test_add_doctor.coverage" NAME="Unittest UserTestCase.test_add_doctor Coverage Results" MODIFIED="1404292246454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DoctorSpring/test" />
     <SUITE FILE_PATH="coverage/blueberry$Unittest_ModelTestCase_test_add_location.coverage" NAME="Unittest ModelTestCase.test_add_location Coverage Results" MODIFIED="1403839878579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DoctorSpring/test" />
+    <SUITE FILE_PATH="coverage/blueberry$Unittest_UserTestCase_test_add_doctor.coverage" NAME="Unittest UserTestCase.test_add_doctor Coverage Results" MODIFIED="1404292246454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DoctorSpring/test" />
     <SUITE FILE_PATH="coverage/blueberry$Unittest_ModelTestCase_test_add_position.coverage" NAME="Unittest ModelTestCase.test_add_position Coverage Results" MODIFIED="1404194489142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DoctorSpring/test" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -2641,17 +2728,17 @@
       <file leaf-file-name="front.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DoctorSpring/views/front.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8056">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1007" max-vertical-offset="8607">
               <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user_view.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="user_view.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DoctorSpring/views/user_view.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.4672897" vertical-offset="1320" max-vertical-offset="2223">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1636" max-vertical-offset="2223">
               <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
               <folding>
                 <element signature="e#39#122#0" expanded="true" />
@@ -2660,10 +2747,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="config.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1026">
+            <state vertical-scroll-proportion="-0.4516854" vertical-offset="581" max-vertical-offset="1026">
               <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
               <folding />
             </state>
@@ -2675,9 +2762,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="744" max-vertical-offset="5073">
               <caret line="58" column="28" selection-start-line="58" selection-start-column="28" selection-end-line="58" selection-end-column="28" />
-              <folding>
-                <element signature="e#39#62#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -2685,8 +2770,8 @@
       <file leaf-file-name="user_center.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DoctorSpring/views/user_center.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3325" max-vertical-offset="9728">
-              <caret line="175" column="18" selection-start-line="175" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="3325" max-vertical-offset="10602">
+              <caret line="175" column="0" selection-start-line="175" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -2695,7 +2780,7 @@
       <file leaf-file-name="app.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/PyVM/Medical/Lib/site-packages/flask/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="27449" max-vertical-offset="34637">
+            <state vertical-scroll-proportion="0.0" vertical-offset="28044" max-vertical-offset="35112">
               <caret line="1476" column="0" selection-start-line="1476" selection-start-column="0" selection-end-line="1477" selection-end-column="0" />
               <folding />
             </state>
@@ -2705,7 +2790,7 @@
       <file leaf-file-name="requirements.txt" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="380">
+            <state vertical-scroll-proportion="0.0" vertical-offset="266" max-vertical-offset="380">
               <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
               <folding />
             </state>
@@ -2725,7 +2810,7 @@
       <file leaf-file-name="forms.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DoctorSpring/views/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6590" max-vertical-offset="8740">
+            <state vertical-scroll-proportion="0.0" vertical-offset="6726" max-vertical-offset="8778">
               <caret line="354" column="13" selection-start-line="354" selection-start-column="4" selection-end-line="354" selection-end-column="13" />
               <folding />
             </state>
@@ -2867,8 +2952,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2971,6 +3054,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2982,21 +3067,21 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="251" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="142" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="263" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="149" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="263" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="149" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1056" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="577" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="255" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="145" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="262" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="148" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="261" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="148" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1055" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="576" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FullScreen" value="false" />
     <property name="project.structure.last.edited" value="Project" />
@@ -3578,6 +3663,7 @@
       <workItem from="1404455987700" duration="354000" />
       <workItem from="1404546652976" duration="148000" />
       <workItem from="1404908036091" duration="3672000" />
+      <workItem from="1404911765994" duration="487000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1403013420621</created>
@@ -3643,7 +3729,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="199930000" />
+    <option name="totallyTimeSpent" value="200417000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -3670,41 +3756,41 @@
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.632" sideWeight="0.5618557" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33066666" sideWeight="0.5618557" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29066667" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.185567" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.448" sideWeight="0.7777062" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46933332" sideWeight="0.22229381" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33066666" sideWeight="0.43814433" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15528351" sideWeight="0.32933334" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.68133336" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37066665" sideWeight="0.68363404" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.39974293" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15206185" sideWeight="0.6706667" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15141752" sideWeight="0.6706667" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29066667" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.105333336" sideWeight="0.5618557" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46933332" sideWeight="0.22229381" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29466668" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -3724,8 +3810,8 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15528351" sideWeight="0.32933334" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.39974293" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -3787,6 +3873,14 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/pathology.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2103" max-vertical-offset="2641">
+          <caret line="129" column="12" selection-start-line="129" selection-start-column="12" selection-end-line="129" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="988">
@@ -4069,7 +4163,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3344">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4077,7 +4170,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="9088" max-vertical-offset="9443">
           <caret line="488" column="0" selection-start-line="488" selection-start-column="0" selection-end-line="488" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
@@ -4097,8 +4189,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DoctorSpring/views/user_center.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2810" max-vertical-offset="9348">
-          <caret line="175" column="18" selection-start-line="175" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="3325" max-vertical-offset="10602">
+          <caret line="175" column="0" selection-start-line="175" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -4107,14 +4199,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="627" max-vertical-offset="4484">
           <caret line="45" column="39" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1026">
-          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
           <folding />
         </state>
       </provider>
@@ -4150,9 +4234,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="744" max-vertical-offset="5073">
           <caret line="58" column="28" selection-start-line="58" selection-start-column="28" selection-end-line="58" selection-end-column="28" />
-          <folding>
-            <element signature="e#39#62#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -4169,11 +4251,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DoctorSpring/views/user_view.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4672897" vertical-offset="1320" max-vertical-offset="2223">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1636" max-vertical-offset="2223">
           <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
           <folding>
             <element signature="e#39#122#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.4516854" vertical-offset="581" max-vertical-offset="1026">
+          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>

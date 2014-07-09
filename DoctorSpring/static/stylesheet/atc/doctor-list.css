@@ -15,6 +15,7 @@
 #doctorlist-content .query-result-wrapper .result-list li .doctor-detail-preview .image-preview img {
   float: left;
   height: 80px;
+  width: 80px;
 }
 #doctorlist-content .query-result-wrapper .result-list li .doctor-detail-preview .doctor-preview-des {
   padding-left: 100px;

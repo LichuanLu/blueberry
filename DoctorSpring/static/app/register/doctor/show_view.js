@@ -36,7 +36,8 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 						} else {
 							// this.resetForm();
 							console.log("msg:"+data.msg);
-							this.reLocation(data.msg);
+							// this.reLocation(data.msg);
+							$('#register-doctor-warning-modal').modal('show');
 							Messenger().post({
 								message: 'SUCCESS. Product import started. Check back periodically.',
 								type: 'success',
