@@ -37,7 +37,7 @@ def login():
         #session['remember_me'] = form.remember_me.data
         # login and validate the user...
         user = User.get_by_name(form.username)
-        if user is not None:
+        if user is not None and user.check_password(form.password):
             login_session(user)
             formResult.msg = request.host_url + "homepage"
         else:
@@ -67,7 +67,7 @@ def register_doctor():
     form = RegisterFormDoctor(request.form)
     form_result = form.validate()
     if form_result.status == rs.SUCCESS.status:
-        new_user = User(form.username, form.password)
+        new_user = User(form.real_name, form.username, form.password)
         new_user.email = form.email
         new_user.phone = form.cellphone
         new_user.type = UserStatus.doctor
@@ -91,13 +91,11 @@ def register_patient():
     form = RegisterFormPatent(request.form)
     form_result = form.validate()
     if form_result.status == rs.SUCCESS.status:
-        new_user = User(form.name, form.password)
+        new_user = User(form.nickname, form.name, form.password)
         new_user.type = UserStatus.patent
         User.save(new_user)
-        new_patient = Patient(new_user.id)
         new_userrole = UserRole(new_user.id, RoleId.Patient)
         UserRole.save(new_userrole)
-        Patient.save(new_patient)
         login_session(new_user)
         form_result.msg = request.host_url + 'homepage'
         return jsonify(form_result.__dict__,ensure_ascii=False)
