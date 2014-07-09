@@ -14,8 +14,12 @@ def userCenterDiagnoses(diagnoses):
             diagDict['patientName']=diagnose.patient.realname
         if hasattr(diagnose,"doctor") and diagnose.doctor and diagnose.doctor.username:
             diagDict['doctorName']=diagnose.doctor.username
+            if hasattr(diagnose.doctor,'hospital') and diagnose.doctor.hospital and diagnose.doctor.hospital.name:
+                diagDict['doctorHispital']= diagnose.doctor.hospital.name
+
         if hasattr(diagnose,"hospital") and diagnose.hospital and diagnose.hospital.name:
             diagDict['hispital']=diagnose.hospital.name
+
 
         if diagnose.createDate:
             diagDict["date"]=diagnose.createDate.strftime('%Y-%m-%d')
