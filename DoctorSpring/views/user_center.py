@@ -26,6 +26,8 @@ config = config.rec()
 
 uc = Blueprint('user_center', __name__)
 
+LOGIN_URL='/loginPage'
+ERROR_URL='/error'
 
 @uc.route('/doctorhome',  methods = ['GET', 'POST'])
 def endterDoctorHome():
@@ -33,7 +35,7 @@ def endterDoctorHome():
     doctor=Doctor.getByUserId(userId)
 
     if doctor is None:
-        return redirect(url_for('/300'))
+        return redirect(ERROR_URL)
 
     resultDate={}
     messageCount=Message.getMessageCountByReceiver(userId)
@@ -55,7 +57,7 @@ def endterPatientHome():
     user=User.getById(userId)
 
     if user is None:
-        return redirect(url_for('/300'))
+        return redirect(ERROR_URL)
 
     resultDate={}
     messageCount=Message.getMessageCountByReceiver(userId)
@@ -77,7 +79,7 @@ def endterHospitalUserHome():
     user=User.getById(userId)
 
     if user is None:
-        return redirect(url_for('/300'))
+        return redirect(ERROR_URL)
 
     resultDate={}
     # messageCount=Message.getMessageCountByReceiver(userId)
@@ -103,10 +105,10 @@ def endterDoctorSite(userId):
     doctor=Doctor.getByUserId(userId)
 
     if  doctor is None:
-        return redirect(url_for('/300'))
+        return redirect(ERROR_URL)
 
     if  hasattr(doctor,'user') !=True:
-        return redirect(url_for('/300'))
+        return redirect(ERROR_URL)
 
     resultDate={}
     userFavortiesCount=UserFavorites.getFavortiesCountByDoctorId(doctor.id)
@@ -411,7 +413,7 @@ def addUserFavorties():
 
     userId=session['userId']
     if userId is None:
-        return json.dumps(rs.NO_LOGIN.__dict__,ensure_ascii=False)
+        return redirect(LOGIN_URL)
 
     if formResult.status==rs.SUCCESS.status:
         if UserFavorites.checkUerFavorties(db_session,userId,constant.UserFavoritesType.Doctor,form.doctorId):
