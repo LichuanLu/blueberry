@@ -67,6 +67,7 @@
                 <div class="avatar-wrapper">
                     <img src="{{data.doctor.avatarUrl}}">
                     <span class="number">{{data.userFavortiesCount}}人收藏</span>
+                    {% if session['logged_in'] %}
                     {% if data.userFavortiesId %}
                     <a class="btn btn-info btn-xs follow-link following" href="#" data-type="0" data-id="{{data.userFavortiesId}}" data-uid="{{data.doctor.id}}">
                         <span class="fui-heart"></span>
@@ -80,6 +81,7 @@
                         <span class="a-text">加入收藏</span>
                     </a>
 
+                    {% endif %}
                     {% endif %}
                 </div>
                 <div class="profile-wrapper">

@@ -114,7 +114,7 @@ def addOrUpdateReport():
                     Message.save(message)
 
                     #诊断日志
-                    diagoseLog=DiagnoseLog(userId,form.diagnoseId,constant.DiagnoseLogAction.FetchDiagnoseAction)
+                    diagoseLog=DiagnoseLog(userId,form.diagnoseId,constant.DiagnoseLogAction.FetchDiagnoseEndAction)
                     DiagnoseLog.save(db_session,diagoseLog)
 
             return json.dumps(formResult.__dict__,ensure_ascii=False)
