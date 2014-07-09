@@ -163,6 +163,9 @@ class DoctorProfileType(object):
     Intro=1
     Award=2
     Other=3
+class DoctorType(object):
+    Doctor=0
+    HospitalUser=1
 
 
 
