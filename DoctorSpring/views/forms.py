@@ -215,13 +215,17 @@ class LoginForm(object):
     password = None
     remember_me = None
     def __init__(self, args):
+        self.nickname=args.get('nickname')
         self.username=args.get('name')
         self.password=args.get('password')
         #self.remember_me=args.get('remember_me')
     def validate(self):
         try:
+            if self.nickname is None:
+                failure = ResultStatus(FAILURE.status, "昵称为空")
+                return failure
             if self.username is None:
-                failure = ResultStatus(FAILURE.status, "用户名为空")
+                failure = ResultStatus(FAILURE.status, "邮箱或手机为空")
                 return failure
             if self.password is None:
                 failure=ResultStatus(FAILURE.status, "密码为空")
@@ -270,12 +274,17 @@ class RegisterFormPatent(object):
     name = None
     password = None
     def __init__(self, args):
+        self.nickname = args.get('nickname')
         self.name = args.get('name')
         self.password = args.get('password')
 
 
     def validate(self):
         try:
+
+            if self.nickname is None:
+                failure = ResultStatus(FAILURE.status, "昵称为空")
+                return failure
             if self.password is None:
                 failure = ResultStatus(FAILURE.status, "密码为空")
                 return failure

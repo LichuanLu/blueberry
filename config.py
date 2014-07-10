@@ -5,8 +5,8 @@ import os.path
 
 ROOT_DIR=os.path.dirname(__file__)
 
-_DBUSER = "ctt"
-_DBPASS = "ctt"
+_DBUSER = "mduser"
+_DBPASS = "mduser"
 _DBNAME = "medicaldb"
 _DBHOST = "localhost:3306"
 

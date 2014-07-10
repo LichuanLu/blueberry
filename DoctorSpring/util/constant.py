@@ -140,6 +140,7 @@ class RoleId(object):
 class DiagnoseLogAction(object):
     NewDiagnoseAction='提出诊断申请'
     FetchDiagnoseAction='正在分发诊断'
+    FetchDiagnoseEndAction='分发诊断完成'
     TriageDiagnoseAction='正在进行诊断'
     UpateDiagnoseAction='正在进行诊断'
     DiagnoseNeedUpateAction='暂停分发诊断(需要更多就诊人信息)'
@@ -162,6 +163,9 @@ class DoctorProfileType(object):
     Intro=1
     Award=2
     Other=3
+class DoctorType(object):
+    Doctor=0
+    HospitalUser=1
 
 
 

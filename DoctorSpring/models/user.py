@@ -31,10 +31,6 @@ class User(Base):
     phone = sa.Column(sa.String(20))
     type=sa.Column(sa.Integer)  # 0:patent,1:doctor
     status = sa.Column(sa.INTEGER)  # 0:normal,1:delete,2:overdue
-
-    def set_password(self, password):
-        self.password = generate_password_hash(password)
-
     
     type=sa.Column(sa.Integer)  # 0:patent,1:doctor
     status = sa.Column(sa.INTEGER)  # 0:normal,1:delete,2:overdue
@@ -44,7 +40,7 @@ class User(Base):
 
 
     def check_password(self, password):
-        return check_password_hash(self.password , password)
+        return check_password_hash(self.password, password)
 
     def is_authenticated(self):
         return True
@@ -58,7 +54,9 @@ class User(Base):
     def get_id(self):
         return unicode(self.id)
 
-    def __init__(self, name=None, password=None, encryption=True):
+    def __init__(self, nickname=None, name=None, password=None, encryption=True):
+
+        self.name = nickname
         if '@' in name:
             self.email = name
         else:
@@ -73,6 +71,8 @@ class User(Base):
     def __repr__(self):
         return '<User %r>' % (self.name)
 
+
+
     @classmethod
     def save(cls, user):
         if user:
@@ -84,6 +84,7 @@ class User(Base):
         if userId is None or userId < 1:
             return
         return session.query(User).filter(User.id==userId,User.status==ModelStatus.Normal).first()
+
 
 
     @classmethod
@@ -99,6 +100,8 @@ class User(Base):
         if user.phone is not None:
             return user.phone
 
+
+
     @classmethod
     def get_by_name(cls, user_name):
         if user_name is None or user_name < 1:
@@ -107,6 +110,8 @@ class User(Base):
             return session.query(User).filter(User.email == user_name, User.status == ModelStatus.Normal).first()
         else:
             return session.query(User).filter(User.phone == user_name, User.status == ModelStatus.Normal).first()
+
+
 
 class UserRole(Base):
     __tablename__ = 'user_role'
