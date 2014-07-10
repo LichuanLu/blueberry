@@ -1,181 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="41284883-9385-481b-82c3-409aafaead68" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/medical_access.log" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/requirejs/tests/circular/414/A.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/requirejs/tests/circular/414/A.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/requirejs/tests/circular/414/B.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/requirejs/tests/circular/414/B.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/requirejs/tests/circular/414/C.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/requirejs/tests/circular/414/C.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/requirejs/tests/circular/414/MyClass.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/requirejs/tests/circular/414/MyClass.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/bootstrap-select/README.md" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/bootstrap-select/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/spin.js/README.md" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/spin.js/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/aes.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/aes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/alert-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/alert-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/alert-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/alert-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/arror-left-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/arror-left-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/arror-right-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/arror-right-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/arrow-left-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/arrow-left-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/arrow-right-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/arrow-right-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/behance.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/behance.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/blogger.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/blogger.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/bookmark-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/bookmark-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/bookmark-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/bookmark-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/bubble-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/bubble-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/bubble-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/bubble-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/calendar-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/calendar-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/calendar-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/calendar-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/calendar-solid-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/calendar-solid-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/calendar-solid-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/calendar-solid-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/chat-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/chat-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/chat-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/chat-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/check-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/check-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/check-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/check-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/check-circle-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/check-circle-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/check-round-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/check-round-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/checkbox-checked.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/checkbox-checked.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/checkbox-overlayer.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/checkbox-overlayer.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/checkbox-unchecked.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/checkbox-unchecked.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/cipher-core.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/cipher-core.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/clip-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/clip-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/clip-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/clip-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/cmd-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/cmd-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/cmd-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/cmd-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/requirejs/tests/i18n/nls/colors.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/requirejs/tests/i18n/nls/colors.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/requirejs/tests/i18n/nls/en-us-surfer/colors.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/requirejs/tests/i18n/nls/en-us-surfer/colors.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/core.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/core.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/credit-card-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/credit-card-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/credit-card-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/credit-card-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/cross-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/cross-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/cross-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/cross-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/cross-circle-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/cross-circle-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/cross-circle-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/cross-circle-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/dist/debug/stylesheet/ctt-debug-full.css" afterPath="$PROJECT_DIR$/DoctorSpring/static/dist/debug/stylesheet/ctt-debug-full.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/doctor-home.css" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/doctor-home.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/less/doctor-home.less" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/less/doctor-home.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/document-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/document-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/document-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/document-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/dribbble.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/dribbble.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/lib/elastislide.css" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/lib/elastislide.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/evpkdf.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/evpkdf.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/exit-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/exit-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/exit-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/exit-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/export-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/export-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/export-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/export-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/eye-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/eye-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/eye-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/eye-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/facebook.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/facebook.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/folder-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/folder-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/folder-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/folder-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/format-hex.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/format-hex.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/gear-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/gear-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/gear-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/gear-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/googleplus.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/googleplus.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/heart-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/heart-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/heart-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/heart-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/hmac.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/hmac.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/home-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/home-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/home-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/home-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/home.css" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/home.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/less/home.less" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/less/home.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/image-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/image-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/image-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/image-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/info-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/info-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/info-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/info-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/backbone/test/vendor/jquery.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/backbone/test/vendor/jquery.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/lib-typedarrays.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/lib-typedarrays.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/link-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/link-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/link-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/link-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/linkedin.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/linkedin.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/list-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/list-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/list-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/list-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/list-bulleted.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/list-bulleted.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/list-columned.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/list-columned.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/list-large-thumbnails.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/list-large-thumbnails.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/list-numbered.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/list-numbered.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/list-small-thumbnails.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/list-small-thumbnails.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/list-thumbnailed.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/list-thumbnailed.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/location-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/location-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/location-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/location-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/lock-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/lock-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/lock-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/lock-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/loop-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/loop-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/loop-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/loop-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/mail-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/mail-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/mail-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/mail-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/md5.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/md5.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/mic-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/mic-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/mic-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/mic-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/mode-cfb.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/mode-cfb.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/mode-ctr-gladman.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/mode-ctr-gladman.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/mode-ctr.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/mode-ctr.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/mode-ecb.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/mode-ecb.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/mode-ofb.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/mode-ofb.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/myspace.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/myspace.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/new-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/new-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/new-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/new-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/pad-ansix923.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/pad-ansix923.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/pad-iso10126.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/pad-iso10126.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/pad-iso97971.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/pad-iso97971.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/pad-nopadding.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/pad-nopadding.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/pad-zeropadding.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/pad-zeropadding.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/path.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/path.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/pause-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/pause-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/pause-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/pause-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/pbkdf2.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/pbkdf2.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/photo-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/photo-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/photo-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/photo-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/pinterest.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/pinterest.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/pinterest.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/pinterest.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/play-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/play-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/play-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/play-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/plus-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/plus-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/plus-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/plus-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/plus-circle-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/plus-circle-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/plus-circle-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/plus-circle-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/power-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/power-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/power-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/power-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/question-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/question-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/question-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/question-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/rabbit-legacy.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/rabbit-legacy.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/rabbit.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/rabbit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/radio-checked.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/radio-checked.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/radio-overlayer.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/radio-overlayer.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/radio-unchecked.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/radio-unchecked.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/rc4.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/rc4.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/search-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/search-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/search-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/search-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Icons/SVG/settings.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Icons/SVG/settings.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/sha1.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/sha1.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/sha224.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/sha224.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/sha256.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/sha256.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/sha3.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/sha3.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/sha384.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/sha384.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/sha512.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/sha512.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/skype.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/skype.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/spotify.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/spotify.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/star-15.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/star-15.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/star-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/star-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/stumbleupon.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/stumbleupon.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/tag-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/tag-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/tag-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/tag-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/time-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/time-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/time-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/time-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/trash-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/trash-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/trash-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/trash-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/triangle-down-small.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/triangle-down-small.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/triangle-down.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/triangle-down.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/triangle-left-large.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/triangle-left-large.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/triangle-right-large.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/triangle-right-large.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/triangle-up-small.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/triangle-up-small.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/triangle-up.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Additional/triangle-up.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/tripledes.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/tripledes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/twitter.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/twitter.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/unknow-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/unknow-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/unknow-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/unknow-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/upload-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/upload-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/upload-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/upload-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/user-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/user-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/user-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/user-24.svg" />
+    <list default="true" id="41284883-9385-481b-82c3-409aafaead68" name="Default" comment="Merge branch 'master' of github.com:LichuanLu/blueberry into master20140703&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/video-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/video-16.svg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/video-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/video-24.svg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/vimeo.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/vimeo.svg" />
@@ -199,9 +25,9 @@
     <ignored mask="*.dust" />
     <ignored path="MedicalApp/" />
     <ignored path="DoctorSpring/static/" />
-    <file path="/Dummy.txt" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404961787793" ignored="false" />
+    <file path="/Dummy.txt" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404962555220" ignored="false" />
     <file path="/config.py" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404384036620" ignored="false" />
-    <file path="/a.dummy" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404912706072" ignored="false" />
+    <file path="/a.dummy" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404962516482" ignored="false" />
     <file path="/front.py" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404912767223" ignored="false" />
     <file path="/header.html" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404400296553" ignored="false" />
     <file path="/home.html" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404408440547" ignored="false" />
@@ -303,7 +129,7 @@
       <file leaf-file-name="front.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DoctorSpring/views/front.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="258" column="0" selection-start="11498" selection-end="11498" vertical-scroll-proportion="73.5">
+            <state line="258" column="0" selection-start="11498" selection-end="11498" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -330,7 +156,7 @@
       <file leaf-file-name="data_change_service.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DoctorSpring/views/data_change_service.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="230" column="7" selection-start="10035" selection-end="10036" vertical-scroll-proportion="-5.5">
+            <state line="179" column="95" selection-start="7753" selection-end="7753" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -339,10 +165,17 @@
       <file leaf-file-name="user_center.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DoctorSpring/views/user_center.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="181" column="0" selection-start="6426" selection-end="6426" vertical-scroll-proportion="-2.6153846">
-              <folding>
-                <element signature="e#39#122#0" expanded="true" />
-              </folding>
+            <state line="340" column="19" selection-start="11989" selection-end="11996" vertical-scroll-proportion="3.6538463">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -365,15 +198,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="diagnose.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DoctorSpring/views/diagnose.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="247" column="31" selection-start="10418" selection-end="10418" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="diagnoseDocument.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -383,10 +207,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="comment.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/DoctorSpring/models/comment.py">
+      <file leaf-file-name="authenticated.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DoctorSpring/util/authenticated.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="0" selection-start="4130" selection-end="4130" vertical-scroll-proportion="5.492126">
+            <state line="35" column="0" selection-start="1167" selection-end="1167" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -435,7 +259,7 @@
     <option name="x" value="5" />
     <option name="y" value="22" />
     <option name="width" value="1440" />
-    <option name="height" value="835" />
+    <option name="height" value="841" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -497,6 +321,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -585,27 +410,26 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="183" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="90" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="94" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="192" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="MemberChooser.sorted" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="98" />
     <property name="recentsLimit" value="5" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="196" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$USER_HOME$/PyVM" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="192" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="830" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="799" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="201" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="94" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="398" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="376" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="101" />
     <property name="GoToClass.includeJavaFiles" value="false" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="201" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="101" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
@@ -614,14 +438,14 @@
     <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
-    <property name="project.structure.side.proportion" value="0.2" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="options.searchVisible" value="true" />
@@ -1075,7 +899,7 @@
     </configuration>
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
       <JSDebuggerConfigurationSettings>
-        <option name="engineId" />
+        <option name="engineId" value="embedded" />
         <option name="fileUrl" />
       </JSDebuggerConfigurationSettings>
       <method />
@@ -1293,7 +1117,11 @@
       <created>1404961791100</created>
       <updated>1404961791100</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="lichuan update&#10;">
+      <created>1404962578989</created>
+      <updated>1404962578989</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1320,21 +1148,21 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="5" y="22" width="1440" height="835" extended-state="6" />
+    <frame x="5" y="22" width="1440" height="841" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5878378" sideWeight="0.5520833" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36595175" sideWeight="0.5520833" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27837837" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2774799" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34189188" sideWeight="0.66736114" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5878378" sideWeight="0.44791666" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36595175" sideWeight="0.44791666" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15528351" sideWeight="0.32933334" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33783785" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31367293" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1342,7 +1170,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.39974293" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2013889" sideWeight="0.41216215" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2013889" sideWeight="0.6340483" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36671177" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -1403,7 +1231,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="lichuan FIX BUG" />
+    <option name="LAST_COMMIT_MESSAGE" value="lichuan update&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1425,6 +1253,7 @@
     <MESSAGE value="add test case" />
     <MESSAGE value="lichuan add html" />
     <MESSAGE value="lichuan FIX BUG" />
+    <MESSAGE value="lichuan update&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1440,11 +1269,6 @@
           <option name="timeStamp" value="227" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/DoctorSpring/views/user_center.py</url>
-          <line>349</line>
-          <option name="timeStamp" value="232" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/DoctorSpring/views/front.py</url>
           <line>38</line>
           <option name="timeStamp" value="241" />
@@ -1453,11 +1277,6 @@
           <url>file://$PROJECT_DIR$/DoctorSpring/views/front.py</url>
           <line>40</line>
           <option name="timeStamp" value="242" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/DoctorSpring/views/data_change_service.py</url>
-          <line>287</line>
-          <option name="timeStamp" value="243" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/DoctorSpring/views/data_change_service.py</url>
@@ -1478,11 +1297,6 @@
           <url>file://$PROJECT_DIR$/DoctorSpring/views/front.py</url>
           <line>108</line>
           <option name="timeStamp" value="248" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/DoctorSpring/views/user_center.py</url>
-          <line>377</line>
-          <option name="timeStamp" value="249" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py</url>
@@ -1587,34 +1401,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/util/authenticated.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="1128" selection-end="1128" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/errorpage.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1403837356000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1403837356000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1403837356000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/views/data_change_service.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="230" column="7" selection-start="10035" selection-end="10036" vertical-scroll-proportion="-5.5">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DoctorSpring/views/diagnose.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="247" column="31" selection-start="10418" selection-end="10418" vertical-scroll-proportion="0.0">
+        <state line="247" column="31" selection-start="10421" selection-end="10421" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1633,15 +1429,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/views/user_center.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="181" column="0" selection-start="6426" selection-end="6426" vertical-scroll-proportion="-2.6153846">
-          <folding>
-            <element signature="e#39#122#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DoctorSpring/test/real_model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="95" column="30" selection-start="2865" selection-end="2865" vertical-scroll-proportion="0.0">
@@ -1651,7 +1438,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DoctorSpring/views/front.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="258" column="0" selection-start="11498" selection-end="11498" vertical-scroll-proportion="73.5">
+        <state line="258" column="0" selection-start="11498" selection-end="11498" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1672,7 +1459,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DoctorSpring/models/comment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="0" selection-start="4130" selection-end="4130" vertical-scroll-proportion="5.492126">
+        <state line="82" column="0" selection-start="3067" selection-end="3305" vertical-scroll-proportion="1.4216868">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/util/authenticated.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="0" selection-start="1167" selection-end="1167" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/views/data_change_service.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="179" column="95" selection-start="7753" selection-end="7753" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/views/user_center.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="340" column="19" selection-start="11989" selection-end="11996" vertical-scroll-proportion="3.6538463">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
