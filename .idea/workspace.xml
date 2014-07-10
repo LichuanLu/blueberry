@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41284883-9385-481b-82c3-409aafaead68" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/medical_access.log" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/requirejs/tests/circular/414/A.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/requirejs/tests/circular/414/A.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/requirejs/tests/circular/414/B.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/requirejs/tests/circular/414/B.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/requirejs/tests/circular/414/C.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/requirejs/tests/circular/414/C.js" />
@@ -41,7 +42,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/cmd-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/cmd-24.svg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/requirejs/tests/i18n/nls/colors.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/requirejs/tests/i18n/nls/colors.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/requirejs/tests/i18n/nls/en-us-surfer/colors.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/requirejs/tests/i18n/nls/en-us-surfer/colors.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/models/comment.py" afterPath="$PROJECT_DIR$/DoctorSpring/models/comment.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/core.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/core.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/credit-card-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/credit-card-16.svg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/credit-card-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/credit-card-24.svg" />
@@ -50,7 +50,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/cross-circle-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/cross-circle-16.svg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/cross-circle-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/cross-circle-24.svg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/dist/debug/stylesheet/ctt-debug-full.css" afterPath="$PROJECT_DIR$/DoctorSpring/static/dist/debug/stylesheet/ctt-debug-full.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py" afterPath="$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/doctor-home.css" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/atc/doctor-home.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/less/doctor-home.less" afterPath="$PROJECT_DIR$/DoctorSpring/static/stylesheet/less/doctor-home.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/document-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/document-16.svg" />
@@ -104,7 +103,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/mail-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/mail-16.svg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/mail-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/mail-24.svg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/md5.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/md5.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/medical_access.log" afterPath="$PROJECT_DIR$/medical_access.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/mic-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/mic-16.svg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/mic-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/mic-24.svg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/mode-cfb.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/mode-cfb.js" />
@@ -201,7 +199,7 @@
     <ignored mask="*.dust" />
     <ignored path="MedicalApp/" />
     <ignored path="DoctorSpring/static/" />
-    <file path="/Dummy.txt" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404961302520" ignored="false" />
+    <file path="/Dummy.txt" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404961644597" ignored="false" />
     <file path="/config.py" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404384036620" ignored="false" />
     <file path="/a.dummy" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404912706072" ignored="false" />
     <file path="/front.py" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404912767223" ignored="false" />
@@ -311,7 +309,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="medical.log" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="medical.log" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/medical.log">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -385,6 +383,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="comment.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/DoctorSpring/models/comment.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="99" column="0" selection-start="4130" selection-end="4130" vertical-scroll-proportion="5.10989">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -415,11 +422,11 @@
         <option value="$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py" />
         <option value="$PROJECT_DIR$/DoctorSpring/templates/adminFenzhen.html" />
         <option value="$PROJECT_DIR$/DoctorSpring/views/data_change_service.py" />
-        <option value="$PROJECT_DIR$/DoctorSpring/models/comment.py" />
         <option value="$PROJECT_DIR$/DoctorSpring/templates/home.html" />
         <option value="$PROJECT_DIR$/DoctorSpring/templates/applyDiagnose.html" />
         <option value="$PROJECT_DIR$/DoctorSpring/views/diagnose.py" />
         <option value="$PROJECT_DIR$/DoctorSpring/views/front.py" />
+        <option value="$PROJECT_DIR$/DoctorSpring/models/comment.py" />
       </list>
     </option>
   </component>
@@ -558,6 +565,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blueberry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blueberry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DoctorSpring" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -565,9 +590,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="193" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="183" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="202" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="192" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="MemberChooser.sorted" value="false" />
@@ -575,8 +600,8 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="196" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$USER_HOME$/PyVM" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="202" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="800" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="192" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="830" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="799" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="201" />
     <property name="GoToClass.includeJavaFiles" value="false" />
@@ -1256,7 +1281,15 @@
       <created>1404961308176</created>
       <updated>1404961308176</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="lichuan FIX BUG">
+      <created>1404961432754</created>
+      <updated>1404961432754</updated>
+    </task>
+    <task id="LOCAL-00022" summary="lichuan FIX BUG">
+      <created>1404961648023</created>
+      <updated>1404961648023</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1286,7 +1319,7 @@
     <frame x="5" y="22" width="1440" height="835" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.61756754" sideWeight="0.6166667" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.56216216" sideWeight="0.6166667" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27837837" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1305,7 +1338,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.39974293" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2013889" sideWeight="0.38243243" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2013889" sideWeight="0.43783784" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36671177" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -1543,13 +1576,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/comment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="100" selection-start="4130" selection-end="4130" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/applyDiagnose.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="161" column="44" selection-start="5931" selection-end="5931" vertical-scroll-proportion="-48.3">
@@ -1572,13 +1598,6 @@
             <marker date="1403837356000" expanded="true" signature="-1:-1" placeholder="..." />
             <marker date="1403837356000" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="241" column="0" selection-start="11090" selection-end="11090" vertical-scroll-proportion="0.0">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1633,16 +1652,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/medical_access.log">
+    <entry file="file://$PROJECT_DIR$/medical.log">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/medical.log">
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="241" column="0" selection-start="11090" selection-end="11090" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/comment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="99" column="0" selection-start="4130" selection-end="4130" vertical-scroll-proportion="5.10989">
           <folding />
         </state>
       </provider>
