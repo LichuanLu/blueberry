@@ -235,7 +235,7 @@ def cancleDiagnose(diagnoseId):
     diagnose=Diagnose.getDiagnoseById(diagnoseId)
     if diagnose is None:
         return  json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
-    if hasattr(diagnose,'patient') and diagnose.patient and diagnose.patient.userID and  diagnose.patient.userID==userId:
+    if (hasattr(diagnose,'patient') and diagnose.patient and diagnose.patient.userID and diagnose.patient.userID==userId) or (hasattr(diagnose,'uploadUser') and diagnose.uploadUserId and  diagnose.uploadUserId==userId):
          diagnose.status=constant.DiagnoseStatus.Del
          Diagnose.save(diagnose)
 
@@ -259,7 +259,7 @@ def rollbackDiagnose(diagnoseId):
     diagnose=Diagnose.getDiagnoseById(diagnoseId)
     if diagnose is None:
         return  json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
-    if hasattr(diagnose,'uploadUser') and diagnose.uploadUserId and  diagnose.uploadUserId==userId:
+    if hasattr(diagnose,'adminId') and diagnose.adminId and  diagnose.adminId==userId:
         if status is None:
             status=constant.DiagnoseStatus.Draft
         diagnose.status=status

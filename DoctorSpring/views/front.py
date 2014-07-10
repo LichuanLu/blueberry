@@ -344,9 +344,9 @@ def doctor_rec():
 
     doctor = None
 
-    if 'doctorid' in request.args.keys():
-        doctorId = request.args['doctorid']
-        doctor = Doctor.get_doctor(doctorId)
+    if 'doctorId' in request.args.keys():
+        doctorId = request.args['doctorId']
+        doctor = Doctor.get_doctor(doctorId,"")
     elif 'diagnoseId' in request.args.keys():
         diagnoseId = int(request.args['diagnoseId'])
         diagnose = Diagnose.getDiagnoseById(diagnoseId)
@@ -417,7 +417,7 @@ def loginPage():
 
 @front.route('/error', methods=['GET', 'POST'])
 def errorPage():
-    return render_template("errorPage.html")
+    return render_template("errorpage.html")
 
 
 @front.route('/userCenter/<int:userId>', methods=['GET', 'POST'])
