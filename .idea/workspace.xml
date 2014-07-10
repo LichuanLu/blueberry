@@ -1,19 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="41284883-9385-481b-82c3-409aafaead68" name="Default" comment="Merge branch 'master' of github.com:LichuanLu/blueberry into master20140703&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/video-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/video-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/video-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/video-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/vimeo.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/vimeo.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/volume-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/volume-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/volume-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/volume-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/window-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/window-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/window-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/window-24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/windows-16.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/16/windows-16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/windows-24.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Glyphs/24/windows-24.svg" />
+    <list default="true" id="41284883-9385-481b-82c3-409aafaead68" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/x64-core.js" afterPath="$PROJECT_DIR$/DoctorSpring/static/app/lib/CryptoJS v3.1.2/components/x64-core.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/youtube.svg" afterPath="$PROJECT_DIR$/DoctorSpring/static/assets/Glyphs/Social/youtube.svg" />
     </list>
     <list id="887d96d1-400d-4b67-a4aa-50a663a93dfe" name="never" comment="" />
     <ignored path="blueberry.iws" />
@@ -25,11 +14,11 @@
     <ignored mask="*.dust" />
     <ignored path="MedicalApp/" />
     <ignored path="DoctorSpring/static/" />
-    <file path="/Dummy.txt" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404962555220" ignored="false" />
-    <file path="/config.py" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404384036620" ignored="false" />
-    <file path="/a.dummy" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404962516482" ignored="false" />
+    <file path="/Dummy.txt" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404996818940" ignored="false" />
+    <file path="/config.py" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404970372244" ignored="false" />
+    <file path="/a.dummy" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404971574637" ignored="false" />
     <file path="/front.py" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404912767223" ignored="false" />
-    <file path="/header.html" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404400296553" ignored="false" />
+    <file path="/header.html" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404996781662" ignored="false" />
     <file path="/home.html" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404408440547" ignored="false" />
     <file path="/iconSearch.html" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404402050305" ignored="false" />
     <file path="/footer.html" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404400912274" ignored="false" />
@@ -38,12 +27,12 @@
     <file path="/doctorSite.html" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404402974473" ignored="false" />
     <file path="/patientRegister.html" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404403720815" ignored="false" />
     <file path="/loginModal.html" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404403888785" ignored="false" />
-    <file path="/real_model.py" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404411257010" ignored="false" />
+    <file path="/real_model.py" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404963231447" ignored="false" />
     <file path="/scripts.html" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404541603220" ignored="false" />
     <file path="/user_center.py" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404814956505" ignored="false" />
-    <file path="/diagnoseDocument.py" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404819936760" ignored="false" />
+    <file path="/diagnoseDocument.py" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404984328915" ignored="false" />
     <file path="/adminFenzhen.html" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404821553112" ignored="false" />
-    <file path="/diagnose.py" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404899335188" ignored="false" />
+    <file path="/diagnose.py" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404985082827" ignored="false" />
     <file path="/__dummy.js" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404884374575" ignored="false" />
     <file path="$PROJECT_DIR$/../../ctt-dev/atc/sources/ctt-java-webapp/pom.xml" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404885349398" ignored="false" />
     <file path="$PROJECT_DIR$/../../ctt-dev/atc/sources/ctt-java-webapp/src/main/resources/jms-context.xml" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404885349398" ignored="false" />
@@ -53,7 +42,8 @@
     <file path="$PROJECT_DIR$/../../ctt-dev/atc/sources/ctt-java-webapp/src/main/java/com/adobe/globalization/atc/web/controller/rest/security/ImsImpl.java" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404885349400" ignored="false" />
     <file path="$PROJECT_DIR$/../../ctt-dev/atc/sources/ctt-java-webapp/src/main/webapp/static/styles/less/dashboard.less" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404885472659" ignored="false" />
     <file path="/dashboard.less" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404885472252" ignored="false" />
-    <file path="/applyDiagnose.html" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404888651340" ignored="false" />
+    <file path="/applyDiagnose.html" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404972474200" ignored="false" />
+    <file path="$USER_HOME$/.virtualenvs/medical20140507/lib/python2.7/site-packages/werkzeug/utils.py" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404970824360" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,91 +116,73 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="front.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DoctorSpring/views/front.py">
+      <file leaf-file-name="doctorList.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/doctorList.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="258" column="0" selection-start="11498" selection-end="11498" vertical-scroll-proportion="0.0">
+            <state line="73" column="26" selection-start="2102" selection-end="2102" vertical-scroll-proportion="-17.041666">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="medical.log" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/medical.log">
+      <file leaf-file-name="doctorSite.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/doctorSite.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="173.5">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="doctor.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DoctorSpring/models/doctor.py">
+      <file leaf-file-name="home.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="39" selection-start="3197" selection-end="3208" vertical-scroll-proportion="0.0">
+            <state line="199" column="0" selection-start="8947" selection-end="9029" vertical-scroll-proportion="-14.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data_change_service.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DoctorSpring/views/data_change_service.py">
+      <file leaf-file-name="base.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="179" column="95" selection-start="7753" selection-end="7753" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="2.5">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user_center.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DoctorSpring/views/user_center.py">
+      <file leaf-file-name="header.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/header.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="340" column="19" selection-start="11989" selection-end="11996" vertical-scroll-proportion="3.6538463">
+            <state line="52" column="51" selection-start="2109" selection-end="2109" vertical-scroll-proportion="1.0509804">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config.py">
+      <file leaf-file-name="doctorRegister.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/doctorRegister.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="76" column="26" selection-start="3788" selection-end="3788" vertical-scroll-proportion="-16.5">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="real_model.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DoctorSpring/test/real_model.py">
+      <file leaf-file-name="patientRegister.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/patientRegister.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="30" selection-start="2865" selection-end="2865" vertical-scroll-proportion="0.0">
+            <state line="77" column="26" selection-start="3602" selection-end="3602" vertical-scroll-proportion="-17.041666">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.virtualenvs/medical20140507/lib/python2.7/site-packages/flask/app.py">
+      <file leaf-file-name="helpcenter.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/helpcenter.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1460" column="0" selection-start="61615" selection-end="61615" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="diagnoseDocument.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="241" column="0" selection-start="11090" selection-end="11090" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="authenticated.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DoctorSpring/util/authenticated.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="0" selection-start="1167" selection-end="1167" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -235,22 +207,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/DoctorSpring/templates/iconSearch.html" />
-        <option value="$PROJECT_DIR$/DoctorSpring/templates/doctorSite.html" />
-        <option value="$PROJECT_DIR$/DoctorSpring/templates/patientRegister.html" />
-        <option value="$PROJECT_DIR$/DoctorSpring/templates/loginModal.html" />
-        <option value="$PROJECT_DIR$/DoctorSpring/test/real_model.py" />
-        <option value="$PROJECT_DIR$/DoctorSpring/templates/scripts.html" />
-        <option value="$PROJECT_DIR$/DoctorSpring/templates/loginPage.html" />
         <option value="$PROJECT_DIR$/DoctorSpring/views/user_center.py" />
-        <option value="$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py" />
         <option value="$PROJECT_DIR$/DoctorSpring/templates/adminFenzhen.html" />
         <option value="$PROJECT_DIR$/DoctorSpring/views/data_change_service.py" />
         <option value="$PROJECT_DIR$/DoctorSpring/templates/home.html" />
-        <option value="$PROJECT_DIR$/DoctorSpring/templates/applyDiagnose.html" />
-        <option value="$PROJECT_DIR$/DoctorSpring/views/diagnose.py" />
         <option value="$PROJECT_DIR$/DoctorSpring/views/front.py" />
         <option value="$PROJECT_DIR$/DoctorSpring/models/comment.py" />
+        <option value="$PROJECT_DIR$/config.py" />
+        <option value="$PROJECT_DIR$/DoctorSpring/test/real_model.py" />
+        <option value="$PROJECT_DIR$/DoctorSpring/views/forms.py" />
+        <option value="$PROJECT_DIR$/DoctorSpring/templates/applyDiagnose.html" />
+        <option value="$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py" />
+        <option value="$PROJECT_DIR$/DoctorSpring/views/diagnose.py" />
+        <option value="$PROJECT_DIR$/DoctorSpring/templates/doctorList.html" />
+        <option value="$PROJECT_DIR$/DoctorSpring/templates/doctorRegister.html" />
+        <option value="$PROJECT_DIR$/DoctorSpring/templates/patientRegister.html" />
+        <option value="$PROJECT_DIR$/DoctorSpring/templates/header.html" />
       </list>
     </option>
   </component>
@@ -259,7 +231,7 @@
     <option name="x" value="5" />
     <option name="y" value="22" />
     <option name="width" value="1440" />
-    <option name="height" value="841" />
+    <option name="height" value="837" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -368,43 +340,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="blueberry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="blueberry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DoctorSpring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="blueberry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="blueberry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DoctorSpring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -464,7 +400,7 @@
       <recent name="E:\workspace\Python\blueberry\DoctorSpring\templates" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.app">
+  <component name="RunManager" selected="Python tests.Unittests in real_model">
     <configuration default="false" name="app" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -950,8 +886,8 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.app" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in CommentTestCase" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in real_model" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in real_model" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in CommentTestCase" />
         <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in UserTestCase" />
         <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in RealModelTestCase" />
       </list>
@@ -1121,7 +1057,15 @@
       <created>1404962578989</created>
       <updated>1404962578989</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="lichuan update&#10;">
+      <created>1404962606036</created>
+      <updated>1404962606036</updated>
+    </task>
+    <task id="LOCAL-00026" summary="lichuan update&#10;">
+      <created>1404996830048</created>
+      <updated>1404996830048</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1148,18 +1092,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="5" y="22" width="1440" height="841" extended-state="0" />
+    <frame x="5" y="22" width="1440" height="837" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36595175" sideWeight="0.5520833" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.58625335" sideWeight="0.5520833" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2774799" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27651006" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34189188" sideWeight="0.66736114" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29784366" sideWeight="0.66736114" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36595175" sideWeight="0.44791666" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.58625335" sideWeight="0.44791666" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15528351" sideWeight="0.32933334" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31367293" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -1170,8 +1114,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.39974293" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2013889" sideWeight="0.6340483" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36671177" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23055555" sideWeight="0.41374663" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26442954" sideWeight="0.6715278" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1320,12 +1264,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/DoctorSpring/views/diagnose.py</url>
-          <line>258</line>
+          <line>261</line>
           <option name="timeStamp" value="257" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/DoctorSpring/views/diagnose.py</url>
-          <line>261</line>
+          <line>264</line>
           <option name="timeStamp" value="258" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
@@ -1363,11 +1307,106 @@
           <line>258</line>
           <option name="timeStamp" value="269" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/DoctorSpring/views/user_view.py</url>
+          <line>39</line>
+          <option name="timeStamp" value="270" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/DoctorSpring/models/user.py</url>
+          <line>42</line>
+          <option name="timeStamp" value="271" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/DoctorSpring/views/user_view.py</url>
+          <line>34</line>
+          <option name="timeStamp" value="272" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/DoctorSpring/views/forms.py</url>
+          <line>223</line>
+          <option name="timeStamp" value="273" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/DoctorSpring/views/diagnose.py</url>
+          <line>128</line>
+          <option name="timeStamp" value="275" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/DoctorSpring/views/diagnose.py</url>
+          <line>143</line>
+          <option name="timeStamp" value="276" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/DoctorSpring/util/pdf_utils.py</url>
+          <line>34</line>
+          <option name="timeStamp" value="277" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/DoctorSpring/views/diagnose.py</url>
+          <line>109</line>
+          <option name="timeStamp" value="278" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/DoctorSpring/views/diagnose.py</url>
+          <line>83</line>
+          <option name="timeStamp" value="282" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/DoctorSpring/views/diagnose.py</url>
+          <line>75</line>
+          <option name="timeStamp" value="283" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/DoctorSpring/views/diagnose.py</url>
+          <line>96</line>
+          <option name="timeStamp" value="284" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/DoctorSpring/views/diagnose.py</url>
+          <line>97</line>
+          <option name="timeStamp" value="285" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py</url>
+          <line>395</line>
+          <option name="timeStamp" value="286" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py</url>
+          <line>393</line>
+          <option name="timeStamp" value="287" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py</url>
+          <line>392</line>
+          <option name="timeStamp" value="288" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py</url>
+          <line>424</line>
+          <option name="timeStamp" value="289" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py</url>
+          <line>422</line>
+          <option name="timeStamp" value="291" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py</url>
+          <line>427</line>
+          <option name="timeStamp" value="292" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/DoctorSpring/views/diagnose.py</url>
+          <line>107</line>
+          <option name="timeStamp" value="294" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="270" />
+      <option name="time" value="295" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1375,119 +1414,116 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/views/message_comment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1506" selection-end="1506" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="162" column="105" selection-start="7782" selection-end="7782" vertical-scroll-proportion="-3.2083333">
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#2;n#div#0;n#div#0;n#div#3;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#3;n#div#0;n#div#0;n#div#3;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/applyDiagnose.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="161" column="44" selection-start="5931" selection-end="5931" vertical-scroll-proportion="-48.3">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/errorpage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/views/diagnose.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="247" column="31" selection-start="10421" selection-end="10421" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/medical20140507/lib/python2.7/site-packages/flask/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1460" column="0" selection-start="61615" selection-end="61615" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/doctor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="39" selection-start="3197" selection-end="3208" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/test/real_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="30" selection-start="2865" selection-end="2865" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/views/front.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="258" column="0" selection-start="11498" selection-end="11498" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/medical.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="241" column="0" selection-start="11090" selection-end="11090" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/comment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="0" selection-start="3067" selection-end="3305" vertical-scroll-proportion="1.4216868">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoctorSpring/util/authenticated.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="1167" selection-end="1167" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DoctorSpring/views/data_change_service.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="179" column="95" selection-start="7753" selection-end="7753" vertical-scroll-proportion="0.0">
+        <state line="71" column="0" selection-start="3028" selection-end="3028" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DoctorSpring/views/user_center.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="340" column="19" selection-start="11989" selection-end="11996" vertical-scroll-proportion="3.6538463">
+        <state line="415" column="33" selection-start="15145" selection-end="15154" vertical-scroll-proportion="-9.115385">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/views/user_view.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="0" selection-start="992" selection-end="992" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/views/front.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="108" column="0" selection-start="4230" selection-end="4230" vertical-scroll-proportion="14.115385">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/util/constant.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="0" selection-start="1576" selection-end="1576" vertical-scroll-proportion="0.33174226">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/util/pdf_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="71" selection-start="1229" selection-end="1235" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/views/diagnose.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="108" column="0" selection-start="4053" selection-end="4053" vertical-scroll-proportion="-4.8461537">
+          <folding>
+            <marker date="1404985084000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/models/diagnoseDocument.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="427" column="0" selection-start="18521" selection-end="18521" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/doctorList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="26" selection-start="2102" selection-end="2102" vertical-scroll-proportion="-17.041666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/doctorSite.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="173.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="199" column="0" selection-start="8947" selection-end="9029" vertical-scroll-proportion="-14.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/doctorRegister.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="26" selection-start="3788" selection-end="3788" vertical-scroll-proportion="-16.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/patientRegister.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="26" selection-start="3602" selection-end="3602" vertical-scroll-proportion="-17.041666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/helpcenter.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="2.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoctorSpring/templates/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="51" selection-start="2109" selection-end="2109" vertical-scroll-proportion="1.0509804">
           <folding />
         </state>
       </provider>
