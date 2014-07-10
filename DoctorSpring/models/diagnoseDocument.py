@@ -239,7 +239,7 @@ class Diagnose(Base):
         if userId is None :
             return
         query=None
-        if status is None:
+        if status is None or len(status) == 0:
             query=session.query(Diagnose).select_from(join(Patient,Diagnose,Patient.id==Diagnose.patientId)) \
                 .filter(Patient.userID==userId,Diagnose.status!=DiagnoseStatus.Del).offset(pagger.getOffset()).limit(pagger.getLimitCount())
 
