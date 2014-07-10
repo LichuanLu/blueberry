@@ -199,7 +199,7 @@
     <ignored mask="*.dust" />
     <ignored path="MedicalApp/" />
     <ignored path="DoctorSpring/static/" />
-    <file path="/Dummy.txt" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404961644597" ignored="false" />
+    <file path="/Dummy.txt" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404961787793" ignored="false" />
     <file path="/config.py" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404384036620" ignored="false" />
     <file path="/a.dummy" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404912706072" ignored="false" />
     <file path="/front.py" changelist="41284883-9385-481b-82c3-409aafaead68" time="1404912767223" ignored="false" />
@@ -386,7 +386,7 @@
       <file leaf-file-name="comment.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DoctorSpring/models/comment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="0" selection-start="4130" selection-end="4130" vertical-scroll-proportion="5.10989">
+            <state line="99" column="0" selection-start="4130" selection-end="4130" vertical-scroll-proportion="5.492126">
               <folding />
             </state>
           </provider>
@@ -1289,7 +1289,11 @@
       <created>1404961648023</created>
       <updated>1404961648023</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="lichuan FIX BUG">
+      <created>1404961791100</created>
+      <updated>1404961791100</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1319,7 +1323,7 @@
     <frame x="5" y="22" width="1440" height="835" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.56216216" sideWeight="0.6166667" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5878378" sideWeight="0.5520833" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27837837" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1327,7 +1331,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34189188" sideWeight="0.66736114" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4527027" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5878378" sideWeight="0.44791666" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15528351" sideWeight="0.32933334" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33783785" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -1338,7 +1342,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.39974293" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2013889" sideWeight="0.43783784" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2013889" sideWeight="0.41216215" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36671177" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -1668,7 +1672,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DoctorSpring/models/comment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="0" selection-start="4130" selection-end="4130" vertical-scroll-proportion="5.10989">
+        <state line="99" column="0" selection-start="4130" selection-end="4130" vertical-scroll-proportion="5.492126">
           <folding />
         </state>
       </provider>
