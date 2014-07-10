@@ -16,6 +16,13 @@
                              -->			</div>
                     </div>
                     <div class="form-group">
+                        <label class="col-md-4 control-label" for="inUserName">用户昵称：</label>
+                        <div class="col-md-8">
+                            <input id="inNickName" type="text" name="nickname" placeholder="用户昵称，允许数字或者字母" class="form-control">
+                        </div>
+
+                    </div>
+                    <div class="form-group">
                         <label class="col-md-4 control-label" for="inPassword">密码：</label>
                         <div class="col-md-8">
 
@@ -66,3 +73,6 @@
 </div>
 
 {% endblock contentHolder %}
+{% block ModalHolder %}
+{% include 'loginModal.html' %}
+{% endblock ModalHolder %}

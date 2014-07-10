@@ -391,9 +391,9 @@ class Report(Base):
 
     def __init__(self,techDesc=None,imageDesc=None,diagnoseDesc=None,fileUrl=None,type=ReportType.Doctor,status=ReportStatus.Draft):
         maxId=Report.getMaxId()
-        if maxId:
+        if maxId is None:
             maxId=1
-        self.seriesNumber='%s%i'%(SeriesNumberPrefix,SeriesNumberBase+maxId)
+        self.seriesNumber='%s%i'%(SeriesNumberPrefix,SeriesNumberBase+maxId[0]+1)
         self.fileUrl=fileUrl
         self.techDesc=techDesc
         self.imageDesc=imageDesc

@@ -3,7 +3,7 @@ __author__ = 'jeremyxu'
 
 import unittest
 from DoctorSpring.models import Skill, Location, User, Doctor, Hospital, Department, Patient, Doctor2Skill ,Position, UserRole, DoctorProfile
-from DoctorSpring.util.constant import UserStatus, RoleId, DoctorProfileType
+from DoctorSpring.util.constant import UserStatus, RoleId, DoctorProfileType, DoctorType
 from database import db_session as session
 from DoctorSpring.models.comment import Comment
 
@@ -83,10 +83,7 @@ class RealModelTestCase(unittest.TestCase):
 
 class UserTestCase(unittest.TestCase):
     def test_addPatient(self):
-        source='123456'
-        from DoctorSpring.util.hash_method import getHashPasswd
-        passwd=getHashPasswd(source)
-        user=User('liclu',passwd)
+        user=User('liclu','15210892443','123456')
         user.sex=0
         user.status=0
         user.email='liclu@adobe.com'
@@ -104,7 +101,7 @@ class UserTestCase(unittest.TestCase):
 
 
     def test_addDoctor(self):
-        new_user_1 = User("11111111111", "123456")
+        new_user_1 = User('印弘',"11111111111", "123456")
         new_user_1.email = "yinhong@qq.com"
         new_user_1.phone = "111111111111"
         new_user_1.type = UserStatus.doctor
@@ -131,7 +128,7 @@ class UserTestCase(unittest.TestCase):
 
 
 
-        new_user_2 = User("22222222222", "123456")
+        new_user_2 = User('宦怡',"22222222222", "123456")
         new_user_2.email = "huanyi@qq.com"
         new_user_2.phone = "22222222222"
         new_user_2.type = UserStatus.doctor
@@ -155,7 +152,7 @@ class UserTestCase(unittest.TestCase):
         new_userrole2 = UserRole(new_user_2.id, RoleId.Doctor)
         UserRole.save(new_userrole2)
 
-        new_user_3 = User("33333333333", "123456")
+        new_user_3 = User('张劲松',"33333333333", "123456")
         new_user_3.email = "zhangjinsong@qq.com"
         new_user_3.phone = "33333333333"
         new_user_3.type = UserStatus.doctor
@@ -246,11 +243,27 @@ class UserTestCase(unittest.TestCase):
         dp3.description='获得省科技进步一等奖1项，全军医疗成果二等奖2项，全军医疗成果三等奖6项'
         DoctorProfile.save(dp3)
 
+    def test_addHospitalUser(self):
+        new_user_1 = User('医院用户',"44444444444", "123456")
+        new_user_1.email = "hospitaluser@qq.com"
+        new_user_1.phone = "44444444444"
+        new_user_1.name = "医院用户"
+        new_user_1.type = UserStatus.doctor
+        User.save(new_user_1)
+
+        new_doctor_1 = Doctor(new_user_1.id)
+        new_doctor_1.username = "医院用户"
+        new_doctor_1.hospitalId = 1
+        new_doctor_1.status = 0
+        new_doctor_1.type = DoctorType.HospitalUser
+        Doctor.save(new_doctor_1)
+        new_userrole = UserRole(new_user_1.id, RoleId.HospitalUser)
+        UserRole.save(new_userrole)
+
+
+
     def test_addSuperUser(self):
-        source='123456'
-        from DoctorSpring.util.hash_method import getHashPasswd
-        passwd=getHashPasswd(source)
-        user=User('zhoufan',passwd)
+        user=User('zhoufan','13426026573','123456')
         user.sex=0
         user.status=0
         user.email='zhoufan@adobe.com'
@@ -290,15 +303,7 @@ class UserTestCase(unittest.TestCase):
         new_userrole2 = UserRole(user.id, RoleId.Admin)
         UserRole.save(new_userrole2)
 
-class CommentTestCase(unittest.TestCase):
 
-    def test_addcomment(self):
-        diagnoseComment=Comment(5,5,1,"诊断很不错，非常感谢")
-        session.add(diagnoseComment)
-        session.commit()
-        diagnoseComment2=Comment(5,5,1,"张主任，非常感谢您的诊断，帮助我避免了误诊，而且节约了时间，非常感谢。")
-        session.add(diagnoseComment2)
-        session.commit()
 
 
 

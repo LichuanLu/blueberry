@@ -12,7 +12,7 @@ from DoctorSpring.models import User,Patient,Doctor,Diagnose ,DiagnoseTemplate,R
 from DoctorSpring.models import User,Comment,Message,DiagnoseLog
 from DoctorSpring.util import result_status as rs,object2dict ,constant,pdf_utils
 from DoctorSpring.util.authenticated import authenticated
-from DoctorSpring.util.constant import MessageUserType,Pagger
+from DoctorSpring.util.constant import MessageUserType,Pagger, ReportType
 import string
 
 
@@ -87,13 +87,14 @@ def addOrUpdateReport():
             return  json.dumps(rs.NO_DATA.__dict__,ensure_ascii=False)
         #session['remember_me'] = form.remember_me.data
         # login and validate the user...
+        report = None
         if form.reportId:
             report=Report.getReportById(form.reportId)
             if report.type==constant.ReportType.Doctor:
                 return  json.dumps(rs.PERMISSION_DENY.__dict__,ensure_ascii=False)
             Report.update(form.reportId,None,form.status,None,form.techDesc,form.imageDesc,form.diagnoseDesc)
         else:
-            report=Report(form.techDesc,form.imageDesc,form.diagnoseDesc,form.fileUrl,form.status)
+            report=Report(form.techDesc,form.imageDesc,form.diagnoseDesc,form.fileUrl,ReportType.Admin,form.status)
             Report.save(report)
 
             diagnose.reportId=report.id
@@ -103,6 +104,8 @@ def addOrUpdateReport():
             diagnose=Diagnose.getDiagnoseById(form.diagnoseId)
             if diagnose:
                 Diagnose.changeDiagnoseStatus(diagnose.id,constant.DiagnoseStatus.NeedDiagnose)
+            if form.reportId is None and report:
+                form.reportId = report.id
             Report.update(form.reportId,constant.ReportType.Doctor,status=constant.ReportStatus.Draft)
             if diagnose and hasattr(diagnose,'doctor'):
                 doctor=diagnose.doctor
@@ -228,7 +231,7 @@ def getDiagnoseActions():
 
 @diagnoseView.route('/diagnose/delete/<int:diagnoseId>',  methods = ['GET', 'POST'])
 def cancleDiagnose(diagnoseId):
-    userId=session['uesrId']
+    userId=session['userId']
     if userId is None:
         return json.dumps(rs.NO_LOGIN.__dict__,ensure_ascii=False)
     userId=string.atoi(userId)
