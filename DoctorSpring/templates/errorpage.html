@@ -17,7 +17,32 @@
 <body>
         <div class="container errorpage">
             {% block headerHolder %}
-            {% include 'header.html' %}
+            <div id="header-region" class="full-width">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6 no-right-padding">
+
+                            <nav class="navbar navbar-default">
+                                <div class="collapse navbar-collapse">
+                                    <ul class="nav navbar-nav gray-base">
+                                        <li class="active">
+                                            <a href="/homepage">主页</a>
+                                        </li>
+                                        <li>
+                                            <a href="/doctor/list">专家库</a>
+                                        </li>
+                                        <li>
+                                            <a href="/help/center">客服中心</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
             {% endblock headerHolder %}
             <div class="main-block full-height">
                 {% block breadcrumbsHolder %}
