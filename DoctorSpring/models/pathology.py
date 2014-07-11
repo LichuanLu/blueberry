@@ -9,6 +9,10 @@ from DoctorSpring.util.constant import ModelStatus
 import time
 from DoctorSpring.models import File
 
+# from flask.ext.sqlalchemy import SQLAlchemy
+# from DoctorSpring import app
+# db = SQLAlchemy(app)
+
 
 class Pathology(Base):
     __tablename__ = 'pathology'
