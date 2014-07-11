@@ -23,7 +23,7 @@ class authenticated(object):
             userId = session.get('userId')
 
             if userId is None:
-                return json.dumps(result_status.NO_LOGIN,ensure_ascii=False)
+                return json.dumps(result_status.NO_LOGIN.__dict__,ensure_ascii=False)
 
             # if isinstance(userId,basestring):
             #     userId=string.atoi(userId)
@@ -34,7 +34,7 @@ class authenticated(object):
             # elif self.role !=None and  userinfo and int(userinfo['cross_share_grade']) == self.role:
             #     return method(_self, *args, **kwargs)
             else:
-                return json.dumps(result_status.PERMISSION_DENY,ensure_ascii=False)
+                return json.dumps(result_status.PERMISSION_DENY.__dict__,ensure_ascii=False)
 
         @functools.wraps(method)
         def adminPage_wrapper(*args, **kwargs):

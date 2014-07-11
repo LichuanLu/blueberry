@@ -133,9 +133,9 @@ def getDiagnoseDetailInfoByPatient(session,diagnose):
         diagDict["applyTime"]=diagnose.createDate.strftime('%Y-%m-%d')
     if diagnose.status:
         diagDict['diagnoseStatus']=diagnose.status
-    if hasattr(diagnose,"hospital") and diagnose.hospital:
-        diagDict['hospitalHistory']=diagnose.hospital.name
-        diagDict['hospitalId']=diagnose.hospitalId
+    # if hasattr(diagnose,"hospital") and diagnose.hospital:
+    #     diagDict['hospitalHistory']=diagnose.hospital.name
+    #     diagDict['hospitalId']=diagnose.hospitalId
 
     if diagnose.pathologyId:
         diagDict['dicomUrl']=File.getDicomFileUrl(diagnose.pathologyId)
@@ -156,6 +156,11 @@ def getDiagnoseDetailInfoByPatient(session,diagnose):
                     position=pathologyPositon.position
                     positions+=(u' '+position.name)
                 diagDict['positionName']=positions
+
+        if hasattr(pathology,"hospital") and pathology.hospital:
+            diagDict['hospitalHistory']=pathology.hospital.name
+            diagDict['hospitalId']=pathology.hospitalId
+
 
     if hasattr(diagnose,'report') and diagnose.report:
         diagDict['reportId']=diagnose.reportId
