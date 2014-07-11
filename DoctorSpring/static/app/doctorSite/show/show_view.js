@@ -1,4 +1,4 @@
-define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarionette', "bootstrap", 'utils/followbtn'], function(ReqCmd, Lodash, Marionette, Templates) {
+define(['utils/reqcmd', 'lodash', 'marionette', 'templates','login/login_app','dust', 'dustMarionette', "bootstrap", 'utils/followbtn'], function(ReqCmd, Lodash, Marionette, Templates,LoginApp) {
 	// body...
 	"use strict";
 	var DoctorSiteLayoutView = Marionette.Layout.extend({
@@ -46,9 +46,16 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 					},
 					onError: function(res) {
 						//var error = jQuery.parseJSON(data);
+						if (res.status == 2) {
+							window.location.replace('/loginPage')
+
+						} else if (res.status == 4) {
+							window.location.replace('/error')
+
+						}
 						if (typeof res.msg !== 'undefined') {
 							Messenger().post({
-								message: "%ERROR_MESSAGE:" + res.msg,
+								message: "错误信息:" + res.msg,
 								type: 'error',
 								showCloseButton: true
 							});
@@ -71,6 +78,8 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 				$(this).siblings().removeClass('active');
 				$(this).tab('show');
 			});
+			//init login modal
+			LoginApp.loginAction();
 		}
 
 	});

@@ -20,6 +20,7 @@ body {
 	font-family: "Hiragino Sans GB","Microsoft YaHei","微软雅黑","宋体",Arial,Verdana,sans-serif;;
 	font-size: 14px;
 	background-color: #ffffff;
+	// background: url(http://az382497.vo.msecnd.net/images/main-background.jpg) repeat;
 }
 @media screen and (max-width: 768px) {
     body { padding-top: 0px; }
@@ -372,7 +373,7 @@ body .container{
 	.main-block{
 		background-color: white;
 		padding: 0 0px;
-		margin: 0 20px 20px;
+		margin: 0 20px 0px;
 		min-height:750px;
 		height: auto;
 	}
@@ -584,12 +585,14 @@ body .container{
 
 #footer-region{
 	font-size: 13px !important;
+	margin-top: 20px;
 	
 	table{
-		padding: 10px;
-		height: 90px;
+		height: 50px;
+		padding: 0;
+		text-align: center;
 		.copyright-text{
-			padding: 10px 10px 0;
+			padding: 0;
 		}
 		.language-group{
 			padding: 10px 10px 30px;
@@ -605,6 +608,10 @@ body .container{
 	  			p{
 	  				font-size: 13px !important;
 	  				margin-bottom: 0;
+	  				span{
+	  					color: #666666;
+						margin-left: 20px;
+	  				}
 	  				a:after{
 	  					content: "|";
 	  				}

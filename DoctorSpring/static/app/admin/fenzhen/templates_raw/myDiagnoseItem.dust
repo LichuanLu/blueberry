@@ -2,14 +2,14 @@
 	<td>{diagnosenumber}</td>
 	<td>{date}</td>
 	<td>{doctorName}</td>
-	<td>{hispital}</td>
+	<td>{doctorHispital}</td>
 	<td>{patientName}</td>
 	<td>{positionName}</td>
 	<td>{status}</td>
 	<td class="action-group">
 		{@if cond="'{statusId}' == '4'"}
 			<a id="start-diagnose-link" href="#" class="">初诊断</a>
-			<a href="{dicomUrl}" class="">下载DICOM</a>
+			<a href="{dicomUrl}" target="_blank" class="">下载DICOM</a>
 		{/if}
 	</td>
 </tr>

@@ -1,4 +1,4 @@
-define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarionette', "bootstrap"], function(ReqCmd, Lodash, Marionette, Templates) {
+define(['utils/reqcmd', 'lodash', 'marionette', 'templates','login/login_app','dust', 'dustMarionette', "bootstrap"], function(ReqCmd, Lodash, Marionette, Templates,LoginApp) {
 	// body...
 	"use strict";
 	var PatientRegisterPageLayoutView = Marionette.Layout.extend({
@@ -17,6 +17,8 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 		},
 		attachEndHandler: function() {
 			console.log("PatientRegisterPageLayoutView attach end ");
+			LoginApp.loginAction();
+
 		},
 
 		submitForm: function(e) {
@@ -55,12 +57,12 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 						//var error = jQuery.parseJSON(data);
 						if (typeof res.msg !== 'undefined') {
 							Messenger().post({
-								message: "%ERROR_MESSAGE:" + res.msg,
+								message: "错误信息:" + res.msg,
 								type: 'error',
 								showCloseButton: true
 							});
 						}
-						//alert("%ERROR_CODE_" + data.status + ",%ERROR_MESSAGE_" + data.message);
+						//alert("%ERROR_CODE_" + data.status + ",错误信息_" + data.message);
 
 						//allowSubmit = true;
 					},

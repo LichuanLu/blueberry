@@ -1,17 +1,19 @@
-define(['ladda-bootstrap','crypto-sha256'], function(ladda) {
+define(['ladda-bootstrap', 'crypto-sha256'], function(ladda) {
 	// body...
 	"use strict";
 	var loginAction = function(returnuri) {
 		var $form = $('#loginForm');
 		var $loginBtn = $form.find('.login-btn');
+
 		$loginBtn.click(function(e) {
 			e.preventDefault();
+
 			// if ($('#register-form').valid()) {
 			var l = ladda.create(document.querySelector('#submit'));
 
 			var data = validate($form);
-			if(returnuri){
-				data+= "&returnuri="+returnuri;
+			if (returnuri) {
+				data += "&returnuri=" + returnuri;
 			}
 			console.dir(data);
 			if (data) {
@@ -27,7 +29,7 @@ define(['ladda-bootstrap','crypto-sha256'], function(ladda) {
 							this.onError(data);
 						} else {
 							// this.resetForm();
-							console.log("msg:"+data.msg);
+							console.log("msg:" + data.msg);
 							this.reLocation(data.msg);
 							Messenger().post({
 								message: 'SUCCESS. Product import started. Check back periodically.',
@@ -42,14 +44,14 @@ define(['ladda-bootstrap','crypto-sha256'], function(ladda) {
 						//var error = jQuery.parseJSON(data);
 						if (typeof res.msg !== 'undefined') {
 							Messenger().post({
-								message: "%ERROR_MESSAGE:" + res.msg,
+								message: "错误信息:" + res.msg,
 								type: 'error',
 								showCloseButton: true
 							});
 						}
 
 					},
-					complete: function(status,request) {
+					complete: function(status, request) {
 
 						l.stop();
 					},

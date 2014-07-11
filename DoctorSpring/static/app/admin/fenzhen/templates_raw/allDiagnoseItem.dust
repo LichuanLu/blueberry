@@ -2,7 +2,7 @@
 	<td>{diagnosenumber}</td>
 	<td>{date}</td>
 	<td>{doctorName}</td>
-	<td>{hispital}</td>
+	<td>{doctorHispital}</td>
 	<td>{patientName}</td>
 	<td>{positionName}</td>
 	<td class="action-group">

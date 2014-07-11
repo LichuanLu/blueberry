@@ -142,7 +142,7 @@
 					</div>
 					<div>
 						<span class="head">DICOM文件：</span>
-						<a href="{dicomUrl}">点击下载</a>
+						<a href="{dicomUrl}" target="_blank">点击下载</a>
 					</div>
 					<div>
 						<span class="head">曾就诊医院：</span>
@@ -155,7 +155,7 @@
 					<div>
 						<span class="head">诊断相关文件：</span>
 						{#docUrl}
-						<a href="{.}">文件下载</a>{~n}
+						<a href="{.}" target="_blank">文件下载</a>{~n}
 						{/docUrl}
 					</div>
 

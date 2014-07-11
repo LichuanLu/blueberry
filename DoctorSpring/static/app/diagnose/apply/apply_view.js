@@ -1,4 +1,4 @@
-define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.main', 'entities/doctorEntity', 'ladda-bootstrap','dust', 'dustMarionette', "bootstrap", 'typeahead', 'flatui.checkbox', 'flatui.radio', 'jquery-ui', 'bootstrap.select', 'flat_ui_custom', 'dust_cus_helpers', 'config/validator/config', 'bootstrap.multiselect'], function(ReqCmd, Lodash, Marionette, Templates, FileUploaderMain, DoctorEntity,ladda) {
+define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.main', 'entities/doctorEntity', 'ladda-bootstrap', 'dust', 'dustMarionette', "bootstrap", 'typeahead', 'flatui.checkbox', 'flatui.radio', 'jquery-ui', 'bootstrap.select', 'flat_ui_custom', 'dust_cus_helpers', 'config/validator/config', 'bootstrap.multiselect'], function(ReqCmd, Lodash, Marionette, Templates, FileUploaderMain, DoctorEntity, ladda) {
 	// body...
 	"use strict";
 	//var $;
@@ -69,7 +69,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 			var datepickerSelector = '#birthdateinput';
 			$(datepickerSelector).datepicker({
 				showOtherMonths: true,
-				selectOtherMonths: true,
+				selectOtherMonths: true
 			}).prev('.btn').on('click', function(e) {
 				e && e.preventDefault();
 				$(datepickerSelector).focus();
@@ -88,7 +88,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 			//init file uploader
 			var temp = $('#dicomfileupload').fileupload({
 				disableImageResize: false,
-				maxFileSize: 2000000,
+				maxFileSize: 200000000,
 				// acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
 				maxNumberOfFiles: 1,
 
@@ -112,7 +112,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 			});
 			$('#patient-medical-report-fileupload').fileupload({
 				disableImageResize: false,
-				maxFileSize: 2000000,
+				maxFileSize: 200000000,
 				// acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
 				maxNumberOfFiles: 5,
 
@@ -383,8 +383,8 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 				if (this.isEdit === 'true' && this.diagnoseId) {
 					data += "&diagnoseId=" + this.diagnoseId;
 				}
-				if(this.applyUserType){
-					data+= "&type="+this.applyUserType;
+				if (this.applyUserType) {
+					data += "&type=" + this.applyUserType;
 				}
 				var that = this;
 				//add ladda
@@ -411,11 +411,18 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 						}
 					},
 					onError: function(res) {
+						if (res.status == 2) {
+							window.location.replace('/loginPage')
+
+						} else if (res.status == 4) {
+							window.location.replace('/error')
+
+						}
 						this.resetForm(true);
 						//var error = jQuery.parseJSON(data);
 						if (typeof res.msg !== 'undefined') {
 							Messenger().post({
-								message: "%ERROR_MESSAGE:" + res.msg,
+								message: "错误信息:" + res.msg,
 								type: 'error',
 								showCloseButton: true
 							});
@@ -425,7 +432,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 					resetForm: function(leaveInputData) {
 
 					},
-					complete: function(status,request) {
+					complete: function(status, request) {
 						l.stop();
 					}
 				});
@@ -498,8 +505,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 		refreshForm: function(data) {
 			if (typeof data.data.formId !== 'undefined') {
 				if (data.data.formId == 1) {
-					if (this.isEdit !== 'true') {
-					}
+					if (this.isEdit !== 'true') {}
 				} else if (data.data.formId == 2) {
 					if (this.isEdit !== 'true') {
 						this.initPatientProfile();
@@ -511,7 +517,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 					if (this.isEdit !== 'true') {
 						this.initDicomInfo();
 					}
-					
+
 				}
 				this.showForm(data.data.formId);
 			}
@@ -727,7 +733,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'jquery.uploader.ma
 		onRender: function() {
 			console.log("PathologyCollectionView render");
 			console.dir(this.$el);
-			
+
 
 		},
 		onAfterItemAdded: function(itemView) {

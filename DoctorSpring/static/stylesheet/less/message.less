@@ -10,6 +10,8 @@ ul.message-list{
 		border-bottom: 1px solid #e4e4e4;
 		padding: 20px 0;
 		position: relative;
+		.message-link{
+		}
 		.icon{
 			position: absolute;
 			left: 0;
@@ -36,15 +38,26 @@ ul.message-list{
 		}
 		.message-content-wrapper{
 			margin-left: 65px;
+			position: relative;
 
 			p{
-				font-size: 15px;
+				font-size: 14px;
 				color:#666666;
 				margin: 0;
 				overflow: hidden;
 				text-overflow: ellipsis;
 				white-space: nowrap;
 				width: 100%;
+				padding-right: 40px;
+				&.open{
+					white-space: normal;
+				}
+			}
+			.btn{
+				position: absolute;
+				right: 0;
+				top: 0;
+
 			}
 		}
 	}

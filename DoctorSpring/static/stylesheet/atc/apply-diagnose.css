@@ -191,9 +191,19 @@
 }
 #applydignose-content .submit-patient-info-wrapper .form-inline .form-group p.side-description {
   display: inline-block;
-  width: 230px;
+  width: 220px;
   margin: 0;
   vertical-align: middle;
+  color: #f39c12;
+}
+#applydignose-content .submit-patient-info-wrapper .form-inline .form-group .input-wrapper {
+  position: relative;
+}
+#applydignose-content .submit-patient-info-wrapper .form-inline .form-group .input-wrapper .right-box {
+  display: inline-block;
+  position: absolute;
+  right: 15px;
+  top: 10px;
 }
 #applydignose-content .submit-patient-info-wrapper .select-doctor p {
   margin-top: 10px;

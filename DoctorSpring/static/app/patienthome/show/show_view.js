@@ -204,9 +204,16 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 					onError: function(res) {
 						// this.resetForm();
 						//var error = jQuery.parseJSON(data);
+						if(res.status == 2){
+				                window.location.replace('/loginPage')
+
+				            }else if(res.status == 4){
+				                window.location.replace('/error')
+
+				            }
 						if (typeof res.msg !== 'undefined') {
 							Messenger().post({
-								message: "%ERROR_MESSAGE:" + res.msg,
+								message: "错误信息:" + res.msg,
 								type: 'error',
 								showCloseButton: true
 							});

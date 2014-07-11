@@ -96,4 +96,4 @@ class Comment(Base):
         return session.query(Comment.id).filter(Comment.receiver==receiverId,Comment.type==type,Comment.status==ModelStatus.Normal).count()
     @classmethod
     def getRecentComments(cls,status=ModelStatus.Normal,type=CommentType.DiagnoseComment):
-        return session.query(Comment).filter(Comment.status==status,Comment.type==type).order_by(Comment.createTime.desc()).limit(3).all()
+        return session.query(Comment).filter(Comment.status==status,Comment.type==type).order_by(Comment.createTime.desc()).limit(6).all()

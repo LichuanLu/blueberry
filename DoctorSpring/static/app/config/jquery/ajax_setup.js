@@ -27,7 +27,7 @@ require(['messenger', 'messenger-theme-future'], function() {
             //         error = data.status;
                    
             //         Messenger().post({
-            //             message: "%ERROR_MESSAGE:" + data.message,
+            //             message: "错误信息:" + data.message,
             //             type: 'error',
             //             showCloseButton: true
             //         });
@@ -93,7 +93,17 @@ require(['messenger', 'messenger-theme-future'], function() {
                     });
                 }
             
+            //redirect if status = 2 (not login) , and status = 4 (permission deny)
+            // if(data.status == 2){
+            //     window.location.replace('/loginPage')
+
+            // }else if(data.status == 4){
+            //     window.location.replace('/error')
+
+            // }
+
             //handle error than trigger onError for each ajax request
+
             try {
                 this.onError(data);
             } catch (err) {

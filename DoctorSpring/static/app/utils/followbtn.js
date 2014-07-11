@@ -82,7 +82,7 @@ define([], function() {
 							$this.removeAttr('disabled');
 							if (typeof res.msg !== 'undefined') {
 								Messenger().post({
-									message: "%ERROR_MESSAGE:" + res.msg,
+									message: "错误信息:" + res.msg,
 									type: 'error',
 									showCloseButton: true
 								});

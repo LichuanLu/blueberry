@@ -22,13 +22,17 @@
 	</div>
 	<div class="col-md-4 doctor-statinfo">
 		<div class="exp-comment">
-			<p class="number">{sharingNumber}</p>
+			<p class="number">{sharingNumber} 条</p>
 			<p>经验分享</p>
 		</div>
 		<img alt="" src="/static/assets/Icons/SVG/retina.svg"></img>
 	<div class="feedback-comment">
-		<p>诊断：{diagnoseNumber}</p>
-		<p>好评：{goodFeedbackNumber}</p>
+		<p>诊断：
+			<span class="number">{diagnoseNumber}</span>
+		</p>
+		<p>好评：
+			<span class="number">{goodFeedbackNumber}</span>
+		</p>
 	</div>
 </div>
 <div class="col-md-2 doctor-action">

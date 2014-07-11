@@ -22,18 +22,34 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 		},
 		template: "messageItem",
 		ui: {
-			"messageLink": ".message-link"
+			"messageLink": ".message-link",
+			"openBtn": ".open-btn",
+			"closeBtn": ".close-btn",
+			"messageContent":".message-content-wrapper > p"
 		},
 		events: {
-			"click @ui.messageLink": "changeReadStatus"
+			"click @ui.openBtn": "changeReadStatus",
+			"click @ui.closeBtn": "closeMessage"
+		},
+		closeMessage: function(e) {
+			this.ui.closeBtn.hide();
+			this.ui.openBtn.show();
+			this.ui.messageContent.removeClass("open");
+
+
 		},
 		changeReadStatus: function(e) {
 			e.stopPropagation();
 			e.preventDefault();
+			this.ui.openBtn.hide();
+			this.ui.closeBtn.show();
+			this.ui.messageContent.addClass("open");
 			var messageId = $(e.target).closest('li').data('id');
-			if (messageId) {
+			var parentId = $(e.target).closest('ul').attr("id");
+			//console.log(parentId);
+			if (messageId && parentId == 'unread-message-region') {
 				$.ajax({
-					url: '/message/'+messageId+'/remark.json',
+					url: '/message/' + messageId + '/remark.json',
 					dataType: 'json',
 					type: 'POST',
 					success: function(data) {
@@ -53,7 +69,7 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 						//var error = jQuery.parseJSON(data);
 						if (typeof res.msg !== 'undefined') {
 							Messenger().post({
-								message: "%ERROR_MESSAGE:" + res.msg,
+								message: "错误信息:" + res.msg,
 								type: 'error',
 								showCloseButton: true
 							});
@@ -64,9 +80,9 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 			}
 			//$(this).trigger('click');
 			//if have url , then link to , if not , use type to send event
-			var href = $(e.target).closest('a').attr('href');
-			var $sidelink = $("li").find('a[name="'+href+'"]');
-			$sidelink.click();
+			// var href = $(e.target).closest('a').attr('href');
+			// var $sidelink = $("li").find('a[name="' + href + '"]');
+			// $sidelink.click();
 
 			// ReqCmd.commands.execute('doctorHomePageLayoutView:changeContentView','diagnoseLink');
 

@@ -1,4 +1,4 @@
-define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarionette', "bootstrap"], function(ReqCmd, Lodash, Marionette, Templates) {
+define(['utils/reqcmd', 'lodash', 'marionette', 'templates','login/login_app', 'dust', 'dustMarionette', "bootstrap"], function(ReqCmd, Lodash, Marionette, Templates,LoginApp) {
 	// body...
 	"use strict";
 	var DoctorListLayoutView = Marionette.Layout.extend({
@@ -17,6 +17,8 @@ define(['utils/reqcmd', 'lodash', 'marionette', 'templates', 'dust', 'dustMarion
 			"click @ui.queryLinks": "queryHandler"
 		},
 		attachEndHandler: function() {
+			LoginApp.loginAction();
+
 
 		},
 		queryHandler: function(e) {
