@@ -79,8 +79,8 @@
                     {{result.doctor.doctorname}}
                     <span>{{result.doctor.doctortitle}}</span>
                 </h6>
-                <p class="hospital">医院：{{result.doctor.hospitalname}}</p>
-                <p class="skill">擅长：{{result.doctor.skill}}</p>
+                <p class="hospital">医院：<span>{{result.doctor.hospitalname}}</span></p>
+                <p class="skill">擅长：<span>{{result.doctor.skill}}</span></p>
                 <a href="/doctor/site/{{result.doctor.userId}}" class="doctor-link">进入医生公共主页</a>
             </div>
             {% endif %}
