@@ -8,7 +8,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
 
 config = config.rec()
-engine = sa.create_engine(config.database + '?charset=utf8',echo=True,pool_size=20)
+engine = sa.create_engine(config.database + '?charset=utf8',echo=True,pool_size=20,pool_recycle=7200)
 
 DB_Session = sessionmaker(bind=engine)
 
