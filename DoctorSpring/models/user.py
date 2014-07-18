@@ -243,7 +243,7 @@ class UserFavorites(Base):
     @classmethod
     def getUserFavorties(cls,userId,type,status=None):
         if userId:
-            if type and type==0:
+            if type or type==0:
                 if status:
                     return session.query(UserFavorites).filter(UserFavorites.userId==userId,UserFavorites.type==type,UserFavorites.status==status).all()
                 else:
