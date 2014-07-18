@@ -37,7 +37,7 @@
 #homepage-content .website-main-news-block img {
   width: 100%;
   height: 100px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 #homepage-content .website-main-news-block .more-link {
   position: absolute;
@@ -51,7 +51,7 @@
 }
 #homepage-content .mainpage-feedback-block {
   text-align: left;
-  height: 623px;
+  height: 603px;
   overflow: hidden;
 }
 #homepage-content .mainpage-feedback-block .sharing-list-wrapper {

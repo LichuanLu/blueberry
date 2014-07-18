@@ -82,7 +82,8 @@ require.config({
 
     //crypto-js
     'crypto-sha256':'lib/CryptoJS v3.1.2/components/sha256-min',
-    'crypto-core':'lib/CryptoJS v3.1.2/components/core-min'
+    'crypto-core':'lib/CryptoJS v3.1.2/components/core-min',
+    
 
     // 'jquery.xdr-transport':'lib/jquery-uploader/jquery.xdr-transport'
   },

@@ -6,20 +6,20 @@ define([], function() {
 		"<strong class=\"error text-danger\"></strong>" +
 		"</td>" +
 		"<td>" +
-		"<p class=\"size\">Processing...</p>" +
+		"<p class=\"size\">处理中...</p>" +
 		"<div class=\"progress progress-striped active\" role=\"progressbar\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-valuenow=\"0\"><div class=\"progress-bar progress-bar-success\" style=\"width:0%;\"></div></div>" +
 		"</td>" +
 		"<td>" +
 		"{% if (!i && !o.options.autoUpload) { %}" +
 		"<button class=\"btn btn-primary start\" disabled>" +
 		"<i class=\"glyphicon glyphicon-upload\"></i>" +
-		"<span>Start</span>" +
+		"<span>开始</span>" +
 		"</button>" +
 		"{% } %}" +
 		"{% if (!i) { %}" +
 		"<button class=\"btn btn-warning cancel\">" +
 		"<i class=\"glyphicon glyphicon-ban-circle\"></i>" +
-		"<span>Cancel</span>" +
+		"<span>取消</span>" +
 		"</button>" +
 		"{% } %}" +
 		"</td>" +
@@ -53,12 +53,12 @@ define([], function() {
 		"{% if (file.deleteUrl && deleteURLMatch(file.deleteUrl)) { %}" +
 		"<button class=\"btn btn-danger delete\" data-type=\"{%=file.deleteType%}\" data-url=\"{%=file.deleteUrl%}\"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{\"withCredentials\":true}'{% } %}>" +
 		"<i class=\"glyphicon glyphicon-trash\"></i>" +
-		"<span>Delete</span>" +
+		"<span>删除</span>" +
 		"</button>" +
 		"{% } else { %}" +
 		"<button class=\"btn btn-warning cancel\">" +
 		"<i class=\"glyphicon glyphicon-ban-circle\"></i>" +
-		"<span>Cancel</span>" +
+		"<span>取消</span>" +
 		"</button>" +
 		"{% } %}" +
 		"</td>" +

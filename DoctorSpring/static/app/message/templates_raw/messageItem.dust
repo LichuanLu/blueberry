@@ -1,5 +1,5 @@
 <li class="message-item" data-id="{id}">
-	<a href="{url}" class="message-link">
+	<div class="message-link">
 		<div class="icon">
 			<img alt="" src="/static/assets/Icons/PNG/clipboard.png"></div>
 		<div class="top-wrapper">
@@ -10,6 +10,8 @@
 		</div>
 		<div class="message-content-wrapper">
 			<p>{content}</p>
+			<button class="btn btn-info btn-xs open-btn">展开</button>
+			<button class="btn btn-info btn-xs close-btn" style="display:none;">收起</button>
 		</div>
-	</a>
+	</div>
 </li>

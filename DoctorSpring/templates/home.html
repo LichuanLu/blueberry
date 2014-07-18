@@ -79,8 +79,8 @@
                     {{result.doctor.doctorname}}
                     <span>{{result.doctor.doctortitle}}</span>
                 </h6>
-                <p class="hospital">医院：{{result.doctor.hospitalname}}</p>
-                <p class="skill">擅长：{{result.doctor.skill}}</p>
+                <p class="hospital">医院：<span>{{result.doctor.hospitalname}}</span></p>
+                <p class="skill">擅长：<span>{{result.doctor.skill}}</span></p>
                 <a href="/doctor/site/{{result.doctor.userId}}" class="doctor-link">进入医生公共主页</a>
             </div>
             {% endif %}
@@ -159,7 +159,9 @@
                 <a href="/doctor/site/1">
                     <img src="http://static.ezhenduan.com/static/slide-1.jpeg" alt="">
                 </a>
-                <img src="/static/assets/image/carousel/slide-2.jpg" alt="doctortemp2">
+                <a href="http://www.haodf.com/paperdetail/erkefuqiangjing.htm" target="_blank">
+                    <img src="/static/assets/image/carousel/slide-3.jpg" alt="">
+                </a>
 			</div>
 			<div class="highlighted-block-inside website-actions-block main-border-shadow rowmarginbottom">
 				<h4 class="title-sep">网站动态</h4>

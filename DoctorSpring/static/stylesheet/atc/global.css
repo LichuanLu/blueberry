@@ -279,7 +279,7 @@ body .container {
 body .container .main-block {
   background-color: white;
   padding: 0 0px;
-  margin: 0 20px 20px;
+  margin: 0 20px 0px;
   min-height: 750px;
   height: auto;
 }
@@ -448,13 +448,15 @@ body .container.full-width-page .main-block {
 }
 #footer-region {
   font-size: 13px !important;
+  margin-top: 20px;
 }
 #footer-region table {
-  padding: 10px;
-  height: 90px;
+  height: 50px;
+  padding: 0;
+  text-align: center;
 }
 #footer-region table .copyright-text {
-  padding: 10px 10px 0;
+  padding: 0;
 }
 #footer-region table .language-group {
   padding: 10px 10px 30px;
@@ -469,6 +471,10 @@ body .container.full-width-page .main-block {
 #footer-region table tr .breadcrumb-text p {
   font-size: 13px !important;
   margin-bottom: 0;
+}
+#footer-region table tr .breadcrumb-text p span {
+  color: #666666;
+  margin-left: 20px;
 }
 #footer-region table tr .breadcrumb-text p a:after {
   content: "|";

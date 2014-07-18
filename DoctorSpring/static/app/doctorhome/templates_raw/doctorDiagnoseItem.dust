@@ -11,7 +11,7 @@
 		{/if}
 		{@if cond="'{statusId}' == '6'"}
 		<a href="/diagnose/{id}/pdf" target="_blank">查看报告</a>
-		<a href="{reportUrl}">下载</a>
+		<a href="{reportUrl}" target="_blank">下载</a>
 		{/if}
 	</td>
 </tr>
