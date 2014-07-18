@@ -317,7 +317,7 @@ class DiagnoseLog(Base):
 
 
 class DiagnoseTemplate(Base):
-    __tablename__ = 'diagnoseTemplate'
+    __tablename__ = 'diagnosetemplate'
     __table_args__ = {
         'mysql_charset': 'utf8',
         'mysql_engine': 'MyISAM',

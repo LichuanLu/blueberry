@@ -7,11 +7,17 @@ sys.setdefaultencoding('utf-8')
 from flask import Flask
 from flask.ext.login import LoginManager
 import config
+from database import db_session
 
 
 app = Flask(__name__)
 app.debug = True
 app.config.from_object(config)
+
+@app.teardown_appcontext
+def shutdown_session(exception=None):
+    db_session.remove()
+
 
 import logging
 from logging.handlers import RotatingFileHandler
