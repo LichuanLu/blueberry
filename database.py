@@ -7,27 +7,29 @@ import sqlalchemy as sa
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy import exc
+from sqlalchemy.pool import Pool,event
 
-class LookLively(object):
-    """Ensures that MySQL connections checked out of the pool are alive."""
-    def checkout(self, dbapi_con, con_record, con_proxy):
-        try:
-            try:
-                dbapi_con.ping(False)
-            except TypeError:
-                dbapi_con.ping()
-        except dbapi_con.OperationalError, ex:
-            if ex.args[0] in (2006, 2013, 2014, 2045, 2055):
-                raise exc.DisconnectionError()
-            else:
-                raise
+@event.listens_for(Pool, "checkout")
+def ping_connection(dbapi_connection, connection_record, connection_proxy):
+    cursor = dbapi_connection.cursor()
+    try:
+        cursor.execute("SELECT 1")
+    except:
+        # optional - dispose the whole pool
+        # instead of invalidating one at a time
+        # connection_proxy._pool.dispose()
+
+        # raise DisconnectionError - pool will try
+        # connecting again up to three times before raising.
+        raise exc.DisconnectionError()
+    cursor.close()
 
 config = config.rec()
-engine = sa.create_engine(config.database + '?charset=utf8',echo=True,pool_size=20,listeners=[LookLively()])
+engine = sa.create_engine(config.database + '?charset=utf8',echo=True,pool_size=5,pool_recycle=60)
 
 
 
-DB_Session = sessionmaker(bind=engine)
+#DB_Session = sessionmaker(bind=engine)
 
 #db_session= DB_Session()
 
