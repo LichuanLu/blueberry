@@ -4,7 +4,7 @@ __author__ = 'ccheng'
 from flask import Flask, request, session, g, redirect, url_for, Blueprint, jsonify
 from flask import abort, render_template, flash
 from flask.ext.login import login_user, logout_user, current_user, login_required
-from forms import LoginForm ,CommentsForm ,UserFavortiesForm,ThanksNoteForm
+from forms import LoginForm ,CommentsForm ,UserFavortiesForm,ThanksNoteForm ,UserUpdateForm
 from DoctorSpring import lm
 from database import  db_session
 from sqlalchemy.exc import IntegrityError
@@ -543,7 +543,13 @@ def updateAcountInfo():
     if session.has_key('userId'):
         userId=session['userId']
     if userId is None:
-        redirect('/loginPage')
+        redirect(LOGIN_URL)
+    form=UserUpdateForm(request.form)
+    paraRs=form.validate()
+    if rs.SUCCESS.status==paraRs.status:
+        User.update(userId,form.name,form.account,form.mobile,form.address,form.email,form.identityCode,form.yibaoCard)
+
+    User.get_id()
 
     return redirect(url_for('user_center.generatorPdf',diagnoseId=1))
 

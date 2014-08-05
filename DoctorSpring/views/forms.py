@@ -337,9 +337,10 @@ class UserFavortiesForm(object):
             return FAILURE
         return SUCCESS
 
-class PatientUpdateForm(object):
+class UserUpdateForm(object):
     userId=None
     patientId=None
+    nickName=None
     name=None
     account=None
     mobile=None
@@ -347,6 +348,28 @@ class PatientUpdateForm(object):
     email=None
     identityCode=None
     yibaoCard=None
+    def __init__(self,userForm):
+        self.userId=userForm.get('userId')
+        self.patientId=userForm.get('patientId')
+        self.nickName=userForm.get('nickName')
+        self.name=userForm.get('name')
+        self.account=userForm.get('account')
+        self.mobile=userForm.get('mobile')
+        self.address=userForm.get('address')
+        self.email=userForm.get('email')
+        self.identityCode=userForm.get('identityCode')
+        self.yibaoCard=userForm.get('yibaoCard')
+    def validate(self):
+        try:
+            if self.email is None or "@" not in self.email:
+                failure = ResultStatus(FAILURE.status, "邮箱地址格式不正确")
+                return failure
+            if self.account is None:
+                failure = ResultStatus(FAILURE.status, "账号不能为空")
+        except Exception, e:
+            return FAILURE
+        return SUCCESS
+
 
 class RegisterFormDoctor(object):
     email = None

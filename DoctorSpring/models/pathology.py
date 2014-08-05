@@ -9,9 +9,10 @@ from DoctorSpring.util.constant import ModelStatus
 import time
 from DoctorSpring.models import File
 
-# from flask.ext.sqlalchemy import SQLAlchemy
-# from DoctorSpring import app
-# db = SQLAlchemy(app)
+from flask.ext.sqlalchemy import SQLAlchemy
+from DoctorSpring import app
+db = SQLAlchemy(app)
+db.Model
 
 
 class Pathology(Base):

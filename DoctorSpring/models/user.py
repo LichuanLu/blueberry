@@ -84,8 +84,28 @@ class User(Base):
         if userId is None or userId < 1:
             return
         return session.query(User).filter(User.id==userId,User.status==ModelStatus.Normal).first()
-
-
+    @classmethod
+    def update(cls,userId,name=None,account=None,mobile=None,address=None,email=None,identityCode=None,yibaoCard=None):
+        if userId is None or userId<1:
+            return
+        user=session.query(User).filter(User.id==userId,User.status==ModelStatus.Normal).first()
+        if user:
+            if name:
+                user.name=name
+            if account:
+                user.account=account
+            if address:
+                user.address=address
+            if mobile:
+                user.mobile=mobile
+            if email:
+                user.email=email
+            if identityCode:
+                user.identityCode=identityCode
+            if yibaoCard:
+                user.yibaoCard=yibaoCard
+            session.commit()
+            session.flush()
 
     @classmethod
     def get_name(cls, user):

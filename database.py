@@ -39,6 +39,7 @@ db_session=scoped_session(sessionmaker(autocommit=False,
                             bind=engine))
 
 
+
 def init_db():
     import DoctorSpring.models
     Base.metadata.create_all(engine)
