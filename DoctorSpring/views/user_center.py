@@ -20,6 +20,7 @@ import string
 from werkzeug.security import generate_password_hash, check_password_hash
 from config import ALLOWED_PICTURE_EXTENSIONS
 import  data_change_service as dataChangeService
+from os.path import getsize
 import json
 
 import config
@@ -590,13 +591,12 @@ def avatarfileUpload():
                 if file and isPicture(file.filename):
                     filename = file.filename
                     # file_url = oss_util.uploadFile(diagnoseId, filename)
-                    from DoctorSpring.util.oss_util import uploadFileFromFileStorage
-                    fileurl = uploadFileFromFileStorage(4, filename, file,'',{})
+                    from DoctorSpring.util.oss_util import uploadAvatarFromFileStorage
+                    fileurl = uploadAvatarFromFileStorage(userId, filename, file,'',{})
                     if fileurl:
                         user.imagePath=fileurl
                         file_infos.append(dict(
                                            name=filename,
-                                           size=11,
                                            url=fileurl))
                         result=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,file_infos)
                         return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
