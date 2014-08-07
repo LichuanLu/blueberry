@@ -46,3 +46,6 @@ rec.admin_password = 'passw0rd'
 rec.default_timezone = "Asia/Shanghai"
 
 ALLOWED_PICTURE_EXTENSIONS = set(['doc', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'html', 'zip', 'rar'])
+
+LOGIN_URL='/loginPage'
+ERROR_URL='/error'

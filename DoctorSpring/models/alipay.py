@@ -21,10 +21,11 @@ class AlipayLog(Base):
 
     id = sa.Column(sa.Integer, primary_key = True, autoincrement = True)
     userId = sa.Column(sa.Integer,sa.ForeignKey('user.id'))
-    user = relationship("User", backref=backref('diagnoseLog', order_by=id))
+    user = relationship("User", backref=backref('alipayLog', order_by=id))
     diagnoseId=sa.Column(sa.Integer)
     alipayNumber=sa.Column(sa.String(128))
     action=sa.Column(sa.String(128))
+    payUrl=sa.Column(sa.String(256))
     description=sa.Column(sa.String(624))
     createTime=sa.Column(sa.DateTime)
     def __init__(self,userId,diagnoseId,action):
@@ -37,6 +38,8 @@ class AlipayLog(Base):
         if alipayLog is None:
             return
         session.add(alipayLog)
+        session.commit()
+        session.flush()
     @classmethod
     def getAlipayLogsByDiagnoseId(cls,diagnoseId):
         if diagnoseId is None:

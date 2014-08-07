@@ -24,12 +24,12 @@ from os.path import getsize
 import json
 
 import config
+from config import LOGIN_URL,ERROR_URL
 config = config.rec()
 
 uc = Blueprint('user_center', __name__)
 
-LOGIN_URL='/loginPage'
-ERROR_URL='/error'
+
 
 @uc.route('/doctorhome',  methods = ['GET', 'POST'])
 def endterDoctorHome():
@@ -555,9 +555,9 @@ def updateAcountInfo():
     return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
 @uc.route('/acount/changePasswd', methods=['GET','POST'])
 def changePasswd():
-    userId=1
-    # if session.has_key('userId'):
-    #     userId=session['userId']
+    userId=None
+    if session.has_key('userId'):
+        userId=session['userId']
     if userId is None:
         redirect(LOGIN_URL)
     form=UserChangePasswdForm(request.form)

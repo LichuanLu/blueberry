@@ -10,3 +10,4 @@ from .pathology import *
 from .hospital import *
 from .location import *
 from .thanksNote import *
+from .alipay import *

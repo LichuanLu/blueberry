@@ -9,12 +9,13 @@ from DoctorSpring import lm
 from database import  db_session
 from sqlalchemy.exc import IntegrityError
 from DoctorSpring.models import User,Patient,Doctor,Diagnose ,DiagnoseTemplate,Report,UserRole
-from DoctorSpring.models import User,Comment,Message,DiagnoseLog
+from DoctorSpring.models import User,Comment,Message,DiagnoseLog ,AlipayLog
 from DoctorSpring.util import result_status as rs,object2dict ,constant,pdf_utils
 from DoctorSpring.util.authenticated import authenticated
 from DoctorSpring.util.constant import MessageUserType,Pagger, ReportType
+from DoctorSpring.util.pay import alipay
 import string
-
+from config import LOGIN_URL,ERROR_URL
 
 
 import  data_change_service as dataChangeService
@@ -312,5 +313,46 @@ def evaluateDiagnose(diagnoseId):
         return  json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
     else:
         return  json.dumps(rs.PERMISSION_DENY.__dict__,ensure_ascii=False)
+
+@diagnoseView.route('/diagnose/alipayurl/<int:diagnoseId>',  methods = ['GET', 'POST'])
+def generateAlipayUrl(diagnoseId):
+    userId='5'
+    if session.has_key('userId'):
+        userId=session['userId']
+    if userId is None:
+        redirect(LOGIN_URL)
+    diagnose=Diagnose.getDiagnoseById(diagnoseId)
+
+    if diagnose and hasattr(diagnose,'patient') and string.atoi(userId)!=diagnose.patient.userID:
+        result=rs.ResultStatus(rs.FAILURE.status,"诊断不存在或不是用户申请的")
+        return  json.dumps(result.__dict__,ensure_ascii=False)
+
+    if diagnose and diagnose.status==constant.DiagnoseStatus.NeedPay:
+        alipayLog=AlipayLog(userId,diagnoseId,constant.AlipayLogAction.StartApplyAlipay)
+        AlipayLog.save(alipayLog)
+        description=None
+        if hasattr(diagnose,'doctor') and hasattr(diagnose.doctor,'username'):
+            description=' 医生(%s)的诊断费用:%f 元'%(diagnose.doctor.username,constant.DiagnoseCost)
+            if hasattr(diagnose.doctor.hospital,'name'):
+                description=diagnose.doctor.hospital.name+description
+        payUrl=alipay.create_direct_pay_by_user(diagnoseId,diagnose.diagnoseSeriesNumber,description,constant.DiagnoseCost)
+        if payUrl:
+            alipayLog=AlipayLog(userId,diagnoseId,constant.AlipayLogAction.GetAlipayUrl)
+            alipayLog.description=description
+            alipayLog.payUrl=payUrl
+            AlipayLog.save(alipayLog)
+            result=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,payUrl)
+            return  json.dumps(result.__dict__,ensure_ascii=False)
+        else:
+            alipayLog=AlipayLog(userId,diagnoseId,constant.AlipayLogAction.GetAlipayUrlFailure)
+            AlipayLog.save(alipayLog)
+            result=rs.ResultStatus(rs.FAILURE.status,constant.AlipayLogAction.GetAlipayUrlFailure)
+            return  json.dumps(result.__dict__,ensure_ascii=False)
+    result=rs.ResultStatus(rs.FAILURE.status,"诊断不存在或这状态不对")
+    return  json.dumps(result.__dict__,ensure_ascii=False)
+
+
+
+
 
 

@@ -3,6 +3,7 @@ __author__ = 'Jeremy'
 
 import os.path
 import config
+from config import LOGIN_URL
 import data_change_service as dataChangeService
 from flask import request, redirect, url_for, Blueprint, jsonify, g, send_from_directory, session
 from flask import abort, render_template, flash
@@ -17,6 +18,7 @@ from DoctorSpring.util.constant import PatientStatus, Pagger, DiagnoseStatus, Mo
 from DoctorSpring.util.authenticated import authenticated
 from DoctorSpring.util.result_status import *
 import random
+import string
 
 config = config.rec()
 front = Blueprint('front', __name__)
@@ -342,8 +344,18 @@ def doctor_list_json():
 @front.route('/patient/<int:patientId>/list.json')
 # /doctors/list.json?hospitalId=1&sectionId=0&doctorname=ddd&pageNumber=1&pageSize=6
 def getPatientFile(patientId):
-    if patientId is None or patientId<0:
+    userId=None
+    if session.has_key('userId'):
+        userId=session['userId']
+    if userId is None:
+        redirect(LOGIN_URL)
+
+    if patientId is None or patientId<0 :
         return  jsonify(FAILURE)
+    patient=Patient.get_patient_by_id(patientId)
+    if patient is None or patient.userID!=string.atoi(userId):
+        return  jsonify(FAILURE)
+
     pathologs=Pathology.getByPatientId(patientId)
     files=[]
     if pathologs and len(pathologs)>0:
