@@ -25,7 +25,7 @@ def ping_connection(dbapi_connection, connection_record, connection_proxy):
     cursor.close()
 
 config = config.rec()
-engine = sa.create_engine(config.database + '?charset=utf8',echo=True,pool_size=5,pool_recycle=60)
+engine = sa.create_engine(config.database + '?charset=utf8',echo=True,pool_size=5,pool_recycle=3600)
 
 
 
@@ -37,8 +37,9 @@ Base = declarative_base()
 db_session=scoped_session(sessionmaker(autocommit=False,
                             autoflush=False,
                             bind=engine))
+db_session._model_changes = {}
 
-
+db_session.remove()
 
 def init_db():
     import DoctorSpring.models
