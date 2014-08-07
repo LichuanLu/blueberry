@@ -436,8 +436,9 @@ class Report(Base):
                 report.imageDesc=imageDesc
             if diagnoseDesc:
                 report.diagnoseDesc=diagnoseDesc
-        session.commit()
-        session.flush()
+
+            session.flush()
+            session.commit()
         return report
 
 class File(Base):

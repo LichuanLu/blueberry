@@ -4,7 +4,7 @@ __author__ = 'ccheng'
 from flask import Flask, request, session, g, redirect, url_for, Blueprint, jsonify
 from flask import abort, render_template, flash
 from flask.ext.login import login_user, logout_user, current_user, login_required
-from forms import LoginForm ,CommentsForm ,UserFavortiesForm,ThanksNoteForm ,UserUpdateForm
+from forms import LoginForm ,CommentsForm ,UserFavortiesForm,ThanksNoteForm ,UserUpdateForm,UserChangePasswdForm
 from DoctorSpring import lm
 from database import  db_session
 from sqlalchemy.exc import IntegrityError
@@ -17,7 +17,8 @@ from param_service import UserCenter
 from database import db_session
 from datetime import datetime
 import string
-
+from werkzeug.security import generate_password_hash, check_password_hash
+from config import ALLOWED_PICTURE_EXTENSIONS
 import  data_change_service as dataChangeService
 import json
 
@@ -548,10 +549,67 @@ def updateAcountInfo():
     paraRs=form.validate()
     if rs.SUCCESS.status==paraRs.status:
         User.update(userId,form.name,form.account,form.mobile,form.address,form.email,form.identityCode,form.yibaoCard)
+        return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
 
-    User.get_id()
+    return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
+@uc.route('/acount/changePasswd', methods=['GET','POST'])
+def changePasswd():
+    userId=1
+    # if session.has_key('userId'):
+    #     userId=session['userId']
+    if userId is None:
+        redirect(LOGIN_URL)
+    form=UserChangePasswdForm(request.form)
+    result=form.validate()
+    if result.status==rs.SUCCESS.status:
+        user = User.getById(userId)
+        if user and user.check_password(form.oldPasswd):
+            newHashPasswd=generate_password_hash(form.newPasswd)
+            User.update(userId,passwd=newHashPasswd)
+            return  json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+        else:
+            resultStatus=rs.ResultStatus(rs.FAILURE.status,"未登录或者密码错误")
+            return json.dumps(resultStatus.__dict__,ensure_ascii=False)
+    return json.dumps(result.__dict__,ensure_ascii=False)
 
-    return redirect(url_for('user_center.generatorPdf',diagnoseId=1))
+def avatarfileUpload():
+    userId=None
+    if session.has_key('userId'):
+        userId=session['userId']
+    if userId is None:
+        redirect(LOGIN_URL)
+    user=User.getById(userId)
+    if user is None:
+        return  json.dumps(rs.ResultStatus(rs.FAILURE.status,"账户不存在"),ensure_ascii=False )
+
+    try:
+        if request.method == 'POST':
+            file_infos = []
+            files = request.files
+            for key, file in files.iteritems():
+                if file and isPicture(file.filename):
+                    filename = file.filename
+                    # file_url = oss_util.uploadFile(diagnoseId, filename)
+                    from DoctorSpring.util.oss_util import uploadFileFromFileStorage
+                    fileurl = uploadFileFromFileStorage(4, filename, file,'',{})
+                    if fileurl:
+                        user.imagePath=fileurl
+                        file_infos.append(dict(
+                                           name=filename,
+                                           size=11,
+                                           url=fileurl))
+                        result=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,file_infos)
+                        return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+                else:
+                    return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
+        return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
+    except Exception,e:
+        print e.message
+        return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
+def isPicture(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1] in ALLOWED_PICTURE_EXTENSIONS
+
 
 
 

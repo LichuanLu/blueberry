@@ -369,6 +369,19 @@ class UserUpdateForm(object):
         except Exception, e:
             return FAILURE
         return SUCCESS
+class UserChangePasswdForm(object) :
+    userId = None
+    oldPasswd = None
+    newPasswd = None
+    def __init__(self,form):
+        self.oldPasswd=form.get('oldPasswd')
+        self.newPasswd=form.get('newPasswd')
+    def validate(self):
+        if self.oldPasswd is None:
+            return FAILURE
+        if self.newPasswd is None or len(self.newPasswd)<6 or len(self.oldPasswd)>50:
+            return ResultStatus(FAILURE.status,"输入的密码长度必须大于6小于50")
+        return SUCCESS
 
 
 class RegisterFormDoctor(object):

@@ -85,7 +85,7 @@ class User(Base):
             return
         return session.query(User).filter(User.id==userId,User.status==ModelStatus.Normal).first()
     @classmethod
-    def update(cls,userId,name=None,account=None,mobile=None,address=None,email=None,identityCode=None,yibaoCard=None):
+    def update(cls,userId,name=None,account=None,mobile=None,address=None,email=None,identityCode=None,yibaoCard=None,passwd=None):
         if userId is None or userId<1:
             return
         user=session.query(User).filter(User.id==userId,User.status==ModelStatus.Normal).first()
@@ -104,6 +104,8 @@ class User(Base):
                 user.identityCode=identityCode
             if yibaoCard:
                 user.yibaoCard=yibaoCard
+            if passwd:
+                user.password=passwd
             session.commit()
             session.flush()
 
@@ -130,7 +132,6 @@ class User(Base):
             return session.query(User).filter(User.email == user_name, User.status == ModelStatus.Normal).first()
         else:
             return session.query(User).filter(User.phone == user_name, User.status == ModelStatus.Normal).first()
-
 
 
 class UserRole(Base):

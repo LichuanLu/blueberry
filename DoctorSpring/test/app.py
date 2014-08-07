@@ -69,6 +69,23 @@ class FlaskrTestCase(unittest.TestCase):
             ), follow_redirects=True)
         print rv
 
+    def test_updateAcountInfo(self):
+        rv = self.app.post('/acount/admin', data=dict(
+            account='chengyq',
+            mobile='15201329566',
+            address='北京市海淀区',
+            email='chengyq2281@sina.com',
+            ), follow_redirects=True)
+        print rv
+
+    def test_updateChangePasswd(self):
+        rv = self.app.post('/acount/changePasswd', data=dict(
+            oldPasswd='1234567',
+            newPasswd='123456',
+
+            ), follow_redirects=True)
+        print rv
+
 
 
 

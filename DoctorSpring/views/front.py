@@ -339,6 +339,22 @@ def doctor_list_json():
     return jsonify(FAILURE)
 
 
+@front.route('/patient/<int:patientId>/list.json')
+# /doctors/list.json?hospitalId=1&sectionId=0&doctorname=ddd&pageNumber=1&pageSize=6
+def getPatientFile(patientId):
+    if patientId is None or patientId<0:
+        return  jsonify(FAILURE)
+    pathologs=Pathology.getByPatientId(patientId)
+    files=[]
+    if pathologs and len(pathologs)>0:
+       for patholog in pathologs:
+           files.extend(File.getFilebypathologyId(patholog.id))
+    fileResults=None
+    if len(files)>0:
+        fileResults=dataChangeService.getFilesResult(files)
+    resultStatus = rs.ResultStatus(rs.SUCCESS.status, rs.SUCCESS.msg, fileResults)
+    return jsonify(resultStatus.__dict__)
+
 @front.route('/doctor/recommanded')
 def doctor_rec():
 
