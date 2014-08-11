@@ -491,3 +491,24 @@ class Dicominfo(object):
     doctorname = None
     pageNumber = None
     pageSize = None
+class AlipayCallBackInfo(object):
+    diagnoseSeriesNumber=None
+    buyer_email=None
+    buyer_id=None
+    is_success=None
+    notify_time=None
+    notify_type=None
+    total_fee=None
+    trade_no=None
+    trade_status=None
+    def __init__(self,args):
+        self.diagnoseSeriesNumber=args.get('subject')
+        self.buyer_email=args.get('buyer_email')
+        self.buyer_id=args.get('buyer_id')
+        self.is_success=args.get('is_success')
+        self.notify_time=args.get('notify_time')
+        self.notify_type=args.get('notify_type')
+        self.total_fee=args.get('total_fee')
+        self.trade_no=args.get('trade_no')
+        self.trade_status=args.get('trade_status')
+        self.out_trade_no=args.get('out_trade_no')

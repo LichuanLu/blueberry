@@ -4,19 +4,19 @@ __author__ = 'ccheng'
 from flask import Flask, request, session, g, redirect, url_for, Blueprint, jsonify
 from flask import abort, render_template, flash
 from flask.ext.login import login_user, logout_user, current_user, login_required
-from forms import LoginForm ,CommentsForm ,ReportForm
+from forms import LoginForm ,CommentsForm ,ReportForm,AlipayCallBackInfo
 from DoctorSpring import lm
 from database import  db_session
 from sqlalchemy.exc import IntegrityError
 from DoctorSpring.models import User,Patient,Doctor,Diagnose ,DiagnoseTemplate,Report,UserRole
-from DoctorSpring.models import User,Comment,Message,DiagnoseLog ,AlipayLog
+from DoctorSpring.models import User,Comment,Message,DiagnoseLog ,AlipayLog,AlipayChargeRecord
 from DoctorSpring.util import result_status as rs,object2dict ,constant,pdf_utils
 from DoctorSpring.util.authenticated import authenticated
 from DoctorSpring.util.constant import MessageUserType,Pagger, ReportType
 from DoctorSpring.util.pay import alipay
 import string
 from config import LOGIN_URL,ERROR_URL
-
+from DoctorSpring import app
 
 import  data_change_service as dataChangeService
 import json
@@ -25,7 +25,7 @@ import config
 config = config.rec()
 
 diagnoseView = Blueprint('diagnose', __name__)
-
+LOG=app.logger
 
 
 #领取诊断
@@ -316,7 +316,7 @@ def evaluateDiagnose(diagnoseId):
 
 @diagnoseView.route('/diagnose/alipayurl/<int:diagnoseId>',  methods = ['GET', 'POST'])
 def generateAlipayUrl(diagnoseId):
-    userId='5'
+    userId='9'
     if session.has_key('userId'):
         userId=session['userId']
     if userId is None:
@@ -350,6 +350,70 @@ def generateAlipayUrl(diagnoseId):
             return  json.dumps(result.__dict__,ensure_ascii=False)
     result=rs.ResultStatus(rs.FAILURE.status,"诊断不存在或这状态不对")
     return  json.dumps(result.__dict__,ensure_ascii=False)
+
+@diagnoseView.route('/diagnose/alipayurl/callback',  methods = ['GET', 'POST'])
+def AlipayCallbackUrl():
+    userId='9'
+    if session.has_key('userId'):
+        userId=session['userId']
+    if userId is None:
+        redirect(LOGIN_URL)
+    params=AlipayCallBackInfo(request.args)
+    payRecord=AlipayChargeRecord(params.diagnoseSeriesNumber,params.buyer_email,params.buyer_id,params.is_success,params.notify_time,
+                       params.notify_type,params.total_fee,params.trade_no,params.trade_status,params.out_trade_no)
+    AlipayChargeRecord.save(payRecord)
+    if params.is_success=='T' and params.trade_status=='TRADE_SUCCESS':
+       diagnose=Diagnose.getDiagnoseByDiagnoseSeriesNo(params.diagnoseSeriesNumber)
+       if diagnose:
+           diagnoseId=diagnose.id
+           alipayLog=AlipayLog(userId,diagnoseId,constant.AlipayLogAction.PayFilished)
+           AlipayLog.save(alipayLog)
+           diagnose.status=constant.DiagnoseStatus.NeedTriage
+           Diagnose.save(diagnose)
+           result=rs.ResultStatus(rs.SUCCESS.status,'支付成功')
+           return  json.dumps(result.__dict__,ensure_ascii=False)
+       else:
+           # alipayLog=AlipayLog(userId,params.diagnoseSeriesNumber,constant.AlipayLogAction.PayFilished)
+           # AlipayLog.save(alipayLog)
+           LOG.error("支付成功，但系统诊断已经取消(诊断序列号：%s)",params.diagnoseSeriesNumber)
+           result=rs.ResultStatus(rs.SUCCESS.status,'支付成功，但系统诊断已经取消')
+           return  json.dumps(result.__dict__,ensure_ascii=False)
+    # alipayLog=AlipayLog(userId,params.diagnoseSeriesNumber,constant.AlipayLogAction.PayFailure)
+    # AlipayLog.save(alipayLog)
+    LOG.error("支付失败(诊断序列号：%s)",params.diagnoseSeriesNumber)
+    result=rs.ResultStatus(rs.FAILURE.status,'支付失败')
+    return  json.dumps(result.__dict__,ensure_ascii=False)
+@diagnoseView.route('/diagnose/diagnoseLog',  methods = ['GET', 'POST'])
+def getDiagnoseLog():
+    userId='9'
+    if session.has_key('userId'):
+        userId=session['userId']
+    if userId is None:
+        redirect(LOGIN_URL)
+
+    diagnoseLogs=AlipayLog.getAlipayLogsByUserId(userId)
+    if diagnoseLogs and len(diagnoseLogs)>0:
+        resultLogs=object2dict.objects2dicts(diagnoseLogs)
+        result=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,resultLogs)
+        return  json.dumps(result.__dict__,ensure_ascii=False)
+    return  json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+
+@diagnoseView.route('/diagnose/diagnoseLog/<int:diagnoseId>',  methods = ['GET', 'POST'])
+def getDiagnoseLogBydiagnoseId(diagnoseId):
+    userId='9'
+    if session.has_key('userId'):
+        userId=session['userId']
+    if userId is None:
+        redirect(LOGIN_URL)
+    diagnose=Diagnose.getDiagnoseById(diagnoseId)
+    if diagnose and hasattr(diagnose,'patient') and diagnose.patient.userID==string.atoi(userId):
+        diagnoseLogs=AlipayLog.getAlipayLogsByDiagnoseId(diagnoseId)
+        if diagnoseLogs and len(diagnoseLogs)>0:
+            resultLogs=object2dict.objects2dicts(diagnoseLogs)
+            result=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,resultLogs)
+            return  json.dumps(result.__dict__,ensure_ascii=False)
+        return  json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+    return  json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
 
 
 

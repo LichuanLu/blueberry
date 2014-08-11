@@ -28,6 +28,7 @@ file_handler.setFormatter(formatter)
 app.logger.addHandler(file_handler)
 logging.basicConfig(filename='medical_access.log',level=logging.DEBUG)
 
+
 lm = LoginManager()
 lm.init_app(app)
 
