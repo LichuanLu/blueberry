@@ -335,7 +335,7 @@ def generateAlipayUrl(diagnoseId):
             description=' 医生(%s)的诊断费用:%f 元'%(diagnose.doctor.username,constant.DiagnoseCost)
             if hasattr(diagnose.doctor.hospital,'name'):
                 description=diagnose.doctor.hospital.name+description
-        payUrl=alipay.create_direct_pay_by_user(diagnoseId,diagnose.diagnoseSeriesNumber,description,constant.DiagnoseCost)
+        payUrl=alipay.create_direct_pay_by_user(diagnose.diagnoseSeriesNumber,diagnose.diagnoseSeriesNumber,'咨询费',constant.DiagnoseCost)
         if payUrl:
             alipayLog=AlipayLog(userId,diagnoseId,constant.AlipayLogAction.GetAlipayUrl)
             alipayLog.description=description

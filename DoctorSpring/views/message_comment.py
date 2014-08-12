@@ -13,10 +13,11 @@ from DoctorSpring.models import User,Comment,Message ,Consult,Diagnose,Doctor
 from DoctorSpring.util import result_status as rs,object2dict,constant
 import json
 import  data_change_service as dataChangeService
-
+from DoctorSpring import app
+from config import LOGIN_URL
 import config
 config = config.rec()
-
+LOG=app.logger
 mc = Blueprint('message_comment', __name__)
 
 
@@ -152,16 +153,23 @@ def remarkMessage(messageId):
 
 @mc.route('/consult/add', methods = ['GET', 'POST'])
 def addConsult():
+    user_id=None
+    if session.has_key('userId'):
+        userId=session['userId']
+    if userId is None:
+        redirect(LOGIN_URL)
     form =  ConsultForm(request.form)
     formResult=form.validate()
     if formResult.status==rs.SUCCESS.status:
         #session['remember_me'] = form.remember_me.data
         # login and validate the user...
-        consult=Consult(form.userId,form.doctorId,form.title,form.content)
+        consult=Consult(form.userId,form.doctorId,form.title,form.content,form.parent_id,form.source_id)
         Consult.save(consult)
-        #flash('成功添加诊断评论')
+        LOG.info(user_id+' 成功添加诊断评论')
         return json.dumps(formResult.__dict__,ensure_ascii=False)
     return json.dumps(formResult.__dict__,ensure_ascii=False)
+
+
 @mc.route('/doctor/<int:doctorId>/consultList', methods = ['GET', 'POST'])
 def getConsultsByDoctor(doctorId):
     if doctorId:

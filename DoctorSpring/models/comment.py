@@ -21,7 +21,9 @@ class Consult(Base):
     content=sa.Column(sa.String(51200))
     createTime=sa.Column(sa.DateTime)
     status=sa.Column(sa.Integer)
-    def __init__(self,userId,doctorId,title,content):
+    parent_id=sa.Column(sa.BigInteger)
+    source_id=sa.Column(sa.BigInteger)#原始咨询的id，冗余，为了快速的找到一组讨论的咨询
+    def __init__(self,userId,doctorId,title,content,parent_id=-1,source_id=-1):
         self.userId=userId
         self.doctorId=doctorId
         #self.title=title
@@ -29,6 +31,8 @@ class Consult(Base):
         self.content=content
         self.createTime=datetime.now()
         self.status=constant.ModelStatus.Normal
+        self.parent_id=parent_id
+        self.source_id=source_id
     @classmethod
     def save(cls,consult):
         if consult:

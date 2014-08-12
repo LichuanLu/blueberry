@@ -190,19 +190,23 @@ class ConsultForm(object):
     doctorId=None
     content =None
     title =None
+    parent_id=None
+    source_id=None
     def __init__(self,args):
         self.userId=args.get('userId')
         self.doctorId=args.get('doctorId')
         self.title=args.get('title')
         self.content=args.get('content')
+        self.parent_id=args.get('parent_id')
+        self.source_id=args.get('source_id')
     def validate(self):
         try:
             if self.userId is None:
                 return FAILURE
             if self.doctorId is None:
                 return FAILURE
-            if self.title is None:
-                return FAILURE
+            # if self.title is None:
+            #     return FAILURE
             if self.content is None or len(self.content)<10:
                 failure=ResultStatus(FAILURE.status,"输入的内容长度必须大于等于10")
                 return  failure
