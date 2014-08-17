@@ -16,6 +16,7 @@ import  data_change_service as dataChangeService
 from DoctorSpring import app
 from config import LOGIN_URL
 import config
+import string
 config = config.rec()
 LOG=app.logger
 mc = Blueprint('message_comment', __name__)
@@ -172,8 +173,13 @@ def addConsult():
 
 @mc.route('/doctor/<int:doctorId>/consultList', methods = ['GET', 'POST'])
 def getConsultsByDoctor(doctorId):
+    sourceId=request.args.get('source_id')
     if doctorId:
-        consuts=Consult.getConsultsByDoctorId(doctorId)
+        consuts=None
+        if sourceId:
+            consuts=Consult.getConsultsByDoctorId(doctorId,string.atoi(sourceId))
+        else:
+            consuts=Consult.getConsultsByDoctorId(doctorId)
         consutsDict=object2dict.objects2dicts(consuts)
         resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,consutsDict)
         resultDict=resultStatus.__dict__
@@ -182,14 +188,22 @@ def getConsultsByDoctor(doctorId):
 
 @mc.route('/user/<int:userId>/consultList', methods = ['GET', 'POST'])
 def getConsultsByUser(userId):
+    sourceId=request.args.get('source_id')
     if userId:
-        consuts=Consult.getConsultsByUserId(userId)
+        consuts=None
+        if sourceId:
+            consuts=Consult.getConsultsByUserId(userId,string.atoi(sourceId))
+        else:
+            consuts=Consult.getConsultsByUserId(userId)
         consutsDict=object2dict.objects2dicts(consuts)
         resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,consutsDict)
         resultDict=resultStatus.__dict__
         return json.dumps(resultDict,ensure_ascii=False)
     return json.dumps(rs.PARAM_ERROR,ensure_ascii=False)
-
+@mc.route('/consut/<int:consulId>/read', methods = ['GET', 'POST'])
+def changeConsultRead(consultId):
+    Consult.changeReadStatus(consultId)
+    return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
 
 
 

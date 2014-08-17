@@ -74,6 +74,8 @@ DiagnoseSeriesNumberBase=50000
 class MessageStatus(ModelStatus):
       Readed=2
 
+
+
 class CommentType(object):
     DiagnoseComment=0
     Normal=1

@@ -515,6 +515,39 @@ def addThankNote():
         return json.dumps(formResult.__dict__,ensure_ascii=False)
     return json.dumps(formResult.__dict__,ensure_ascii=False)
 
+@uc.route('/gratitude/changestatus',  methods = ['GET', 'POST'])
+def changeThankNoteStatus():
+    id=request.args.get('id')
+    status=request.args.get('status')
+    userId=session['userId']
+
+    if userId is None:
+        json.dumps(rs.NO_LOGIN.__dict__,ensure_ascii=False)
+
+    userId=string.atoi(userId)
+    if id and status:
+        result=ThanksNote.updateThankNote(id,status)
+        return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+    return json.dumps(rs.PARAM_ERROR.__dict__,ensure_ascii=False)
+
+
+@uc.route('/gratitude/draft/list', methods = ['GET', 'POST'])
+def getThanksNotesByDraft():
+    #status=request.args.get('status')
+
+    pageNo=request.args.get('pageNo')
+    pageSize=request.args.get('pageSize')
+    pager=Pagger(pageNo,pageSize)
+
+    thanksNotes=ThanksNote.getThankNoteByDraft(pager)
+    if thanksNotes is None or len(thanksNotes)<1:
+        return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+    thanksNotesDict=object2dict.objects2dicts(thanksNotes)
+    dataChangeService.setThanksNoteDetail(thanksNotesDict)
+    resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,thanksNotesDict)
+    resultDict=resultStatus.__dict__
+    return json.dumps(resultDict,ensure_ascii=False)
+
 
 
 @uc.route('/gratitude/<int:userid>/list', methods = ['GET', 'POST'])

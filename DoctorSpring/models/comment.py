@@ -16,39 +16,80 @@ class Consult(Base):
     }
     id= sa.Column(sa.BigInteger, primary_key = True, autoincrement = True)
     userId=sa.Column(sa.Integer)
+    diagnoseId =sa.Column(sa.Integer)
     doctorId=sa.Column(sa.Integer )
     title=sa.Column(sa.String(256))
     content=sa.Column(sa.String(51200))
     createTime=sa.Column(sa.DateTime)
-    status=sa.Column(sa.Integer)
+    updateTime=sa.Column(sa.DateTime)
+    type= sa.Column(sa.Integer)#type:1doctor为发起者，type=0，user为发起者
+    status=sa.Column(sa.Integer)    #2表示已读
     parent_id=sa.Column(sa.BigInteger)
     source_id=sa.Column(sa.BigInteger)#原始咨询的id，冗余，为了快速的找到一组讨论的咨询
-    def __init__(self,userId,doctorId,title,content,parent_id=-1,source_id=-1):
+    def __init__(self,userId,doctorId,title,content,parent_id=-1,source_id=-1,type=0):
         self.userId=userId
         self.doctorId=doctorId
         #self.title=title
         self.title=title
         self.content=content
+        self.updateTime=datetime.now()
         self.createTime=datetime.now()
+
         self.status=constant.ModelStatus.Normal
         self.parent_id=parent_id
         self.source_id=source_id
+        self.type=type
     @classmethod
     def save(cls,consult):
         if consult:
             session.add(consult)
+
+            if consult.source_id!=-1:
+                source=Consult.getById(consult.source_id)
+                source.updateTime=datetime.now()
             session.commit()
             session.flush()
+
+
     @classmethod
-    def getConsultsByDoctorId(cls,doctorId):
+    def getById(cls,id):
+        if id is None:
+            return
+        return session.query(Consult).filter(Consult.id==id).first()
+    @classmethod
+    def getConsultsByDoctorId(cls,doctorId,sourceId=None):
         if doctorId is None:
             return
-        return session.query(Consult).filter(Consult.doctorId==doctorId,Consult.status==ModelStatus.Normal).all()
+        if sourceId:
+            return session.query(Consult).filter(Consult.doctorId==doctorId,Consult.source_id==sourceId,Consult.status!=ModelStatus.Del) \
+                .order_by(Consult.updateTime.desc()).all()
+        else:
+            return session.query(Consult).filter(Consult.doctorId==doctorId,Consult.status!=ModelStatus.Del,Consult.source_id==-1). \
+                order_by(Consult.updateTime.desc()).all()
     @classmethod
-    def getConsultsByUserId(cls,userId):
+    def getConsultsByUserId(cls,userId,sourceId=None):
         if userId is None:
             return
-        return session.query(Consult).filter(Consult.userId==userId,Consult.status==ModelStatus.Normal).all()
+        if sourceId:
+            return session.query(Consult).filter(Consult.userId==userId,Consult.source_id==sourceId,Consult.status!=ModelStatus.Del)\
+                .order_by(Consult.updateTime.desc()).all()
+        else:
+            return session.query(Consult).filter(Consult.userId==userId,Consult.status!=ModelStatus.Del,Consult.source_id==-1)\
+                .order_by(Consult.updateTime.desc()).all()
+    @classmethod
+    def getConsultsBySourceId(cls,sourceId):
+        if sourceId is None:
+            return
+        return session.query(Consult).filter(Consult.source_id==sourceId,Consult.status!=ModelStatus.Del).order_by(Consult.createTime.desc()).all()
+    @classmethod
+    def changeReadStatus(cls,id):
+        if id is None:
+            return
+        consult=session.query(Consult).filter(Consult.id==id).first()
+        if constant:
+            consult.status=2#标记为已读
+            session.commit()
+
 
 
 class Comment(Base):
@@ -101,3 +142,14 @@ class Comment(Base):
     @classmethod
     def getRecentComments(cls,status=ModelStatus.Normal,type=CommentType.DiagnoseComment):
         return session.query(Comment).filter(Comment.status==status,Comment.type==type).order_by(Comment.createTime.desc()).limit(6).all()
+
+    @classmethod
+    def updateComment(cls,id,status=ModelStatus.Normal):
+        comment=session.query(Comment).filter(Comment.id==id).first()
+        if comment:
+            if status or status==ModelStatus.Normal:
+                comment.status=status
+            return session.commit()
+    @classmethod
+    def getCommentsByDraft(cls,pagger=constant.Pagger(1,20)):
+        return session.query(Comment).filter(Comment.status==ModelStatus.Draft).offset(pagger.getOffset()).limit(pagger.getLimitCount()).all()
