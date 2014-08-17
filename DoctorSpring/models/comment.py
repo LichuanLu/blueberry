@@ -116,7 +116,7 @@ class Comment(Base):
         self.diagnoseId=diagnoseId
         self.content=content
         self.createTime=datetime.now()
-        self.status=constant.ModelStatus.Normal
+        self.status=constant.ModelStatus.Draft
         self.type=constant.CommentType.DiagnoseComment
     @classmethod
     def getCommentByUser(cls,observerId,status=ModelStatus.Normal,type=CommentType.Normal):

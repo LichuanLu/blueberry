@@ -83,6 +83,33 @@ def diagnoseCommentsByReceiver(receiverId):
     resultDict=resultStatus.__dict__
     return jsonify(resultDict)
 
+
+@mc.route('/diagnoseComment/draftList.json', methods = ['GET', 'POST'])
+def diagnoseCommentsByDraft():
+
+    pageNo=request.args.get('pageNo')
+    pageSize=request.args.get('pageSize')
+    pager=constant.Pagger(pageNo,pageSize)
+
+    diagnoseComments=Comment.getCommentsByDraft(pager)
+    if diagnoseComments is None or len(diagnoseComments)<1:
+        return jsonify(rs.SUCCESS.__dict__)
+
+    diagnoseCommentsDict=object2dict.objects2dicts(diagnoseComments)
+    dataChangeService.setDiagnoseCommentsDetailInfo(diagnoseCommentsDict)
+    resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnoseCommentsDict)
+    resultDict=resultStatus.__dict__
+    return jsonify(resultDict)
+@mc.route('/diagnosecomment/statuschang', methods = ['GET', 'POST'])
+def changeDiagnoseCommentStatus():
+    id=request.args.get('id')
+    status=request.args.get('status')
+    if id and status:
+        result=Comment.updateComment(id,status)
+        return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+    return json.dumps(rs.PARAM_ERROR.__dict__,ensure_ascii=False)
+
+
 @mc.route('/diagnose/<int:diagnoseId>/diagnoseCommentList.json', methods = ['GET', 'POST'])
 def diagnoseCommentsByDiagnose(diagnoseId):
 
