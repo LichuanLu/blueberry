@@ -67,7 +67,8 @@ class Diagnose(Base):
     hospital = relationship("Hospital", backref=backref('diagnose', order_by=id))
 
     status = sa.Column(sa.INTEGER)      # 草稿：9， 成稿 1
-
+    serveAdmin=sa.Column(sa.INTEGER) #产生aplpaly的管理员
+    isConfirmOrder=sa.Column(sa.SmallInteger)#是否已经产生了阿里的订单
 
     def __init__(self,createdate=date.today()):
         self.createDate = createdate

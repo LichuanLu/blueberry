@@ -496,8 +496,9 @@ def generatorPdf(diagnoseId):
 def addThankNote():
     form =  ThanksNoteForm(request.form)
     formResult=form.validate()
-    userId=session['userId']
+    userId=session.get('userId')
 
+    #userId='5'
     if userId is None:
         json.dumps(rs.NO_LOGIN.__dict__,ensure_ascii=False)
 
@@ -519,7 +520,9 @@ def addThankNote():
 def changeThankNoteStatus():
     id=request.args.get('id')
     status=request.args.get('status')
-    userId=session['userId']
+    userId=session.get('userId')
+
+    #userId='5'
 
     if userId is None:
         json.dumps(rs.NO_LOGIN.__dict__,ensure_ascii=False)
@@ -572,6 +575,9 @@ def testRedirect():
     #print url_for('user_center.generatorPdf',diagnoseName='ccheng')
     return redirect(url_for('user_center.generatorPdf',diagnoseId=1))
 
+
+
+
 @uc.route('/acount/admin', methods=['GET','POST'])
 def updateAcountInfo():
     userId=None
@@ -586,6 +592,24 @@ def updateAcountInfo():
         return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
 
     return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
+
+@uc.route('/acount/info', methods=['GET','POST'])
+def getAcountInfo():
+    userId=None
+    if session.has_key('userId'):
+        userId=session['userId']
+    userId='5'
+    if userId is None:
+        redirect(LOGIN_URL)
+    user=User.getById(userId)
+    if user:
+        userDict=object2dict.to_json(user,user.__class__)
+        result=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,userDict)
+        return json.dumps(result.__dict__,ensure_ascii=False)
+    return json.dumps(rs.NO_LOGIN.__dict__,ensure_ascii=False)
+
+
+
 @uc.route('/acount/changePasswd', methods=['GET','POST'])
 def changePasswd():
     userId=None
@@ -605,7 +629,7 @@ def changePasswd():
             resultStatus=rs.ResultStatus(rs.FAILURE.status,"未登录或者密码错误")
             return json.dumps(resultStatus.__dict__,ensure_ascii=False)
     return json.dumps(result.__dict__,ensure_ascii=False)
-
+@uc.route('/acount/uploadAvatar', methods=['GET','POST'])
 def avatarfileUpload():
     userId=None
     if session.has_key('userId'):

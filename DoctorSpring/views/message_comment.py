@@ -100,7 +100,7 @@ def diagnoseCommentsByDraft():
     resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnoseCommentsDict)
     resultDict=resultStatus.__dict__
     return jsonify(resultDict)
-@mc.route('/diagnosecomment/statuschang', methods = ['GET', 'POST'])
+@mc.route('/diagnosecomment/statuschange', methods = ['GET', 'POST'])
 def changeDiagnoseCommentStatus():
     id=request.args.get('id')
     status=request.args.get('status')
@@ -184,6 +184,7 @@ def addConsult():
     user_id=None
     if session.has_key('userId'):
         userId=session['userId']
+    #userId='5'
     if userId is None:
         redirect(LOGIN_URL)
     form =  ConsultForm(request.form)
@@ -193,7 +194,7 @@ def addConsult():
         # login and validate the user...
         consult=Consult(form.userId,form.doctorId,form.title,form.content,form.parent_id,form.source_id)
         Consult.save(consult)
-        LOG.info(user_id+' 成功添加诊断评论')
+        LOG.info(userId+' 成功添加诊断评论')
         return json.dumps(formResult.__dict__,ensure_ascii=False)
     return json.dumps(formResult.__dict__,ensure_ascii=False)
 
@@ -227,7 +228,7 @@ def getConsultsByUser(userId):
         resultDict=resultStatus.__dict__
         return json.dumps(resultDict,ensure_ascii=False)
     return json.dumps(rs.PARAM_ERROR,ensure_ascii=False)
-@mc.route('/consut/<int:consulId>/read', methods = ['GET', 'POST'])
+@mc.route('/consut/<int:consultId>/read', methods = ['GET', 'POST'])
 def changeConsultRead(consultId):
     Consult.changeReadStatus(consultId)
     return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)

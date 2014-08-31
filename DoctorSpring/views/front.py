@@ -341,7 +341,7 @@ def doctor_list_json():
     return jsonify(FAILURE)
 
 
-@front.route('/patient/<int:patientId>/list.json')
+@front.route('/patient/<int:patientId>/listExtendFiles.json')
 # /doctors/list.json?hospitalId=1&sectionId=0&doctorname=ddd&pageNumber=1&pageSize=6
 def getPatientFile(patientId):
     userId=None
@@ -360,7 +360,7 @@ def getPatientFile(patientId):
     files=[]
     if pathologs and len(pathologs)>0:
        for patholog in pathologs:
-           files.extend(File.getFilebypathologyId(patholog.id))
+           files.extend(File.getFilebypathologyId(patholog.id),constant.FileType.FileAboutDiagnose)
     fileResults=None
     if len(files)>0:
         fileResults=dataChangeService.getFilesResult(files)

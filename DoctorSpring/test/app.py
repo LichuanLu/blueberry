@@ -13,11 +13,12 @@ class FlaskrTestCase(unittest.TestCase):
     def test_messages(self):
         #self.login('admin', 'default')
 
-        rv = self.app.post('/addDiagnoseComment.json', form=dict(
+        rv = self.app.post('/addDiagnoseComment.json', data=dict(
             userId=1,
             receiverId=1,
             diagnoseId=1,
-            content='诊断很不错，非常感谢'
+            content='诊断很不错，非常感谢',
+            score=1
         ), follow_redirects=True)
         assert 'No entries here so far' not in rv.data
         assert '&lt;Hello&gt;' in rv.data

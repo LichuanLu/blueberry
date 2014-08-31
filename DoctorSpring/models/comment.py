@@ -44,7 +44,7 @@ class Consult(Base):
         if consult:
             session.add(consult)
 
-            if consult.source_id!=-1:
+            if consult.source_id!=None and consult.source_id!=-1:
                 source=Consult.getById(consult.source_id)
                 source.updateTime=datetime.now()
             session.commit()

@@ -198,7 +198,7 @@ class ConsultForm(object):
         self.title=args.get('title')
         self.content=args.get('content')
         self.parent_id=args.get('parent_id')
-        self.source_id=args.get('source_id')
+        self.source_id=args.get('source_id')#defaultValue=-1
     def validate(self):
         try:
             if self.userId is None:
