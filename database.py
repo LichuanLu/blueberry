@@ -37,8 +37,10 @@ Base = declarative_base()
 db_session=scoped_session(sessionmaker(autocommit=False,
                             autoflush=False,
                             bind=engine))
+db_session._model_changes = {}
 
 db_session.remove()
+
 def init_db():
     import DoctorSpring.models
     Base.metadata.create_all(engine)

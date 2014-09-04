@@ -190,19 +190,23 @@ class ConsultForm(object):
     doctorId=None
     content =None
     title =None
+    parent_id=None
+    source_id=None
     def __init__(self,args):
         self.userId=args.get('userId')
         self.doctorId=args.get('doctorId')
         self.title=args.get('title')
         self.content=args.get('content')
+        self.parent_id=args.get('parent_id')
+        self.source_id=args.get('source_id')#defaultValue=-1
     def validate(self):
         try:
             if self.userId is None:
                 return FAILURE
             if self.doctorId is None:
                 return FAILURE
-            if self.title is None:
-                return FAILURE
+            # if self.title is None:
+            #     return FAILURE
             if self.content is None or len(self.content)<10:
                 failure=ResultStatus(FAILURE.status,"输入的内容长度必须大于等于10")
                 return  failure
@@ -337,9 +341,10 @@ class UserFavortiesForm(object):
             return FAILURE
         return SUCCESS
 
-class PatientUpdateForm(object):
+class UserUpdateForm(object):
     userId=None
     patientId=None
+    nickName=None
     name=None
     account=None
     mobile=None
@@ -347,6 +352,41 @@ class PatientUpdateForm(object):
     email=None
     identityCode=None
     yibaoCard=None
+    def __init__(self,userForm):
+        self.userId=userForm.get('userId')
+        self.patientId=userForm.get('patientId')
+        self.nickName=userForm.get('nickName')
+        self.name=userForm.get('name')
+        self.account=userForm.get('account')
+        self.mobile=userForm.get('mobile')
+        self.address=userForm.get('address')
+        self.email=userForm.get('email')
+        self.identityCode=userForm.get('identityCode')
+        self.yibaoCard=userForm.get('yibaoCard')
+    def validate(self):
+        try:
+            if self.email is None or "@" not in self.email:
+                failure = ResultStatus(FAILURE.status, "邮箱地址格式不正确")
+                return failure
+            if self.account is None:
+                failure = ResultStatus(FAILURE.status, "账号不能为空")
+        except Exception, e:
+            return FAILURE
+        return SUCCESS
+class UserChangePasswdForm(object) :
+    userId = None
+    oldPasswd = None
+    newPasswd = None
+    def __init__(self,form):
+        self.oldPasswd=form.get('oldPasswd')
+        self.newPasswd=form.get('newPasswd')
+    def validate(self):
+        if self.oldPasswd is None:
+            return FAILURE
+        if self.newPasswd is None or len(self.newPasswd)<6 or len(self.oldPasswd)>50:
+            return ResultStatus(FAILURE.status,"输入的密码长度必须大于6小于50")
+        return SUCCESS
+
 
 class RegisterFormDoctor(object):
     email = None
@@ -455,3 +495,24 @@ class Dicominfo(object):
     doctorname = None
     pageNumber = None
     pageSize = None
+class AlipayCallBackInfo(object):
+    diagnoseSeriesNumber=None
+    buyer_email=None
+    buyer_id=None
+    is_success=None
+    notify_time=None
+    notify_type=None
+    total_fee=None
+    trade_no=None
+    trade_status=None
+    def __init__(self,args):
+        self.diagnoseSeriesNumber=args.get('subject')
+        self.buyer_email=args.get('buyer_email')
+        self.buyer_id=args.get('buyer_id')
+        self.is_success=args.get('is_success')
+        self.notify_time=args.get('notify_time')
+        self.notify_type=args.get('notify_type')
+        self.total_fee=args.get('total_fee')
+        self.trade_no=args.get('trade_no')
+        self.trade_status=args.get('trade_status')
+        self.out_trade_no=args.get('out_trade_no')

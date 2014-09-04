@@ -13,11 +13,12 @@ class FlaskrTestCase(unittest.TestCase):
     def test_messages(self):
         #self.login('admin', 'default')
 
-        rv = self.app.post('/addDiagnoseComment.json', form=dict(
+        rv = self.app.post('/addDiagnoseComment.json', data=dict(
             userId=1,
             receiverId=1,
             diagnoseId=1,
-            content='诊断很不错，非常感谢'
+            content='诊断很不错，非常感谢',
+            score=1
         ), follow_redirects=True)
         assert 'No entries here so far' not in rv.data
         assert '&lt;Hello&gt;' in rv.data
@@ -66,6 +67,23 @@ class FlaskrTestCase(unittest.TestCase):
             diagnoseId=1,
             imageDesc='肺窗示右肺上叶尖段/后段/前段|中叶内侧段/外侧段|下叶前/外/后/内基底段/背段|左肺上叶尖后段/前段/舌段|下叶前外/后/内/基底段/背段/可见一孤立性肿块/结节影，大小约为　Ｘ　cm，边缘毛糙，可见分叶及细小毛刺，密度均匀/不均匀，CT值  Hu，其内可见偏心性空洞，肿块内无钙化/点状少量钙化，纵隔窗示纵隔内可见多个肿大淋巴结。左/右侧胸腔内可见弧形低密度影，心影及大血管形态正常。     ',
             diagnoseDesc='1.左/右肺上叶/中叶/下叶占位性病变，考虑为周围型肺癌并肺门及纵隔淋巴结转移。2.左/右侧胸腔积液。 CHANGE',
+            ), follow_redirects=True)
+        print rv
+
+    def test_updateAcountInfo(self):
+        rv = self.app.post('/acount/admin', data=dict(
+            account='chengyq',
+            mobile='15201329566',
+            address='北京市海淀区',
+            email='chengyq2281@sina.com',
+            ), follow_redirects=True)
+        print rv
+
+    def test_updateChangePasswd(self):
+        rv = self.app.post('/acount/changePasswd', data=dict(
+            oldPasswd='1234567',
+            newPasswd='123456',
+
             ), follow_redirects=True)
         print rv
 

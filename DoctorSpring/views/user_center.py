@@ -4,7 +4,7 @@ __author__ = 'ccheng'
 from flask import Flask, request, session, g, redirect, url_for, Blueprint, jsonify
 from flask import abort, render_template, flash
 from flask.ext.login import login_user, logout_user, current_user, login_required
-from forms import LoginForm ,CommentsForm ,UserFavortiesForm,ThanksNoteForm
+from forms import LoginForm ,CommentsForm ,UserFavortiesForm,ThanksNoteForm ,UserUpdateForm,UserChangePasswdForm
 from DoctorSpring import lm
 from database import  db_session
 from sqlalchemy.exc import IntegrityError
@@ -17,17 +17,19 @@ from param_service import UserCenter
 from database import db_session
 from datetime import datetime
 import string
-
+from werkzeug.security import generate_password_hash, check_password_hash
+from config import ALLOWED_PICTURE_EXTENSIONS
 import  data_change_service as dataChangeService
+from os.path import getsize
 import json
 
 import config
+from config import LOGIN_URL,ERROR_URL
 config = config.rec()
 
 uc = Blueprint('user_center', __name__)
 
-LOGIN_URL='/loginPage'
-ERROR_URL='/error'
+
 
 @uc.route('/doctorhome',  methods = ['GET', 'POST'])
 def endterDoctorHome():
@@ -494,8 +496,9 @@ def generatorPdf(diagnoseId):
 def addThankNote():
     form =  ThanksNoteForm(request.form)
     formResult=form.validate()
-    userId=session['userId']
+    userId=session.get('userId')
 
+    #userId='5'
     if userId is None:
         json.dumps(rs.NO_LOGIN.__dict__,ensure_ascii=False)
 
@@ -512,6 +515,41 @@ def addThankNote():
             Doctor.save(doctor)
         return json.dumps(formResult.__dict__,ensure_ascii=False)
     return json.dumps(formResult.__dict__,ensure_ascii=False)
+
+@uc.route('/gratitude/changestatus',  methods = ['GET', 'POST'])
+def changeThankNoteStatus():
+    id=request.args.get('id')
+    status=request.args.get('status')
+    userId=session.get('userId')
+
+    #userId='5'
+
+    if userId is None:
+        json.dumps(rs.NO_LOGIN.__dict__,ensure_ascii=False)
+
+    userId=string.atoi(userId)
+    if id and status:
+        result=ThanksNote.updateThankNote(id,status)
+        return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+    return json.dumps(rs.PARAM_ERROR.__dict__,ensure_ascii=False)
+
+
+@uc.route('/gratitude/draft/list', methods = ['GET', 'POST'])
+def getThanksNotesByDraft():
+    #status=request.args.get('status')
+
+    pageNo=request.args.get('pageNo')
+    pageSize=request.args.get('pageSize')
+    pager=Pagger(pageNo,pageSize)
+
+    thanksNotes=ThanksNote.getThankNoteByDraft(pager)
+    if thanksNotes is None or len(thanksNotes)<1:
+        return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+    thanksNotesDict=object2dict.objects2dicts(thanksNotes)
+    dataChangeService.setThanksNoteDetail(thanksNotesDict)
+    resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,thanksNotesDict)
+    resultDict=resultStatus.__dict__
+    return json.dumps(resultDict,ensure_ascii=False)
 
 
 
@@ -537,15 +575,98 @@ def testRedirect():
     #print url_for('user_center.generatorPdf',diagnoseName='ccheng')
     return redirect(url_for('user_center.generatorPdf',diagnoseId=1))
 
+
+
+
 @uc.route('/acount/admin', methods=['GET','POST'])
 def updateAcountInfo():
     userId=None
     if session.has_key('userId'):
         userId=session['userId']
     if userId is None:
-        redirect('/loginPage')
+        redirect(LOGIN_URL)
+    form=UserUpdateForm(request.form)
+    paraRs=form.validate()
+    if rs.SUCCESS.status==paraRs.status:
+        User.update(userId,form.name,form.account,form.mobile,form.address,form.email,form.identityCode,form.yibaoCard)
+        return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
 
-    return redirect(url_for('user_center.generatorPdf',diagnoseId=1))
+    return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
+
+@uc.route('/acount/info', methods=['GET','POST'])
+def getAcountInfo():
+    userId=None
+    if session.has_key('userId'):
+        userId=session['userId']
+    userId='5'
+    if userId is None:
+        redirect(LOGIN_URL)
+    user=User.getById(userId)
+    if user:
+        userDict=object2dict.to_json(user,user.__class__)
+        result=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,userDict)
+        return json.dumps(result.__dict__,ensure_ascii=False)
+    return json.dumps(rs.NO_LOGIN.__dict__,ensure_ascii=False)
+
+
+
+@uc.route('/acount/changePasswd', methods=['GET','POST'])
+def changePasswd():
+    userId=None
+    if session.has_key('userId'):
+        userId=session['userId']
+    if userId is None:
+        redirect(LOGIN_URL)
+    form=UserChangePasswdForm(request.form)
+    result=form.validate()
+    if result.status==rs.SUCCESS.status:
+        user = User.getById(userId)
+        if user and user.check_password(form.oldPasswd):
+            newHashPasswd=generate_password_hash(form.newPasswd)
+            User.update(userId,passwd=newHashPasswd)
+            return  json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+        else:
+            resultStatus=rs.ResultStatus(rs.FAILURE.status,"未登录或者密码错误")
+            return json.dumps(resultStatus.__dict__,ensure_ascii=False)
+    return json.dumps(result.__dict__,ensure_ascii=False)
+@uc.route('/acount/uploadAvatar', methods=['GET','POST'])
+def avatarfileUpload():
+    userId=None
+    if session.has_key('userId'):
+        userId=session['userId']
+    if userId is None:
+        redirect(LOGIN_URL)
+    user=User.getById(userId)
+    if user is None:
+        return  json.dumps(rs.ResultStatus(rs.FAILURE.status,"账户不存在"),ensure_ascii=False )
+
+    try:
+        if request.method == 'POST':
+            file_infos = []
+            files = request.files
+            for key, file in files.iteritems():
+                if file and isPicture(file.filename):
+                    filename = file.filename
+                    # file_url = oss_util.uploadFile(diagnoseId, filename)
+                    from DoctorSpring.util.oss_util import uploadAvatarFromFileStorage
+                    fileurl = uploadAvatarFromFileStorage(userId, filename, file,'',{})
+                    if fileurl:
+                        user.imagePath=fileurl
+                        file_infos.append(dict(
+                                           name=filename,
+                                           url=fileurl))
+                        result=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,file_infos)
+                        return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+                else:
+                    return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
+        return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
+    except Exception,e:
+        print e.message
+        return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
+def isPicture(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1] in ALLOWED_PICTURE_EXTENSIONS
+
 
 
 

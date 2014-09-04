@@ -5,8 +5,8 @@ import os.path
 
 ROOT_DIR=os.path.dirname(__file__)
 
-_DBUSER = "ctt"
-_DBPASS = "ctt"
+_DBUSER = "mduser"
+_DBPASS = "mduser"
 _DBNAME = "medicaldb"
 _DBHOST = "localhost:3306"
 
@@ -45,4 +45,7 @@ rec.admin_email = 'admin@simplelaw.cn'
 rec.admin_password = 'passw0rd'
 rec.default_timezone = "Asia/Shanghai"
 
+ALLOWED_PICTURE_EXTENSIONS = set(['doc', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'html', 'zip', 'rar'])
 
+LOGIN_URL='/loginPage'
+ERROR_URL='/error'

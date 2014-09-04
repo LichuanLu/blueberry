@@ -74,6 +74,8 @@ DiagnoseSeriesNumberBase=50000
 class MessageStatus(ModelStatus):
       Readed=2
 
+
+
 class CommentType(object):
     DiagnoseComment=0
     Normal=1
@@ -146,6 +148,14 @@ class DiagnoseLogAction(object):
     DiagnoseNeedUpateAction='暂停分发诊断(需要更多就诊人信息)'
     DiagnoseFinished='完成诊断'
     CancleDiagnose='取消诊断'
+class AlipayLogAction(object):
+    StartApplyAlipay='支付开始'
+    GetAlipayUrl='已经获取了支付url'
+    GetAlipayUrlFailure='获取支付地址失败'
+    NoticeUser='已经通知用户'
+    PayFilished='支付完成'
+    PayFailure='支付失败'
+
 
 
 DiagnoseScore={
@@ -167,7 +177,7 @@ class DoctorType(object):
     Doctor=0
     HospitalUser=1
 
-
+DiagnoseCost=0.03
 
 
 

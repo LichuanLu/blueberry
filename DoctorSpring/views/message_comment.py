@@ -13,10 +13,12 @@ from DoctorSpring.models import User,Comment,Message ,Consult,Diagnose,Doctor
 from DoctorSpring.util import result_status as rs,object2dict,constant
 import json
 import  data_change_service as dataChangeService
-
+from DoctorSpring import app
+from config import LOGIN_URL
 import config
+import string
 config = config.rec()
-
+LOG=app.logger
 mc = Blueprint('message_comment', __name__)
 
 
@@ -80,6 +82,33 @@ def diagnoseCommentsByReceiver(receiverId):
     resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnoseCommentsDict)
     resultDict=resultStatus.__dict__
     return jsonify(resultDict)
+
+
+@mc.route('/diagnoseComment/draftList.json', methods = ['GET', 'POST'])
+def diagnoseCommentsByDraft():
+
+    pageNo=request.args.get('pageNo')
+    pageSize=request.args.get('pageSize')
+    pager=constant.Pagger(pageNo,pageSize)
+
+    diagnoseComments=Comment.getCommentsByDraft(pager)
+    if diagnoseComments is None or len(diagnoseComments)<1:
+        return jsonify(rs.SUCCESS.__dict__)
+
+    diagnoseCommentsDict=object2dict.objects2dicts(diagnoseComments)
+    dataChangeService.setDiagnoseCommentsDetailInfo(diagnoseCommentsDict)
+    resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnoseCommentsDict)
+    resultDict=resultStatus.__dict__
+    return jsonify(resultDict)
+@mc.route('/diagnosecomment/statuschange', methods = ['GET', 'POST'])
+def changeDiagnoseCommentStatus():
+    id=request.args.get('id')
+    status=request.args.get('status')
+    if id and status:
+        result=Comment.updateComment(id,status)
+        return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+    return json.dumps(rs.PARAM_ERROR.__dict__,ensure_ascii=False)
+
 
 @mc.route('/diagnose/<int:diagnoseId>/diagnoseCommentList.json', methods = ['GET', 'POST'])
 def diagnoseCommentsByDiagnose(diagnoseId):
@@ -152,20 +181,33 @@ def remarkMessage(messageId):
 
 @mc.route('/consult/add', methods = ['GET', 'POST'])
 def addConsult():
+    user_id=None
+    if session.has_key('userId'):
+        userId=session['userId']
+    #userId='5'
+    if userId is None:
+        redirect(LOGIN_URL)
     form =  ConsultForm(request.form)
     formResult=form.validate()
     if formResult.status==rs.SUCCESS.status:
         #session['remember_me'] = form.remember_me.data
         # login and validate the user...
-        consult=Consult(form.userId,form.doctorId,form.title,form.content)
+        consult=Consult(form.userId,form.doctorId,form.title,form.content,form.parent_id,form.source_id)
         Consult.save(consult)
-        #flash('成功添加诊断评论')
+        LOG.info(userId+' 成功添加诊断评论')
         return json.dumps(formResult.__dict__,ensure_ascii=False)
     return json.dumps(formResult.__dict__,ensure_ascii=False)
+
+
 @mc.route('/doctor/<int:doctorId>/consultList', methods = ['GET', 'POST'])
 def getConsultsByDoctor(doctorId):
+    sourceId=request.args.get('source_id')
     if doctorId:
-        consuts=Consult.getConsultsByDoctorId(doctorId)
+        consuts=None
+        if sourceId:
+            consuts=Consult.getConsultsByDoctorId(doctorId,string.atoi(sourceId))
+        else:
+            consuts=Consult.getConsultsByDoctorId(doctorId)
         consutsDict=object2dict.objects2dicts(consuts)
         resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,consutsDict)
         resultDict=resultStatus.__dict__
@@ -174,14 +216,22 @@ def getConsultsByDoctor(doctorId):
 
 @mc.route('/user/<int:userId>/consultList', methods = ['GET', 'POST'])
 def getConsultsByUser(userId):
+    sourceId=request.args.get('source_id')
     if userId:
-        consuts=Consult.getConsultsByUserId(userId)
+        consuts=None
+        if sourceId:
+            consuts=Consult.getConsultsByUserId(userId,string.atoi(sourceId))
+        else:
+            consuts=Consult.getConsultsByUserId(userId)
         consutsDict=object2dict.objects2dicts(consuts)
         resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,consutsDict)
         resultDict=resultStatus.__dict__
         return json.dumps(resultDict,ensure_ascii=False)
     return json.dumps(rs.PARAM_ERROR,ensure_ascii=False)
-
+@mc.route('/consut/<int:consultId>/read', methods = ['GET', 'POST'])
+def changeConsultRead(consultId):
+    Consult.changeReadStatus(consultId)
+    return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
 
 
 

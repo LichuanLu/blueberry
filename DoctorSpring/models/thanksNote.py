@@ -27,7 +27,7 @@ class ThanksNote(Base):
         self.title=title
         self.content=content
 
-        self.status=MessageStatus.Normal
+        self.status=ModelStatus.Draft
         self.createTime=datetime.now()
     @classmethod
     def save(self,session,ThanksNote):
@@ -56,6 +56,21 @@ class ThanksNote(Base):
 
         return session.query(ThanksNote).filter(ThanksNote.sender==senderId,ThanksNote.status==status) \
             .order_by(ThanksNote.createTime.desc()).all()
+    @classmethod
+    def updateThankNote(cls,id,status=ModelStatus.Normal):
+        if id is None:
+            return
+        thanknote=session.query(ThanksNote).filter(ThanksNote.id==id).first()
+        if thanknote:
+            if status or status==0:
+                thanknote.status=status
+            return session.commit()
+
+
+    @classmethod
+    def getThankNoteByDraft(cls,pager=Pagger(1,20)):
+        thanksnotes=session.query(ThanksNote).filter(ThanksNote.status==ModelStatus.Draft).offset(pager.getOffset()).limit(pager.getLimitCount()).all()
+        return thanksnotes
 
 
 

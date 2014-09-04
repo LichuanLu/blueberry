@@ -456,3 +456,14 @@ def get_pathology(pathology):
     pathologyDict["dicomUrl"] = dicomUrl
 
     return pathologyDict
+def getFilesResult(files):
+    if files is None or len(files)<1:
+        return None
+    fileResults=[]
+    for file in files:
+        fileResult={}
+        fileResult['name']=file.name
+        fileResult['type']=file.type
+        fileResult['url']=file.url
+        fileResults.append(fileResult)
+    return fileResults

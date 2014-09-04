@@ -67,7 +67,8 @@ class Diagnose(Base):
     hospital = relationship("Hospital", backref=backref('diagnose', order_by=id))
 
     status = sa.Column(sa.INTEGER)      # 草稿：9， 成稿 1
-
+    serveAdmin=sa.Column(sa.INTEGER) #产生aplpaly的管理员
+    isConfirmOrder=sa.Column(sa.SmallInteger)#是否已经产生了阿里的订单
 
     def __init__(self,createdate=date.today()):
         self.createDate = createdate
@@ -282,7 +283,6 @@ class Diagnose(Base):
             return  session.query(Diagnose.id).filter(Diagnose.doctorId==doctorId).count()
 
 
-
 class DiagnoseLog(Base):
     __tablename__ = 'diagnoseLog'
     __table_args__ = {
@@ -298,6 +298,7 @@ class DiagnoseLog(Base):
     action=sa.Column(sa.String(128))
     description=sa.Column(sa.String(624))
     createTime=sa.Column(sa.DateTime)
+
     def __init__(self,userId,diagnoseId,action):
         self.userId=userId
         self.diagnoseId=diagnoseId
@@ -314,6 +315,10 @@ class DiagnoseLog(Base):
     def getDiagnoseLogByDiagnoseId(cls,session,diagnoseId):
         if diagnoseId:
             return session.query(DiagnoseLog).filter(DiagnoseLog.diagnoseId==diagnoseId).order_by(DiagnoseLog.createTime).all()
+    @classmethod
+    def getDiagnoseLogByUserId(cls,userId):
+        if userId:
+            return session.query(DiagnoseLog).filter(DiagnoseLog.userId==userId).order_by(DiagnoseLog.createTime).all()
 
 
 class DiagnoseTemplate(Base):
@@ -436,8 +441,9 @@ class Report(Base):
                 report.imageDesc=imageDesc
             if diagnoseDesc:
                 report.diagnoseDesc=diagnoseDesc
-        session.commit()
-        session.flush()
+
+            session.flush()
+            session.commit()
         return report
 
 class File(Base):
