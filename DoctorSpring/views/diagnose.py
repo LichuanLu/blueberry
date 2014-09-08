@@ -331,11 +331,18 @@ def generateAlipayUrl(diagnoseId):
         alipayLog=AlipayLog(userId,diagnoseId,constant.AlipayLogAction.StartApplyAlipay)
         AlipayLog.save(alipayLog)
         description=None
+        needPay=None
+        if hasattr(diagnose,'pathology') and hasattr(diagnose.pathology,'pathologyPostions'):
+            if len(diagnose.pathology.pathologyPostions)>0:
+                needPay=constant.DiagnoseCost*len(diagnose.pathology.pathologyPostions)
+        needPay=constant.DiagnoseCost
+
         if hasattr(diagnose,'doctor') and hasattr(diagnose.doctor,'username'):
-            description=' 医生(%s)的诊断费用:%f 元'%(diagnose.doctor.username,constant.DiagnoseCost)
+
+            description=' 医生(%s)的诊断费用:%f 元'%(diagnose.doctor.username,needPay)
             if hasattr(diagnose.doctor.hospital,'name'):
                 description=diagnose.doctor.hospital.name+description
-        payUrl=alipay.create_direct_pay_by_user(diagnose.diagnoseSeriesNumber,diagnose.diagnoseSeriesNumber,'咨询费',constant.DiagnoseCost)
+        payUrl=alipay.create_direct_pay_by_user(diagnose.diagnoseSeriesNumber,diagnose.diagnoseSeriesNumber,'咨询费',needPay)
         if payUrl:
             alipayLog=AlipayLog(userId,diagnoseId,constant.AlipayLogAction.GetAlipayUrl)
             alipayLog.description=description
@@ -414,6 +421,19 @@ def getDiagnoseLogBydiagnoseId(diagnoseId):
             return  json.dumps(result.__dict__,ensure_ascii=False)
         return  json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
     return  json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
+
+@diagnoseView.route('/diagnose/<int:diagnoseId>/alipayurl',  methods = ['GET', 'POST'])
+def redirectUrl(diagnoseId):
+    return redirect("www.baidu.com")
+
+@diagnoseView.route('/diagnose/<int:diagnoseId>/callStatus', methods = ['GET', 'POST'])
+def changeNeedCallStatusBySupportStaff(diagnoseId):
+   diagnose=Diagnose()
+   diagnose.id=diagnoseId
+   diagnose.supportStaffCall=constant.DiagnoseSupportStaffCallStatus.Call
+   Diagnose.update(diagnose)
+   return  json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+
 
 
 

@@ -50,7 +50,8 @@ class Diagnose(Base):
     uploadUserId = sa.Column(sa.Integer, sa.ForeignKey('user.id'))
     uploadUser = relationship("User", backref=backref('diagnose', order_by=id))
 
-    ossUploaded= sa.Column(sa.SmallInteger)
+    ossUploaded= sa.Column(sa.SmallInteger) # diagnoseUpdate
+    supportStaffCall=sa.Column(sa.SmallInteger) #是否打个电话确认了
 
     pathologyId = sa.Column(sa.Integer, sa.ForeignKey('pathology.id'))
     pathology = relationship("Pathology", backref=backref('diagnose', order_by=id))
@@ -206,6 +207,13 @@ class Diagnose(Base):
 
             query=query.filter(Diagnose.createDate>startTime,Diagnose.createDate<endTime)
             return query.offset(pagger.getOffset()).limit(pagger.getLimitCount()).all()
+    @classmethod
+    def getDiagnosesBySupportStaff(cls,pagger):
+        if pagger is None:
+            return
+        return session.query(Diagnose).filter(Diagnose.status==ModelStatus.Draft,Diagnose.ossUploaded==constant.DiagnoseUploaed.Uploaded,
+                                       Diagnose.supportStaffCall==constant.DiagnoseSupportStaffCallStatus.NoCall).order_by(Diagnose.createDate.desc())\
+            .offset(pagger.getOffset()).limit(pagger.getLimitCount()).all()
 
     @classmethod
     def getDiagnoseByAdmin2(cls,session,hostpitalList=None,doctorName=None,pagger=Pagger(1,20) ):
@@ -250,6 +258,16 @@ class Diagnose(Base):
 
 
         return query.all()
+
+    @classmethod
+    def getDiagnoseByHospitalUserReal(cls,session,userId,pagger=Pagger(1,20) ):
+        if userId is None :
+            return
+
+        query=session.query(Diagnose).filter(Diagnose.uploadUserId==userId,Diagnose.status!=DiagnoseStatus.Del)\
+                .offset(pagger.getOffset()).limit(pagger.getLimitCount())
+
+        return query.all()
     @classmethod
     def getDealedDiagnoseByHospitalUser(cls,session,uploadUserId,patientName,status,startTime,endTime,pagger=Pagger(1,20) ):
         if uploadUserId is None :
@@ -281,6 +299,24 @@ class Diagnose(Base):
             return session.query(Diagnose.id).filter(Diagnose.doctorId==doctorId,Diagnose.score==score).count()
         else:
             return  session.query(Diagnose.id).filter(Diagnose.doctorId==doctorId).count()
+    @classmethod
+    def update(cls,diagnose):
+        if diagnose is None or diagnose.id is None:
+            return
+        diagnoseNeedChange=session.query(Diagnose).filter(Diagnose.id==diagnose.id)
+        if diagnoseNeedChange is None:
+            return
+        if diagnose.status or diagnose.status==0:
+            diagnoseNeedChange.status=diagnose.status
+        if diagnose.ossUploaded or diagnose.ossUploaded==0:
+            diagnoseNeedChange.ossUploaded =diagnose.ossUploaded
+        if diagnose.supportStaffCall or diagnose.supportStaffCall==0:
+            diagnoseNeedChange.supportStaffCall=diagnose.supportStaffCall
+        if diagnose.uploadUserId :
+            diagnoseNeedChange.uploadUserId=diagnose.uploadUserId
+        session.commit()
+        session.flush()
+
 
 
 class DiagnoseLog(Base):
@@ -462,13 +498,13 @@ class File(Base):
     pathologyId=sa.Column(sa.Integer)
 
 
-    def __init__(self,type,name,size,url):
+    def __init__(self,type,name,size,url,pathologyId):
         self.type = type
         self.name = name
         self.size = size
         self.status = ModelStatus.Normal
         self.url = url
-
+        self.pathologyId=pathologyId
     @classmethod
     def save(cls,dsFile):
         if dsFile:

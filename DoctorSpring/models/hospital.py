@@ -49,4 +49,17 @@ class Hospital(Base):
     @staticmethod
     def getAllHospitals(session):
         return session.query(Hospital).filter(Hospital.status==constant.ModelStatus.Normal).all()
+    @staticmethod
+    def updateHospital(hospital):
+        if hospital is None or hospital.id is None:
+            return
+        hospitalNeedChange=session.query(Hospital).filter(Hospital.id==hospital.id,Hospital.status==constant.ModelStatus.Normal).first()
+        if hospitalNeedChange is None:
+            return
+        if hospital.name:
+            hospitalNeedChange.name=hospital.name
+        if hospital.address:
+            hospitalNeedChange.address=hospital.address
+        session.commit()
+        session.flush()
 

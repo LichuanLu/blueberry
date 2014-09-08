@@ -26,7 +26,8 @@ class Consult(Base):
     status=sa.Column(sa.Integer)    #2表示已读
     parent_id=sa.Column(sa.BigInteger)
     source_id=sa.Column(sa.BigInteger)#原始咨询的id，冗余，为了快速的找到一组讨论的咨询
-    def __init__(self,userId,doctorId,title,content,parent_id=-1,source_id=-1,type=0):
+    count=sa.Column(sa.Integer)
+    def __init__(self,userId,doctorId,title,content,parent_id=-1,source_id=-1,type=0,diagnoseId=None):
         self.userId=userId
         self.doctorId=doctorId
         #self.title=title
@@ -38,7 +39,9 @@ class Consult(Base):
         self.status=constant.ModelStatus.Normal
         self.parent_id=parent_id
         self.source_id=source_id
+        self.diagnoseId=diagnoseId
         self.type=type
+        self.count=0
     @classmethod
     def save(cls,consult):
         if consult:
@@ -66,6 +69,8 @@ class Consult(Base):
         else:
             return session.query(Consult).filter(Consult.doctorId==doctorId,Consult.status!=ModelStatus.Del,Consult.source_id==-1). \
                 order_by(Consult.updateTime.desc()).all()
+
+
     @classmethod
     def getConsultsByUserId(cls,userId,sourceId=None):
         if userId is None:
@@ -89,7 +94,18 @@ class Consult(Base):
         if constant:
             consult.status=2#标记为已读
             session.commit()
+    @classmethod
+    def update(cls,consult):
+        if consult is None or consult.id is None:
+            return
+        consultNeedChange=session.query(Consult).filter(Consult.id==consult.id,Consult.status==ModelStatus.Normal).first()
+        if consultNeedChange is None:
+            return
 
+        if consult.count:
+            consultNeedChange.count=consult.count
+        session.commit()
+        session.flush()
 
 
 class Comment(Base):

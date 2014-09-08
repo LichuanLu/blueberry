@@ -192,8 +192,14 @@ def addConsult():
     if formResult.status==rs.SUCCESS.status:
         #session['remember_me'] = form.remember_me.data
         # login and validate the user...
-        consult=Consult(form.userId,form.doctorId,form.title,form.content,form.parent_id,form.source_id)
+        consult=Consult(form.userId,form.doctorId,form.title,form.content,form.parent_id,form.source_id,form.type,form.diagnose_id)
         Consult.save(consult)
+        if form.source_id:
+            sourceConsult=Consult.getById(form.source_id)
+            if sourceConsult:
+                sourceConsult.count+=1
+                Consult.update(consult)
+
         LOG.info(userId+' 成功添加诊断评论')
         return json.dumps(formResult.__dict__,ensure_ascii=False)
     return json.dumps(formResult.__dict__,ensure_ascii=False)
@@ -209,6 +215,8 @@ def getConsultsByDoctor(doctorId):
         else:
             consuts=Consult.getConsultsByDoctorId(doctorId)
         consutsDict=object2dict.objects2dicts(consuts)
+        dataChangeService.setConsultsResult(consutsDict)
+
         resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,consutsDict)
         resultDict=resultStatus.__dict__
         return json.dumps(resultDict,ensure_ascii=False)
@@ -224,6 +232,8 @@ def getConsultsByUser(userId):
         else:
             consuts=Consult.getConsultsByUserId(userId)
         consutsDict=object2dict.objects2dicts(consuts)
+        dataChangeService.setConsultsResult(consutsDict)
+
         resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,consutsDict)
         resultDict=resultStatus.__dict__
         return json.dumps(resultDict,ensure_ascii=False)

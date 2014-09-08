@@ -337,12 +337,17 @@ def get_doctors_dict(doctors, pageno=1, count=1):
     return result_Dict
 
 
+
+
 def get_doctor(doctor):
     if doctor is None:
         return
     doctorDict = {}
-    if doctor.user.id:
+    if doctor.id:
         doctorDict['id'] = doctor.id
+
+    if doctor.identityPhone:
+        doctorDict['identityPhone']=doctor.identityPhone
     if hasattr(doctor, "username") and doctor.username:
         doctorDict['doctorname'] = doctor.username
     if hasattr(doctor, "title") and doctor.title:
@@ -467,3 +472,33 @@ def getFilesResult(files):
         fileResult['url']=file.url
         fileResults.append(fileResult)
     return fileResults
+def getAccountInfo(userDict):
+    if userDict is None:
+        return
+    doctor=Doctor.getByUserId(userDict.get('id'))
+    if doctor:
+        if doctor.identityPhone:
+            userDict['identityPhone']=doctor.identityPhone
+        if doctor.hospital and doctor.hospital.name:
+            userDict['hospitalName']=doctor.hospital.name
+        return userDict
+    return None
+def setConsultsResult(consutsDict):
+    if consutsDict is None:
+        return
+    for consutDict in consutsDict:
+        type=consutDict.get('type')
+        if type==1:
+            if consutDict.get('doctorId'):
+                    doctor=Doctor.getById(consutDict.get('doctorId'))
+                    if doctor:
+                        consutDict['doctorName']=doctor.username
+                        consutDict['doctorTitle']=doctor.title
+                        if hasattr(doctor,'user') and doctor.user and doctor.user.imagePath:
+                            consutDict['avartarUrl']= doctor.user.imagePath
+        if type==0:
+            if consutDict.get('userId'):
+                user=User.getById(consutDict.get('userId'))
+                if user:
+                    consutDict['userName']=user.name
+                    consutDict['avartarUrl']=user.imagePath

@@ -121,6 +121,27 @@ class Doctor(Base):
 
 
          return query.all()
+    @classmethod
+    def getUserListByStatus(cls,pagger,status=ModelStatus.Draft):
+        return session.query(Doctor).filter(Doctor.status==status).offset(pagger.getOffset()).limit(pagger.getLimitCount())
+
+    @classmethod
+    def update(cls,doctor):
+        if doctor is None or doctor.userId is None:
+            return
+        doctorNeedChange=session.query(Doctor).filter(Doctor.userId==doctor.userId,Doctor.status==ModelStatus.Normal).first()
+        if doctorNeedChange is None:
+            return
+        if doctor.username:
+            doctorNeedChange.username=doctor.username
+        if doctor.identityPhone:
+            doctorNeedChange.identityPhone=doctor.identityPhone
+        session.commit()
+        session.flush()
+        return doctorNeedChange.hospitalId
+
+
+
 
 
 

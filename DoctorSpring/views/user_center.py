@@ -9,7 +9,7 @@ from DoctorSpring import lm
 from database import  db_session
 from sqlalchemy.exc import IntegrityError
 from DoctorSpring.models import User,Patient,Doctor,Diagnose ,DiagnoseTemplate,DoctorProfile
-from DoctorSpring.models import User,Comment,Message ,UserFavorites,UserRole ,ThanksNote
+from DoctorSpring.models import User,Comment,Message ,UserFavorites,UserRole ,ThanksNote,Hospital
 from DoctorSpring.util import result_status as rs,object2dict,pdf_utils,constant
 from DoctorSpring.util.constant import MessageUserType,Pagger,ReportType,ReportStatus
 from DoctorSpring.util.authenticated import authenticated
@@ -26,6 +26,8 @@ import json
 import config
 from config import LOGIN_URL,ERROR_URL
 config = config.rec()
+from DoctorSpring import app
+LOG=app.logger
 
 uc = Blueprint('user_center', __name__)
 
@@ -381,6 +383,36 @@ def getDiagnoseListByPatient():
         resultDict=resultStatus.__dict__
         return json.dumps(resultDict,ensure_ascii=False)
     return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
+@uc.route('/hospitaluserReal/diagnose/list',  methods = ['GET', 'POST'])
+@authenticated('admin',constant.RoleId.HospitalUserReal)
+def getDiagnoseListByHospitaluserReal():
+    userId=session['userId']
+
+    if userId:
+
+        pageNo=request.args.get('pageNo')
+        pageSize=request.args.get('pageSize')
+        pager=Pagger(pageNo,pageSize)
+        diagnoses=Diagnose.getDiagnoseByHospitalUserReal(db_session,userId,pager)
+        diagnosesDict=dataChangeService.userCenterDiagnoses(diagnoses)
+        resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnosesDict)
+        resultDict=resultStatus.__dict__
+        return json.dumps(resultDict,ensure_ascii=False)
+    return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
+
+@uc.route('/diagnose/list/needCall',  methods = ['GET', 'POST'])
+def needCallBySupportStaff():
+    pageNo=request.args.get('pageNumber')
+    pageSize=request.args.get('pageSize')
+    pager=Pagger(pageNo,pageSize)
+    diagnoses=Diagnose.getDiagnosesBySupportStaff(pager)
+    diagnosesDict=dataChangeService.userCenterDiagnoses(diagnoses)
+    resultStatus=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,diagnosesDict)
+    resultDict=resultStatus.__dict__
+    return json.dumps(resultDict,ensure_ascii=False)
+
+
+
 @uc.route('/doctor/<int:doctorId>/patientList',  methods = ['GET', 'POST'])
 def getPatients(doctorId):
      patients=Diagnose.getPatientListByDoctorId(doctorId)
@@ -580,32 +612,59 @@ def testRedirect():
 
 @uc.route('/acount/admin', methods=['GET','POST'])
 def updateAcountInfo():
+    type=request.args.get('type')
+    if type:
+        type=string.atoi(type)  #医生：1 病人：2
+    else:
+        type=2
     userId=None
     if session.has_key('userId'):
         userId=session['userId']
     if userId is None:
-        redirect(LOGIN_URL)
+        return redirect(LOGIN_URL)
     form=UserUpdateForm(request.form)
     paraRs=form.validate()
     if rs.SUCCESS.status==paraRs.status:
         User.update(userId,form.name,form.account,form.mobile,form.address,form.email,form.identityCode,form.yibaoCard)
+        if type==1:
+            doctor=Doctor(userId)
+            doctor.identityPhone=form.identityPhone
+            hospitalId=Doctor.update(doctor)
+            if hospitalId:
+                hospital=Hospital(form.hospitalName)
+                hospital.id=hospitalId
+                Hospital.updateHospital(hospital)
+
         return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
 
     return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
 
 @uc.route('/acount/info', methods=['GET','POST'])
 def getAcountInfo():
+    type=request.args.get('type')
+    if type:
+        type=string.atoi(type)  #医生：1 病人：2
+    else:
+        type=2
     userId=None
     if session.has_key('userId'):
         userId=session['userId']
-    userId='5'
+    #userId='5'
     if userId is None:
-        redirect(LOGIN_URL)
+        return redirect(LOGIN_URL)
     user=User.getById(userId)
     if user:
         userDict=object2dict.to_json(user,user.__class__)
-        result=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,userDict)
-        return json.dumps(result.__dict__,ensure_ascii=False)
+        if type==2:
+            result=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,userDict)
+            return json.dumps(result.__dict__,ensure_ascii=False)
+        elif type==1:
+            userDict=dataChangeService.getAccountInfo(userDict)
+            result=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,userDict)
+            return json.dumps(result.__dict__,ensure_ascii=False)
+        else:
+            return  json.dumps(rs.PARAM_ERROR.__dict__,ensure_ascii=False)
+
     return json.dumps(rs.NO_LOGIN.__dict__,ensure_ascii=False)
 
 
@@ -616,7 +675,7 @@ def changePasswd():
     if session.has_key('userId'):
         userId=session['userId']
     if userId is None:
-        redirect(LOGIN_URL)
+        return redirect(LOGIN_URL)
     form=UserChangePasswdForm(request.form)
     result=form.validate()
     if result.status==rs.SUCCESS.status:
@@ -635,7 +694,7 @@ def avatarfileUpload():
     if session.has_key('userId'):
         userId=session['userId']
     if userId is None:
-        redirect(LOGIN_URL)
+        return redirect(LOGIN_URL)
     user=User.getById(userId)
     if user is None:
         return  json.dumps(rs.ResultStatus(rs.FAILURE.status,"账户不存在"),ensure_ascii=False )
@@ -656,7 +715,7 @@ def avatarfileUpload():
                                            name=filename,
                                            url=fileurl))
                         result=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,file_infos)
-                        return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+                        return json.dumps(result.__dict__,ensure_ascii=False)
                 else:
                     return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
         return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
@@ -666,6 +725,46 @@ def avatarfileUpload():
 def isPicture(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_PICTURE_EXTENSIONS
+
+@uc.route('/doctor/draftList', methods=['GET','POST'])
+def doctorListByDraft():
+    try:
+        pageNo=request.args.get('pageNumber')
+        pageSize=request.args.get('pageSize')
+        pager=Pagger(pageNo,pageSize)
+        doctors=Doctor.getUserListByStatus(pager)
+
+        doctorsDict=dataChangeService.get_doctors_dict(doctors)
+        result=rs.ResultStatus(rs.SUCCESS.status,rs.SUCCESS.msg,doctorsDict)
+        return json.dumps(result.__dict__,ensure_ascii=False)
+    except Exception,e:
+        LOG.error(e.message)
+        return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
+
+@uc.route('doctor/statuschange', methods=['GET','POST'])
+def doctorListByDraft():
+    try:
+        userid=session.get('userId')
+        if userid is None:
+            return redirect(LOGIN_URL)
+
+        userid=string.atoi(userid)
+        status=request.args.get('status')
+        if status:
+            status=string.atoi(status)
+        else:
+            status=constant.ModelStatus.Normal
+        doctor=Doctor()
+        doctor.userId=userid
+        doctor.status=status
+        Doctor.update(doctor)
+        return json.dumps(rs.SUCCESS.__dict__,ensure_ascii=False)
+    except Exception,e:
+        LOG.error(e.message)
+        return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
+
+
+
 
 
 
