@@ -199,6 +199,8 @@ class ConsultForm(object):
         self.content=args.get('content')
         self.parent_id=args.get('parent_id')
         self.source_id=args.get('source_id')#defaultValue=-1
+        self.diagnose_id=args.get('diagnose_id')
+        self.type=args.get('type')
     def validate(self):
         try:
             if self.userId is None:
@@ -207,6 +209,13 @@ class ConsultForm(object):
                 return FAILURE
             # if self.title is None:
             #     return FAILURE
+            if  self.type:
+                self.type=string.atoi(self.type)
+            if  self.parent_id:
+                self.parent_id=string.atoi(self.parent_id)
+            if  self.source_id:
+                self.source_id=string.atoi(self.source_id)
+
             if self.content is None or len(self.content)<10:
                 failure=ResultStatus(FAILURE.status,"输入的内容长度必须大于等于10")
                 return  failure
@@ -363,6 +372,8 @@ class UserUpdateForm(object):
         self.email=userForm.get('email')
         self.identityCode=userForm.get('identityCode')
         self.yibaoCard=userForm.get('yibaoCard')
+        self.identityPhone=userForm.get('identityPhone')
+        self.hospitalName=userForm.get('hospitalName')
     def validate(self):
         try:
             if self.email is None or "@" not in self.email:

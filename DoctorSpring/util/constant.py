@@ -54,6 +54,9 @@ class DiagnoseStatus(object):
 class DiagnoseUploaed(object):
     NoUploaded=0
     Uploaded=1
+class DiagnoseSupportStaffCallStatus(object):
+    Call=1
+    NoCall=0
 class ReportStatus(object):
     Draft=0
     Del=1
@@ -138,7 +141,8 @@ class RoleId(object):
     Admin=1
     Doctor=2
     Patient=3
-    HospitalUser=4
+    HospitalUser=4 #fenzhen
+    HospitalUserReal=5
 class DiagnoseLogAction(object):
     NewDiagnoseAction='提出诊断申请'
     FetchDiagnoseAction='正在分发诊断'

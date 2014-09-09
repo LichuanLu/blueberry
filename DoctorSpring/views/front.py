@@ -253,10 +253,20 @@ def applyDiagnoseForm(formid):
 UPLOAD_FOLDER = 'DoctorSpring/static/tmp/'
 ALLOWED_EXTENSIONS = set(['doc', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'html', 'zip', 'rar'])
 
-@front.route('/dicomfile/upload', methods=['POST'])
-def dicomfileUpload():
+@front.route('/dicomfile/upload/<int:diagnoseId>', methods=['POST'])
+def dicomfileUpload(diagnoseId):
+    userId=session.get('userId')
+    if userId is None:
+        return redirect(LOGIN_URL)
+    userId=string.atoi(userId)
+    type=request.args.get('type')
+    if type:
+        type=string.atoi(type)
+    else:
+        type=constant.FileType.Dicom
     try:
-        if request.method == 'POST':
+        diagnose=Diagnose.getDiagnoseById(diagnoseId)
+        if diagnose and diagnose.pathologyId:
             file_infos = []
             files = request.files
             for key, file in files.iteritems():
@@ -264,11 +274,29 @@ def dicomfileUpload():
                     filename = file.filename
                     # file_url = oss_util.uploadFile(diagnoseId, filename)
                     from DoctorSpring.util.oss_util import uploadFileFromFileStorage
-                    fileurl = uploadFileFromFileStorage(4, filename, file,'',{})
+                    fileurl = uploadFileFromFileStorage(diagnoseId, filename, file,'',{})
 
 
-                    new_file = File(FileType.Dicom, filename, '11', fileurl)
+                    new_file = File(FileType.Dicom, filename, '11', fileurl,diagnose.pathologyId)
                     File.save(new_file)
+
+                    if  type==FileType.Dicom:
+                        filesAboutDiagnose=File.getFiles(diagnose.pathologyId,FileType.FileAboutDiagnose)
+                        if filesAboutDiagnose and len(filesAboutDiagnose)>0:
+                            diagnoseChange=Diagnose()
+                            diagnoseChange.id=diagnoseId
+                            diagnoseChange.ossUploaded=constant.DiagnoseUploaed.Uploaded
+                            diagnose.uploadUserId=userId
+                            Diagnose.update(diagnoseChange)
+                    if type==FileType.FileAboutDiagnose:
+                        filesAboutDiagnose=File.getFiles(diagnose.pathologyId,FileType.Dicom)
+                        if filesAboutDiagnose and len(filesAboutDiagnose)>0:
+                            diagnoseChange=Diagnose()
+                            diagnoseChange.id=diagnoseId
+                            diagnoseChange.ossUploaded=constant.DiagnoseUploaed.Uploaded
+                            diagnose.uploadUserId=userId
+                            Diagnose.update(diagnoseChange)
+
 
                     file_infos.append(dict(id=new_file.id,
                                            name=filename,
