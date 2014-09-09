@@ -7,6 +7,7 @@ import urllib, urllib2, json
 import hmac, hashlib
 
 class RandCode(object):
+    #APP_ID = '142196870000037017'
 
     APP_ID = '142196870000037017'
     APP_SECRET = 'c97905c7e47fd02222d3ab28fdd8a5ee'
