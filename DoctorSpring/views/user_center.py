@@ -741,8 +741,8 @@ def doctorListByDraft():
         LOG.error(e.message)
         return json.dumps(rs.FAILURE.__dict__,ensure_ascii=False)
 
-@uc.route('doctor/statuschange', methods=['GET','POST'])
-def doctorListByDraft():
+@uc.route('/doctor/statuschange', methods=['GET','POST'])
+def doctorStatusChange():
     try:
         userid=session.get('userId')
         if userid is None:
