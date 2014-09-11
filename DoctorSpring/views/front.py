@@ -253,13 +253,17 @@ def applyDiagnoseForm(formid):
 UPLOAD_FOLDER = 'DoctorSpring/static/tmp/'
 ALLOWED_EXTENSIONS = set(['doc', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'html', 'zip', 'rar'])
 
-@front.route('/dicomfile/upload/<int:diagnoseId>', methods=['POST'])
-def dicomfileUpload(diagnoseId):
+@front.route('/file/upload', methods=['POST'])
+def dicomfileUpload():
     userId=session.get('userId')
     if userId is None:
         return redirect(LOGIN_URL)
     userId=string.atoi(userId)
-    type=request.args.get('type')
+    type=request.form.get('type')
+    diagnoseId=request.form.get("diagnoseId")
+    if diagnoseId is None:
+        return jsonify({'code': 1,  'message' : "error", 'data': ''})
+    diagnoseId=string.atoi(diagnoseId)
     if type:
         type=string.atoi(type)
     else:
